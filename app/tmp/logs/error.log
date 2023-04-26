@@ -1,0 +1,1043 @@
+2023-04-26 14:07:15 Error: [NotFoundException] Not Found
+Request URL: /Adryo-web/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(971): include()
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(933): View->_evaluate('/Applications/M...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(473): View->_render('/Applications/M...')
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(968): View->render('home', NULL)
+#4 /Applications/MAMP/htdocs/Adryo-web/app/Controller/PagesController.php(72): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /Applications/MAMP/htdocs/Adryo-web/index.php(41): require('/Applications/M...')
+#11 {main}
+2023-04-26 14:07:58 Error: [NotFoundException] Not Found
+Request URL: /Adryo-web/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(971): include()
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(933): View->_evaluate('/Applications/M...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(473): View->_render('/Applications/M...')
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(968): View->render('home', NULL)
+#4 /Applications/MAMP/htdocs/Adryo-web/app/Controller/PagesController.php(72): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /Applications/MAMP/htdocs/Adryo-web/index.php(41): require('/Applications/M...')
+#11 {main}
+2023-04-26 14:09:02 Error: [NotFoundException] Not Found
+Request URL: /Adryo-web/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(971): include()
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(933): View->_evaluate('/Applications/M...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/View/View.php(473): View->_render('/Applications/M...')
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(968): View->render('home', NULL)
+#4 /Applications/MAMP/htdocs/Adryo-web/app/Controller/PagesController.php(72): Controller->render('home')
+#5 [internal function]: PagesController->display('home')
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(PagesController), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 /Applications/MAMP/htdocs/Adryo-web/index.php(41): require('/Applications/M...')
+#11 {main}
+2023-04-26 19:34:09 Error: [MissingPluginException] Plugin DebugKit could not be found.
+Exception Attributes: array (
+  'plugin' => 'DebugKit',
+)
+Request URL: /Adryo-web/
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Core/App.php(227): CakePlugin::path('DebugKit')
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Core/App.php(549): App::path('Controller/Comp...', 'DebugKit')
+#2 [internal function]: App::load('ToolbarComponen...')
+#3 [internal function]: spl_autoload_call('ToolbarComponen...')
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/ComponentCollection.php(110): class_exists('ToolbarComponen...')
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/ComponentCollection.php(53): ComponentCollection->load('DebugKit.Toolba...', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(649): ComponentCollection->init(Object(PagesController))
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(188): Controller->constructClasses()
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(PagesController), Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/components_adryo.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/custom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/components.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/pages/layouts.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/custom.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/logo_inmosystem.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/no_photo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:34:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/favicon.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/jquery.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:15 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 19:35:16 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:17:25 Error: [MissingControllerException] Controller class LoginController could not be found.
+Exception Attributes: array (
+  'class' => 'LoginController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:05 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:05 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:05 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:05 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:05 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:05 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/jquery.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:06 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:06 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:06 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:06 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:06 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/BillionWebFonts.woff
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:07 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/BillionWebFonts.ttf
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/favicon.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:24 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/jquery.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:24 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:24 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:24 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:24 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:24 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:24 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:24 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:25 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:38:26 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/favicon.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/jquery.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:33 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:34 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:34 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:34 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:34 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:34 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:34 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:34 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:34 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-26 21:39:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

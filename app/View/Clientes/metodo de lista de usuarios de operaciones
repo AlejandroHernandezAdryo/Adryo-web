@@ -1,0 +1,66 @@
+public function list_user( $cliente_id = null ){
+        $this->OperacionesInmueble->Behaviors->load('Containable');
+        header('Content-type: application/json; charset=utf-8');
+        $i                  = 0;
+        $response['data']   = [];
+        $documentos         = '';
+
+        $operaciones_cliente = $this->OperacionesInmueble->find('all',
+            array(
+                'conditions' => array( 'cliente_id' => $cliente_id ),
+                'contain'    => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.nombre_completo'
+                        ),
+                    ),
+                    'Inmueble' => array(
+                        'fields' => array(
+                            'Inmueble.referencia'
+                        ),
+                    ),
+                    'Documentos' => array(
+                        'fields' => array(
+                            'Documentos.ruta',
+                            'Documentos.comentarios',
+                            'Documentos.tipo_documento',
+                        ),
+                    ),
+                ),
+                'fields'     => array(
+                    'OperacionesInmueble.id',
+                    'OperacionesInmueble.tipo_operacion',
+                    'OperacionesInmueble.precio_unidad',
+                    'OperacionesInmueble.precio_cierre',
+                    'OperacionesInmueble.fecha',
+                    'OperacionesInmueble.vigencia_operacion',
+                    'OperacionesInmueble.inmueble_id',
+                ),
+                'order' => array(
+                    'OperacionesInmueble.inmueble_id' => 'ASC'
+                ),
+            )
+        );
+        
+        foreach( $operaciones_cliente as $operacion ){
+
+            if( !empty( $operacion['Documentos'] ) ){
+                foreach( $operacion['Documentos'] as $documento ){
+                    $documentos .= "<a target='_BLANK' href='".Router::url($documento['ruta'])."'><i class='fa fa-download'></i></a> ";
+                }
+            }else{ $documentos = ''; }
+
+            
+            $response['data'][$i] =  array(
+                $this->status_inmueble[$operacion['OperacionesInmueble']['tipo_operacion']],
+                $operacion['Inmueble']['referencia'],
+                $operacion['User']['nombre_completo'],
+                date('d-m-Y', strtotime($operacion['OperacionesInmueble']['fecha'])),
+                date('d-m-Y', strtotime($operacion['OperacionesInmueble']['vigencia_operacion'])),
+                '$ '.number_format($operacion['OperacionesInmueble']['precio_unidad'], 2),
+                '$ '.number_format($operacion['OperacionesInmueble']['precio_cierre'], 2),
+                $documentos,
+                "<i class = 'pointer fa fa-trash' onclick='deleteOperacionInmueble(".$operacion['OperacionesInmueble']['id'].")'></i>",
+            );
+            $i++;
+        }

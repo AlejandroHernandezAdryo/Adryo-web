@@ -1,0 +1,11 @@
+<?php
+$this->assign('img_1',$cuenta['Cuenta']['imagen_1']);
+$this->assign('titulo_1',$cuenta['Cuenta']['titulo_1']);
+$this->assign('titulo_2',$cuenta['Cuenta']['titulo_2']);
+$this->assign('img_2',$cuenta['Cuenta']['imagen_2']);
+$this->assign('img_3',$cuenta['Cuenta']['imagen_3']);
+$this->assign('somos',$cuenta['Cuenta']['somos']);
+$this->assign('img_4',$cuenta['Cuenta']['imagen_4']);
+$this->assign('vende',$cuenta['Cuenta']['vende']);
+$this->assign('img_5',$cuenta['Cuenta']['imagen_5']);
+?>

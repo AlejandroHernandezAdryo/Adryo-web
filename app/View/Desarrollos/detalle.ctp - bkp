@@ -1,0 +1,633 @@
+<?php
+    echo $this->Html->meta('description',$desarrollo['Desarrollo']['nombre'], array("inline" => false));
+    $this->assign('title',$desarrollo['Desarrollo']['nombre']);
+    echo $this->Html->meta('keywords','agente inmobiliario, trabajo inmobiliaria, oferta de propiedades, comercialización inmobiliaria, asesoria inmobiliaria, consultoría inmobiliaria, comercialización de imbuebles, oferta de inmuebles', array("inline" => false));
+    $this->assign('author','<meta name="author" content="'.$desarrollo['Cuenta']['nombre_comercial'].'">');
+    //Facebook META
+    $this->assign('og:url','<meta property="og:url" content="https://inmosystem.com.mx/desarrollos/detalle/'.$desarrollo['Desarrollo']['id'].'" />');
+    $this->assign('og:image','<meta property="og:image" content="https://inmosystem.com.mx'.$desarrollo['FotoDesarrollo'][0]['ruta'].'"/>');
+    $descripcion = $desarrollo['Desarrollo']['descripcion'];
+    $this->assign('og:description',"<meta property='og:description' content='.$descripcion.'/>");
+    $this->assign('og:title','<meta property="og:title" content="'.$desarrollo['Desarrollo']['nombre'].'"/>');
+    $this->assign('og:type','<meta property="og:type" content="website"/>');
+    //Google META
+    $this->assign('google_name','<meta itemprop="name" content="'.$desarrollo['Cuenta']['nombre_comercial'].'">');
+    $this->assign('google_description','<meta itemprop="description" content="'.$desarrollo['Desarrollo']['nombre'].'"/>');
+    $this->assign('google_image','<meta itemprop="image" content="https://inmosystem.com.mx'.$desarrollo['FotoDesarrollo'][0]['ruta'].'"/>');
+?>
+
+<style>
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: black;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+</style>
+<body class=" bootstrap bd-body-1 
+ bd-homepage bd-pagebackground-3  bd-margins">
+
+<div id="myModal" class="modal">
+    <span class="close cursor" onclick="closeModal()"><font style="color:white">&times;</font></span>
+  <div class="modal-content">
+   <?php 
+    $i = 1;
+    foreach($fotos as $foto):?>  
+    <div class="mySlides" style="height:90vh;text-align:center">
+        <div class="numbertext"><?= $i?> / <?= sizeof($fotos)?> | <b style="color:black"><?= $foto['FotoDesarrollo']['descripcion']?></b>  </div>
+      <img src="<?= $foto['FotoDesarrollo']['ruta']?>" style="height:100%">
+      
+          
+    </div>
+    <?php endforeach;?>  
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+        <p id="caption">
+          
+        </p>
+    </div>
+  </div>
+</div>
+    
+<div id="planos_comerciales" class="modal">
+  <span class="close cursor" onclick="closePlanos()">&times;</span>
+  <div class="modal-content">
+   <?php 
+    $i = 1;
+    foreach($planos as $foto):?>  
+    <div class="mySlides" style="height:90vh;text-align:center">
+        <div class="numbertext"><?= $i?> / <?= sizeof($planos)?> | <b style="color:black"><?= $foto['FotoDesarrollo']['descripcion']?></b>  </div>
+      <img src="<?= $foto['FotoDesarrollo']['ruta']?>" style="height:100%">
+      
+          
+    </div>
+    <?php endforeach;?>  
+    
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+        <p id="caption">
+          
+        </p>
+    </div>
+  </div>
+</div>
+    
+<div id="youtube" class="modal">
+    <span class="close cursor" onclick="closeYoutube()"><font style="color:white">&times;</font></span>
+  <div class="modal-content">
+   
+   <iframe width="958" height="539" src="https://www.youtube.com/embed/<?= explode("=",$desarrollo['Desarrollo']['youtube'])[1]?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>    
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+function openPlanos() {
+  document.getElementById('planos_comerciales').style.display = "block";
+}
+
+function openYoutube() {
+  document.getElementById('youtube').style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+}
+
+function closePlanos() {
+  document.getElementById('planos_comerciales').style.display = "none";
+}
+
+function closeYoutube() {
+  document.getElementById('youtube').style.display = "none";
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+</script>
+    
+    
+    <div class=" bd-content-13">
+    
+    <div class=" bd-htmlcontent-1 bd-margins" 
+ data-page-id="page.0">
+    <section class=" bd-section-7 bd-tagstyles" id="section7" data-section-title="Section">
+    <div class="bd-container-inner bd-margins clearfix">
+        <div class=" bd-layoutcontainer-6 bd-columns bd-no-margins">
+    <div class="bd-container-inner">
+        <div class="container-fluid">
+            <div class="row ">
+                <div class=" bd-columnwrapper-16 
+ col-lg-4
+ col-sm-4">
+    <div class="bd-layoutcolumn-16 bd-column" ><div class="bd-vertical-align-wrapper"><img class="bd-imagelink-1 bd-own-margins bd-imagestyles   "  src="<?= $desarrollo['Cuenta']['logo']?>"></div></div>
+</div>
+	<?php if ($agente['User']['nombre_completo']!=""){?>
+		<div class=" bd-columnwrapper-18 
+ col-lg-7
+ col-sm-4
+ col-xs-6">
+    <div class="bd-layoutcolumn-18 bd-column" ><div class="bd-vertical-align-wrapper"><h2 class=" bd-textblock-2 bd-content-element">     
+    <b><?= $agente['User']['nombre_completo']?></b>&nbsp;
+    <br><?= $agente['User']['correo_electronico']?>
+    <br><?= $agente['User']['telefono1']?>
+    <?= ($agente['User']['telefono2']!=""?"<br>".$agente['User']['telefono2'] : "")?>
+</h2></div></div>
+</div>
+	
+		<div class=" bd-columnwrapper-17 
+ col-lg-1
+ col-sm-4
+ col-xs-6">
+                    
+    <div class="bd-layoutcolumn-17 bd-column" ><div class="bd-vertical-align-wrapper"><img class="bd-imagelink-12 bd-own-margins bd-imagestyles   "  src="<?= $agente['User']['foto']=="user_no_photo.png" || $agente['User']['foto']=="" ? "/img/user_no_photo.png" : $agente['User']['foto'] ?>"></div></div>
+</div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</section>
+	
+		<section class=" bd-section-13 bd-tagstyles" id="section13" data-section-title="Section">
+    <div class="bd-container-inner bd-margins clearfix">
+        <?php $foto = (isset($desarrollo['FotoDesarrollo'][0])?$desarrollo['FotoDesarrollo'][0]['ruta']:'/img/inmueble_no_photo.png')?>
+        <div style="width:100%;height:75vh;background-image: url('<?= $foto ?>'); background-position:center center; background-repeat:no-repeat; background-size:cover" >
+            
+        </div>
+        
+	
+		<div class=" bd-layoutcontainer-8 bd-columns bd-no-margins">
+    <div class="bd-container-inner">
+        <div class="container-fluid">
+            <div class="row 
+ bd-row-flex 
+ bd-row-align-top">
+                <div class=" bd-columnwrapper-25 
+ col-sm-9">
+    <div class="bd-layoutcolumn-25 bd-column" ><div class="bd-vertical-align-wrapper"><p class=" bd-textblock-17 bd-content-element">
+    <?= $desarrollo['Desarrollo']['nombre']."/ REF:".$desarrollo['Desarrollo']['referencia']?>
+</p></div></div>
+</div>
+	
+		<div class=" bd-columnwrapper-26 
+ col-sm-3">
+    <div class="bd-layoutcolumn-26 bd-column" ><div class="bd-vertical-align-wrapper"><p class=" bd-textblock-19 bd-content-element">
+    <?php 
+            echo "Precios a partir de: $".number_format($desarrollo['Desarrollo']['precio_low'],2);
+        
+    ?>
+</p></div></div>
+</div>
+	
+		<div class=" bd-columnwrapper-62 
+                     col-sm-8" style="margin-top:20px">
+                    <div class="bd-layoutcolumn-62 bd-column" ><div class="bd-vertical-align-wrapper" style="color: black;">
+             <div class="col-sm-12">
+            <h6 class="text-black"><b>Descripción</b></h6>
+             <?php echo $desarrollo['Desarrollo']['descripcion'];?>  
+        </div>
+            <div class="col-sm-12">
+                           <div class="col-sm-12">
+                                <h6 class="text-black">Lugares de interes</h6>
+                                <?php echo ($desarrollo['Desarrollo']['cc_cercanos']            == 1 ? '<div class="col-lg-4">Centros Comerciales Cercanos</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['escuelas']               == 1 ? '<div class="col-lg-4">Escuelas</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['frente_parque']          == 1 ? '<div class="col-lg-4">Frente a Parque</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['parque_cercano']         == 1 ? '<div class="col-lg-4">Parques Cercanos</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['plazas_comerciales']     == 1 ? '<div class="col-lg-4">Plazas Comerciales</div>' : "") ?>
+                            </div>
+
+                            <div class="col-sm-12 m-t-20">
+                                <h6 class="text-black">Amenidades</h6>
+                                <?php echo ($desarrollo['Desarrollo']['alberca_sin_techar']         == 1 ? '<div class="col-lg-4">Alberca descubierta</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['alberca_techada']            == 1 ? '<div class="col-lg-4">Alberca Techada</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['sala_cine']                  == 1 ? '<div class="col-lg-4">Área de Cine</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['juegos_infantiles']          == 1 ? '<div class="col-lg-4">Área de Juegos Infantiles</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['fumadores']                  == 1 ? '<div class="col-lg-4">Área para fumadores</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['areas_verdes']               == 1 ? '<div class="col-lg-4">Áreas Verdes</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['asador']                     == 1 ? '<div class="col-lg-4">Asador</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['cafeteria']                  == 1 ? '<div class="col-lg-4">Cafetería</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['golf']                       == 1 ? '<div class="col-lg-4">Campo de Golf</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['paddle_tennis']              == 1 ? '<div class="col-lg-4">Cancha de Paddle</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['squash']                     == 1 ? '<div class="col-lg-4">Cancha de Squash</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['tennis']                     == 1 ? '<div class="col-lg-4">Cancha de Tennis</div>' : "") ?>
+                                
+
+                                <?php echo ($desarrollo['Desarrollo']['carril_nado']                == 1 ? '<div class="col-lg-4">Carril de Nado</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['fire_pit']                   == 1 ? '<div class="col-lg-4">Fire Pit</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['gimnasio']                   == 1 ? '<div class="col-lg-4">Gimnasio</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['jacuzzi']                    == 1 ? '<div class="col-lg-4">Jacuzzi</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['living']                     == 1 ? '<div class="col-lg-4">Living</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['lobby']                      == 1 ? '<div class="col-lg-4">Lobby</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['boliche']                    == 1 ? '<div class="col-lg-4">Mesa de Boliche</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['pista_jogging']              == 1 ? '<div class="col-lg-4">Pista de Jogging</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['play_room']                  == 1 ? '<div class="col-lg-4">Play Room / Cuarto de Juegos</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['restaurante']                == 1 ? '<div class="col-lg-4">Restaurante</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['roof_garden_compartido']     == 1 ? '<div class="col-lg-4">Roof Garden</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['salon_juegos']               == 1 ? '<div class="col-lg-4">Salón de Juegos</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['salon_usos_multiples']       == 1 ? '<div class="col-lg-4">Salón de usos múltiples</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['sauna']                      == 1 ? '<div class="col-lg-4">Sauna</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['spa_vapor']                  == 1 ? '<div class="col-lg-4">Spa</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['sky_garden']                 == 1 ? '<div class="col-lg-4">Sky Garden</div>' : "") ?>
+                            </div>
+                            <div class="col-sm-12 m-t-20">
+                                <h6 class="text-black">Servicios</h6>
+                                <?php echo ($desarrollo['Desarrollo']['acceso_discapacitados']      == 1 ? '<div class="col-lg-4">Acceso de discapacitados</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['internet']                   == 1 ? '<div class="col-lg-4">Acceso Internet / WiFi</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['tercera_edad']               == 1 ? '<div class="col-lg-4">Acceso para Tercera Edad</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['aire_acondicionado']         == 1 ? '<div class="col-lg-4">Aire Acondicionado</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['business_center']            == 1 ? '<div class="col-lg-4">Business Center</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['calefaccion']                == 1 ? '<div class="col-lg-4">Calefacción</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['cctv']                       == 1 ? '<div class="col-lg-4">CCTV</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['cisterna']                   == 1 ? '<div class="col-lg-4">Cisterna</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['conmutador']                 == 1 ? '<div class="col-lg-4">Conmutador</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['edificio_inteligente']       == 1 ? '<div class="col-lg-4">Edificio Inteligente</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['edificio_leed']              == 1 ? '<div class="col-lg-4">Edificio LEED</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['elevadores']                 == 1 ? '<div class="col-lg-4">Elevadores</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['estacionamiento_visitas']    == 1 ? '<div class="col-lg-4">Estacionamiento de visitas</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['gas_lp']                     == 1 ? '<div class="col-lg-4">Gas LP</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['gas_natural']                == 1 ? '<div class="col-lg-4">Gas Natural</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['lavanderia']                 == 1 ? '<div class="col-lg-4">Lavanderia</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['locales_comerciales']        == 1 ? '<div class="col-lg-4">Locales Comerciales</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['mascotas']                   == 1 ? '<div class="col-lg-4">Permite Mascotas</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['planta_emergencia']          == 1 ? '<div class="col-lg-4">Planta de Emergencia</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['porton_electrico']           == 1 ? '<div class="col-lg-4">Portón Eléctrico</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['sistema_contra_incendios']   == 1 ? '<div class="col-lg-4">Sistema Contra Incendios</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['sistema_seguridad']          == 1 ? '<div class="col-lg-4">Sistema de Seguridad</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['valet_parking']              == 1 ? '<div class="col-lg-4">Valet Parking</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['vapor']                      == 1 ? '<div class="col-lg-4">Vapor</div>' : "") ?>
+                                <?php echo ($desarrollo['Desarrollo']['seguridad']                  == 1 ? '<div class="col-lg-4">Vigilancia / Seguridad</div>' : "") ?>
+                            </div>
+                
+                        </div>
+        
+                                                
+</div></div>
+</div>
+	
+		<div class=" bd-columnwrapper-63 
+ col-sm-4" style="margin-top:20px">
+    <div class="bd-layoutcolumn-63 bd-column" ><div class="bd-vertical-align-wrapper">
+                
+                <font color="black" style="font-size: 1.3em;">
+                
+                <div class="col-lg-3 col-xs-3 "style="text-align:center;">
+                    <?= $this->Html->image('m2.png',array('width'=>'70%'))?>
+                    <p><?= $desarrollo['Desarrollo']['m2_low']?> - <?= $desarrollo['Desarrollo']['m2_top']?></p>
+                </div>
+                <div class="col-lg-3 col-xs-3"  style="text-align:center;">
+                    <?= $this->Html->image('recamaras.png',array('width'=>'70%'))?>
+                    <p><?= $desarrollo['Desarrollo']['rec_low']?> - <?= $desarrollo['Desarrollo']['rec_top']?></p>
+                </div>
+                <div class="col-lg-3 col-xs-3"  style="text-align:center;">
+                    <?= $this->Html->image('banios.png',array('width'=>'70%'))?>
+                    <p><?= $desarrollo['Desarrollo']['banio_low']?> - <?= $desarrollo['Desarrollo']['banio_top']?></p>
+                </div>
+                <div class="col-lg-3 col-xs-3" style="text-align:center;">
+                    <?= $this->Html->image('autos.png',array('width'=>'70%'))?>
+                    <p><?= $desarrollo['Desarrollo']['est_low']?> - <?= $desarrollo['Desarrollo']['est_top']?></p>
+                </div>                                
+                         
+                </font>
+                <div class="col-lg-12">
+                    <table style="width:100%; color:black">
+                        <tr>
+                            <td style="text-align: left;width:50%; vertical-align: top;">Tipo de Desarrollo:</td>
+                            <td style="text-align: left;width:50%; vertical-align: top;"><b><?= ($desarrollo['Desarrollo']['tipo_desarrollo']=="&nbsp;"?"":$desarrollo['Desarrollo']['tipo_desarrollo'])?></b></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;width:50%; vertical-align: top;">Etapa:</td>
+                            <td style="text-align: left;width:50%; vertical-align: top;"><b><?= ($desarrollo['Desarrollo']['etapa_desarrollo']==""?"&nbsp;":$desarrollo['Desarrollo']['etapa_desarrollo'])?></b></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;width:50%; vertical-align: top;">Torres:</td>
+                            <td style="text-align: left;width:50%; vertical-align: top;"><b><?= ($desarrollo['Desarrollo']['torres']==""?"&nbsp;":$desarrollo['Desarrollo']['torres'])?></b></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;width:50%; vertical-align: top;">Unidades Totales:</td>
+                            <td style="text-align: left;width:50%; vertical-align: top;"><b><?= ($desarrollo['Desarrollo']['unidades_totales']==""?"&nbsp;":$desarrollo['Desarrollo']['unidades_totales'])?></b></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;width:50%; vertical-align: top;">Entrega:</td>
+                            <td style="text-align: left;width:50%; vertical-align: top;"><b><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata"?"Inmediata":$desarrollo['Desarrollo']['fecha_entrega'])?></b></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;width:50%; vertical-align: top;">Departamento Muestra:</td>
+                            <td style="text-align: left;width:50%; vertical-align: top;"><b><?= ($desarrollo['Desarrollo']['departamento_muestra']==0?"No":"Si")?></b></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;width:50%; vertical-align: top;">Horario Atención:</td>
+                            <td style="text-align: left;width:50%; vertical-align: top;"><b><?= ($desarrollo['Desarrollo']['horario_contacto']==""?"&nbsp;":$desarrollo['Desarrollo']['horario_contacto'])?></b></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-sm-12" style="margin-top:20px; margin-bottom: 20px">
+                    <div class="row ">
+                        <div class=" bd-columnwrapper-35 col-lg-3 col-xs-3">
+                            <h6 style="color:black;margin-left:10px; font-size: 12px"><b>Galería</b><?= " (".sizeof($fotos).")"?></h6>
+                            <div class="bd-layoutcolumn-35 bd-column" >
+                                <div class="bd-vertical-align-wrapper" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" style="height:100px;background-image: url('<?= $foto; ?>'); background-position:center center; background-repeat:no-repeat; background-size:cover; cursor: pointer;" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" bd-columnwrapper-35 col-lg-3 col-xs-3">
+                            <h6 style="color:black;margin-left:10px;font-size: 12px"><b>Planos</b><?= " (".sizeof($planos).")"?></h6>
+                            <div class="bd-layoutcolumn-35 bd-column" >
+                                <?php $plano = (isset($planos[0])?$planos[0]['FotoDesarrollo']['ruta']:'/img/inmueble_no_photo.png')?>
+                                <div class="bd-vertical-align-wrapper" onclick="openPlanos();currentSlide(<?= sizeof($fotos)+1?>)" class="hover-shadow cursor" style="height:100px;background-image: url('<?= $plano; ?>'); background-position:center center; background-repeat:no-repeat; background-size:cover;cursor: pointer;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" bd-columnwrapper-35 col-lg-3 col-xs-3">
+                            <?php 
+                                $img_brochure="";
+                                $link="#";
+                                if($desarrollo['Desarrollo']['youtube']!=""){
+                                    $img_brochure='video.png';
+                                    $link = "openYoutube()";
+                                }else{
+                                    $img_brochure='no_video.png';
+                                }
+                            ?>
+                            <h6 style="color:black;margin-left:10px;font-size: 12px"><b>Video</b></h6>
+                            <div class="bd-layoutcolumn-35 bd-column" >
+                                <div class="bd-vertical-align-wrapper" style="height:100px;background-image: url('/img/<?= $img_brochure ?>'); background-position:center center; background-repeat:no-repeat; background-size:cover; cursor: pointer;" onclick="<?= $link?>">
+                                </div>
+                            </div>
+                        </div>
+                            <?php 
+                                $img_brochure="";
+                                $link="#";
+                                if($desarrollo['Desarrollo']['brochure']!=""){
+                                    $img_brochure='brochure.png';
+                                    $link = "https://inmosystem.com.mx".$desarrollo['Desarrollo']['brochure'];
+                                    }else{
+                                        $img_brochure='no_brochure.png';
+                                }
+                            ?>
+                        <div class=" bd-columnwrapper-35 col-lg-3 col-xs-3">
+                            <h6 style="color:black;margin-left:10px;font-size: 12px"><b>Ver Brochure</b></h6>
+                            <div class="bd-layoutcolumn-35 bd-column" >
+                                <div class="bd-vertical-align-wrapper" style="height:100px;background-image: url('/img/<?= $img_brochure ?>'); background-position:center center; background-repeat:no-repeat; background-size:cover; cursor: pointer;" onclick="location.href='<?= $link?>';">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 2%;">
+                        <div class="col-lg-12 ">
+                        <div id="map"></div>
+                                    <?php
+                                if ($desarrollo['Desarrollo']['google_maps']!=""){
+                                list($latitud, $longitud) = explode(",", $desarrollo['Desarrollo']['google_maps']);
+                            ?>
+                                    <script>
+                                      function initMap() {
+                                        var uluru = {lat: <?= $latitud?>, lng: <?= $longitud?>};
+                                        var map = new google.maps.Map(document.getElementById('map'), {
+                                          zoom: 16,
+                                          center: uluru
+                                        });
+                                        var marker = new google.maps.Marker({
+                                          position: uluru,
+                                          map: map
+                                        });
+                                      }
+                                    </script>
+                                    
+                                    <script async defer
+                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOf3eYcnrP8hgEx5_914fUwMR1NCyQPfw&callback=initMap">
+                                    </script>
+                                     <?php }else{
+                                         echo ("Sin coordenadas");
+                                     }
+                                     ?>
+                </div>
+                    </div>
+                            </div>
+            
+                
+    
+</div></div></div>
+</div>
+                
+                
+               
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+        
+    
+</div>
+</div>
+
+	
+		<footer class=" bd-footerarea-1 bd-margins">
+        
+	
+		<section class=" bd-section-15 bd-page-width bd-tagstyles " id="section4" data-section-title="Three Columns">
+    <div class="bd-container-inner bd-margins clearfix">
+        <div class=" bd-layoutcontainer-22 bd-page-width  bd-columns bd-no-margins">
+    <div class="bd-container-inner">
+        <div class="container-fluid">
+            <div class="row 
+ bd-row-flex 
+ bd-row-align-middle">
+                <div class=" bd-columnwrapper-79 
+ col-md-6">
+    <div class="bd-layoutcolumn-79 bd-column" ><div class="bd-vertical-align-wrapper"><p class=" bd-textblock-35 bd-no-margins bd-content-element">
+    <?= $desarrollo['Cuenta']['direccion']?>
+</p></div></div>
+</div>
+	
+		<div class=" bd-columnwrapper-81 
+ col-md-6">
+    <div class="bd-layoutcolumn-81 bd-column" ><div class="bd-vertical-align-wrapper"><p class=" bd-textblock-37 bd-no-margins bd-content-element">
+    <?= ($desarrollo['Cuenta']['correo_contacto']!="" ? $desarrollo['Cuenta']['correo_contacto']."<br>" : "")?>
+    <?= ($desarrollo['Cuenta']['telefono_1']!="" ? $desarrollo['Cuenta']['telefono_1']."<br>" : "")?>
+    <?= ($desarrollo['Cuenta']['telefono_2']!="" ? $desarrollo['Cuenta']['telefono_2']."<br>" : "")?>
+    <?= ($desarrollo['Cuenta']['pagina_web']!="" ? $desarrollo['Cuenta']['pagina_web']."<br>" : "")?>
+</p></div></div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</section>
+</footer>
+	
+		<div data-smooth-scroll data-animation-time="250" class=" bd-smoothscroll-3"><a href="#" class=" bd-backtotop-1 ">
+    <span class="bd-icon-67 bd-icon "></span>
+</a></div>
+</body>
+
