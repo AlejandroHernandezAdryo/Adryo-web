@@ -387,30 +387,12 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <!-- Correo de reenvío / otro desarrollo **Korner 24-04-2023** -->
-                                                                <div class="col-sm-12 col-lg-4">
-                                                                    <div class="card">
-                                                                        <div class="card-header">
-                                                                            Correo de reenvío / otro desarrollo
-                                                                        </div>
-                                                                        <div class="card-block">
-                                                                            <div>
-                                                                                <span>Asunto:</span>
-                                                                                <p><?= (!empty($cuenta['Parametros']['smessage_new_propiedad']) ? $cuenta['Parametros']['smessage_new_propiedad'] : '') ?></p>
-                                                                            </div>
-                                                                            <div>
-                                                                                <span>Mensaje:</span>
-                                                                                <br>
-                                                                                <?= (!empty($cuenta['Parametros']['bmessage_seg_cliente_inmuebles']) ? $cuenta['Parametros']['bmessage_seg_cliente_inmuebles'] : '') ?>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+
                                                                 <!-- Correo de unidades **Korner 24-04-2023** -->
                                                                 <div class="col-sm-12 col-lg-4">
                                                                     <div class="card">
                                                                         <div class="card-header">
-                                                                            Correo de unidades
+                                                                        Correo de reenvío / otro desarrollo
                                                                         </div>
                                                                         <div class="card-block">
                                                                             <div>
@@ -425,6 +407,27 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                
+                                                                <!-- Correo de reenvío / otro desarrollo **Korner 24-04-2023** -->
+                                                                <div class="col-sm-12 col-lg-4">
+                                                                    <div class="card">
+                                                                        <div class="card-header">
+                                                                            Correo de unidades
+                                                                        </div>
+                                                                        <div class="card-block">
+                                                                            <div>
+                                                                                <span>Asunto:</span>
+                                                                                <p><?= (!empty($cuenta['Parametros']['smessage_new_propiedad']) ? $cuenta['Parametros']['smessage_new_propiedad'] : '') ?></p>
+                                                                            </div>
+                                                                            <div>
+                                                                                <span>Mensaje:</span>
+                                                                                <br>
+                                                                                <?= (!empty($cuenta['Parametros']['bmessage_seg_cliente_inmuebles']) ? $cuenta['Parametros']['bmessage_seg_cliente_inmuebles'] : '') ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>

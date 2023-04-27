@@ -1181,7 +1181,7 @@ class ClientesController extends AppController {
             $this->Email->bcc( $arreglo_emails );
         }
         
-        $this->Email->subject('Propiedades que le pueden interesar');
+        $this->Email->subject($paramconfig['Paramconfig']['smessage_new_client']);
         $this->Email->viewVars(array('cliente' => $cliente,'propiedades'=>$inmueble, 'desarrollos'=>$desarrollo,'usuario'=>$user,'body_message'=> $paramconfig['Paramconfig']['bmessage_new_client'], 'rds_sociales' => $this->Session->read('CuentaUsuario') ));
         $this->Email->send();
 
@@ -2086,7 +2086,7 @@ class ClientesController extends AppController {
                                         $this->Email->template('emailacliente','layoutinmomail');
                                         $this->Email->from(array($usuario['User']['correo_electronico'] => $usuario['User']['nombre_completo']));
                                         $this->Email->to($cliente['Cliente']['correo_electronico']);
-                                        $this->Email->subject('Propiedades que le puedan interesar');
+                                        $this->Email->subject($paramconfig['Paramconfig']['smessage_new_client']);
                                         // $this->Email->viewVars(array('cliente' => $cliente,'propiedades'=>$propiedades, 'desarrollos'=>$desarrollos,'usuario'=>$usuario));
                                         $this->Email->viewVars(array('cliente' => $cliente,'propiedades'=>$propiedades, 'desarrollos'=>$desarrollos,'usuario'=>$usuario,'body_message'=> $paramconfig['Paramconfig']['bmessage_new_client'], 'rds_sociales' => $this->Session->read('CuentaUsuario') ));
                                         $this->Email->send();
