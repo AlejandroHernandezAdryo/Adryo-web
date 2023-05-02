@@ -66,7 +66,7 @@
                     ); ?>
                 </div>
                 <div class="col-sm-12 col-lg-3 mb-1">
-                    <?= $this->Form->input('desarrollo_id',array('type'=>'select','options'=>$desarrollos,'empty'=>'Todos los desarrollos','class'=>'form-control chzn-select','placeholder'=>'Teléfono','label'=>false,)); ?>
+                    <?= $this->Form->input('desarrollo_id',array('type'=>'select','options'=>$desarrollos,'empty'=>'Todos los desarrollos','class'=>'form-control chzn-select', 'label'=>false,)); ?>
                 </div>
                 <div class="col-sm-12 col-lg-3 mb-1">
                     <div class="input-group">
@@ -74,9 +74,41 @@
                     </div>
                 </div>
             </div>
+            
             <!-- Botones de etapas-->
             <div class="col-sm-12 bg-white">
-                <div class="advice" style="padding-left:8px;"><p>* Da click en el apartado que deseas ver. <b>Recuerda que la información mostrada se despliega de Izquierda a Derecha</b></p></div>
+                <div class="advice" style="padding-left:8px;">
+                    <p>* Da click en el apartado que deseas ver.
+                        <b>Recuerda que la información mostrada se despliega de Izquierda a Derecha</b>
+                    </p>
+                </div>
+
+                <?php if( $this->Session->read('CuentaUsuario.Cuenta.id') == 183 ): ?>
+                
+                    <div class="row m-1 w-100 " style="display: inline-flex;">
+                        <div class="col-md-4 text-center"  style="padding: 2px;">
+                            <p id="sumaUno" style="margin:0; background-color:blue; color:#fff;">MQL 0 Prospectos</p>
+                            <input type="text" style="display: none;" id="totalEtapa1" value="0">
+                            <input type="text" style="display: none;" id="totalEtapa2" value="0">
+                            <input type="text" style="display: none;" id="totalEtapa3" value="0">
+                            <input type="text" style="display: none;" id="totalSumaUno" value = "0">
+                        </div>
+                        <div class="col-md-2 text-center"  style="padding: 2px;">
+                            <p id="sumaDos" style="margin:0; background-color:blue; color:#fff;">SQL / 0 Prospectos</p>
+                            <input type="text" style="display: none;" id="totalEtapa4" value="0">
+                            <input type="text" style="display: none;" id="totalEtapa5" value="0">
+                            <input type="text" style="display: none;" id="totalSumaDos" value = "0">
+                        </div>
+                        <div class="col-md-2 text-center"  style="padding: 2px;">
+                            <p id="sumaTres" style="margin:0; background-color:blue; color:#fff;">0 Clientes</p>
+                            <input type="text" style="display: none;" id="totalEtapa6" value="0">
+                            <input type="text" style="display: none;" id="totalEtapa7" value="0">
+                            <input type="text" style="display: none;" id="totalSumaTres" value = "0">
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+
                 <div class="mb-4 row p-1" style="display:flex; flex-wrap:wrap;">
                     <p id="botonEtapas">
                         <div class="col filterButton">
@@ -462,13 +494,14 @@
 ?>
 
 <script>
+
     'use strict';
     // Chozen select
     $(".hide_search").chosen({disable_search_threshold: 10});
     $(".chzn-select").chosen({allow_single_deselect: true});
     $(".chzn-select-deselect,#select2_sample").chosen();
 
-
+        $("#overlay").fadeIn()
 
     $( "#button_1").click(function() {
         if (document.getElementById("check_etapa_1").checked == true){
@@ -565,13 +598,42 @@
 
 
                 $("#"+id_row+"Contador").html( "("+response['clientes'].length+")" );
-                $("#"+id_row+"Contador").html( "("+response['clientes'].length+")" );
-                $("#"+id_row+"Contador").html( "("+response['clientes'].length+")" );
-                $("#"+id_row+"Contador").html( "("+response['clientes'].length+")" );
 
                 // $("#noatendido_label_1").html('1');
 
-                $("#"+id_row+"Contador").html( "("+response['clientes'].length+")" );
+                // Almacenamos el contador de cada etapa.
+                $("#totalEtapa"+etapa_id).val( response['clientes'].length );
+                
+
+                switch ( dataSend['etapa'] ){
+                    case 1:
+                    case 2:
+                    case 3: 
+                        sumaUno = parseInt($("#totalEtapa1").val()) + parseInt($("#totalEtapa2").val()) + parseInt($("#totalEtapa3").val());
+                    break;
+
+                    case 4:
+                    case 5:
+                        sumaDos = parseInt($("#totalEtapa4").val()) + parseInt($("#totalEtapa5").val());
+                    break;
+
+                    case 6:
+                    case 7:
+                        sumaTres = parseInt($("#totalEtapa6").val()) + parseInt($("#totalEtapa7").val());
+                    break;
+                    
+                }
+                
+                $("#sumaUno").html( " MQL " + sumaUno + " Prospectos " );
+                $("#totalSumaUno").val( sumaUno );
+
+                $("#sumaDos").html( "SQL / " + sumaDos + " Prospectos" );
+                $("#totalSumaDos").val( sumaDos );
+
+                $("#sumaTres").html( sumaTres + " Clientes" );
+                $("#totalSumaTres").val( sumaTres );
+
+
                 
                 for (let i in response['clientes'] ){
                     
@@ -672,6 +734,7 @@
                         </div>
                     </div> `
                     );
+
                 }
 
             },
@@ -780,6 +843,8 @@
     titleRow();
 
     $(document).ready(function () {
+        busquedaInfoAll();
+
         document.querySelectorAll(".click").forEach(el => {
             el.addEventListener("click", e => {
                 const id = e.target.getAttribute("id");
@@ -810,7 +875,11 @@
             return false;
         });
         $('[data-toggle="popover"]').popover();
+
+        $("#overlay").fadeOut();
+
     });
+
 
 </script>
 

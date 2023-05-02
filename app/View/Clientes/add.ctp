@@ -195,7 +195,7 @@
                                         </div>
                                         
                                         <!-- Fecha de creacion -->
-                                        <?php if( $this->Session->read('Auth.User.id') == 146 OR $this->Session->read('Auth.User.id') == 82 OR $this->Session->read('Auth.User.id') == 625 OR $this->Session->read('Auth.User.id') == 598 OR $this->Session->read('Auth.User.id') == 385 ): ?>
+                                        <?php if( $this->Session->read('Auth.User.id') == 146 OR $this->Session->read('Auth.User.id') == 82 OR $this->Session->read('Auth.User.id') == 625 OR $this->Session->read('Auth.User.id') == 598 OR $this->Session->read('Auth.User.id') == 385 OR $this->Session->read('Auth.User.id') == 683 ): ?>
                                             <div class="row">
                                                 <?= $this->Form->input('created',
                                                     array(

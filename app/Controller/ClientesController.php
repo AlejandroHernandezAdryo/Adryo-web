@@ -11377,192 +11377,186 @@ class ClientesController extends AppController {
   }
 
 
+  /***
+   * 
+   * 
+   * 
+   * 
+  */
   function f_add_Cliente(){
-      header('Content-type: application/json; charset=utf-8');
-      $this->loadModel('DesarrolloInmueble');
-      $this->loadModel('Cliente');
-      $this->loadModel('OperacionesInmueble');
-      $this->loadModel('LogClientesEtapa');
-      $this->loadModel('Lead');
-      $this->loadModel('Agenda');
-      $this->loadModel('Venta');
-      $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
-      $i=0;
+    header('Content-type: application/json; charset=utf-8');
+    $this->loadModel('DesarrolloInmueble');
+    $this->loadModel('Cliente');
+    $this->loadModel('OperacionesInmueble');
+    $this->loadModel('LogClientesEtapa');
+    $this->loadModel('Lead');
+    $this->loadModel('Agenda');
+    $this->loadModel('Venta');
+    $this->Cliente->Behaviors->load('Containable');
+    $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
+    $i=0;
 
-      if ($this->request->is('post')){
+    if ($this->request->is('post')){
 
-        foreach( $this->request->data['Cliente'] as $cliente ){
+      foreach( $this->request->data['Cliente'] as $cliente ){
+        
+        $phone   = '';
+        $user_id   = '';
+        if( !empty($cliente['telefono1']) ){
+
+          $telefono = $this->request->data['telefono1'];
+          // Eliminar espacios en blanco
+          $cadenaSinEspacios = str_replace(' ', '', $telefono);
+
+          // Obtener los �ltimos 10 caracteres
+          $phone = substr($cadenaSinEspacios, -10);
+        }
+
+
+
+        $params_cliente = array(
+          'nombre'              => $cliente['nombre'],
+          'correo_electronico'  => $cliente['correo'],
+          'telefono1'           => $phone,
+          'telefono2'           => '',
+          'telefono3'           => '',
+          'tipo_cliente'        => $cliente['tipo'],
+          'propiedades_interes' => 'D'.$cliente['desarollo'],
+          'forma_contacto'      => $cliente['medio'],
+          'comentario'          => 'Agregado masivamente',
+          'asesor_id'           => null,
+          'created'             => date('Y-m-d', strtotime($cliente['fecha'])),
+          'api_key'             => null,
+          'etapa'               => null,
+        );
+  
+        $params_user = array(
+          'user_id'              => 1,
+          'cuenta_id'            => $cuenta_id,
+          'notificacion_1er_seg' => 0,
+        );
+
+        // Paso 1.- Revisar si se dara de alta por correo o telefono.
+        if( $params_cliente['correo_electronico'] != '' AND  $params_cliente['telefono1'] != ''){
           
-          $phone   = '';
-          $user_id   = '';
-          if( !empty($cliente['telefono1']) ){
-
-            $telefono = $this->request->data['telefono1'];
-            // Eliminar espacios en blanco
-            $cadenaSinEspacios = str_replace(' ', '', $telefono);
-
-            // Obtener los �ltimos 10 caracteres
-            $phone = substr($cadenaSinEspacios, -10);
-          }
-
-
-
-          $params_cliente = array(
-            'nombre'              => $cliente['nombre'],
-            'correo_electronico'  => $cliente['correo'],
-            'telefono1'           => $phone,
-            'telefono2'           => '',
-            'telefono3'           => '',
-            'tipo_cliente'        => null,
-            'propiedades_interes' => 'D'.$cliente['desarollo'],
-            'forma_contacto'      => $cliente['medio'],
-            'comentario'          => 'Agregado desde facebook',
-            'asesor_id'           => null,
-            'created'             => date('Y-m-d', strtotime($cliente['fecha'])),
-            'api_key'             => null,
-            'etapa'               => null,
-          );
-    
-          $params_user = array(
-            'user_id'              => 1,
-            'cuenta_id'            => $cuenta_id,
-            'notificacion_1er_seg' => 0,
-          );
-
-          // Paso 1.- Revisar si se dara de alta por correo o telefono.
-          if( $params_cliente['correo_electronico'] != '' AND  $params_cliente['telefono1'] != ''){
-            
-            $conditions_cliente = array( 
-              'and' => array(
-                'Cliente.cuenta_id'          => $params_user['cuenta_id'],
-              ),
-              'or' => array(
-                'Cliente.telefono1'          => $params_cliente['telefono1'],
-                'Cliente.correo_electronico' => $params_cliente['correo_electronico'],
-              ) 
-            );
-
-            // Seteo de variables para guardarlos en la bd
-            $data_3_cliente = array(
-              'correo_electronico' => $params_cliente['correo_electronico'],
-              'telefono1'          => $params_cliente['telefono1']
-            );
-
-          }elseif( $params_cliente['correo_electronico'] != '' ){
-            
-            $conditions_cliente = array(
+          $conditions_cliente = array( 
+            'and' => array(
+              'Cliente.cuenta_id'          => $params_user['cuenta_id'],
+            ),
+            'or' => array(
+              'Cliente.telefono1'          => $params_cliente['telefono1'],
               'Cliente.correo_electronico' => $params_cliente['correo_electronico'],
-              'Cliente.cuenta_id'          => $params_user['cuenta_id']
-            );
+            ) 
+          );
+
+          // Seteo de variables para guardarlos en la bd
+          $data_3_cliente = array(
+            'correo_electronico' => $params_cliente['correo_electronico'],
+            'telefono1'          => $params_cliente['telefono1']
+          );
+
+        }elseif( $params_cliente['correo_electronico'] != '' ){
+          
+          $conditions_cliente = array(
+            'Cliente.correo_electronico' => $params_cliente['correo_electronico'],
+            'Cliente.cuenta_id'          => $params_user['cuenta_id']
+          );
+          
+          // Seteo de variables para guardarlos en la bd
+          $data_3_cliente = array(
+            'correo_electronico' => $params_cliente['correo_electronico'],
+            'telefono1' => 'Sin teléfono'
+          );
+
+        }else{
+          
+          $conditions_cliente = array(
+            'Cliente.telefono1' => $params_cliente['telefono1'],
+            'Cliente.cuenta_id' => $params_user['cuenta_id']
+          );
+
+          // Seteo de variables para guardarlos en la bd
+          $data_3_cliente = array(
+            'telefono1'          => $params_cliente['telefono1'],
+            'correo_electronico' => 'Sin correo'
+          );
+
+        }
+
+        // Paso 2.- Revisar si existe el cliente.
+        $cliente_ = $this->Cliente->find('count', array( 'conditions' => $conditions_cliente ) ); // Consulta del cliente en la bd.
+
+        if(  $cliente_ == 0 ){ // No existe el cliente, GUARDA
+          
+          $this->Cliente->create();
+          $this->request->data['Cliente']['id']                = null;
+          $this->request->data['Cliente']['nombre']                = $params_cliente['nombre'];
+          $this->request->data['Cliente']['correo_electronico']    = $params_cliente['correo_electronico'];
+          $this->request->data['Cliente']['telefono1']             = $params_cliente['telefono1'];
+          $this->request->data['Cliente']['dic_tipo_cliente_id']   = $params_cliente['tipo_cliente'];
+          $this->request->data['Cliente']['status']                = 'Activo';
+          $this->request->data['Cliente']['etapa_comercial']       = 'CRM';  
+          $this->request->data['Cliente']['dic_linea_contacto_id'] = $params_cliente['forma_contacto'];
+          $this->request->data['Cliente']['cuenta_id']             = $params_user['cuenta_id'];
+          $this->request->data['Cliente']['comentarios']           = $params_cliente['comentario'];
+          $this->request->data['Cliente']['desarrollo_id']         = substr($params_cliente['propiedades_interes'], 1);
+          $this->request->data['Cliente']['user_id']               = $params_cliente['asesor_id'];
+          $this->request->data['Cliente']['created']               = $params_cliente['created'];
+          $this->request->data['Cliente']['fecha_cambio_etapa']    = date('Y-m-d');
+          //rogueEtapaFecha
+          $this->Cliente->save( $this->request->data);
+          $cliente_id = $this->Cliente->getInsertID(); 
+
+          if( $cliente_id != null){
             
-            // Seteo de variables para guardarlos en la bd
-            $data_3_cliente = array(
-              'correo_electronico' => $params_cliente['correo_electronico'],
-              'telefono1' => 'Sin teléfono'
-            );
-
-          }else{
-            
-            $conditions_cliente = array(
-              'Cliente.telefono1' => $params_cliente['telefono1'],
-              'Cliente.cuenta_id' => $params_user['cuenta_id']
-            );
-
-            // Seteo de variables para guardarlos en la bd
-            $data_3_cliente = array(
-              'telefono1'          => $params_cliente['telefono1'],
-              'correo_electronico' => 'Sin correo'
-            );
-
-          }
-
-          // Paso 2.- Revisar si existe el cliente.
-          $cliente = $this->Cliente->find('count', array( 'conditions' => $conditions_cliente ) ); // Consulta del cliente en la bd.
-
-          if(  $cliente == 0 ){ // No existe el cliente, GUARDA
-            $this->request->data['Cliente']['nombre']                = $params_cliente['nombre'];
-            $this->request->data['Cliente']['correo_electronico']    = $params_cliente['correo_electronico'];
-            $this->request->data['Cliente']['telefono1']             = $params_cliente['telefono1'];
-            $this->request->data['Cliente']['dic_tipo_cliente_id']   = $params_cliente['tipo_cliente'];
-            $this->request->data['Cliente']['status']                = 'Activo';
-            $this->request->data['Cliente']['etapa_comercial']       = 'CRM';  
-            $this->request->data['Cliente']['dic_linea_contacto_id'] = $params_cliente['forma_contacto'];
-            $this->request->data['Cliente']['cuenta_id']             = $params_user['cuenta_id'];
-            $this->request->data['Cliente']['comentarios']           = $params_cliente['comentario'];
-            $this->request->data['Cliente']['user_id']               = $params_cliente['asesor_id'];
-            $this->request->data['Cliente']['created']               = $params_cliente['created'];
-            $this->request->data['Cliente']['fecha_cambio_etapa']    = date('Y-m-d');
-            //rogueEtapaFecha
-            $this->Cliente->create();
-            $this->Cliente->save( $this->request->data);
-            $cliente_id = $this->Cliente->getInsertID(); // Guarda en la variable el id del cliente salvado.
-            
-            $this->LogCliente->create();
-            $this->request->data['LogCliente']['id']         =  uniqid();
-            $this->request->data['LogCliente']['cliente_id'] = $cliente_id;
-            $this->request->data['LogCliente']['user_id']    = $params_user['user_id'];
-            $this->request->data['LogCliente']['mensaje']    = "Cliente creado";
-            $this->request->data['LogCliente']['accion']     = 1;
-            $this->request->data['LogCliente']['datetime']   = date('Y-m-d h:i:s');
-            $this->LogCliente->save($this->request->data);
-  
-            $desarrollo_id                                         = substr($params_cliente['propiedades_interes'], 1);
-            $this->request->data['LogDesarrollo']['mensaje']       = "Envío de desarrollo a cliente: ".$params_cliente['nombre'];
-            $this->request->data['LogDesarrollo']['usuario_id']    = $params_user['user_id'];
-            $this->request->data['LogDesarrollo']['fecha']         = date('Y-m-d');
-            $this->request->data['LogDesarrollo']['accion']        = 5;
-            $this->request->data['LogDesarrollo']['desarrollo_id'] = $desarrollo_id;
-            $this->LogDesarrollo->create();
-            $this->LogDesarrollo->save($this->request->data);
-  
-            // Registrar Seguimiento Rápido
-            $this->Agenda->create();
-            $this->request->data['Agenda']['user_id']        = $params_user['user_id'];
-            $this->request->data['Agenda']['fecha']          = date('Y-m-d H:i:s');
-            $this->request->data['Agenda']['mensaje']        = "Cliente creado de forma masiva con line de contacto Facebook";
-            $this->request->data['Agenda']['cliente_id']     = $cliente_id;
-            $this->Agenda->save($this->request->data);
-  
-            $this->Cliente->query("UPDATE clientes SET desarrollo_id = $desarrollo_id WHERE id = $cliente_id ");
-            
-            $this->LogClientesEtapa->create();
-            $this->request->data['LogClientesEtapa']['cliente_id']   = $cliente_id;
-            $this->request->data['LogClientesEtapa']['fecha']        = date('Y-m-d H:i:s');
-            $this->request->data['LogClientesEtapa']['etapa']        = 1;
-            $this->request->data['LogClientesEtapa']['desarrollo_id'] = $desarrollo_id;
-            $this->request->data['LogClientesEtapa']['inmuble_id']   = 0;
-            $this->request->data['LogClientesEtapa']['status']       = 'Activo';
-            $this->request->data['LogClientesEtapa']['user_id']      = $params_user['user_id'];
-            $this->LogClientesEtapa->save($this->request->data);
-
+           // Guarda en la variable el id del cliente salvado.
+           
+            $this->Lead->create(); 
             $this->request->data['Lead']['cliente_id']            = $cliente_id;
             $this->request->data['Lead']['status']                = 'Abierto';
             $this->request->data['Lead']['dic_linea_contacto_id'] = $params_cliente['forma_contacto'];
             $this->request->data['Lead']['desarrollo_id']         = $desarrollo_id;
             $this->request->data['Lead']['tipo_lead']             = 1;
             $this->request->data['Lead']['user_id']               = $params_cliente['asesor_id'];
-            $this->request->data['Lead']['fecha']                 = date('Y-m-d h:i:s');
-            $this->Lead->create();
-            $this->Lead->save($this->request->data);
-
-            $save_client[$i] = $cliente_id;
-
-          }else{
-            $save_client[$i] = 'No se guardo el cliente, es duplicado';
-          }
+            $this->request->data['Lead']['fecha']                 = $params_cliente['created'];
           
-          $i++;
+            if( $this->Lead->save($this->request->data)){
 
-        } // End foreach
-      }
-      $respuesta=[];
-      echo json_encode ( $save_client );
+              $save_client[$i] = $cliente_id;
+            
+            }
+          }
 
-      exit();
-      $this->autoRender = false;
+
+        }else{
+          $cliente_du = $this->Cliente->find('first', array( 
+            'conditions' => $conditions_cliente,
+            'fields' => array(
+              'Cliente.id',
+            ),
+            'contain' => false
+          ));
+          $this->request->data['Cliente']['id']         =  $cliente_du['Cliente']['id'];
+          $this->request->data['Cliente']['comentarios'] = $params_cliente['comentario'];
+          $this->Cliente->save($this->request->data);
+          $save_client[$i] = 'No se guardo el cliente, es duplicado '.$cliente_du['Cliente']['id']. ' busca';
+        }
+        
+        $i++;
+      } // End foreach
+    }
+    $respuesta=[];
+    echo json_encode ( $save_client );
+
+    exit();
+    $this->autoRender = false;
   }
 
 
+  /***
+   * 
+   * 
+  */
   function add_clientes_masivos(){
     $this->loadModel('DicTipoCliente');
 
@@ -11613,6 +11607,69 @@ class ClientesController extends AppController {
 
     }
     $this->set(compact ('response') );
+  }
+
+  /**
+   * 
+   * 
+  */
+  function logs_save_masivo(){
+    header('Content-type: application/json; charset=utf-8');
+    $this->loadModel('DesarrolloInmueble');
+    $this->loadModel('Cliente');
+    $this->loadModel('OperacionesInmueble');
+    $this->loadModel('LogClientesEtapa');
+    $this->loadModel('Lead');
+    $this->loadModel('Agenda');
+    $this->loadModel('Venta');
+    $this->Cliente->Behaviors->load('Containable');
+    $this->LogClientesEtapa->Behaviors->load('Containable');
+    $this->LogCliente->Behaviors->load('Containable');
+    $this->Agenda->Behaviors->load('Containable');
+    $clientes_sin_seguimiento = $this->Cliente->find('all', array( 
+      'conditions'=>array(
+        'Cliente.comentarios LIKE "%Agregado masivamente%" ',
+      ),
+      'fields' => array(
+        'Cliente.id',
+        'Cliente.desarrollo_id',
+        'Cliente.created',
+      ),
+      'contain' => false
+    ));
+    foreach ($clientes_sin_seguimiento as  $value) {
+      $this->LogCliente->create();
+      $this->request->data['LogCliente']['id']         =  uniqid();
+      $this->request->data['LogCliente']['cliente_id'] = $value['Cliente']['id'];
+      $this->request->data['LogCliente']['user_id']    = '';
+      $this->request->data['LogCliente']['mensaje']    = "Cliente creado";
+      $this->request->data['LogCliente']['accion']     = 1;
+      $this->request->data['LogCliente']['datetime']   = $value['Cliente']['created'];
+      $this->LogCliente->save($this->request->data);
+      //Registrar Seguimiento Rápido
+      $this->Agenda->create();
+      $this->request->data['Agenda']['user_id']        = 1;
+      $this->request->data['Agenda']['fecha']          = $value['Cliente']['created'];
+      $this->request->data['Agenda']['mensaje']        = "Cliente creado de forma masiva con line de contacto Facebook";
+      $this->request->data['Agenda']['cliente_id']     = $value['Cliente']['id'];
+      $this->Agenda->save($this->request->data);
+
+      //$this->Cliente->query("UPDATE clientes SET desarrollo_id = $value['Cliente']['desarrollo_id'] WHERE id = $value['Cliente']['id'] ");
+      
+      $this->LogClientesEtapa->create();
+      $this->request->data['LogClientesEtapa']['cliente_id']   = $value['Cliente']['id'];
+      $this->request->data['LogClientesEtapa']['fecha']        = $value['Cliente']['created'];
+      $this->request->data['LogClientesEtapa']['etapa']        = 1;
+      $this->request->data['LogClientesEtapa']['desarrollo_id'] = $value['Cliente']['desarrollo_id'];
+      $this->request->data['LogClientesEtapa']['inmuble_id']   = 0;
+      $this->request->data['LogClientesEtapa']['status']       = 'Activo';
+      $this->request->data['LogClientesEtapa']['user_id']      = $value['Cliente']['user_id'];
+      $this->LogClientesEtapa->save($this->request->data);
+    }
+   
+    echo json_encode ( $clientes_sin_seguimiento );
+    exit();
+    $this->autoRender = false;
   }
   
 
