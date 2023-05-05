@@ -1,2 +1,4 @@
 
 *.ttf
+/app/webroot
+/app/Config
