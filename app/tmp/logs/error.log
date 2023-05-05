@@ -1041,3 +1041,2797 @@ Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_145772216
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/jquery.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:02 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:03 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:04 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:33:04 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/favicon.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:35:29 Error: [MissingControllerException] Controller class LoginController could not be found.
+Exception Attributes: array (
+  'class' => 'LoginController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/login
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:36:33 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/logo1.ico
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:37:15 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/logo1.ico
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:37:26 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.Mails.inmueble_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/users/dashboard
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT Count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT Count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT Count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Inmueble), 'SELECT Count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Inmueble), Object(LogInmueble), 'hasMany', 'Mails', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Inmueble), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/UsersController.php(510): Model->find('all', Array)
+#9 [internal function]: UsersController->dashboard()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 19:37:41 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/logo1.ico
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:37:46 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.Mails.inmueble_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/users/dashboard
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT Count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT Count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT Count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Inmueble), 'SELECT Count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Inmueble), Object(LogInmueble), 'hasMany', 'Mails', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Inmueble), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/UsersController.php(510): Model->find('all', Array)
+#9 [internal function]: UsersController->dashboard()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 19:38:04 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/fondo_trans.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:38:06 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.FotoDesarrolloQ.desarrollo_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/desarrollos/metas_cuenta_desh
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Desarrollo), 'SELECT count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Desarrollo), Object(FotoDesarrollo), 'hasMany', 'FotoDesarrolloQ', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Desarrollo), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/DesarrollosController.php(5015): Model->find('all', Array)
+#9 [internal function]: DesarrollosController->metas_cuenta_desh()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(DesarrollosController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DesarrollosController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 19:38:06 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.FotoDesarrolloQ.desarrollo_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/desarrollos/metas_cuenta_desh
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Desarrollo), 'SELECT count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Desarrollo), Object(FotoDesarrollo), 'hasMany', 'FotoDesarrolloQ', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Desarrollo), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/DesarrollosController.php(5015): Model->find('all', Array)
+#9 [internal function]: DesarrollosController->metas_cuenta_desh()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(DesarrollosController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DesarrollosController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 19:38:08 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.FotoDesarrolloQ.desarrollo_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/clientes/clientes_ventas_inversion_dash
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Desarrollo), 'SELECT count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Desarrollo), Object(FotoDesarrollo), 'hasMany', 'FotoDesarrolloQ', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Desarrollo), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(8879): Model->find('all', Array)
+#9 [internal function]: ClientesController->clientes_ventas_inversion_dash()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 19:38:08 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.FotoDesarrolloQ.desarrollo_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/clientes/clientes_visitas_linea_dash
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Desarrollo), 'SELECT count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Desarrollo), Object(FotoDesarrollo), 'hasMany', 'FotoDesarrolloQ', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Desarrollo), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(9079): Model->find('all', Array)
+#9 [internal function]: ClientesController->clientes_visitas_linea_dash()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 19:38:45 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/fondo_trans.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:38:46 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.FotoDesarrolloQ.desarrollo_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/desarrollos/metas_cuenta_desh
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Desarrollo), 'SELECT count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Desarrollo), Object(FotoDesarrollo), 'hasMany', 'FotoDesarrolloQ', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Desarrollo), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/DesarrollosController.php(5015): Model->find('all', Array)
+#9 [internal function]: DesarrollosController->metas_cuenta_desh()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(DesarrollosController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(DesarrollosController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 19:38:47 Warning: Warning (2): Invalid argument supplied for foreach() in [/Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php, line 8825]
+Trace:
+ErrorHandler::handleError() - CORE/Cake/Error/ErrorHandler.php, line 230
+ClientesController::clientes_mes_das() - APP/Controller/ClientesController.php, line 8825
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE/Cake/Controller/Controller.php, line 499
+Dispatcher::_invoke() - CORE/Cake/Routing/Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 167
+[main] - APP/webroot/index.php, line 117
+
+2023-04-27 19:38:47 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.FotoDesarrolloQ.desarrollo_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/clientes/clientes_ventas_inversion_dash
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Desarrollo), 'SELECT count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Desarrollo), Object(FotoDesarrollo), 'hasMany', 'FotoDesarrolloQ', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Desarrollo), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(8879): Model->find('all', Array)
+#9 [internal function]: ClientesController->clientes_ventas_inversion_dash()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 19:39:25 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web//files/cuentas/183/desarrollos/262/Playamar-03.jpg
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:39:25 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web//files/cuentas/183/desarrollos/261/D-01_FACHADA_NORTE_DIA_Exterior.jpg
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:39:25 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web//files/cuentas/183/desarrollos/263/01-Fachada_frontal.jpg
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 19:45:45 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/logo1.ico
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 23:17:17 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.Mails.inmueble_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/users/dashboard
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT Count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT Count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT Count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Inmueble), 'SELECT Count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Inmueble), Object(LogInmueble), 'hasMany', 'Mails', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Inmueble), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/UsersController.php(510): Model->find('all', Array)
+#9 [internal function]: UsersController->dashboard()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-27 23:17:27 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'inmosystem.Lead.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/clientes/view/60411
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Lead`.`...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Lead`.`...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Lead`.`...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Lead), Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(497): Model->find('all', Array)
+#7 [internal function]: ClientesController->view('60411')
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-04-27 23:17:39 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'inmosystem.Lead.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/clientes/view/55599
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Lead`.`...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Lead`.`...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Lead`.`...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Lead), Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(497): Model->find('all', Array)
+#7 [internal function]: ClientesController->view('55599')
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-04-27 23:17:48 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/adryo_components.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 23:17:48 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/170/users/ummi_roma.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-27 23:17:50 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'inmosystem.Cp.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/cps/estados_json?_=1682637468628
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Cp`.`id...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Cp`.`id...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Cp`.`id...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Cp), Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('list', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/app/Controller/CpsController.php(84): Model->find('list', Array)
+#7 [internal function]: CpsController->estados_json()
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(CpsController), Array)
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(CpsController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-04-27 23:17:50 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/170/users/ummi_roma.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-28 22:19:13 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/logo1.ico
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-28 22:19:22 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.Mails.inmueble_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/users/dashboard
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT Count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT Count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT Count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Inmueble), 'SELECT Count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Inmueble), Object(LogInmueble), 'hasMany', 'Mails', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Inmueble), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/UsersController.php(510): Model->find('all', Array)
+#9 [internal function]: UsersController->dashboard()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-28 22:19:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/fondo_trans.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-28 22:41:10 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-28 22:49:22 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-28 22:49:59 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:17:17 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/logo1.ico
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:17:31 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.Mails.inmueble_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/users/dashboard
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT Count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT Count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT Count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Inmueble), 'SELECT Count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Inmueble), Object(LogInmueble), 'hasMany', 'Mails', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Inmueble), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/UsersController.php(510): Model->find('all', Array)
+#9 [internal function]: UsersController->dashboard()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-04-29 20:19:19 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:21:18 Error: [MissingActionException] Action ClientesController::clientes_add_masivo() could not be found.
+Exception Attributes: array (
+  'controller' => 'ClientesController',
+  'action' => 'clientes_add_masivo',
+)
+Request URL: /Adryo-web/clientes/clientes_add_masivo
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2023-04-29 20:21:47 Error: [MissingActionException] Action ClientesController::clientes_add_masivo() could not be found.
+Exception Attributes: array (
+  'controller' => 'ClientesController',
+  'action' => 'clientes_add_masivo',
+)
+Request URL: /Adryo-web/clientes/clientes_add_masivo
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#2 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2023-04-29 20:28:12 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:28:39 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:40:20 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:41:31 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:42:16 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:42:19 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:42:21 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:42:29 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:42:29 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:42:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:43:49 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:43:49 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:43:51 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:43:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:44:05 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:44:05 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:45:01 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:45:32 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'inmosystem.Lead.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/clientes/view/60472
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Lead`.`...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Lead`.`...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Lead`.`...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Lead), Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(497): Model->find('all', Array)
+#7 [internal function]: ClientesController->view('60472')
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-04-29 20:45:49 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'inmosystem.Lead.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/clientes/view/60472
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Lead`.`...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Lead`.`...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Lead`.`...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Lead), Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(497): Model->find('all', Array)
+#7 [internal function]: ClientesController->view('60472')
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-04-29 20:46:03 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'inmosystem.Lead.status' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/clientes/view/60472
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Lead`.`...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Lead`.`...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Lead`.`...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Lead), Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(497): Model->find('all', Array)
+#7 [internal function]: ClientesController->view('60472')
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-04-29 20:46:08 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/adryo_components.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:46:09 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/1/users/perfil_adryo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:46:09 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'inmosystem.Cp.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/cps/estados_json?_=1682801169323
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Cp`.`id...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Cp`.`id...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Cp`.`id...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Cp), Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('list', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/app/Controller/CpsController.php(84): Model->find('list', Array)
+#7 [internal function]: CpsController->estados_json()
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(CpsController), Array)
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(CpsController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-04-29 20:46:09 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/1/users/perfil_adryo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:47:56 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:48:06 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:48:06 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:48:12 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:48:20 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:48:20 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:50:02 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:52:02 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:52:06 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:52:07 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:52:14 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:52:14 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 20:56:10 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:08 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:11 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:11 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:16 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:16 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:19 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'telefono1' cannot be null
+Request URL: /Adryo-web/Clientes/f_add_Cliente
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('INSERT INTO `in...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1132): DboSource->execute('INSERT INTO `in...')
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(1942): DboSource->create(Object(Cliente), Array, Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(1760): Model->_doSave(Array, Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(11445): Model->save(Array)
+#6 [internal function]: ClientesController->f_add_Cliente()
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2023-04-29 21:00:36 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:36 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:42 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:42 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:44 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:00:47 Error: [PDOException] SQLSTATE[HY000]: General error: 1364 Field 'created' doesn't have a default value
+Request URL: /Adryo-web/Clientes/f_add_Cliente
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('INSERT INTO `in...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1132): DboSource->execute('INSERT INTO `in...')
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(1942): DboSource->create(Object(Cliente), Array, Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(1760): Model->_doSave(Array, Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(11445): Model->save(Array)
+#6 [internal function]: ClientesController->f_add_Cliente()
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2023-04-29 21:04:30 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:04:30 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:04:34 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:04:40 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:04:40 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:04:56 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:06:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:06:57 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:06:58 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:07:02 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:07:02 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:07:06 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'inmuble_id' cannot be null
+Request URL: /Adryo-web/Clientes/f_add_Cliente
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('INSERT INTO `in...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1132): DboSource->execute('INSERT INTO `in...')
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(1942): DboSource->create(Object(LogClientesEtapa), Array, Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(1760): Model->_doSave(Array, Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(11484): Model->save(Array)
+#6 [internal function]: ClientesController->f_add_Cliente()
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2023-04-29 21:07:55 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:07:55 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:08:00 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:08:00 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:08:03 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'inmuble_id' cannot be null
+Request URL: /Adryo-web/Clientes/f_add_Cliente
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('INSERT INTO `in...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1132): DboSource->execute('INSERT INTO `in...')
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(1942): DboSource->create(Object(LogClientesEtapa), Array, Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(1760): Model->_doSave(Array, Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/app/Controller/ClientesController.php(11484): Model->save(Array)
+#6 [internal function]: ClientesController->f_add_Cliente()
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#11 {main}
+2023-04-29 21:10:18 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:10:18 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:10:20 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:10:40 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:10:41 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:10:42 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:10:46 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:10:46 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:10:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:11:09 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:11:09 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:14:42 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:14:47 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:14:48 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:14:56 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:15:07 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:15:07 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:15:13 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:15:13 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:15:23 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:18 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:21 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:21 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:29 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:29 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:31 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:31 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:44 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:44 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:17:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:18:12 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/adryo_components.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:18:13 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/1/users/perfil_adryo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:18:13 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1055 Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'inmosystem.Cp.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/cps/estados_json?_=1682803093157
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT `Cp`.`id...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT `Cp`.`id...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1226): DboSource->fetchAll('SELECT `Cp`.`id...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Cp), Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('list', Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/app/Controller/CpsController.php(84): Model->find('list', Array)
+#7 [internal function]: CpsController->estados_json()
+#8 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(CpsController), Array)
+#9 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(CpsController), Object(CakeRequest))
+#11 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 {main}
+2023-04-29 21:19:26 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-04-29 21:19:46 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/css/pages/colorpicker_hack.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:19:52 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/logo1.ico
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:20:08 Error: [PDOException] SQLSTATE[42000]: Syntax error or access violation: 1140 In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'inmosystem.Mails.inmueble_id'; this is incompatible with sql_mode=only_full_group_by
+Request URL: /Adryo-web/users/dashboard
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(502): PDOStatement->execute(Array)
+#1 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(468): DboSource->_execute('SELECT Count(*)...', Array)
+#2 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(715): DboSource->execute('SELECT Count(*)...', Array, Array)
+#3 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1564): DboSource->fetchAll('SELECT Count(*)...', Array)
+#4 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1398): DboSource->_fetchHasMany(Object(Inmueble), 'SELECT Count(*)...', Array)
+#5 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Datasource/DboSource.php(1257): DboSource->queryAssociation(Object(Inmueble), Object(LogInmueble), 'hasMany', 'Mails', Array, Array, true, Array, 0, Array)
+#6 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3053): DboSource->read(Object(Inmueble), Array)
+#7 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Model/Model.php(3025): Model->_readDataSource('all', Array)
+#8 /Applications/MAMP/htdocs/Adryo-web/app/Controller/UsersController.php(510): Model->find('all', Array)
+#9 [internal function]: UsersController->dashboard()
+#10 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Controller/Controller.php(499): ReflectionMethod->invokeArgs(Object(UsersController), Array)
+#11 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#12 /Applications/MAMP/htdocs/Adryo-web/lib/Cake/Routing/Dispatcher.php(167): Dispatcher->_invoke(Object(UsersController), Object(CakeRequest))
+#13 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#14 {main}
+2023-05-01 21:20:15 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:20:41 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:21:01 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:21:17 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:24:59 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:26:18 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:26:43 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:26:48 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:33:06 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:41:34 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:42:25 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:42:45 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:43:23 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:43:42 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:43:57 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:44:13 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:44:33 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:45:16 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:45:45 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:46:32 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:46:57 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:47:03 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:48:41 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:49:21 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:51:02 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:52:24 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:53:00 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:53:19 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:53:31 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:53:44 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:54:33 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:55:00 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:55:19 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:58:06 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:58:31 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:59:15 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 21:59:43 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:00:15 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:00:50 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:01:35 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:02:05 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:02:33 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:05:01 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:05:32 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:06:46 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:09:44 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:12:23 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:12:55 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:13:26 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:15:21 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:16:11 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:16:25 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:18:05 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:18:37 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:21:44 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:21:51 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:22:49 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:23:09 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:23:15 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:23:58 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:24:07 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:24:14 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:24:33 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:25:32 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:27:30 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:29:09 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:29:43 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:30:05 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:31:30 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:32:22 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:34:35 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:36:13 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:36:44 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:36:59 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:42:07 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:42:23 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:42:45 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:45:12 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:45:43 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:45:50 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:47:54 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:48:04 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:48:15 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:49:07 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:49:19 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:49:23 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:50:45 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:50:58 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:51:08 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:52:55 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:53:32 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:53:38 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-01 22:53:46 Error: [MissingControllerException] Controller class JsController could not be found.
+Exception Attributes: array (
+  'class' => 'JsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/js/components_adryo.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/jquery.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:35 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/bootstrap.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/bootstrap.min.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/layout.core.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:36 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/CloudZoom.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/css/style.css
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/js/script.js
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/a785755a075d7cbac4fdc12ca1258cca_Logoinmolargo.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/940001_bd_media_id_46fa6381657f458340695814028c442a.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/75a0494fcbe9144e30cbded041fe83a2_1457717915_41.Trophy.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/f3258a9569b34bd83249f4a0ca9572e9_1457721366_47.Explore.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/8035ad83ddf811e849ee9ad1e8f2402f_1457722286_megaphone.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/315d173e416f2a1bf79fdd83af971f69_1457722319_pie_chart.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:37 Error: [MissingControllerException] Controller class AssetsController could not be found.
+Exception Attributes: array (
+  'class' => 'AssetsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/assets/images/6c122ad775b4b72124f4f0d05df3b2aa_1457722168_group.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-05 19:09:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/favicon.png
+Stack Trace:
+#0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

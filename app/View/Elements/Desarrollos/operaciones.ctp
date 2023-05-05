@@ -152,16 +152,18 @@
                                         </div>
                                         <div style="display:flex;justify-content:space-between;border-bottom:0.5px solid #c1c1c1;border-top:0.5px solid #c1c1c1;padding:2px 0;">
                                                 <div>Precio de venta:</div> 
-                                                <div><?= '$ '.number_format($operacion['precio_unidad'], 2) ?></div>
+                                                <div><?= '$ '.number_format($operacion['precio_cierre'], 2) ?></div>
                                         </div>
                                         <div style="display:flex;justify-content:space-between;border-bottom:0.5px solid #c1c1c1;padding:2px 0;">
                                             <div>Precio de Lista:</div>
                                             <div><?= '$ '.number_format($operacion['Inmueble']['precio'], 2) ?></div>
                                         </div>
-                                        <div style="display:flex;justify-content:space-between;border-bottom:0.5px solid #c1c1c1;padding:2px 0;">
+
+                                        <!-- <div style="display:flex;justify-content:space-between;border-bottom:0.5px solid #c1c1c1;padding:2px 0;">
                                             <div><?php echo $status_venta[$operacion['tipo_operacion']];?>: </div>
                                             <div><?= '$ '.number_format($operacion['precio_cierre'], 2) ?></div>
-                                        </div>
+                                        </div> -->
+
                                         <div style="display:flex;justify-content:space-between;border-bottom:0.5px solid #c1c1c1;padding:2px 0;">
                                             <div><?php echo $status_fecha_oparacion[$operacion['tipo_operacion']];?>:</div>
                                             <div><?= date("d-m-Y", strtotime( $operacion['fecha'])) ?></div>
