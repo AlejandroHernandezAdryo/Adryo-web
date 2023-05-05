@@ -895,6 +895,7 @@ class UsersController extends AppController {
 	}
 	
 	public function test(){
+    echo "Hola como estas";
 		$this->layout='bos';
 	}
 	
