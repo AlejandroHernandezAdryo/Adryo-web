@@ -54,7 +54,7 @@ class UsersController extends AppController {
   public function beforeFilter() {
       parent::beforeFilter();
       $this->Session->write('CuentaUsuario',$this->CuentasUser->find('first',array('conditions'=>array('CuentasUser.user_id'=>$this->Session->read('Auth.User.id')))));
-      $this->Auth->allow(array('solicitar_prueba','recordatorios', 'login_app', 'get_all_users', 'validate_user', 'app_send_mail_recovery', 'get_advisor_info'));
+      $this->Auth->allow(array('edit','solicitar_prueba','recordatorios', 'login_app', 'get_all_users', 'validate_user', 'app_send_mail_recovery', 'get_advisor_info'));
       $this->cuenta_id = $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
   }
       
@@ -1523,14 +1523,14 @@ class UsersController extends AppController {
 			$this->request->data['User']['password']= $this->Auth->password($this->request->data['User']['password']);
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-                                $this->request->data['Asignacion']['user_id']=$this->User->getInsertID();
-                                if (!empty($this->request->data['User']['desarrollo_id'])){
-                                    $this->request->data['Asignacion']['desarrollo_id'] = $this->request->data['User']['desarrollo_id'];
-                                }
-                                if (!empty($this->request->data['User']['inmueble_id'])){
-                                    $this->request->data['Asignacion']['inmueble_id'] = $this->request->data['User']['inmueble_id'];
-                                }
-                                $this->Asignacion->save($this->request->data);
+        $this->request->data['Asignacion']['user_id']=$this->User->getInsertID();
+        if (!empty($this->request->data['User']['desarrollo_id'])){
+            $this->request->data['Asignacion']['desarrollo_id'] = $this->request->data['User']['desarrollo_id'];
+        }
+        if (!empty($this->request->data['User']['inmueble_id'])){
+            $this->request->data['Asignacion']['inmueble_id'] = $this->request->data['User']['inmueble_id'];
+        }
+        $this->Asignacion->save($this->request->data);
 				$this->Session->setFlash(__('El usuario ha sido creado exitosamente'),'default',array('class'=>'success'));
 				return $this->redirect(array('action' => 'list_clientes'));
 			} else {
@@ -1541,8 +1541,10 @@ class UsersController extends AppController {
                 $this->set('desarrollos',$this->Desarrollo->find('list'));
 	}
 
-	public function edit($user_id = null) {
+  public function edit($user_id = null) {
     header('Content-type: application/json; charset=utf-8');
+    $this->loadModel('DesarrollosUser');
+    $this->DesarrollosUser->Behaviors->load('Containable');
     $save    = [];
 
     if ($this->request->is('post')) {
@@ -1583,64 +1585,99 @@ class UsersController extends AppController {
         $ruta = "/files/cuentas/".$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id')."/users/".$unitario['name'];
         $this->request->data['User']['foto'] = $ruta;
       }
-
-      // Paso 4 - Guardar los datos de la cuenta del usuario.
-      if( $this->User->save($this->request->data) ){
-
-        $this->request->data['CuentasUser']['id']               = $this->request->data['UserEdit']['cuenta_user_id'];
-        $this->request->data['CuentasUser']['cuenta_id']        = $this->request->data['UserEdit']['cuenta_id'];
-        $this->request->data['CuentasUser']['group_id']         = $this->request->data['UserEdit']['group_id'];
-        $this->request->data['CuentasUser']['opcionador']       = $this->request->data['UserEdit']['opcionador'];
-        $this->request->data['CuentasUser']['finanzas']         = $this->request->data['UserEdit']['finanzas'];
-        $this->request->data['CuentasUser']['puesto']           = $this->request->data['UserEdit']['puesto'];
-        $this->request->data['CuentasUser']['unidad_venta']     = $this->request->data['UserEdit']['unidad_venta'];
-        $this->request->data['CuentasUser']['ventas_mensuales'] = $this->request->data['UserEdit']['ventas_mensuales'];
-        
-        if( $this->CuentasUser->save($this->request->data) ){
-
-
-          // Guardaremos que usuario edito al usuario de la vista.
-          $this->LogUser->create();
-          $this->request->data['LogUser']['id']            = null;
-          $this->request->data['LogUser']['user_id']       = $this->Session->read('Auth.User.id');
-          $this->request->data['LogUser']['accion']        = 'Edicion de usuario';
-          $this->request->data['LogUser']['date']          = date('Y-m-d H-i:s');
-          $this->request->data['LogUser']['affected_user'] = $this->request->data['UserEdit']['id'];
-          $this->LogUser->save($this->request->data);
-
-
-          $save = array(
-            'mensaje' => 'Se ha actualizado correctamente el usuario.',
-            'data' => $this->request->data
+      $j=0;
+      if ( !empty($this->request->data['UserEdit']['desarrollos']) ) {
+        foreach ($this->request->data['UserEdit']['desarrollos'] as $value) {
+          $cliente_id = $this->request->data['UserEdit']['id'];
+          $desarrollo_id = $value['UserEdit']['desarrollos'][$j];
+          $cliente = $this->DesarrollosUser->find('first', 
+            array(
+              'conditions' => array(
+                'DesarrollosUser.user_id' => $cliente_id, 
+                'DesarrollosUser.desarrollo_id' => $desarrollo_id,  
+              ),
+              'fields' => array(
+                'id',
+                'desarrollo_id', 
+                'user_id',),
+              'contain' => false
+            )
           );
 
-        }else{
-
-          $save = array(
-            'mensaje' => 'Ha ocurrido un error al tratar de actualizar el usuario, favor de intentarlo nuevamente, gracias.',
-            'data' => $this->request->data
-          );
-
+          // if ($cliente != null) {
+          //   $this->request->data['DesarrollosUser']['id']            = $cliente['DesarrollosUser']['id'] ;
+          //   $this->request->data['DesarrollosUser']['user_id']       = $this->request->data['UserEdit']['id'];
+          //   $this->request->data['DesarrollosUser']['desarrollo_id'] = $desarrollo_id;
+          //   $this->DesarrollosUser->save($this->request->data);
+          // } else {
+          //   $this->DesarrollosUser->create();
+          //   $this->request->data['DesarrollosUser']['id']            = null;
+          //   $this->request->data['DesarrollosUser']['user_id']       = $this->request->data['UserEdit']['id'];
+          //   $this->request->data['DesarrollosUser']['desarrollo_id'] = $desarrollo_id;
+          //   $this->DesarrollosUser->save($this->request->data);
+          // }
+         $j++;
         }
-
-      }else{
-        $save = array(
-          'mensaje' => 'Ha ocurrido un error al tratar de actualizar el usuario, favor de intentarlo nuevamente, gracias.',
-          'data' => $this->request->data
-        );
+        
       }
 
-      // Paso 5 - Identificar si el usuario editado es el mismo que el usuario de inicio de sesion actualizar las variables de sesion.
-      if( $this->request->data['UserEdit']['id'] == $this->Session->read('Auth.User.id') ){
-        $this->update_session_vars();
-      }
+      // // Paso 4 - Guardar los datos de la cuenta del usuario.
+      // if( $this->User->save($this->request->data) ){
 
-      $this->Session->setFlash('', 'default', array(), 'success'); // Autorizacion para mensaje
-      $this->Session->setFlash($save['mensaje'], 'default', array(), 'm_success'); // Mensaje
+      //   $this->request->data['CuentasUser']['id']               = $this->request->data['UserEdit']['cuenta_user_id'];
+      //   $this->request->data['CuentasUser']['cuenta_id']        = $this->request->data['UserEdit']['cuenta_id'];
+      //   $this->request->data['CuentasUser']['group_id']         = $this->request->data['UserEdit']['group_id'];
+      //   $this->request->data['CuentasUser']['opcionador']       = $this->request->data['UserEdit']['opcionador'];
+      //   $this->request->data['CuentasUser']['finanzas']         = $this->request->data['UserEdit']['finanzas'];
+      //   $this->request->data['CuentasUser']['puesto']           = $this->request->data['UserEdit']['puesto'];
+      //   $this->request->data['CuentasUser']['unidad_venta']     = $this->request->data['UserEdit']['unidad_venta'];
+      //   $this->request->data['CuentasUser']['ventas_mensuales'] = $this->request->data['UserEdit']['ventas_mensuales'];
+        
+      //   if( $this->CuentasUser->save($this->request->data) ){
+
+
+      //     // Guardaremos que usuario edito al usuario de la vista.
+      //     $this->LogUser->create();
+      //     $this->request->data['LogUser']['id']            = null;
+      //     $this->request->data['LogUser']['user_id']       = $this->Session->read('Auth.User.id');
+      //     $this->request->data['LogUser']['accion']        = 'Edicion de usuario';
+      //     $this->request->data['LogUser']['date']          = date('Y-m-d H-i:s');
+      //     $this->request->data['LogUser']['affected_user'] = $this->request->data['UserEdit']['id'];
+      //     $this->LogUser->save($this->request->data);
+
+
+      //     $save = array(
+      //       'mensaje' => 'Se ha actualizado correctamente el usuario.',
+      //       'data' => $this->request->data
+      //     );
+
+      //   }else{
+
+      //     $save = array(
+      //       'mensaje' => 'Ha ocurrido un error al tratar de actualizar el usuario, favor de intentarlo nuevamente, gracias.',
+      //       'data' => $this->request->data
+      //     );
+
+      //   }
+
+      // }else{
+      //   $save = array(
+      //     'mensaje' => 'Ha ocurrido un error al tratar de actualizar el usuario, favor de intentarlo nuevamente, gracias.',
+      //     'data' => $this->request->data
+      //   );
+      // }
+
+      // // Paso 5 - Identificar si el usuario editado es el mismo que el usuario de inicio de sesion actualizar las variables de sesion.
+      // if( $this->request->data['UserEdit']['id'] == $this->Session->read('Auth.User.id') ){
+      //   $this->update_session_vars();
+      // }
+
+      // $this->Session->setFlash('', 'default', array(), 'success'); // Autorizacion para mensaje
+      // $this->Session->setFlash($save['mensaje'], 'default', array(), 'm_success'); // Mensaje
 
     }
 
-    echo json_encode( $save );
+    echo json_encode( $desarrollo_id );
     $this->autoRender = false;
 	}
         

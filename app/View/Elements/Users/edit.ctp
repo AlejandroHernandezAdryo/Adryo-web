@@ -256,7 +256,7 @@ function validatePassword(){
 
 $(document).on("submit", "#UserEditForm", function (event) {
     event.preventDefault();
-
+    // let form = new FormData(this);
     $.ajax({
         url        : '<?php echo Router::url(array("controller" => "users", "action" => "edit")); ?>',
         type       : "POST",
@@ -268,7 +268,7 @@ $(document).on("submit", "#UserEditForm", function (event) {
             $("#overlay").fadeIn();
         },
         success: function (response) {
-            // console.log( response );
+            console.log( response );
 
             var n = 1;
             window.setInterval(function(){
@@ -280,10 +280,10 @@ $(document).on("submit", "#UserEditForm", function (event) {
             },1000);
 
         },
-        error: function ( response ) {
-            console.log( response.responseText );
-            // console.log("Oops! Something went wrong!");
-        },
+        // error: function ( response ) {
+        //     console.log( response.responseText );
+        //     // console.log("Oops! Something went wrong!");
+        // },
     });
 });
  
