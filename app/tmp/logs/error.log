@@ -4046,3 +4046,12 @@ Request URL: /Adryo-web/files/cuentas/179/generales/logoNew.png
 Stack Trace:
 #0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-05-08 22:59:04 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/179/users/Captura%20de%20Pantalla%202023-02-02%20a%20la%28s%29%200.28.47.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

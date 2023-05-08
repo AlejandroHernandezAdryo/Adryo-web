@@ -2,4 +2,4 @@
 *.ttf
 /app/webroot
 /app/Config
-/app/tmp/
+/app/tmp/cache
