@@ -1583,7 +1583,14 @@ class UsersController extends AppController {
         $ruta = "/files/cuentas/".$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id')."/users/".$unitario['name'];
         $this->request->data['User']['foto'] = $ruta;
       }
+      if ( !empty($this->request->data['UserEdit']['desarrollos']) ) {
 
+        $this->DesarrollosUser->create();
+        $this->request->data['DesarrollosUser']['id']            = null;
+        $this->request->data['DesarrollosUser']['user_id']     = $this->request->data['UserEdit']['id'];
+        $this->request->data['DesarrollosUser']['desarrollo_id'] = $this->request->data['UserEdit']['desarrollos'];
+        $this->DesarrollosUser->save($this->request->data);
+      }
       // Paso 4 - Guardar los datos de la cuenta del usuario.
       if( $this->User->save($this->request->data) ){
 
