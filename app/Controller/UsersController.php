@@ -1183,6 +1183,26 @@ class UsersController extends AppController {
     );
     
     $this->set(compact('fecha_primer_cleinte'));
+
+    /* --------------------------- setDesarrollosEdit --------------------------- */
+    $this->loadModel('DesarrollosUser');
+    $this->DesarrollosUser->Behaviors->load('Containable');
+    $desarrollosIn_ = $this->DesarrollosUser->find('list', 
+            array(
+              'conditions' => array(
+                'DesarrollosUser.user_id' => $user_id, 
+              ),
+              'fields' => array(
+                'desarrollo_id', 
+              ),
+              'contain' => false
+            )
+        ); 
+
+        
+        $this->set(compact('desarrollosIn_'));
+    /* -------------------------------------------------------------------------- */
+
     /* ---------------------- Ventas del mes y acumulados. ---------------------- */
     foreach( $user['User']['Venta'] as $venta ){
       
@@ -1515,10 +1535,10 @@ class UsersController extends AppController {
 	}   
 
   public function add_cliente() {
-                if ($this->Session->read('Auth.User.group_id')==5){
-                    return $this->redirect(array('action' => 'mysession','controller'=>'users'));
-                }
-                $this->layout = 'bos';
+    if ($this->Session->read('Auth.User.group_id')==5){
+        return $this->redirect(array('action' => 'mysession','controller'=>'users'));
+    }
+    $this->layout = 'bos';
 		if ($this->request->is('post')) {
 			$this->request->data['User']['password']= $this->Auth->password($this->request->data['User']['password']);
 			$this->User->create();
@@ -1537,8 +1557,8 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
-                $this->set('inmuebles',$this->Inmueble->find('list',array('conditions'=>array('Inmueble.id NOT IN (SELECT inmueble_id FROM desarrollo_inmuebles)'))));
-                $this->set('desarrollos',$this->Desarrollo->find('list'));
+    $this->set('inmuebles',$this->Inmueble->find('list',array('conditions'=>array('Inmueble.id NOT IN (SELECT inmueble_id FROM desarrollo_inmuebles)'))));
+    $this->set('desarrollos',$this->Desarrollo->find('list'));
 	}
 
   public function edit($user_id = null) {
@@ -1547,7 +1567,7 @@ class UsersController extends AppController {
     $this->DesarrollosUser->Behaviors->load('Containable');
     $save    = [];
 
-    if ($this->request->is('post')) {
+    if ($this->request->is('post','delete')) {
 
       // Paso 1 - Guardar las variables del usuario para que se actualice.
       $this->request->data['User']['id']                 = $this->request->data['UserEdit']['id'];
@@ -1585,16 +1605,13 @@ class UsersController extends AppController {
         $ruta = "/files/cuentas/".$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id')."/users/".$unitario['name'];
         $this->request->data['User']['foto'] = $ruta;
       }
-      $j=0;
+
       if ( !empty($this->request->data['UserEdit']['desarrollos']) ) {
-        foreach ($this->request->data['UserEdit']['desarrollos'] as $value) {
-          $cliente_id = $this->request->data['UserEdit']['id'];
-          $desarrollo_id = $value['UserEdit']['desarrollos'][$j];
-          $cliente = $this->DesarrollosUser->find('first', 
+        $cliente_id = $this->request->data['UserEdit']['id'];
+        $desarrollos_ = $this->DesarrollosUser->find('all', 
             array(
               'conditions' => array(
                 'DesarrollosUser.user_id' => $cliente_id, 
-                'DesarrollosUser.desarrollo_id' => $desarrollo_id,  
               ),
               'fields' => array(
                 'id',
@@ -1602,82 +1619,82 @@ class UsersController extends AppController {
                 'user_id',),
               'contain' => false
             )
-          );
+        );
 
-          // if ($cliente != null) {
-          //   $this->request->data['DesarrollosUser']['id']            = $cliente['DesarrollosUser']['id'] ;
-          //   $this->request->data['DesarrollosUser']['user_id']       = $this->request->data['UserEdit']['id'];
-          //   $this->request->data['DesarrollosUser']['desarrollo_id'] = $desarrollo_id;
-          //   $this->DesarrollosUser->save($this->request->data);
-          // } else {
-          //   $this->DesarrollosUser->create();
-          //   $this->request->data['DesarrollosUser']['id']            = null;
-          //   $this->request->data['DesarrollosUser']['user_id']       = $this->request->data['UserEdit']['id'];
-          //   $this->request->data['DesarrollosUser']['desarrollo_id'] = $desarrollo_id;
-          //   $this->DesarrollosUser->save($this->request->data);
-          // }
-         $j++;
+        
+        foreach ($desarrollos_ as  $desarrolloIn) {
+          $id = $desarrolloIn['DesarrollosUser']['id'];
+          $this->DesarrollosUser->query("DELETE FROM desarrollos_users WHERE id = $id");
+        
         }
+        foreach ($this->request->data['UserEdit']['desarrollos'] as $value) {
+          $this->DesarrollosUser->create();
+          $this->request->data['DesarrollosUser']['id']            = null;
+          $this->request->data['DesarrollosUser']['user_id']       = $cliente_id;
+          $this->request->data['DesarrollosUser']['desarrollo_id'] = $value;
+          $this->DesarrollosUser->save($this->request->data);
+
+        }               
         
       }
 
-      // // Paso 4 - Guardar los datos de la cuenta del usuario.
-      // if( $this->User->save($this->request->data) ){
+      // Paso 4 - Guardar los datos de la cuenta del usuario.
+      if( $this->User->save($this->request->data) ){
 
-      //   $this->request->data['CuentasUser']['id']               = $this->request->data['UserEdit']['cuenta_user_id'];
-      //   $this->request->data['CuentasUser']['cuenta_id']        = $this->request->data['UserEdit']['cuenta_id'];
-      //   $this->request->data['CuentasUser']['group_id']         = $this->request->data['UserEdit']['group_id'];
-      //   $this->request->data['CuentasUser']['opcionador']       = $this->request->data['UserEdit']['opcionador'];
-      //   $this->request->data['CuentasUser']['finanzas']         = $this->request->data['UserEdit']['finanzas'];
-      //   $this->request->data['CuentasUser']['puesto']           = $this->request->data['UserEdit']['puesto'];
-      //   $this->request->data['CuentasUser']['unidad_venta']     = $this->request->data['UserEdit']['unidad_venta'];
-      //   $this->request->data['CuentasUser']['ventas_mensuales'] = $this->request->data['UserEdit']['ventas_mensuales'];
+        $this->request->data['CuentasUser']['id']               = $this->request->data['UserEdit']['cuenta_user_id'];
+        $this->request->data['CuentasUser']['cuenta_id']        = $this->request->data['UserEdit']['cuenta_id'];
+        $this->request->data['CuentasUser']['group_id']         = $this->request->data['UserEdit']['group_id'];
+        $this->request->data['CuentasUser']['opcionador']       = $this->request->data['UserEdit']['opcionador'];
+        $this->request->data['CuentasUser']['finanzas']         = $this->request->data['UserEdit']['finanzas'];
+        $this->request->data['CuentasUser']['puesto']           = $this->request->data['UserEdit']['puesto'];
+        $this->request->data['CuentasUser']['unidad_venta']     = $this->request->data['UserEdit']['unidad_venta'];
+        $this->request->data['CuentasUser']['ventas_mensuales'] = $this->request->data['UserEdit']['ventas_mensuales'];
         
-      //   if( $this->CuentasUser->save($this->request->data) ){
+        if( $this->CuentasUser->save($this->request->data) ){
 
 
-      //     // Guardaremos que usuario edito al usuario de la vista.
-      //     $this->LogUser->create();
-      //     $this->request->data['LogUser']['id']            = null;
-      //     $this->request->data['LogUser']['user_id']       = $this->Session->read('Auth.User.id');
-      //     $this->request->data['LogUser']['accion']        = 'Edicion de usuario';
-      //     $this->request->data['LogUser']['date']          = date('Y-m-d H-i:s');
-      //     $this->request->data['LogUser']['affected_user'] = $this->request->data['UserEdit']['id'];
-      //     $this->LogUser->save($this->request->data);
+          // Guardaremos que usuario edito al usuario de la vista.
+          $this->LogUser->create();
+          $this->request->data['LogUser']['id']            = null;
+          $this->request->data['LogUser']['user_id']       = $this->Session->read('Auth.User.id');
+          $this->request->data['LogUser']['accion']        = 'Edicion de usuario';
+          $this->request->data['LogUser']['date']          = date('Y-m-d H-i:s');
+          $this->request->data['LogUser']['affected_user'] = $this->request->data['UserEdit']['id'];
+          $this->LogUser->save($this->request->data);
 
 
-      //     $save = array(
-      //       'mensaje' => 'Se ha actualizado correctamente el usuario.',
-      //       'data' => $this->request->data
-      //     );
+          $save = array(
+            'mensaje' => 'Se ha actualizado correctamente el usuario.',
+            'data' => $this->request->data
+          );
 
-      //   }else{
+        }else{
 
-      //     $save = array(
-      //       'mensaje' => 'Ha ocurrido un error al tratar de actualizar el usuario, favor de intentarlo nuevamente, gracias.',
-      //       'data' => $this->request->data
-      //     );
+          $save = array(
+            'mensaje' => 'Ha ocurrido un error al tratar de actualizar el usuario, favor de intentarlo nuevamente, gracias.',
+            'data' => $this->request->data
+          );
 
-      //   }
+        }
 
-      // }else{
-      //   $save = array(
-      //     'mensaje' => 'Ha ocurrido un error al tratar de actualizar el usuario, favor de intentarlo nuevamente, gracias.',
-      //     'data' => $this->request->data
-      //   );
-      // }
+      }else{
+        $save = array(
+          'mensaje' => 'Ha ocurrido un error al tratar de actualizar el usuario, favor de intentarlo nuevamente, gracias.',
+          'data' => $this->request->data
+        );
+      }
 
-      // // Paso 5 - Identificar si el usuario editado es el mismo que el usuario de inicio de sesion actualizar las variables de sesion.
-      // if( $this->request->data['UserEdit']['id'] == $this->Session->read('Auth.User.id') ){
-      //   $this->update_session_vars();
-      // }
+      // Paso 5 - Identificar si el usuario editado es el mismo que el usuario de inicio de sesion actualizar las variables de sesion.
+      if( $this->request->data['UserEdit']['id'] == $this->Session->read('Auth.User.id') ){
+        $this->update_session_vars();
+      }
 
-      // $this->Session->setFlash('', 'default', array(), 'success'); // Autorizacion para mensaje
-      // $this->Session->setFlash($save['mensaje'], 'default', array(), 'm_success'); // Mensaje
+      $this->Session->setFlash('', 'default', array(), 'success'); // Autorizacion para mensaje
+      $this->Session->setFlash($save['mensaje'], 'default', array(), 'm_success'); // Mensaje
 
     }
 
-    echo json_encode( $desarrollo_id );
+    echo json_encode( $save);
     $this->autoRender = false;
 	}
         

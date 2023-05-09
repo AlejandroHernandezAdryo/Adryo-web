@@ -140,7 +140,15 @@
                         
                         <!-- Seleccionador de desarrollos que puede comercializar -->
                         <div class="row mt-1">
-                            <?= $this->Form->input('desarrollos', array('id'=>'desarrollos','multiple'=>'multiple','div'=>'col-sm-12','label'=>array('text'=>'Seleccionar que desarrollos puede ver (Si deja vacío podrá ver todos)'),'class'=>'form-control chzn-select','options'=>$desarrollos)); ?>
+                            <?= $this->Form->input('desarrollos', array(
+                                'id'=>'desarrollos',
+                                'multiple'=>'multiple',
+                                'div'=>'col-sm-12','label'=>array(
+                                    'text'=>'Seleccionar que desarrollos puede ver (Si deja vacío podrá ver todos)'
+                                ),
+                                'class'=>'form-control chzn-select','options'=>$desarrollos,
+                                'value' => $desarrollosIn_
+                            )); ?>
                         </div>
                     <?php endif; ?>
 
@@ -280,10 +288,10 @@ $(document).on("submit", "#UserEditForm", function (event) {
             },1000);
 
         },
-        // error: function ( response ) {
-        //     console.log( response.responseText );
-        //     // console.log("Oops! Something went wrong!");
-        // },
+        error: function ( response ) {
+            console.log( response.responseText );
+            // console.log("Oops! Something went wrong!");
+        },
     });
 });
  
