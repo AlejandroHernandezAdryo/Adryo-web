@@ -6647,6 +6647,66 @@ class ClientesController extends AppController {
     }
 
 
+    // foreach( $clientes as $cliente ) {
+
+    //   if( $cliente['Cliente']['etapa'] == 1 ){ $c_etapa = 'estado1'; }
+    //   elseif( $cliente['Cliente']['etapa'] == 2 ){ $c_etapa = 'estado2'; }
+    //   elseif( $cliente['Cliente']['etapa'] == 3 ){ $c_etapa = 'estado3'; }
+    //   elseif( $cliente['Cliente']['etapa'] == 4 ){ $c_etapa = 'estado4'; }
+    //   elseif( $cliente['Cliente']['etapa'] == 5 ){ $c_etapa = 'estado5'; }
+    //   elseif( $cliente['Cliente']['etapa'] == 6 ){ $c_etapa = 'estado6'; }
+    //   elseif( $cliente['Cliente']['etapa'] == 7 ){ $c_etapa = 'estado7'; }
+    //   else{$c_etapa = 'estado1'; }
+
+
+    //   if ($cliente['Cliente']['last_edit'] <= $date_current.' 23:59:59' && $cliente['Cliente']['last_edit'] >= $date_oportunos) {$at = 'OP'; $name_at = "Oportuno"; $class_at = "chip_bg_oportuno";}
+    //   elseif($cliente['Cliente']['last_edit'] < $date_oportunos.' 23:59:59' && $cliente['Cliente']['last_edit'] >= $date_tardios.' 00:00:00'){$at = 'TA'; $name_at = "Tardio"; $class_at = "chip_bg_tardio";}
+    //   elseif($cliente['Cliente']['last_edit'] < $date_tardios.' 23:59:59' && $cliente['Cliente']['last_edit'] >= $date_no_atendidos.' 00:00:00'){$at = 'NA'; $name_at = "No atendido"; $class_at = "chip_bg_no_antendido";}
+    //   elseif($cliente['Cliente']['last_edit'] < $date_no_atendidos.' 23:59:59' && $cliente['Cliente']['last_edit'] >= '0000-00-00 00:00:00'){$at = 'PR'; $name_at = "Por reasignar"; $class_at = "chip_bg_reasignar";}
+    //   else{$at = 'PR'; $name_at = "Por reasignar"; $class_at = "chip_bg_reasignar";}
+
+
+    //   if( $cliente['Cliente']['status'] == 'Activo' ){
+    //     $cliente['Cliente']['status'] = 'A';
+    //     $cliente['Cliente']['status_color'] = 'bgClienteA';
+    //   }elseif( $cliente['Cliente']['status'] == 'Inactivo' ){
+    //     $cliente['Cliente']['status'] = 'ID';
+    //     $cliente['Cliente']['status_color'] = 'bgClienteID';
+    //   }else {
+    //     $cliente['Cliente']['status'] = 'IT';
+    //     $cliente['Cliente']['status_color'] = 'bgClienteIT';
+    //   }
+
+    //   $clientes_json[$count] = array(
+    //     "<small class='chip ".$cliente['Cliente']['status_color']."'>".$cliente['Cliente']['status']."<small>",
+    //     "<small class='chip ".$c_etapa."'>".$cliente['Cliente']['etapa']."<small>",
+    //     "<small class='chip ".$class_at."'>".$at."<small>",
+    //     $cliente['Cliente']['id'],
+    //     "<a href='".Router::url('/clientes/view/'.$cliente['Cliente']['id'], true)."' target='Blank' class='underline'>".rtrim(str_replace( $limpieza, "", $cliente['Cliente']['nombre']))."</a>",
+    //     rtrim(str_replace( $limpieza, "", $cliente['Inmueble']['titulo'])).' '.rtrim(str_replace( $limpieza, "", $cliente['Desarrollo']['nombre'])),
+    //     rtrim(str_replace($limpieza, "", $cliente['DicLineaContacto']['linea_contacto'])),
+
+    //     rtrim(str_replace($limpieza, "", $cliente['Cliente']['correo_electronico'])),
+    //     rtrim(str_replace($limpieza, "", substr($cliente['Cliente']['telefono1'], -10))),
+
+    //     date('Y-m-d', strtotime($cliente['Cliente']['created'])),
+    //     date('Y-m-d', strtotime($cliente['Cliente']['last_edit'])),
+    //     "<a href='".Router::url('/users/view/'.$cliente['User']['id'], true)."' target='Blank' class='underline'>".rtrim(str_replace( $limpieza, "", $cliente['User']['nombre_completo']))."</a>",
+    //     "<i class='fa fa-eye pointer' onclick=modal_comentario(".$cliente['Cliente']['id'].")></i>",
+    //   );
+
+    //   if( $this->Session->read('Permisos.Group.ce') == 1 ){
+    //     array_push( $clientes_json[$count], "<a href='".Router::url('/clientes/edit/'.$cliente['Cliente']['id'], true)."' target='Blank'><i class='fa fa-edit'></i> </a>");
+    //   }
+
+    //   if( $this->Session->read('Permisos.Group.cd') == 1 ){
+    //     array_push( $clientes_json[$count], "<i class='fa fa-trash pointer' onclick=ClienteDelete(".$cliente['Cliente']['id'].")></i>");
+    //   }
+
+
+    //   $count++;
+
+    // }
     foreach( $clientes as $cliente ) {
 
       if( $cliente['Cliente']['etapa'] == 1 ){ $c_etapa = 'estado1'; }
@@ -6676,18 +6736,18 @@ class ClientesController extends AppController {
         $cliente['Cliente']['status'] = 'IT';
         $cliente['Cliente']['status_color'] = 'bgClienteIT';
       }
-
+      
       $clientes_json[$count] = array(
         "<small class='chip ".$cliente['Cliente']['status_color']."'>".$cliente['Cliente']['status']."<small>",
         "<small class='chip ".$c_etapa."'>".$cliente['Cliente']['etapa']."<small>",
         "<small class='chip ".$class_at."'>".$at."<small>",
         $cliente['Cliente']['id'],
-        "<a href='".Router::url('/clientes/view/'.$cliente['Cliente']['id'], true)."' target='Blank' class='underline'>".rtrim(str_replace( $limpieza, "", $cliente['Cliente']['nombre']))."</a>",
-        rtrim(str_replace( $limpieza, "", $cliente['Inmueble']['titulo'])).' '.rtrim(str_replace( $limpieza, "", $cliente['Desarrollo']['nombre'])),
+        "<a href='".Router::url('/clientes/view/'.$cliente['Cliente']['id'], true)."' target='Blank' class='underline'>".mb_strtoupper(str_replace( $limpieza, "", $cliente['Cliente']['nombre']))."</a>",
+        mb_strtoupper(str_replace( $limpieza, "", $cliente['Inmueble']['titulo'])).' '.mb_strtoupper(str_replace( $limpieza, "", $cliente['Desarrollo']['nombre'])),
         rtrim(str_replace($limpieza, "", $cliente['DicLineaContacto']['linea_contacto'])),
 
         rtrim(str_replace($limpieza, "", $cliente['Cliente']['correo_electronico'])),
-        rtrim(str_replace($limpieza, "", substr($cliente['Cliente']['telefono1'], -10))),
+        mb_strtoupper(str_replace($limpieza, "", substr($cliente['Cliente']['telefono1'], -10))),
 
         date('Y-m-d', strtotime($cliente['Cliente']['created'])),
         date('Y-m-d', strtotime($cliente['Cliente']['last_edit'])),

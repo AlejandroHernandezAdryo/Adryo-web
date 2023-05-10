@@ -54,7 +54,7 @@ class UsersController extends AppController {
   public function beforeFilter() {
       parent::beforeFilter();
       $this->Session->write('CuentaUsuario',$this->CuentasUser->find('first',array('conditions'=>array('CuentasUser.user_id'=>$this->Session->read('Auth.User.id')))));
-      $this->Auth->allow(array('solicitar_prueba','recordatorios', 'login_app', 'get_all_users', 'validate_user', 'app_send_mail_recovery', 'get_advisor_info'));
+      $this->Auth->allow(array('edit','solicitar_prueba','recordatorios', 'login_app', 'get_all_users', 'validate_user', 'app_send_mail_recovery', 'get_advisor_info'));
       $this->cuenta_id = $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
   }
       
@@ -1183,6 +1183,26 @@ class UsersController extends AppController {
     );
     
     $this->set(compact('fecha_primer_cleinte'));
+
+    /* --------------------------- setDesarrollosEdit --------------------------- */
+    $this->loadModel('DesarrollosUser');
+    $this->DesarrollosUser->Behaviors->load('Containable');
+    $desarrollosIn_ = $this->DesarrollosUser->find('list', 
+            array(
+              'conditions' => array(
+                'DesarrollosUser.user_id' => $user_id, 
+              ),
+              'fields' => array(
+                'desarrollo_id', 
+              ),
+              'contain' => false
+            )
+        ); 
+
+        
+        $this->set(compact('desarrollosIn_'));
+    /* -------------------------------------------------------------------------- */
+
     /* ---------------------- Ventas del mes y acumulados. ---------------------- */
     foreach( $user['User']['Venta'] as $venta ){
       
@@ -1515,37 +1535,39 @@ class UsersController extends AppController {
 	}   
 
   public function add_cliente() {
-                if ($this->Session->read('Auth.User.group_id')==5){
-                    return $this->redirect(array('action' => 'mysession','controller'=>'users'));
-                }
-                $this->layout = 'bos';
+    if ($this->Session->read('Auth.User.group_id')==5){
+        return $this->redirect(array('action' => 'mysession','controller'=>'users'));
+    }
+    $this->layout = 'bos';
 		if ($this->request->is('post')) {
 			$this->request->data['User']['password']= $this->Auth->password($this->request->data['User']['password']);
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-                                $this->request->data['Asignacion']['user_id']=$this->User->getInsertID();
-                                if (!empty($this->request->data['User']['desarrollo_id'])){
-                                    $this->request->data['Asignacion']['desarrollo_id'] = $this->request->data['User']['desarrollo_id'];
-                                }
-                                if (!empty($this->request->data['User']['inmueble_id'])){
-                                    $this->request->data['Asignacion']['inmueble_id'] = $this->request->data['User']['inmueble_id'];
-                                }
-                                $this->Asignacion->save($this->request->data);
+        $this->request->data['Asignacion']['user_id']=$this->User->getInsertID();
+        if (!empty($this->request->data['User']['desarrollo_id'])){
+            $this->request->data['Asignacion']['desarrollo_id'] = $this->request->data['User']['desarrollo_id'];
+        }
+        if (!empty($this->request->data['User']['inmueble_id'])){
+            $this->request->data['Asignacion']['inmueble_id'] = $this->request->data['User']['inmueble_id'];
+        }
+        $this->Asignacion->save($this->request->data);
 				$this->Session->setFlash(__('El usuario ha sido creado exitosamente'),'default',array('class'=>'success'));
 				return $this->redirect(array('action' => 'list_clientes'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
-                $this->set('inmuebles',$this->Inmueble->find('list',array('conditions'=>array('Inmueble.id NOT IN (SELECT inmueble_id FROM desarrollo_inmuebles)'))));
-                $this->set('desarrollos',$this->Desarrollo->find('list'));
+    $this->set('inmuebles',$this->Inmueble->find('list',array('conditions'=>array('Inmueble.id NOT IN (SELECT inmueble_id FROM desarrollo_inmuebles)'))));
+    $this->set('desarrollos',$this->Desarrollo->find('list'));
 	}
 
-	public function edit($user_id = null) {
+  public function edit($user_id = null) {
     header('Content-type: application/json; charset=utf-8');
+    $this->loadModel('DesarrollosUser');
+    $this->DesarrollosUser->Behaviors->load('Containable');
     $save    = [];
 
-    if ($this->request->is('post')) {
+    if ($this->request->is('post','delete')) {
 
       // Paso 1 - Guardar las variables del usuario para que se actualice.
       $this->request->data['User']['id']                 = $this->request->data['UserEdit']['id'];
@@ -1582,6 +1604,38 @@ class UsersController extends AppController {
         move_uploaded_file($unitario['tmp_name'],$filename);
         $ruta = "/files/cuentas/".$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id')."/users/".$unitario['name'];
         $this->request->data['User']['foto'] = $ruta;
+      }
+
+      if ( !empty($this->request->data['UserEdit']['desarrollos']) ) {
+        $cliente_id = $this->request->data['UserEdit']['id'];
+        $desarrollos_ = $this->DesarrollosUser->find('all', 
+            array(
+              'conditions' => array(
+                'DesarrollosUser.user_id' => $cliente_id, 
+              ),
+              'fields' => array(
+                'id',
+                'desarrollo_id', 
+                'user_id',),
+              'contain' => false
+            )
+        );
+
+        
+        foreach ($desarrollos_ as  $desarrolloIn) {
+          $id = $desarrolloIn['DesarrollosUser']['id'];
+          $this->DesarrollosUser->query("DELETE FROM desarrollos_users WHERE id = $id");
+        
+        }
+        foreach ($this->request->data['UserEdit']['desarrollos'] as $value) {
+          $this->DesarrollosUser->create();
+          $this->request->data['DesarrollosUser']['id']            = null;
+          $this->request->data['DesarrollosUser']['user_id']       = $cliente_id;
+          $this->request->data['DesarrollosUser']['desarrollo_id'] = $value;
+          $this->DesarrollosUser->save($this->request->data);
+
+        }               
+        
       }
 
       // Paso 4 - Guardar los datos de la cuenta del usuario.
@@ -1640,7 +1694,7 @@ class UsersController extends AppController {
 
     }
 
-    echo json_encode( $save );
+    echo json_encode( $save);
     $this->autoRender = false;
 	}
         
