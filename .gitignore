@@ -5,4 +5,5 @@
 app\temp
 .app\temp
 /app\temp
-*app/tmp/
+app/tmp/
+app/tmp/*
