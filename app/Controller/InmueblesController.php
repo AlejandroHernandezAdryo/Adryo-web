@@ -3419,7 +3419,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
 
         $this->autoRender = false;
     }
-    unction inmueble_view_info(){
+    function inmueble_view_info(){
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('Desarrollo');
         $this->loadModel('DesarrolloInmueble');
