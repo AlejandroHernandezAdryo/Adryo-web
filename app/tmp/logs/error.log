@@ -4046,3 +4046,57 @@ Request URL: /Adryo-web/files/cuentas/179/generales/logoNew.png
 Stack Trace:
 #0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-05-15 22:26:38 Error: [MissingControllerException] Controller class AdryoController could not be found.
+Exception Attributes: array (
+  'class' => 'AdryoController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/adryo/adryo-web/
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-15 22:27:17 Error: [MissingControllerException] Controller class AdryoController could not be found.
+Exception Attributes: array (
+  'class' => 'AdryoController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/adryo/adryo-web/
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-15 22:27:38 Error: [MissingControllerException] Controller class AdryoController could not be found.
+Exception Attributes: array (
+  'class' => 'AdryoController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/adryo/adryo-web/
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-15 22:28:39 Error: [MissingControllerException] Controller class AdryoController could not be found.
+Exception Attributes: array (
+  'class' => 'AdryoController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/adryo/adryo-web/
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-15 22:30:07 Error: [MissingControllerException] Controller class AdryoController could not be found.
+Exception Attributes: array (
+  'class' => 'AdryoController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/adryo/adryo-web/
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-15 22:30:20 Error: [MissingControllerException] Controller class AdryoController could not be found.
+Exception Attributes: array (
+  'class' => 'AdryoController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/adryo/adryo-web/
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

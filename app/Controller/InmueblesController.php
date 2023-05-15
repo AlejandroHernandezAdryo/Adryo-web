@@ -3419,6 +3419,9 @@ public function view_tipo($id = null,$desarrollo_id = null){
 
         $this->autoRender = false;
     }
+    /**
+    *
+    */
     function inmueble_view_info(){
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('Desarrollo');
