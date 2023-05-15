@@ -3419,5 +3419,167 @@ public function view_tipo($id = null,$desarrollo_id = null){
 
         $this->autoRender = false;
     }
+    unction inmueble_view_info(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('Desarrollo');
+        $this->loadModel('DesarrolloInmueble');
+        $this->loadModel('FotoDesarrollo');
+        $this->loadModel('Inmueble');
+        $this->FotoDesarrollo->Behaviors->load('Containable');
+        $this->DesarrolloInmueble->Behaviors->load('Containable');
+        $this->Desarrollo->Behaviors->load('Containable');
+        $this->Inmueble->Behaviors->load('Containable');
+        $response=[];
+        $i=0;
+        $j=0;
+        if ($this->request->is('post') && $this->request->data['api_key'] != null ) {
+            $cuenta_id=$this->request->data['cuenta_id'];
+            $search_desarollo=$this->Desarrollo->find( 'all',array(
+                'conditions'=>array(
+                    'Desarrollo.cuenta_id'=> $cuenta_id, 
+                    // 'Desarrollo.id'=> 246, 
+                ), 
+                'fields'=>array(
+                    'nombre','id','visible','tipo_desarrollo','torres','unidades_totales','fecha_entrega',
+                    'colonia','m2_low','m2_top','rec_top','rec_low','banio_low','banio_top','est_top','est_low',
+                    'is_private','entrega','precio_low','precio_top'
+                ),
+                'contain'=>array(
+                    'EquipoTrabajo'=>array(
+                        'fields'=>array(
+                            'nombre_grupo'
+                        )
+                    ),
+                    'Comercializador'=>array(
+                        'fields'=>'nombre_comercial'
+                    ),
+                ),
+                )
+            );
+            foreach ( $search_desarollo as $value) {
+                $search_inmueble=$this->DesarrolloInmueble->find('all',array(
+                    'conditions'=>array(
+                        'DesarrolloInmueble.desarrollo_id'=> $value['Desarrollo']['id'], 
+                    ),
+                    'fields'=>array(
+                        'id',
+                        'inmueble_id',
+                    ), 
+                    'contain' => false
+                ));
+                
+                $response[$i]['desarrollo']= $value['Desarrollo']['nombre'];
+                $response[$i]['equipo']= $value['EquipoTrabajo']['nombre_grupo'];
+                $response[$i]['desarrollo']= $value['Comercializador']['nombre_comercial'];
+                // $response[$i]['desarrollo']= $value['Desarrollo']['nombre'];
+                $response[$i]['id']= $value['Desarrollo']['id'];
+                $response[$i]['tipo_desarrollo']= $value['Desarrollo']['tipo_desarrollo'];
+                $response[$i]['unidades_totales']= $value['Desarrollo']['unidades_totales'];
+                $response[$i]['fecha_entrega']= $value['Desarrollo']['fecha_entrega'];
+                $response[$i]['m2']= $value['Desarrollo']['m2_low'] .' - ' . $value['Desarrollo']['m2_top'];
+                $response[$i]['rec']=  $value['Desarrollo']['rec_low'] .' - ' . $value['Desarrollo']['rec_top'];
+                $response[$i]['banio']=  $value['Desarrollo']['banio_low'] .' - ' . $value['Desarrollo']['banio_top'];
+                $response[$i]['est']=  $value['Desarrollo']['est_low'] .' - ' . $value['Desarrollo']['est_top'];
+                $response[$i]['precios']=  $value['Desarrollo']['precio_low'] .' - ' . $value['Desarrollo']['precio_top'];
+                foreach ($search_inmueble as  $inmueble) {
+                    $inmueble_info=$this->Inmueble->find('first',array(
+                        'conditions'=>array(
+                            'Inmueble.id'=> $inmueble['DesarrolloInmueble']['inmueble_id'], 
+                        ),
+                        'fields'=>array(
+                            'id',
+                            'liberada',
+                            'construccion',
+                            'recamaras',
+                            'banos',
+                            'titulo',
+                            'estacionamiento_techado',
+                            'estacionamiento_descubierto', 
+                            'nivel_propiedad',
+                            // 'niveles_totales',
+                        ), 
+                        'contain' => false
+                    ));
+                    $inmueble_foto=$this->FotoInmueble->find('first',array(
+                        'conditions'=>array(
+                            'FotoInmueble.inmueble_id'=> $inmueble['DesarrolloInmueble']['inmueble_id'], 
+                            'FotoInmueble.orden'=>0, 
+                        ),
+                        'fields'=>array(
+                            'ruta',
+                            'id',
+                        ),
+                    ));
+                    $operacion=$this->OperacionesInmueble->find('first',array(
+                        'conditions'=>array(
+                            'OperacionesInmueble.inmueble_id'=> $inmueble['DesarrolloInmueble']['inmueble_id'], 
+                            'OperacionesInmueble.tipo_operacion'=>3, 
+                        ),
+                        'fields'=>array(
+                            'precio_cierre',
+                            'id',
+                        ),
+                    ));
+
+                    if (!empty( $operacion)) {
+                        $response[$i]['inmueble'][$j]['venta']= $operacion['OperacionesInmueble']['precio_cierre'];
+                        $ventas +=$operacion['OperacionesInmueble']['precio_cierre'];
+                        
+                    }else {
+                        $response[$i]['inmueble'][$j]['venta']=0;
+                    }
+                    $response[$i]['inmueble'][$j]['titulo']       = $inmueble_info['Inmueble']['titulo'];
+                    switch ($variable) {
+                        case $inmueble_info['Inmueble']['liberada']=0:
+                            $response[$i]['inmueble'][$j]['liberada']     = '';
+
+                        case $inmueble_info['Inmueble']['liberada']=1:
+                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
+
+                        case $inmueble_info['Inmueble']['liberada']=2:
+                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
+
+                        case $inmueble_info['Inmueble']['liberada']=3:
+                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
+
+                        case $inmueble_info['Inmueble']['liberada']=4:
+                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
+
+                        case $inmueble_info['Inmueble']['liberada']=5:
+                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
+
+                        
+                    }
+                    $response[$i]['inmueble'][$j]['id'] = $inmueble_info['Inmueble']['id'];
+                    $response[$i]['inmueble'][$j]['construccion'] = $inmueble_info['Inmueble']['construccion'];
+                    $response[$i]['inmueble'][$j]['recamaras']    = $inmueble_info['Inmueble']['recamaras'];
+                    $response[$i]['inmueble'][$j]['banos']        = $inmueble_info['Inmueble']['banos'];
+                    $response[$i]['inmueble'][$j]['nivel_propiedad']        = $inmueble_info['Inmueble']['nivel_propiedad'];
+                    // $response[$i]['inmueble'][$j]['niveles_totales']        = $inmueble_info['Inmueble']['niveles_totales'];
+                    $response[$i]['inmueble'][$j]['plano']        = Router::url($inmueble_foto['FotoInmueble']['ruta'],true);
+                    $j++;
+                }
+                $response[$i]['bajas']=$libres;
+                $response[$i]['bloquedos']=$libres;
+                $response[$i]['libres']=$libres;
+                $response[$i]['apartados']=$libres;
+                $response[$i]['ventas']=$libres;
+                $response[$i]['escriturados']=$libres;
+                $response[$i]['dinero']=$ventas;
+                $i++;
+                
+            }
+        }else {
+            $response = array(
+                'Ok' => false,
+                'mensaje' => 'Hubo un error intente nuevamente'
+            );
+        }
+        
+        echo json_encode($response, true);
+        exit();
+        $this->autoRender = false;
+    }
+
 
 }
