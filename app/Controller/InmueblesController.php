@@ -41,7 +41,7 @@ class InmueblesController extends AppController {
         
         public function beforeFilter() {
 		parent::beforeFilter();
-        $this->Auth->allow('detalle', 'get_inmuebles', 'get_inmueble_detalle', 'get_images_inmueble');
+        $this->Auth->allow('inmueble_view_info','detalle', 'get_inmuebles', 'get_inmueble_detalle', 'get_images_inmueble');
 
         $this->endPoint      = "https://us-central1-inmoviliarias-hmmx.cloudfunctions.net/mpSincronizarUnidad";
         $this->iDCorporativo = "Acciona";
@@ -3433,8 +3433,8 @@ public function view_tipo($id = null,$desarrollo_id = null){
         $this->Desarrollo->Behaviors->load('Containable');
         $this->Inmueble->Behaviors->load('Containable');
         $response=[];
+        $escriturados=0;
         $i=0;
-        $j=0;
         if ($this->request->is('post') && $this->request->data['api_key'] != null ) {
             $cuenta_id=$this->request->data['cuenta_id'];
             $search_desarollo=$this->Desarrollo->find( 'all',array(
@@ -3470,7 +3470,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
                     ), 
                     'contain' => false
                 ));
-                
+                $j=0;
                 $response[$i]['desarrollo']= $value['Desarrollo']['nombre'];
                 $response[$i]['equipo']= $value['EquipoTrabajo']['nombre_grupo'];
                 $response[$i]['desarrollo']= $value['Comercializador']['nombre_comercial'];
@@ -3523,7 +3523,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
                             'id',
                         ),
                     ));
-
+                    
                     if (!empty( $operacion)) {
                         $response[$i]['inmueble'][$j]['venta']= $operacion['OperacionesInmueble']['precio_cierre'];
                         $ventas +=$operacion['OperacionesInmueble']['precio_cierre'];
@@ -3532,7 +3532,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
                         $response[$i]['inmueble'][$j]['venta']=0;
                     }
                     $response[$i]['inmueble'][$j]['titulo']       = $inmueble_info['Inmueble']['titulo'];
-                    switch ($variable) {
+                    switch ($inmueble_info['Inmueble']['liberada']) {
                         case $inmueble_info['Inmueble']['liberada']=0:
                             $response[$i]['inmueble'][$j]['liberada']     = '';
 
@@ -3549,8 +3549,9 @@ public function view_tipo($id = null,$desarrollo_id = null){
                             $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
 
                         case $inmueble_info['Inmueble']['liberada']=5:
+                           
                             $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
-
+                        $escriturados++;
                         
                     }
                     $response[$i]['inmueble'][$j]['id'] = $inmueble_info['Inmueble']['id'];
@@ -3562,12 +3563,12 @@ public function view_tipo($id = null,$desarrollo_id = null){
                     $response[$i]['inmueble'][$j]['plano']        = Router::url($inmueble_foto['FotoInmueble']['ruta'],true);
                     $j++;
                 }
-                $response[$i]['bajas']=$libres;
-                $response[$i]['bloquedos']=$libres;
-                $response[$i]['libres']=$libres;
-                $response[$i]['apartados']=$libres;
-                $response[$i]['ventas']=$libres;
-                $response[$i]['escriturados']=$libres;
+                $response[$i]['bajas']=$escriturados;
+                $response[$i]['bloquedos']=$escriturados;
+                $response[$i]['libres']=$escriturados;
+                $response[$i]['apartados']=$escriturados;
+                $response[$i]['ventas']=$escriturados;
+                $response[$i]['escriturados']=$escriturados;
                 $response[$i]['dinero']=$ventas;
                 $i++;
                 
