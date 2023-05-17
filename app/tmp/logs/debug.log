@@ -12998,6 +12998,7 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+<<<<<<< HEAD
 2023-05-10 22:19:12 Notice: Notice (8): Undefined index: DicLineaContacto in [/Applications/MAMP/htdocs/Adryo-web/app/View/Ventas/sale_list.ctp, line 79]
 Trace:
 ErrorHandler::handleError() - CORE/Cake/Error/ErrorHandler.php, line 230
@@ -15336,4 +15337,211 @@ Controller::render() - CORE/Cake/Controller/Controller.php, line 968
 Dispatcher::_invoke() - CORE/Cake/Routing/Dispatcher.php, line 200
 Dispatcher::dispatch() - CORE/Cake/Routing/Dispatcher.php, line 167
 [main] - APP/webroot/index.php, line 117
+=======
+2023-05-17 15:27:32 Debug: Notice (8): unserialize(): Error at offset 1063 of 1814 bytes in [F:\adryo\Adryo-web\lib\Cake\Cache\Engine\FileEngine.php, line 194]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+unserialize - [internal], line ??
+FileEngine::read() - CORE\Cake\Cache\Engine\FileEngine.php, line 194
+Cache::read() - CORE\Cake\Cache\Cache.php, line 363
+DataSource::_cacheDescription() - CORE\Cake\Model\Datasource\DataSource.php, line 306
+DataSource::describe() - CORE\Cake\Model\Datasource\DataSource.php, line 135
+Mysql::describe() - CORE\Cake\Model\Datasource\Database\Mysql.php, line 341
+Model::schema() - CORE\Cake\Model\Model.php, line 1397
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1438
+DboSource::_parseKey() - CORE\Cake\Model\Datasource\DboSource.php, line 2944
+DboSource::conditionKeysToString() - CORE\Cake\Model\Datasource\DboSource.php, line 2890
+DboSource::conditions() - CORE\Cake\Model\Datasource\DboSource.php, line 2771
+DboSource::buildStatement() - CORE\Cake\Model\Datasource\DboSource.php, line 2053
+DboSource::buildAssociationQuery() - CORE\Cake\Model\Datasource\DboSource.php, line 1784
+DboSource::read() - CORE\Cake\Model\Datasource\DboSource.php, line 1224
+Model::_readDataSource() - CORE\Cake\Model\Model.php, line 3053
+Model::find() - CORE\Cake\Model\Model.php, line 3025
+ClientesController::add() - APP\Controller\ClientesController.php, line 910
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-17 15:27:32 Debug: Notice (8): unserialize() [<a href='http://php.net/function.unserialize'>function.unserialize</a>]: Error at offset 9482 of 17605 bytes in [F:\adryo\Adryo-web\lib\Cake\Cache\Engine\FileEngine.php, line 194]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+unserialize - [internal], line ??
+FileEngine::read() - CORE\Cake\Cache\Engine\FileEngine.php, line 194
+Cache::read() - CORE\Cake\Cache\Cache.php, line 363
+DataSource::_cacheDescription() - CORE\Cake\Model\Datasource\DataSource.php, line 306
+DataSource::describe() - CORE\Cake\Model\Datasource\DataSource.php, line 135
+Mysql::describe() - CORE\Cake\Model\Datasource\Database\Mysql.php, line 341
+Model::schema() - CORE\Cake\Model\Model.php, line 1397
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1438
+DboSource::conditionKeysToString() - CORE\Cake\Model\Datasource\DboSource.php, line 2871
+DboSource::conditions() - CORE\Cake\Model\Datasource\DboSource.php, line 2771
+DboSource::buildStatement() - CORE\Cake\Model\Datasource\DboSource.php, line 2053
+DboSource::generateAssociationQuery() - CORE\Cake\Model\Datasource\DboSource.php, line 1943
+DboSource::queryAssociation() - CORE\Cake\Model\Datasource\DboSource.php, line 1377
+DboSource::read() - CORE\Cake\Model\Datasource\DboSource.php, line 1257
+Model::_readDataSource() - CORE\Cake\Model\Model.php, line 3053
+Model::find() - CORE\Cake\Model\Model.php, line 3025
+ClientesController::add() - APP\Controller\ClientesController.php, line 912
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-17 15:27:32 Debug: Notice (8): unserialize() [<a href='http://php.net/function.unserialize'>function.unserialize</a>]: Error at offset 808 of 931 bytes in [F:\adryo\Adryo-web\lib\Cake\Cache\Engine\FileEngine.php, line 194]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+unserialize - [internal], line ??
+FileEngine::read() - CORE\Cake\Cache\Engine\FileEngine.php, line 194
+Cache::read() - CORE\Cake\Cache\Cache.php, line 363
+DataSource::_cacheDescription() - CORE\Cake\Model\Datasource\DataSource.php, line 306
+DataSource::describe() - CORE\Cake\Model\Datasource\DataSource.php, line 135
+Mysql::describe() - CORE\Cake\Model\Datasource\Database\Mysql.php, line 341
+Model::schema() - CORE\Cake\Model\Model.php, line 1397
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1438
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1455
+DboSource::conditionKeysToString() - CORE\Cake\Model\Datasource\DboSource.php, line 2871
+DboSource::conditions() - CORE\Cake\Model\Datasource\DboSource.php, line 2771
+DboSource::buildStatement() - CORE\Cake\Model\Datasource\DboSource.php, line 2053
+DboSource::generateAssociationQuery() - CORE\Cake\Model\Datasource\DboSource.php, line 1943
+DboSource::queryAssociation() - CORE\Cake\Model\Datasource\DboSource.php, line 1377
+DboSource::read() - CORE\Cake\Model\Datasource\DboSource.php, line 1257
+Model::_readDataSource() - CORE\Cake\Model\Model.php, line 3053
+Model::find() - CORE\Cake\Model\Model.php, line 3025
+ClientesController::add() - APP\Controller\ClientesController.php, line 912
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-17 15:27:32 Debug: Notice (8): unserialize() [<a href='http://php.net/function.unserialize'>function.unserialize</a>]: Error at offset 10539 of 22576 bytes in [F:\adryo\Adryo-web\lib\Cake\Cache\Engine\FileEngine.php, line 194]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+unserialize - [internal], line ??
+FileEngine::read() - CORE\Cake\Cache\Engine\FileEngine.php, line 194
+Cache::read() - CORE\Cake\Cache\Cache.php, line 363
+DataSource::_cacheDescription() - CORE\Cake\Model\Datasource\DataSource.php, line 306
+DataSource::describe() - CORE\Cake\Model\Datasource\DataSource.php, line 135
+Mysql::describe() - CORE\Cake\Model\Datasource\Database\Mysql.php, line 341
+Model::schema() - CORE\Cake\Model\Model.php, line 1397
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1438
+DboSource::_parseKey() - CORE\Cake\Model\Datasource\DboSource.php, line 2944
+DboSource::conditionKeysToString() - CORE\Cake\Model\Datasource\DboSource.php, line 2890
+DboSource::conditions() - CORE\Cake\Model\Datasource\DboSource.php, line 2771
+DboSource::buildStatement() - CORE\Cake\Model\Datasource\DboSource.php, line 2053
+DboSource::buildAssociationQuery() - CORE\Cake\Model\Datasource\DboSource.php, line 1784
+DboSource::read() - CORE\Cake\Model\Datasource\DboSource.php, line 1224
+Model::_readDataSource() - CORE\Cake\Model\Model.php, line 3053
+Model::find() - CORE\Cake\Model\Model.php, line 3025
+ClientesController::add() - APP\Controller\ClientesController.php, line 943
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-17 15:27:32 Debug: Notice (8): unserialize() [<a href='http://php.net/function.unserialize'>function.unserialize</a>]: Error at offset 2595 of 5804 bytes in [F:\adryo\Adryo-web\lib\Cake\Cache\Engine\FileEngine.php, line 194]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+unserialize - [internal], line ??
+FileEngine::read() - CORE\Cake\Cache\Engine\FileEngine.php, line 194
+Cache::read() - CORE\Cake\Cache\Cache.php, line 363
+DataSource::_cacheDescription() - CORE\Cake\Model\Datasource\DataSource.php, line 306
+DataSource::describe() - CORE\Cake\Model\Datasource\DataSource.php, line 135
+Mysql::describe() - CORE\Cake\Model\Datasource\Database\Mysql.php, line 341
+Model::schema() - CORE\Cake\Model\Model.php, line 1397
+FormHelper::_introspectModel() - CORE\Cake\View\Helper\FormHelper.php, line 215
+FormHelper::create() - CORE\Cake\View\Helper\FormHelper.php, line 480
+include - APP\View\Clientes\add.ctp, line 99
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 968
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-17 08:27:46 Debug: Notice (8): unserialize(): Error at offset 2654 of 3317 bytes in [F:\adryo\Adryo-web\lib\Cake\Cache\Engine\FileEngine.php, line 194]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+unserialize - [internal], line ??
+FileEngine::read() - CORE\Cake\Cache\Engine\FileEngine.php, line 194
+Cache::read() - CORE\Cake\Cache\Cache.php, line 363
+DataSource::_cacheDescription() - CORE\Cake\Model\Datasource\DataSource.php, line 306
+DataSource::describe() - CORE\Cake\Model\Datasource\DataSource.php, line 135
+Mysql::describe() - CORE\Cake\Model\Datasource\Database\Mysql.php, line 341
+Model::schema() - CORE\Cake\Model\Model.php, line 1397
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1438
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1455
+DboSource::conditionKeysToString() - CORE\Cake\Model\Datasource\DboSource.php, line 2871
+DboSource::conditions() - CORE\Cake\Model\Datasource\DboSource.php, line 2771
+DboSource::buildStatement() - CORE\Cake\Model\Datasource\DboSource.php, line 2053
+DboSource::generateAssociationQuery() - CORE\Cake\Model\Datasource\DboSource.php, line 1943
+DboSource::queryAssociation() - CORE\Cake\Model\Datasource\DboSource.php, line 1377
+DboSource::read() - CORE\Cake\Model\Datasource\DboSource.php, line 1257
+Model::_readDataSource() - CORE\Cake\Model\Model.php, line 3053
+Model::find() - CORE\Cake\Model\Model.php, line 3025
+ClientesController::add_cliente() - APP\Controller\ClientesController.php, line 4229
+ClientesController::add() - APP\Controller\ClientesController.php, line 878
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-17 08:27:52 Debug: Notice (8): unserialize() [<a href='http://php.net/function.unserialize'>function.unserialize</a>]: Error at offset 817 of 1174 bytes in [F:\adryo\Adryo-web\lib\Cake\Cache\Engine\FileEngine.php, line 194]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+unserialize - [internal], line ??
+FileEngine::read() - CORE\Cake\Cache\Engine\FileEngine.php, line 194
+Cache::read() - CORE\Cake\Cache\Cache.php, line 363
+DataSource::_cacheDescription() - CORE\Cake\Model\Datasource\DataSource.php, line 306
+DataSource::describe() - CORE\Cake\Model\Datasource\DataSource.php, line 135
+Mysql::describe() - CORE\Cake\Model\Datasource\Database\Mysql.php, line 341
+Model::schema() - CORE\Cake\Model\Model.php, line 1397
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1438
+Model::getColumnType() - CORE\Cake\Model\Model.php, line 1455
+DboSource::conditionKeysToString() - CORE\Cake\Model\Datasource\DboSource.php, line 2871
+DboSource::conditions() - CORE\Cake\Model\Datasource\DboSource.php, line 2771
+DboSource::buildStatement() - CORE\Cake\Model\Datasource\DboSource.php, line 2053
+DboSource::generateAssociationQuery() - CORE\Cake\Model\Datasource\DboSource.php, line 1943
+DboSource::queryAssociation() - CORE\Cake\Model\Datasource\DboSource.php, line 1377
+DboSource::read() - CORE\Cake\Model\Datasource\DboSource.php, line 1257
+Model::_readDataSource() - CORE\Cake\Model\Model.php, line 3053
+Model::find() - CORE\Cake\Model\Model.php, line 3025
+ClientesController::add_cliente() - APP\Controller\ClientesController.php, line 4398
+ClientesController::add() - APP\Controller\ClientesController.php, line 878
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-17 15:28:09 Debug: Notice (8): Undefined index: medio_banos in [F:\adryo\Adryo-web\app\View\Clientes\view.ctp, line 1665]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+include - APP\View\Clientes\view.ctp, line 1665
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 968
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-17 15:37:08 Debug: Notice (8): Undefined index: medio_banos in [F:\adryo\Adryo-web\app\View\Clientes\view.ctp, line 1665]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+include - APP\View\Clientes\view.ctp, line 1665
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 968
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 

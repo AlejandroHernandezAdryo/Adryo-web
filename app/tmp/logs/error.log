@@ -4156,6 +4156,7 @@ Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 2023-05-09 00:09:06 Error: [MissingControllerException] Controller class VendorsController could not be found.
 Exception Attributes: array (
   'class' => 'VendorsController',
@@ -4216,10 +4217,14 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 21:30:04 Error: [MissingControllerException] Controller class CssController could not be found.
+=======
+2023-05-17 15:28:09 Error: [MissingControllerException] Controller class CssController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'CssController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/css/pages/layouts.css
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4349,37 +4354,69 @@ Stack Trace:
 #9 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #10 {main}
 2023-05-10 21:31:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/css/adryo_components.css
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:02:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/in_r.svg
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/logo1.ico
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:13:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/tw_r.svg
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:13:31 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/fb_r.svg
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/fondo_trans.png
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4466,10 +4503,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:17:05 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/wa_r.svg
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4484,10 +4529,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:17:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/mailblue.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4502,10 +4555,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:17:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/terreno.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4520,19 +4581,35 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:17:40 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/recamaras.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:17:47 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/battrom.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4556,10 +4633,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:17:52 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/estacionamientos.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4574,10 +4659,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:19:12 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/recamaras.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4592,10 +4685,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:23:59 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/terreno.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:11 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4610,10 +4711,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:24:07 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/battrom.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:28:12 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4628,10 +4737,27 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:24:26 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/estacionamientos.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:08 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/css/adryo_components.css
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4789,10 +4915,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:28:39 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/tw_r.svg
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4950,10 +5084,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:28:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/fb_r.svg
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -4978,10 +5120,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:31:04 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/in_r.svg
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5006,10 +5156,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-10 22:31:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/mailblue.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5024,10 +5182,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-11 14:42:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/terreno.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:08 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5042,10 +5208,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-11 14:42:03 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/wa_r.svg
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/fondo_trans.png
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5060,10 +5234,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-11 14:42:17 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/recamaras.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5088,10 +5270,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-11 14:42:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/battrom.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:09 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5116,10 +5306,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-11 14:43:14 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/estacionamientos.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5144,10 +5342,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-11 14:47:32 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/terreno.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5172,10 +5378,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-11 14:47:38 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/recamaras.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -5200,10 +5414,18 @@ Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
 2023-05-11 14:48:13 Error: [MissingControllerException] Controller class ImgController could not be found.
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/battrom.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 15:37:10 Error: [MissingControllerException] Controller class ImgController could not be found.
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
 Exception Attributes: array (
   'class' => 'ImgController',
   'plugin' => NULL,
 )
+<<<<<<< HEAD
 Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
@@ -16350,3 +16572,48 @@ Request URL: /Adryo-web/img/background_body.jpg
 Stack Trace:
 #0 /Applications/MAMP/htdocs/Adryo-web/app/webroot/index.php(117): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+=======
+Request URL: /adryo/Adryo-web/img/clientes_icons/estacionamientos.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-17 08:40:40 Error: [SocketException] Se produjo un error durante el intento de conexión ya que la parte conectada no respondió adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexión establecida ya que el host conectado no ha podido responder.
+
+Request URL: /adryo/Adryo-web/clientes/add
+Stack Trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Network\Email\SmtpTransport.php(146): CakeSocket->connect()
+#1 F:\adryo\Adryo-web\lib\Cake\Network\Email\SmtpTransport.php(86): SmtpTransport->_connect()
+#2 F:\adryo\Adryo-web\lib\Cake\Network\Email\CakeEmail.php(1183): SmtpTransport->send(Object(CakeEmail))
+#3 F:\adryo\Adryo-web\app\Controller\ClientesController.php(4444): CakeEmail->send()
+#4 F:\adryo\Adryo-web\app\Controller\ClientesController.php(878): ClientesController->add_cliente(Array, Array)
+#5 [internal function]: ClientesController->add()
+#6 F:\adryo\Adryo-web\lib\Cake\Controller\Controller.php(499): ReflectionMethod->invokeArgs(Object(ClientesController), Array)
+#7 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#8 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(ClientesController), Object(CakeRequest))
+#9 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#10 {main}
+2023-05-17 08:40:40 Error: Fatal Error (256): [CakeException] Unknown status code
+#0 F:\adryo\Adryo-web\lib\Cake\Error\ExceptionRenderer.php(228): CakeResponse->statusCode(10060)
+#1 [internal function]: ExceptionRenderer->error400(Object(SocketException))
+#2 F:\adryo\Adryo-web\lib\Cake\Error\ExceptionRenderer.php(190): call_user_func_array(Array, Array)
+#3 F:\adryo\Adryo-web\lib\Cake\Error\ErrorHandler.php(127): ExceptionRenderer->render()
+#4 [internal function]: ErrorHandler::handleException(Object(SocketException))
+#5 {main} in [F:\adryo\Adryo-web\lib\Cake\Error\ErrorHandler.php, line 138]
+2023-05-17 08:40:40 Error: Fatal Error (1): Uncaught exception 'InternalErrorException' with message 'Internal Server Error' in F:\adryo\Adryo-web\lib\Cake\Error\ErrorHandler.php:261
+Stack trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Error\ErrorHandler.php(212): ErrorHandler::handleFatalError(256, '[CakeException]...', 'F:\\adryo\\Adryo-...', 138)
+#1 [internal function]: ErrorHandler::handleError(256, '[CakeException]...', 'F:\\adryo\\Adryo-...', 138, Array)
+#2 F:\adryo\Adryo-web\lib\Cake\Error\ErrorHandler.php(138): trigger_error('[CakeException]...', 256)
+#3 [internal function]: ErrorHandler::handleException(Object(SocketException))
+#4 {main}
+  thrown in [F:\adryo\Adryo-web\lib\Cake\Error\ErrorHandler.php, line 261]
+2023-05-17 08:40:40 Error: [InternalErrorException] Internal Server Error
+Request URL: /adryo/Adryo-web/clientes/add
+Stack Trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Error\ErrorHandler.php(212): ErrorHandler::handleFatalError(1, 'Uncaught except...', 'F:\\adryo\\Adryo-...', 261)
+#1 [internal function]: ErrorHandler::handleError(1, 'Uncaught except...', 'F:\\adryo\\Adryo-...', 261, Array)
+#2 F:\adryo\Adryo-web\lib\Cake\Core\App.php(970): call_user_func('ErrorHandler::h...', 1, 'Uncaught except...', 'F:\\adryo\\Adryo-...', 261, Array)
+#3 F:\adryo\Adryo-web\lib\Cake\Core\App.php(943): App::_checkFatalError()
+#4 [internal function]: App::shutdown()
+#5 {main}
+>>>>>>> 15881e2be87f21865db143cb3fd10d7c2822ca18
