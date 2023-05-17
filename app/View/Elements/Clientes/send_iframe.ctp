@@ -174,9 +174,9 @@
         }
 
         if( tipo_propiedad == 1 ){
-            URL = "<?= Router::url(array('controller' => 'desarrollos', 'action' => 'detalle'), true) ?>/"+desarrollo_id+"";
+            URL = "<?= Router::url(array('controller' => 'desarrollos', 'action' => 'detalle'), true) ?>/"+desarrollo_id+"/'<?= $this->Session->read('CuentaUsuario.CuentasUser.user_id')?>' ";
         }else{
-            URL = "<?= Router::url(array('controller' => 'inmuebles', 'action' => 'detalle'), true) ?>/"+desarrollo_id+"";
+            URL = "<?= Router::url(array('controller' => 'inmuebles', 'action' => 'detalle'), true) ?>/"+desarrollo_id+"/'<?= $this->Session->read('CuentaUsuario.CuentasUser.user_id'); ?>' ";
         }
 
         // Asignamos el valor del desarrollo_id al input que corresponde.

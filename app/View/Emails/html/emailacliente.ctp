@@ -684,11 +684,10 @@
                     <tr>
                         <td valign="top" class="mcnTextBlockInner">
                             <div class="mcnTextContent" style="">
-                                <div style="border: 1px solid #ADB5BD; height: 100%; border-radius: 8px;" id="card-center">
+                                <div style="border: 1px solid #ADB5BD; height: 100%; border-radius: 8px;margin:0 auto;" id="card-center">
                                     <p style="text-align: center">
                                         <img data-file-id="2730789" height="261" src="<?= Router::url($propiedad['FotoInmueble'][0]['ruta'], true) ?>" style="border: 0px  ; width: 180px; height: 180px; margin: 0px;" width="180">
                                     </p>
-        
                                     <p style="text-align: center">
                                         <?php echo $propiedad['Inmueble']['referencia']?>
                                     </p>
@@ -764,7 +763,7 @@
             <tr>
                 <td valign="top" class="mcnTextBlockInner">
                     <div class="mcnTextContent">
-                        <table style="height 200px; background-color: #495057; width: 100%; margin-top: 33px">
+                        <table style="height 200px; background-color: #495057; width: 100%; margin-top: 33px;">
 	                        <tbody>
 		                        <tr class="firma">
 			                        <td calss="firma1">
@@ -774,7 +773,7 @@
                                                     <td>
                                                     </td>
                                                     <td id="photo-asesor">
-                                                        <div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: cover;">&nbsp;</div>
+                                                        <div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: 100% auto;">&nbsp;</div>
                                                     </td>
                                                     <td id="icons-asesor">
                                                         <table style="height: 100%;width: 30px;background: #ADB5BD;border-radius: 4px;">
@@ -789,28 +788,28 @@
                                                         </table>
                                                     </td>
 						                            <td id="datos-asesor">
-						                                <table style="height: 100%;">
+						                                <table style="height: 100%;width:100%;">
 							                                <tbody>
                                                                 <tr>
-																	<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px; color: #fff !important;">
+																	<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;">
 																	<?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
                                                                     </td>
-                                                                    <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px; color: #fff;">
+                                                                    <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;">
                                                                         Asesor
                                                                     </td>
 																</tr>
 																<tr>
-																	<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px; color: #fff !important;">
+																	<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
 																	<?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
 																	</td>
 																</tr>
 																<tr>
-																	<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px; color: #fff !important;">
+																	<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
 																	<?= ($this->Session->read('CuentaUsuario.Cuenta.pagina_web') != '' ? $this->Session->read('CuentaUsuario.Cuenta.pagina_web') : 'N/A' ) ?>
 																	</td>
 																</tr>
 																<tr>
-																	<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px; color: #fff !important;">
+																	<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
 																	<?= (empty( $usuario['User']['correo_electronico'])? 'Sin correo eléctronico': $usuario['User']['correo_electronico'])?>
                                                                     </td>
 																</tr>

@@ -2509,7 +2509,7 @@ class ClientesController extends AppController {
 
       if (!$this->Cliente->exists()) {
           $this->Session->setFlash('', 'default', array(), 'success');
-          $this->Session->setFlash('No se ha podido eliminar el clinete, favor de intentarlo nuevamente, gracias.', 'default', array(), 'm_success');
+          $this->Session->setFlash('No se ha podido eliminar el cliente, favor de intentarlo nuevamente, gracias.', 'default', array(), 'm_success');
       }
 
       // Registro en el usuario que elimina que ha eliminado a ese cliente.
