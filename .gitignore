@@ -1,7 +1,7 @@
-
 *.ttf
 /app/webroot
 /app/Config
+/app/temp
+/temp
+.app/temp
 app\temp
-.app\temp
-/app\temp
