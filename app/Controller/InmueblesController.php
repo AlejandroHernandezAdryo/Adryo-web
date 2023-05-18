@@ -3476,19 +3476,19 @@ public function view_tipo($id = null,$desarrollo_id = null){
                     'contain' => false
                 ));
                 
-                $response[$i]['desarrollo']= $value['Desarrollo']['nombre'];
-                $response[$i]['equipo']= $value['EquipoTrabajo']['nombre_grupo'];
-                $response[$i]['desarrollo']= $value['Comercializador']['nombre_comercial'];
-                // $response[$i]['desarrollo']= $value['Desarrollo']['nombre'];
-                $response[$i]['id']= $value['Desarrollo']['id'];
-                $response[$i]['tipo_desarrollo']= $value['Desarrollo']['tipo_desarrollo'];
-                $response[$i]['unidades_totales']= $value['Desarrollo']['unidades_totales'];
-                $response[$i]['fecha_entrega']= $value['Desarrollo']['fecha_entrega'];
-                $response[$i]['m2']= $value['Desarrollo']['m2_low'] .' - ' . $value['Desarrollo']['m2_top'];
-                $response[$i]['rec']=  $value['Desarrollo']['rec_low'] .' - ' . $value['Desarrollo']['rec_top'];
-                $response[$i]['banio']=  $value['Desarrollo']['banio_low'] .' - ' . $value['Desarrollo']['banio_top'];
-                $response[$i]['est']=  $value['Desarrollo']['est_low'] .' - ' . $value['Desarrollo']['est_top'];
-                $response[$i]['precios']=  $value['Desarrollo']['precio_low'] .' - ' . $value['Desarrollo']['precio_top'];
+                $response[$i]['Desarrollo']['desarrollo']       = $value['Desarrollo']['nombre'];
+                $response[$i]['Desarrollo']['equipo']           = $value['EquipoTrabajo']['nombre_grupo'];
+                // $response[$i]['nombre_comercial']       = $value['Comercializador']['nombre_comercial'];
+
+                $response[$i]['Desarrollo']['id']               = $value['Desarrollo']['id'];
+                $response[$i]['Desarrollo']['tipo_desarrollo']  = $value['Desarrollo']['tipo_desarrollo'];
+                $response[$i]['Desarrollo']['unidades_totales'] = $value['Desarrollo']['unidades_totales'];
+                $response[$i]['Desarrollo']['fecha_entrega']    = $value['Desarrollo']['fecha_entrega'];
+                $response[$i]['Desarrollo']['m2']               = $value['Desarrollo']['m2_low'] .' - ' . $value['Desarrollo']['m2_top'];
+                $response[$i]['Desarrollo']['rec']              = $value['Desarrollo']['rec_low'] .' - ' . $value['Desarrollo']['rec_top'];
+                $response[$i]['Desarrollo']['banio']            = $value['Desarrollo']['banio_low'] .' - ' . $value['Desarrollo']['banio_top'];
+                $response[$i]['Desarrollo']['est']              = $value['Desarrollo']['est_low'] .' - ' . $value['Desarrollo']['est_top'];
+                $response[$i]['Desarrollo']['precios']          = $value['Desarrollo']['precio_low'] .' - ' . $value['Desarrollo']['precio_top'];
                 foreach ($search_inmueble as  $inmueble) {
                     $inmueble_info=$this->Inmueble->find('first',array(
                         'conditions'=>array(
@@ -3565,13 +3565,13 @@ public function view_tipo($id = null,$desarrollo_id = null){
                     $response[$i]['inmueble'][$j]['plano']        = Router::url($inmueble_foto['FotoInmueble']['ruta'],true);
                     $j++;
                 }
-                $response[$i]['bloquedos']    = $bloqueada;
-                $response[$i]['libres']       = $liberada;
-                $response[$i]['apartados']    = $reservada;
-                $response[$i]['ventas']       = $contrato;
-                $response[$i]['escriturados'] = $escrituradas;
-                $response[$i]['dinero']       = $ventas;
-                $response[$i]['disponible_libres'] = $liberada .' / '.$value['Desarrollo']['unidades_totales'];
+                $response[$i]['contadores']['bloquedos']    = $bloqueada;
+                $response[$i]['contadores']['libres']       = $liberada;
+                $response[$i]['contadores']['apartados']    = $reservada;
+                $response[$i]['contadores']['ventas']       = $contrato;
+                $response[$i]['contadores']['escriturados'] = $escrituradas;
+                $response[$i]['contadores']['dinero']       = $ventas;
+                $response[$i]['contadores']['disponible_libres'] = $liberada .' / '.$value['Desarrollo']['unidades_totales'];
                 $i++;
                 
             }
