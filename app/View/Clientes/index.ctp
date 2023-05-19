@@ -349,7 +349,7 @@
 <script>
 
     'use strict';
-
+    var table = $('#sample_1');
     // Datos para la tabla
     $.ajax({
         url: '<?php echo Router::url(array("controller" => "clientes", "action" => "listado_clientes_json")); ?>',
@@ -485,6 +485,16 @@
             });
             var tableWrapper = $('#list_clientes_all_wrapper');
             tableWrapper.find('.dataTables_length select').select2();
+            table.destroy();
+            table = $('#sample_1').DataTable({
+                'destroy': true,
+                'paging': false,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true                            
+            });
         }
         
         return {
