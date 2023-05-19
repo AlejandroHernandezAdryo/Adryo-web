@@ -11830,7 +11830,7 @@ class ClientesController extends AppController {
       }else {
         $response = array(
           'Ok' => false,
-          'mensaje' => 	'no se borarron operaciones'
+          'mensaje' => 	'no se borarron operaciones '
         );
       }
       if (!empty($venta)) {
