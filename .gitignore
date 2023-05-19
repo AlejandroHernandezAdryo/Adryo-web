@@ -1,8 +1,12 @@
 
 *.ttf
+*.Archivo
+*Archivo
 /app/webroot
-/app/Config
-/app/temp
-/temp
-.app/temp
-app\temp
+/app/Config/core
+app/tmp
+/tmp
+app\tmp
+tmp\cache
+.tmp\logs
+tmp
