@@ -4,7 +4,7 @@
 *Archivo
 /app/webroot
 /app/Config
-/app/temp
-/temp
+.app\temp
+\temp
 .app/temp
 app\temp

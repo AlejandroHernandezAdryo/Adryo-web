@@ -483,8 +483,6 @@
                     },
                 ]
             });
-            var tableWrapper = $('#list_clientes_all_wrapper');
-            tableWrapper.find('.dataTables_length select').select2();
             table.destroy();
             table = $('#sample_1').DataTable({
                 'destroy': true,
@@ -495,6 +493,9 @@
                 'info': true,
                 'autoWidth': true                            
             });
+            
+            var tableWrapper = $('#list_clientes_all_wrapper');
+            tableWrapper.find('.dataTables_length select').select2();
         }
         
         return {

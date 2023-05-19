@@ -5940,3 +5940,12 @@ Request URL: /adryo/Adryo-web/files/cuentas/178/users/foto_asesores_terra.png
 Stack Trace:
 #0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-05-19 20:09:48 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/img/fondo_trans.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
