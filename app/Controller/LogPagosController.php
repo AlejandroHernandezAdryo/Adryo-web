@@ -27,7 +27,7 @@ class LogPagosController extends AppController {
     }
     /**
      * 
-     * 
+     * comentario
      * 
      * 
     */

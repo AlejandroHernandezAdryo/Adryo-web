@@ -11731,6 +11731,135 @@ class ClientesController extends AppController {
     exit();
     $this->autoRender = false;
   }
+  /**
+   * 
+   * 
+  */
+  function borrado_cliente(){
+    header('Content-type: application/json; charset=utf-8');
+    $this->loadModel('Cliente');
+    $this->loadModel('OperacionesInmueble');
+    $this->loadModel('Inmueble');
+    $this->loadModel('Venta');
+    $this->Venta->Behaviors->load('Containable');
+    $this->Cliente->Behaviors->load('Containable');
+    $this->Lead->Behaviors->load('Containable');
+    $this->OperacionesInmueble->Behaviors->load('Containable');
+    $this->Inmueble->Behaviors->load('Containable');
+    $response = [];
+    $response = array(
+      'Ok' => true,
+      'mensaje' => 	'listo'
+    );
+    if($this->request->is('post')) {
+      $cliente_id = $this->request->data['cliente_id'];
+
+      $clientes = $this->Lead->find('all',
+        array(
+          'conditions' => array(
+              'Lead.cliente_id' => $cliente_id ,
+          ),
+          'fields' => array(
+            'Lead.id',
+            'Lead.cliente_id',
+          ),
+          'contain' => false 
+        )
+      );
+      $operaciones = $this->OperacionesInmueble->find('all',
+        array(
+            'conditions' => array(
+                'OperacionesInmueble.cliente_id' => $cliente_id,
+            ),'fields' => array(
+                'id',
+                'inmueble_id',
+            ),
+            'contain' => false 
+        ) 
+      );
+      $inmueble_info=$this->Inmueble->find('first',array(
+        'conditions'=>array(
+            'Inmueble.id'=> $operaciones[0]['OperacionesInmueble']['inmueble_id'], 
+        ),
+        'fields'=>array(
+            'id',
+            'liberada',
+            // 'niveles_totales',
+        ), 
+        'contain' => false
+      ));
+      $venta=$this->Venta->find('first',array(
+        'conditions'=>array(
+          'Venta.cliente_id'=> $cliente_id, 
+        ),
+        'fields'=>array(
+            'id',
+            // 'niveles_totales',
+        ), 
+        'contain' => false
+      ));
+      if (!empty($clientes)) {
+        $this->Cliente->id= $cliente_id;
+        $this->Cliente->delete();
+        foreach ($clientes as  $value) {
+          $this->Lead->id            = $value['Lead']['id'];
+          $this->Lead->delete();
+        }
+        $response = array(
+          'Ok' => true,
+          'mensaje' => 	'se borro leads'
+        );
+      }else {
+        $response = array(
+          'Ok' => false,
+          'mensaje' => 	'no se borraron leads'
+        );
+      }
+      if (!empty($operaciones)) {
+        foreach ($operaciones as $value) {
+          $this->OperacionesInmueble->id            = $value['OperacionesInmueble']['id'];
+          $this->OperacionesInmueble->delete();
+        }
+        $this->request->data['Inmueble']['id']    = $inmueble_info['Inmueble']['id'];
+        $this->request->data['Inmueble']['liberada']       = 1;
+        $this->Inmueble->save($this->request->data);
+        $response = array(
+          'Ok' => true,
+          'mensaje' => 	'se borro operaciones y se actualizo inmueble'
+        );
+      }else {
+        $response = array(
+          'Ok' => false,
+          'mensaje' => 	'no se borarron operaciones '
+        );
+      }
+      if (!empty($venta)) {
+        $this->Venta->id            = $venta['Venta']['id'];
+        $this->Venta->delete();
+        $response = array(
+          'Ok' => true,
+          'mensaje' => 	'se borro venta'
+        );
+      }else {
+        $response = array(
+          'Ok' => false,
+          'mensaje' => 	'no se borarron venta'
+        );
+      }
+    }else {
+      $response = array(
+        'Ok' => false,
+        'mensaje' => 	'intente de nuevo'
+      );
+    }
+    
+
+
+    echo json_encode ( $response );
+    exit();
+    $this->autoRender = false;
+
+  }
   
 
 
