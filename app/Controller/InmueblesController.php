@@ -3433,7 +3433,6 @@ public function view_tipo($id = null,$desarrollo_id = null){
         $this->Desarrollo->Behaviors->load('Containable');
         $this->Inmueble->Behaviors->load('Containable');
         $response=[];
-        $escriturados=0;
         $i=0;
         if ($this->request->is('post') && $this->request->data['api_key'] != null ) {
             $cuenta_id=$this->request->data['cuenta_id'];
@@ -3460,6 +3459,12 @@ public function view_tipo($id = null,$desarrollo_id = null){
                 )
             );
             foreach ( $search_desarollo as $value) {
+                $bloqueada    = 0;
+                $liberada     = 0;
+                $reservada    = 0;
+                $contrato     = 0;
+                $escrituradas = 0;
+                $j            = 0;
                 $search_inmueble=$this->DesarrolloInmueble->find('all',array(
                     'conditions'=>array(
                         'DesarrolloInmueble.desarrollo_id'=> $value['Desarrollo']['id'], 
@@ -3470,20 +3475,20 @@ public function view_tipo($id = null,$desarrollo_id = null){
                     ), 
                     'contain' => false
                 ));
-                $j=0;
-                $response[$i]['desarrollo']= $value['Desarrollo']['nombre'];
-                $response[$i]['equipo']= $value['EquipoTrabajo']['nombre_grupo'];
-                $response[$i]['desarrollo']= $value['Comercializador']['nombre_comercial'];
-                // $response[$i]['desarrollo']= $value['Desarrollo']['nombre'];
-                $response[$i]['id']= $value['Desarrollo']['id'];
-                $response[$i]['tipo_desarrollo']= $value['Desarrollo']['tipo_desarrollo'];
-                $response[$i]['unidades_totales']= $value['Desarrollo']['unidades_totales'];
-                $response[$i]['fecha_entrega']= $value['Desarrollo']['fecha_entrega'];
-                $response[$i]['m2']= $value['Desarrollo']['m2_low'] .' - ' . $value['Desarrollo']['m2_top'];
-                $response[$i]['rec']=  $value['Desarrollo']['rec_low'] .' - ' . $value['Desarrollo']['rec_top'];
-                $response[$i]['banio']=  $value['Desarrollo']['banio_low'] .' - ' . $value['Desarrollo']['banio_top'];
-                $response[$i]['est']=  $value['Desarrollo']['est_low'] .' - ' . $value['Desarrollo']['est_top'];
-                $response[$i]['precios']=  $value['Desarrollo']['precio_low'] .' - ' . $value['Desarrollo']['precio_top'];
+                
+                $response[$i]['Desarrollo']['desarrollo']       = $value['Desarrollo']['nombre'];
+                $response[$i]['Desarrollo']['equipo']           = $value['EquipoTrabajo']['nombre_grupo'];
+                // $response[$i]['nombre_comercial']       = $value['Comercializador']['nombre_comercial'];
+
+                $response[$i]['Desarrollo']['id']               = $value['Desarrollo']['id'];
+                $response[$i]['Desarrollo']['tipo_desarrollo']  = $value['Desarrollo']['tipo_desarrollo'];
+                $response[$i]['Desarrollo']['unidades_totales'] = $value['Desarrollo']['unidades_totales'];
+                $response[$i]['Desarrollo']['fecha_entrega']    = $value['Desarrollo']['fecha_entrega'];
+                $response[$i]['Desarrollo']['m2']               = $value['Desarrollo']['m2_low'] .' - ' . $value['Desarrollo']['m2_top'];
+                $response[$i]['Desarrollo']['rec']              = $value['Desarrollo']['rec_low'] .' - ' . $value['Desarrollo']['rec_top'];
+                $response[$i]['Desarrollo']['banio']            = $value['Desarrollo']['banio_low'] .' - ' . $value['Desarrollo']['banio_top'];
+                $response[$i]['Desarrollo']['est']              = $value['Desarrollo']['est_low'] .' - ' . $value['Desarrollo']['est_top'];
+                $response[$i]['Desarrollo']['precios']          = $value['Desarrollo']['precio_low'] .' - ' . $value['Desarrollo']['precio_top'];
                 foreach ($search_inmueble as  $inmueble) {
                     $inmueble_info=$this->Inmueble->find('first',array(
                         'conditions'=>array(
@@ -3523,7 +3528,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
                             'id',
                         ),
                     ));
-                    
+
                     if (!empty( $operacion)) {
                         $response[$i]['inmueble'][$j]['venta']= $operacion['OperacionesInmueble']['precio_cierre'];
                         $ventas +=$operacion['OperacionesInmueble']['precio_cierre'];
@@ -3532,27 +3537,24 @@ public function view_tipo($id = null,$desarrollo_id = null){
                         $response[$i]['inmueble'][$j]['venta']=0;
                     }
                     $response[$i]['inmueble'][$j]['titulo']       = $inmueble_info['Inmueble']['titulo'];
-                    switch ($inmueble_info['Inmueble']['liberada']) {
-                        case $inmueble_info['Inmueble']['liberada']=0:
-                            $response[$i]['inmueble'][$j]['liberada']     = '';
-
-                        case $inmueble_info['Inmueble']['liberada']=1:
-                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
-
-                        case $inmueble_info['Inmueble']['liberada']=2:
-                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
-
-                        case $inmueble_info['Inmueble']['liberada']=3:
-                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
-
-                        case $inmueble_info['Inmueble']['liberada']=4:
-                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
-
-                        case $inmueble_info['Inmueble']['liberada']=5:
-                           
-                            $response[$i]['inmueble'][$j]['liberada']     = $inmueble_info['Inmueble']['liberada'];
-                        $escriturados++;
-                        
+                    if ($inmueble_info['Inmueble']['liberada']==0) {
+                        $response[$i]['inmueble'][$j]['liberada']     = 'bloqueada';
+                        $bloqueada ++;
+                    }
+                    elseif ($inmueble_info['Inmueble']['liberada']==1) {
+                        $response[$i]['inmueble'][$j]['liberada']     = 'liberada';
+                        $liberada ++;
+                    }
+                    elseif ($inmueble_info['Inmueble']['liberada']==2) {
+                        $response[$i]['inmueble'][$j]['liberada']     = 'reservada';
+                        $reservada ++;
+                    }
+                    else if ($inmueble_info['Inmueble']['liberada']==3) {
+                        $response[$i]['inmueble'][$j]['liberada']     = 'contrato';
+                        $contrato ++;
+                    }else {
+                        $response[$i]['inmueble'][$j]['liberada']     = 'escrituradas';
+                        $escrituradas ++;
                     }
                     $response[$i]['inmueble'][$j]['id'] = $inmueble_info['Inmueble']['id'];
                     $response[$i]['inmueble'][$j]['construccion'] = $inmueble_info['Inmueble']['construccion'];
@@ -3563,13 +3565,13 @@ public function view_tipo($id = null,$desarrollo_id = null){
                     $response[$i]['inmueble'][$j]['plano']        = Router::url($inmueble_foto['FotoInmueble']['ruta'],true);
                     $j++;
                 }
-                $response[$i]['bajas']=$escriturados;
-                $response[$i]['bloquedos']=$escriturados;
-                $response[$i]['libres']=$escriturados;
-                $response[$i]['apartados']=$escriturados;
-                $response[$i]['ventas']=$escriturados;
-                $response[$i]['escriturados']=$escriturados;
-                $response[$i]['dinero']=$ventas;
+                $response[$i]['contadores']['bloquedos']    = $bloqueada;
+                $response[$i]['contadores']['libres']       = $liberada;
+                $response[$i]['contadores']['apartados']    = $reservada;
+                $response[$i]['contadores']['ventas']       = $contrato;
+                $response[$i]['contadores']['escriturados'] = $escrituradas;
+                $response[$i]['contadores']['dinero']       = $ventas;
+                $response[$i]['contadores']['disponible_libres'] = $liberada .' / '.$value['Desarrollo']['unidades_totales'];
                 $i++;
                 
             }
