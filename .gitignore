@@ -3,18 +3,8 @@
 *.Archivo
 *Archivo
 /app/webroot
-<<<<<<< HEAD
-/app/Config/core
-app/tmp
-/tmp
-app\tmp
-tmp\cache
-.tmp\logs
-tmp
-=======
 /app/Config
 /app/temp
 /temp
 .app/temp
 app\temp
->>>>>>> 3175bb3de528940673fa332599fb2e4005c7661a
