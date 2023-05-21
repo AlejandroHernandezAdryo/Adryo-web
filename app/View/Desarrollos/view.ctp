@@ -25,7 +25,7 @@
             'pages/dataTables.bootstrap',
             'pages/tables',
             'pages/new_dashboard',
-           
+            
             // Css Calendario
             '/vendors/datepicker/css/bootstrap-datepicker.min',
             '/vendors/bootstrap-timepicker/css/bootstrap-timepicker.min',
@@ -37,6 +37,7 @@
 
             //Chosen
             '/vendors/chosen/css/chosen',
+            'components_adryo',
         ),
         array('inline'=>false)); 
 ?>
@@ -57,13 +58,10 @@
         background: #ff9933;
         color: white;
     }
-
     textarea{
         overflow:hidden;
         display:block;
     }
-
-
     li {
         list-style-type: circle;
     }
@@ -77,7 +75,6 @@
     .text-center{
         text-align: center;
     }
-
     #img-principal{
         display: block;
         position: absolute;
@@ -92,32 +89,25 @@
         align-items: center ;
         align-content: space-between ;
     }
-
     .kv-fileinput-caption{
         height: 29px;
     }
-
     /* Clase para la tabla de inventario */
     table, tr, td, th {
         border: none !important;
     }
-
     table th, table td {
         border: none !important;
     }
-
     .sorting_asc:before, .sorting:before{
         top: 2px !important;
     }
-
     .sorting_asc:after, .sorting:after{
         top: 4px !important;
     }
-
     table thead{
         background-color: #E7E7E7;
     }
-
     .chips{
         border-radius: 5px;
         text-align: center; 
@@ -125,7 +115,6 @@
         -webkit-box-shadow: 3px 1px 16px rgba(184,184,184,0.50);
         box-shadow: 3px 1px 16px rgba(184,184,184,0.50);
     }
-
     .disabled {
         background-color: transparent !important;
     }
@@ -236,7 +225,6 @@
         <?= $this->Form->end()?>
     </div>
 </div>
-
 <!-- Modales -->
 <div class="modal fade" id="publicidad" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog">
@@ -330,7 +318,6 @@
         <?= $this->Form->end()?>
     </div>
 </div>
-
 <!-- Modal agregar plan de pago al desarrollo -->
 <div class="modal fade" id="add_plan" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog modal-lg">
@@ -512,7 +499,6 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="disabled_plan" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog modal-sm moda-center">
         <div class="modal-content">
@@ -589,8 +575,6 @@
             <?= $this->Form->hidden('enablePlanStatus'); ?>
     </div>
 </div>
-
-
 <!-- Modal editar plan de pago al desarrollo -->
 <div class="modal fade" id="edit_plan" tabindex="-1" role="dialog" aria-hidden="true" >
     <div class="modal-dialog modal-lg">
@@ -776,10 +760,6 @@
     </div>
 </div>
 
-
-
-
-
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -926,7 +906,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal add cta bancaria desarrollo -->
 <div id="modalAddCtaBancaria" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -1023,7 +1002,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal delete cta bancaria desarrollos -->
 <div id="modalDeleteCtaBancaria" class="modal fade">
     <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -1058,7 +1036,6 @@
       </div>
     </div>
 </div>
-
 <!-- Modal edit cta bancaria -->
 <div id="modalEditCtaBancaria" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -1160,12 +1137,10 @@
         </div>
     </div>
 </div>
-
 <!-- Modal add propiedad extra de desarrollo -->
 <div id="modalAddExtra" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <?= $this->Form->Create('ExtrasDesarrollo',array('url'=>array('action'=>'addExtra','controller'=>'desarrollos'))); ?>
             <div class="modal-header bg-blue-is">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -1240,12 +1215,10 @@
         </div>
     </div>
 </div>
-
 <!-- Modal add propiedad extra de desarrollo -->
 <div id="modalEditExtra" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <?= $this->Form->Create('ExtrasDesarrollo',array('url'=>array('action'=>'addExtra','controller'=>'desarrollos'))); ?>
             <div class="modal-header bg-blue-is">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -1323,27 +1296,22 @@
         </div>
     </div>
 </div>
-
 <!-- Modal para las operaciones del inmueble -->
 <?= $this->element('Desarrollos/operaciones_inmueble'); ?>
 
 <div id="content" class="bg-container">
-
     <header class="head">
         <div class="main-bar row">
             <div class="col-sm-5 col-xs-12">
                 <h4 class="nav_top_align">
-                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <!-- <i class="fa fa-home" aria-hidden="true"></i> -->
                     Desarrollos
                 </h4>
             </div>
         </div>
     </header>
-
     <div class="outer">
-
         <div class="inner bg-container">
-
             <!-- Cabecera de datos del desarrollo -->
             <div class="card">
                 <div class="card-header bg-blue-is">
@@ -1351,37 +1319,23 @@
                         <div style="float:right">
                         <?php 
                             if ($this->Session->read('CuentaUsuario.CuentasUser.cuenta_id') == $desarrollo['Desarrollo']['cuenta_id']) {
-                                
                                 if ($this->Session->read('Permisos.Group.id')==1 ||($desarrollo['EquipoTrabajo']['administrador_id']=="" && $this->Session->read('Permisos.Group.id')==2) ||$desarrollo['EquipoTrabajo']['administrador_id']==$this->Session->read('Auth.User.id')){
-
                                     echo $this->Html->link('<i class="fa fa-edit fa-2x"></i>',array('action'=>'edit_generales',$desarrollo['Desarrollo']['id']),array('data-toggle'=>'tooltip','data-placement'=>'top','title'=>'EDITAR DESARROLLO','escape'=>false,'style'=>'color:white'));
-
                                 }elseif( $this->Session->read('Permisos.Group.id') == 5 ){
-
                                     echo $this->Html->link('<i class="fa fa-edit fa-2x"></i>','#', array('data-toggle'=>'tooltip','data-placement'=>'top','title'=>'EDITAR DESARROLLO','escape'=>false,'style'=>'color: #bababa; cursor:not-allowed !important;'));
-
                                 }
                             } 
-                            
-                                echo $this->Html->link('<i class="fa fa-home fa-2x"></i>',array('action'=>'detalle',$desarrollo['Desarrollo']['id'],$this->Session->read('Auth.User.id')),array('data-toggle'=>'tooltip','data-placement'=>'top','title'=>'VER FICHA TÉCNICA PÚBLICA','escape'=>false,'style'=>'color:white'));
-                            
-                                if ($this->Session->read('CuentaUsuario.CuentasUser.cuenta_id') == $desarrollo['Desarrollo']['cuenta_id']) {
-                                    
-                                    if ($this->Session->read('Permisos.Group.id')==1){
-                                        
-                                        echo $this->Html->link('<i class="fa fa-briefcase fa-2x"></i>',array('action'=>'asignar_corretaje',$desarrollo['Desarrollo']['id']),array('data-toggle'=>'tooltip','data-placement'=>'left','title'=>'ASIGNAR A EMPRESA DE COMERCIALIZACIÓN','escape'=>false,'style'=>'color:white'));
-                                        
-                                        echo $this->Html->link('<i class="fa fa-external-link-square fa-2x"></i>',array('action'=>'cambiar_titular',$desarrollo['Desarrollo']['id']),array('data-toggle'=>'tooltip','data-placement'=>'left','title'=>'TRANSFERIR DESARROLLO A OTRA CUENTA','escape'=>false,'style'=>'color:white'));
-                                    
-                                    }elseif( $this->Session->read('Permisos.Group.id') == 5 ){
-
-                                        echo $this->Html->link('<i class="fa fa-briefcase fa-2x"></i>','#',array('data-toggle'=>'tooltip','data-placement'=>'left','title'=>'ASIGNAR A EMPRESA DE COMERCIALIZACIÓN','escape'=>false,'style'=>'color: #bababa; cursor:not-allowed !important;'));
-                                        
-                                        echo $this->Html->link('<i class="fa fa-external-link-square fa-2x"></i>','#',array('data-toggle'=>'tooltip','data-placement'=>'left','title'=>'TRANSFERIR DESARROLLO A OTRA CUENTA','escape'=>false,'style'=>'color: #bababa; cursor:not-allowed !important;'));
-
-                                    }
+                            echo $this->Html->link('<i class="fa fa-home fa-2x"></i>',array('action'=>'detalle',$desarrollo['Desarrollo']['id'],$this->Session->read('Auth.User.id')),array('data-toggle'=>'tooltip','data-placement'=>'top','title'=>'VER FICHA TÉCNICA PÚBLICA','escape'=>false,'style'=>'color:white'));
+                            if ($this->Session->read('CuentaUsuario.CuentasUser.cuenta_id') == $desarrollo['Desarrollo']['cuenta_id']) {
+                                if ($this->Session->read('Permisos.Group.id')==1){
+                                    echo $this->Html->link('<i class="fa fa-briefcase fa-2x"></i>',array('action'=>'asignar_corretaje',$desarrollo['Desarrollo']['id']),array('data-toggle'=>'tooltip','data-placement'=>'left','title'=>'ASIGNAR A EMPRESA DE COMERCIALIZACIÓN','escape'=>false,'style'=>'color:white'));
+                                    echo $this->Html->link('<i class="fa fa-external-link-square fa-2x"></i>',array('action'=>'cambiar_titular',$desarrollo['Desarrollo']['id']),array('data-toggle'=>'tooltip','data-placement'=>'left','title'=>'TRANSFERIR DESARROLLO A OTRA CUENTA','escape'=>false,'style'=>'color:white'));
+                                }elseif( $this->Session->read('Permisos.Group.id') == 5 ){
+                                    echo $this->Html->link('<i class="fa fa-briefcase fa-2x"></i>','#',array('data-toggle'=>'tooltip','data-placement'=>'left','title'=>'ASIGNAR A EMPRESA DE COMERCIALIZACIÓN','escape'=>false,'style'=>'color: #bababa; cursor:not-allowed !important;'));
+                                    echo $this->Html->link('<i class="fa fa-external-link-square fa-2x"></i>','#',array('data-toggle'=>'tooltip','data-placement'=>'left','title'=>'TRANSFERIR DESARROLLO A OTRA CUENTA','escape'=>false,'style'=>'color: #bababa; cursor:not-allowed !important;'));
                                 }
-                            ?>
+                            }
+                        ?>
                         </div>
                 </div>
                 <div class="card-block">

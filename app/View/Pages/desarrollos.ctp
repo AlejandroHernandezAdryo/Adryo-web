@@ -1,68 +1,64 @@
-
-<div class=" bd-stretchtobottom-2 bd-stretch-to-bottom" data-control-selector=".bd-content-12"><div class=" bd-content-12 ">
-    
-    <div class=" bd-htmlcontent-11 bd-margins" 
- data-page-id="page.17">
-    <section class=" bd-section-21 bd-page-width bd-tagstyles " id="section4" data-section-title="Two Columns with Image Right">
-    <div class="bd-container-inner bd-margins clearfix">
-        <div class=" bd-layoutcontainer-33 bd-page-width  bd-columns bd-no-margins">
-    <div class="bd-container-inner">
-        <div class="container-fluid">
-            <div class="row 
- bd-row-flex 
- bd-row-align-middle">
-                <div class=" bd-columnwrapper-113 
- col-md-6
- col-sm-12">
-    <div class="bd-layoutcolumn-113 bd-column" ><div class="bd-vertical-align-wrapper"><h1 class=" bd-textblock-170 bd-content-element">
-    Desarrollos &nbsp;
-</h1>
-	
-		<div class=" bd-spacer-39 clearfix"></div>
-	
-		<p class=" bd-textblock-169 bd-content-element">
-    Si su negocio está especializado en la comercialización de desarrollos
-inmobiliarios, nuestra herramienta podrá registrar toda la información
-necesaria e inventariarlos de manera completa. Obtenga indicadores de desempeño
-y monitoree las unidades tipo que más se venden. &nbsp;<!--EndFragment--><br>
-</p>
-	
-		<div class=" bd-spacer-38 clearfix"></div></div></div>
-</div>
-	
-		<div class=" bd-columnwrapper-112 
- col-md-6
- col-sm-12">
-    <div class="bd-layoutcolumn-112 bd-column" ><div class="bd-vertical-align-wrapper"><img class="bd-imagelink-41 bd-own-margins bd-imagestyles   "  src="../assets/images/ee86a6072921f045c0e71d8a92524936_desarrollos.png"></div></div>
-</div>
-            </div>
-        </div>
-    </div>
-</div>
-    </div>
-</section>
-	
-		<section class=" bd-section-20 bd-page-width bd-tagstyles " id="section4" data-section-title="Six Columns">
+<div class=" bd-stretchtobottom-2 bd-stretch-to-bottom" data-control-selector=".bd-content-12">
+    <div class=" bd-content-12 ">
+        <div class=" bd-htmlcontent-11 bd-margins" data-page-id="page.17">
+            <section class=" bd-section-21 bd-page-width bd-tagstyles " id="section4" data-section-title="Two Columns with Image Right">
+                <div class="bd-container-inner bd-margins clearfix">
+                    <div class=" bd-layoutcontainer-33 bd-page-width  bd-columns bd-no-margins">
+                        <div class="bd-container-inner">
+                            <div class="container-fluid">
+                                <div class="row bd-row-flex bd-row-align-middle">
+                                    <div class=" bd-columnwrapper-113 col-md-6 col-sm-12">
+                                        <div class="bd-layoutcolumn-113 bd-column" >
+                                            <div class="bd-vertical-align-wrapper">
+                                                <h1 class=" bd-textblock-170 bd-content-element">
+                                                    Desarrollos &nbsp;
+                                                </h1>
+                                                <div class=" bd-spacer-39 clearfix"></div>
+                                                    <p class=" bd-textblock-169 bd-content-element">
+                                                            Si su negocio está especializado en la comercialización de desarrollos
+                                                        inmobiliarios, nuestra herramienta podrá registrar toda la información
+                                                        necesaria e inventariarlos de manera completa. Obtenga indicadores de desempeño
+                                                        y monitoree las unidades tipo que más se venden. &nbsp;<!--EndFragment--><br>
+                                                    </p>
+                                                <div class=" bd-spacer-38 clearfix">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" bd-columnwrapper-112 col-md-6 col-sm-12">
+                                        <div class="bd-layoutcolumn-112 bd-column" >
+                                            <div class="bd-vertical-align-wrapper">
+                                                <img class="bd-imagelink-41 bd-own-margins bd-imagestyles   "  src="../assets/images/ee86a6072921f045c0e71d8a92524936_desarrollos.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+		    <section class=" bd-section-20 bd-page-width bd-tagstyles " id="section4" data-section-title="Six Columns">
     <div class="bd-container-inner bd-margins clearfix">
         <div class=" bd-layoutcontainer-32 bd-page-width  bd-columns bd-no-margins">
-    <div class="bd-container-inner">
-        <div class="container-fluid">
-            <div class="row 
- bd-row-flex 
- bd-row-align-middle">
-                <div class=" bd-columnwrapper-109 
- col-md-4
- col-sm-6">
-    <div class="bd-layoutcolumn-109 bd-column" ><div class="bd-vertical-align-wrapper"><h3 style="line-height: 22.85714286px;color: #258190;font-size: 16px;text-transform: uppercase;font-weight: 600;letter-spacing: 1px;" class=" bd-textblock-168 bd-content-element">
-    Catálogo profesional
-</h3>
-	
-		<p class=" bd-textblock-167 bd-content-element">
-    Registre toda la información importante de cada desarrollo y de
-cada una de sus unidades de manera estándar. Podrá consultarla y compartirla en
-cualquier momento. &nbsp;<!--EndFragment--><br>
-</p></div></div>
-</div>
+            <div class="bd-container-inner">
+                <div class="container-fluid">
+                    <div class="row bd-row-flex bd-row-align-middle">
+                        <div class=" bd-columnwrapper-109 col-md-4 col-sm-6">
+                            <div class="bd-layoutcolumn-109 bd-column" >
+                                <div class="bd-vertical-align-wrapper">
+                                    <h3 style="line-height: 22.85714286px;color: #258190;font-size: 16px;text-transform: uppercase;font-weight: 600;letter-spacing: 1px;" class=" bd-textblock-168 bd-content-element">
+                                        Catálogo profesional
+                                    </h3>
+                                    <p class=" bd-textblock-167 bd-content-element">
+                                        Registre toda la información importante de cada desarrollo y de
+                                        cada una de sus unidades de manera estándar. Podrá consultarla y compartirla en
+                                        cualquier momento. &nbsp;<!--EndFragment-->
+                                    <br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 	
 		<div class=" bd-columnwrapper-108 
  col-md-4
