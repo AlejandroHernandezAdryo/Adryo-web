@@ -1812,7 +1812,6 @@
                     </div>
                 </div>
                 <div class="card-block cards_section_margin">
-                    
                     <div class="row" style="background-color: #D1D1D1; margin: 5px; border-radius: 5px; text-transform: uppercase; font-weight: 600;">
                         <div class="col-sm-12 col-lg-6">
                             Total de unidades <?= count($desarrollo['Propiedades']) ?>
@@ -1821,8 +1820,6 @@
                             <span id="sum_propiedades_q"></span>
                         </div>
                     </div>
-
-
                     <div class="row mt-1">
                         <div class="col-sm-4 col-lg-2 text-center">
                             Baja
@@ -1831,7 +1828,6 @@
                                 </span>
                             </div>
                         </div>
-
                         <div class="col-sm-4 col-lg-2 text-center">
                             Bloqueados
                             <div class="number chips bg-bloqueado" style="padding: 2px 5px 2px 5px;">
