@@ -292,24 +292,6 @@
                                     <div>S-112</div>
                                 </div>
                             </div>
-                            <div class="col-sm-1">
-                            </div>
-                            <div class="col-sm-11">
-                                <div>
-                                    <div>S-101</div>
-                                    <div>S-102</div>
-                                    <div>S-103</div>
-                                    <div>S-104</div>
-                                    <div>S-105</div>
-                                    <div>S-106</div>
-                                    <div>S-107</div>
-                                    <div>S-108</div>
-                                    <div>S-109</div>
-                                    <div>S-110</div>
-                                    <div>S-111</div>
-                                    <div>S-112</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
