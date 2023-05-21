@@ -52,7 +52,6 @@
 
                     <!-- Contadores -->
                     <div class="row mt-1">
-                        
                         <div class="col-sm-4 col-lg-2 text-center offset-lg-2">
                             Total de desarrollos 
                             <div class="number chips bg-status-desarrollo-total">
@@ -108,152 +107,154 @@
                                         <div class="row">
                                             <div class="col-sm-12 col-lg-8">
                                                 <p class="m-0">
-                                                    <?= $desarrollo['Desarrollo']['nombre'] ?></div>
+                                                    <?= $desarrollo['Desarrollo']['nombre'] ?>
                                                 </p>
-                                                <div class="col-sm-12 col-lg-4 text-sm-right">
-                                                    <p class="m-0">
-                                                        <?php 
-                                                            switch ($desarrollo['Desarrollo']['visible']):
-                                                                case(0):
-                                                                    echo "Libre";
-                                                                break;
-                                                                case(1):
-                                                                    echo "En venta";
-                                                                break;
-                                                                case(2):
-                                                                    echo "No liberado";
-                                                                break;
-                                                            endswitch;
-                                                        ?>
-                                                    </p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-4 text-sm-right">
+                                                <p class="m-0">
+                                                    <?php 
+                                                        switch ($desarrollo['Desarrollo']['visible']):
+                                                            case(0):
+                                                                echo "Libre";
+                                                            break;
+                                                            case(1):
+                                                                echo "En venta";
+                                                            break;
+                                                            case(2):
+                                                                echo "No liberado";
+                                                            break;
+                                                        endswitch;
+                                                    ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-block">
+                                        <!-- Img -->
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 220px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
+                                            </div>
+                                        </div>
+                                        <!-- Disponibilidad e inventario -->
+                                        <div class="row mt-1">
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p style="font-size: 15px; font-weight: 700;">
+                                                    Disponibilidad total
+                                                    <p style="font-size: 19px; font-weight: 400;" class="text-sm-center"> <?= sizeof($desarrollo['Disponibles'])?> / <?= sizeof($desarrollo['Propiedades'])?></p>
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <div class="text-sm-right">
+                                                    <small>
+                                                        <?= $this->Html->link('Ver inventario',array('controller'=>'desarrollos','action'=>'inventario',$desarrollo['Desarrollo']['id']))?>
+                                                        <!-- <a href="#">Ver inventario</a> -->
+                                                    </small>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-block">
-                                            <!-- Img -->
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 220px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                                                </div>
+                                        <!-- Iconos y asignacion de equipos -->
+                                        <div class="row">
+                                            <div class="col-sm-12 col-lg-6">
+                                                Equipo <span class="text-sm-right"> <?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "Sin equipo asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </span>
+                                                <br>
+                                                Privado <span class="text-sm-right"> <?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </span>
                                             </div>
-                                            <!-- Disponibilidad e inventario -->
-                                            <div class="row mt-1">
-                                                <div class="col-sm-12 col-lg-6">
-                                                    <p style="font-size: 15px; font-weight: 700;">
-                                                        Disponibilidad total
-                                                        <p style="font-size: 19px; font-weight: 400;" class="text-sm-center"> <?= sizeof($desarrollo['Disponibles'])?> / <?= sizeof($desarrollo['Propiedades'])?></p>
-                                                    </p>
-                                                </div>
-                                                <div class="col-sm-12 col-lg-6">
-                                                    <div class="text-sm-right">
-                                                        <small>
-                                                            <a href="#">Ver inventario</a>
-                                                        </small>
-                                                    </div>
-                                                </div>
+                                            <div class="col-sm-12 col-lg-6 text-sm-right">
+                                                Compartir
+                                                <br>
+                                                <span>
+                                                    <a href="https://www.facebook.com/share.php?u=<?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
+                                                        <?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    </a>
+                                                </span>
+                                                <span>
+                                                    <?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                </span>
+                                                <span>
+                                                    <?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                </span>
                                             </div>
-                                            <!-- Iconos y asignacion de equipos -->
-                                            <div class="row">
-                                                <div class="col-sm-12 col-lg-6">
-                                                    Equipo <span class="text-sm-right"> <?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "Sin equipo asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </span>
-                                                    <br>
-                                                    Privado <span class="text-sm-right"> <?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </span>
-                                                </div>
-                                                <div class="col-sm-12 col-lg-6 text-sm-right">
-                                                    Compartir
-                                                    <br>
+                                        </div>
+                                        <!-- Separador -->
+                                        <div class="row mt-2">
+                                            <div class="col-sm-12">
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <!-- Metrajes -->
+                                        <div class="row">
+                                            <div class="col-sm-12 col-lg-6">
+                                                <div>
+                                                    <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
                                                     <span>
-                                                        <a href="https://www.facebook.com/share.php?u=<?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
-                                                            <?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                        </a>
-                                                    </span>
-                                                    <span>
-                                                        <?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                    </span>
-                                                    <span>
-                                                        <?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                        <?= $desarrollo['Desarrollo']['m2_low']?> - <?= $desarrollo['Desarrollo']['m2_top']?> 
+                                                        <!-- m<sup>2</sup> -->
                                                     </span>
                                                 </div>
-                                            </div>
-                                            <!-- Separador -->
-                                            <div class="row mt-2">
-                                                <div class="col-sm-12">
-                                                    <hr>
+                                                <br>
+                                                <div>
+                                                    <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <span>
+                                                        <?= $desarrollo['Desarrollo']['rec_low']?>-<?= $desarrollo['Desarrollo']['rec_top']?>
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <!-- Metrajes -->
-                                            <div class="row">
-                                                <div class="col-sm-12 col-lg-6">
-                                                    <div>
-                                                        <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                        <span>
-                                                            <?= $desarrollo['Desarrollo']['m2_low']?> - <?= $desarrollo['Desarrollo']['m2_top']?> 
-                                                            <!-- m<sup>2</sup> -->
-                                                        </span>
-                                                    </div>
-                                                    <br>
-                                                    <div>
-                                                        <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                        <span>
-                                                            <?= $desarrollo['Desarrollo']['rec_low']?>-<?= $desarrollo['Desarrollo']['rec_top']?>
-                                                        </span>
-                                                    </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <div>
+                                                    <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <span>
+                                                        <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
+                                                    </span>
                                                 </div>
-                                                <div class="col-sm-12 col-lg-6">
-                                                    <div>
-                                                        <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                        <span>
-                                                            <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
-                                                        </span>
-                                                    </div>
-                                                    <br>
-                                                    <div>
-                                                        <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                        <span>
-                                                            <?= $desarrollo['Desarrollo']['est_low']?>-<?= $desarrollo['Desarrollo']['est_top']?>
-                                                        </span>
-                                                    </div>
+                                                <br>
+                                                <div>
+                                                    <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <span>
+                                                        <?= $desarrollo['Desarrollo']['est_low']?>-<?= $desarrollo['Desarrollo']['est_top']?>
+                                                    </span>
                                                 </div>
                                             </div>
-                                            <!-- Descripciones -->
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <table class="table table-sm">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Tipo de desarrollo</td>
-                                                                <td><?= $desarrollo['Desarrollo']['tipo_desarrollo']?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Torres</td>
-                                                                <td><?= $desarrollo['Desarrollo']['torres']?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Unidades totales</td>
-                                                                <td><?= $desarrollo['Desarrollo']['unidades_totales']?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Entrega</td>
-                                                                <td><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Colonia</td>
-                                                                <td><?= $desarrollo['Desarrollo']['colonia']?></td>
-                                                            </tr>
+                                        </div>
+                                        <!-- Descripciones -->
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Tipo de desarrollo</td>
+                                                            <td><?= $desarrollo['Desarrollo']['tipo_desarrollo']?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Torres</td>
+                                                            <td><?= $desarrollo['Desarrollo']['torres']?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Unidades totales</td>
+                                                            <td><?= $desarrollo['Desarrollo']['unidades_totales']?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Entrega</td>
+                                                            <td><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Colonia</td>
+                                                            <td><?= $desarrollo['Desarrollo']['colonia']?></td>
+                                                        </tr>
 
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <button class="btn btn-primary float-right ml-1">Vendido</button>
-                                                    <button class="btn btn-secondary-o float-right">Liberado</button>
-                                                </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-primary float-right ml-1">Vendido</button>
+                                                <button class="btn btn-secondary-o float-right">Liberado</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         <?php endforeach; ?>
 
                     </div>
