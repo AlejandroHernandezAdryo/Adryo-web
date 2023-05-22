@@ -22,7 +22,7 @@
             'pages/layouts',
             'custom',
             'cotizacion',
-            'components_adryo',
+            'componentsadryo',
         ),
         array('inline'=>false)
     );

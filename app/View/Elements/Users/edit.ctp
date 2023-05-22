@@ -140,7 +140,15 @@
                         
                         <!-- Seleccionador de desarrollos que puede comercializar -->
                         <div class="row mt-1">
-                            <?= $this->Form->input('desarrollos', array('id'=>'desarrollos','multiple'=>'multiple','div'=>'col-sm-12','label'=>array('text'=>'Seleccionar que desarrollos puede ver (Si deja vacío podrá ver todos)'),'class'=>'form-control chzn-select','options'=>$desarrollos)); ?>
+                            <?= $this->Form->input('desarrollos', array(
+                                'id'=>'desarrollos',
+                                'multiple'=>'multiple',
+                                'div'=>'col-sm-12','label'=>array(
+                                    'text'=>'Seleccionar que desarrollos puede ver (Si deja vacío podrá ver todos)'
+                                ),
+                                'class'=>'form-control chzn-select','options'=>$desarrollos,
+                                'value' => $desarrollosIn_
+                            )); ?>
                         </div>
                     <?php endif; ?>
 
@@ -256,7 +264,7 @@ function validatePassword(){
 
 $(document).on("submit", "#UserEditForm", function (event) {
     event.preventDefault();
-
+    // let form = new FormData(this);
     $.ajax({
         url        : '<?php echo Router::url(array("controller" => "users", "action" => "edit")); ?>',
         type       : "POST",
@@ -268,7 +276,7 @@ $(document).on("submit", "#UserEditForm", function (event) {
             $("#overlay").fadeIn();
         },
         success: function (response) {
-            // console.log( response );
+            console.log( response );
 
             var n = 1;
             window.setInterval(function(){
