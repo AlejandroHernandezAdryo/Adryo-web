@@ -16,9 +16,8 @@
     <!--global styles-->
     <?php echo $this->Html->css(array(
         'components',
-        'components_adryo',
+        'componentsadryo',
         'custom',
-
         'pages/layouts',
 
     )); ?>
@@ -319,8 +318,8 @@
 </div>
 
 <body class="body fixedNav_position fixedMenu_left">
-<!-- Pantalla de carga -->
-<!-- <div class="pantalla-carga"></div> -->
+    <!-- Pantalla de carga -->
+        <!-- <div class="pantalla-carga"></div> -->
 
     <div class="bg-dark" id="wrap">
         <div id="top" class="fixed">
@@ -340,7 +339,7 @@
                          data-target="#search_modal">
                         <i class="fa fa-search text-primary"></i>
                     </div>
-<!--                    <div class="btn-group">
+        <!--  <div class="btn-group">
                         <div class="notifications no-bg">
                             <a class="btn btn-default btn-sm messages" data-toggle="dropdown" id="messages_section"> <i
                                     class="fa fa-envelope-o fa-1x"></i>
@@ -440,7 +439,7 @@
                             </div>
                         </div>
                     </div>-->
-<!--                    <div class="btn-group">
+                <!--  <div class="btn-group">
                         <div class="notifications messages no-bg">
                             <a class="btn btn-default btn-sm" data-toggle="dropdown" id="notifications_section"> <i
                                     class="fa fa-bell-o"></i>
@@ -565,7 +564,7 @@
                             </div>
                         </div>
                     </div>-->
-<!--                    <div class="btn-group">
+                <!-- <div class="btn-group">
                         <div class="notifications request_section no-bg">
                             <a class="btn btn-default btn-sm messages" id="request_btn"> <i
                                     class="fa fa-sliders" aria-hidden="true"></i>
@@ -600,7 +599,7 @@
                     </div>
 
                 </div>
-<!--                <div class="top_search_box float-xs-right hidden-sm-down">
+                <!-- <div class="top_search_box float-xs-right hidden-sm-down">
                     <form class="header_input_search float-xs-right">
                         <input type="text" placeholder="Search" name="search">
                         <button type="submit">

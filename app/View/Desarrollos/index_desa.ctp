@@ -20,7 +20,6 @@
             '/vendors/clockpicker/css/jquery-clockpicker',
             'pages/colorpicker_hack',
             'custom',
-            'adryo_components',
             //'pages/form_elements'
         ),
         array('inline'=>false))

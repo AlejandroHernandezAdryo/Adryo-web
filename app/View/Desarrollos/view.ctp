@@ -37,7 +37,7 @@
 
             //Chosen
             '/vendors/chosen/css/chosen',
-            'components_adryo',
+            'componentsadryo',
         ),
         array('inline'=>false)); 
 ?>
