@@ -3612,9 +3612,9 @@ public function view_tipo($id = null,$desarrollo_id = null){
         $this->autoRender = false;
     }
     /**
-     * 
-     * 
-     * 
+     * Api paara ver info de modal inmueble en desarrollo view
+     * rogueOne 
+     * Campos api_key, inmueble_id POST
     */
     function view_inmueble(){
         header('Content-type: application/json; charset=utf-8');
