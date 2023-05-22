@@ -23,6 +23,8 @@
 
     echo $this->Html->css(
         array(
+            'components',
+            
             'jquery.fancybox',
             '/vendors/jasny-bootstrap/css/jasny-bootstrap.min',
             '/vendors/fullcalendar/css/fullcalendar.min',
@@ -62,7 +64,7 @@
             '/vendors/radio_css/css/radiobox.min',
             'custom',
             'style_operaciones',
-            'componentsadryo',
+            'components_adryo',
         ),
         array('inline'=>false)); 
 ?>
