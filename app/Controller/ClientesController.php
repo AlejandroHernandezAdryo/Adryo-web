@@ -6747,7 +6747,7 @@ class ClientesController extends AppController {
         rtrim(str_replace($limpieza, "", $cliente['DicLineaContacto']['linea_contacto'])),
 
         rtrim(str_replace($limpieza, "", $cliente['Cliente']['correo_electronico'])),
-        mb_strtoupper(str_replace($limpieza, "", substr($cliente['Cliente']['telefono1'], -10))),
+        ( $cliente['Cliente']['telefono1'] != 'Sin telÃ©fono' ) ? $cliente['Cliente']['telefono1'] : mb_strtoupper(str_replace($limpieza, "", substr($cliente['Cliente']['telefono1'], -10))),
 
         date('Y-m-d', strtotime($cliente['Cliente']['created'])),
         date('Y-m-d', strtotime($cliente['Cliente']['last_edit'])),

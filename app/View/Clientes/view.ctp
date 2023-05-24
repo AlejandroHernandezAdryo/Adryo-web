@@ -1042,7 +1042,7 @@
                                     
                                     <tr>
                                         <td> Teléfono 1</td>
-                                        <td><?= substr($cliente['Cliente']['telefono1'], -10) ?></td>
+                                        <td><?= $cliente['Cliente']['telefono1'] ?></td>
                                     </tr>
                                     
                                     <?php if( $cliente['Cliente']['telefono2'] != ''): ?>

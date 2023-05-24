@@ -347,7 +347,7 @@ class LogPagosController extends AppController {
             $i=0;
             $res = array(
                 'Ok' => true,
-                'respuesta' => $reponse_
+                'respuesta' => $cliente
             );
 
         } else {

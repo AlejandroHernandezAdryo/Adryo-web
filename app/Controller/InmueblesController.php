@@ -3499,7 +3499,8 @@ public function view_tipo($id = null,$desarrollo_id = null){
                 $response[$i]['Desarrollo']['banio']            = $value['Desarrollo']['banio_low'] .' - ' . $value['Desarrollo']['banio_top'];
                 $response[$i]['Desarrollo']['est']              = $value['Desarrollo']['est_low'] .' - ' . $value['Desarrollo']['est_top'];
                 $response[$i]['Desarrollo']['precios']          = $value['Desarrollo']['precio_low'] .' - ' . $value['Desarrollo']['precio_top'];
-                
+                $response[$i]['Desarrollo']['colonia']          = $value['Desarrollo']['colonia'];
+                $response[$i]['Desarrollo']['torres']           = $value['Desarrollo']['torres'];
                 rsort($pisos);
                 $arrlength = count($pisos);
                 for($x = 0; $x < $arrlength; $x++) {
@@ -3586,6 +3587,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
                     $response[$i]['Inmuebles'][$j]['banos']        = $inmueble_info['Inmueble']['banos'];
                     $response[$i]['Inmuebles'][$j]['nivel_propiedad']        = $inmueble_info['Inmueble']['nivel_propiedad'];
                     $response[$i]['Inmuebles'][$j]['plano']        = Router::url($inmueble_foto['FotoInmueble']['ruta'],true);
+                   
                     $j++;
                 
                 }
