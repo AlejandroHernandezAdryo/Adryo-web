@@ -193,22 +193,21 @@
                         <div class="col-sm-12 col-lg-4">
                             <b>Propiedad:</b>
                             <br> 
-                            <span>
-                            <?= $venta['Venta']['tipo_operacion'].": ".$venta['Inmueble']['referencia']?>
+                            <span id=propiedad_referencia>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-4">
                             <b>Fecha de cierre:</b>
-                            <br> 
-                            <span>
-                                <?= date("d/M/Y",strtotime($venta['Venta']['fecha']))?>
+                            <br>
+                            <span id='fecha_operacion'>
+                                
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-4">
                             <b>Asesor cerro venta:</b>
                             <br> 
-                            <span>
-                            <?= $venta['User']['nombre_completo']?>
+                            <span id='user_venta'>
+                            
                             </span>
                         </div>
                     </div>
@@ -216,47 +215,40 @@
                         <div class="col-sm-12 col-lg-2">
                             <b>Apartado:</b>
                             <br> 
-                            <span>
-                                texto
-                            <?= $venta['User']['nombre_completo']?>
+                            <span id=apertado>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Escrituración:</b>
                             <br> 
-                            <span>
-                                texto
-                            <?= $venta['User']['nombre_completo']?>
+                            <span id='escrituracion'>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Contrato:</b>
                             <br> 
-                            <span>
-                                texto
-                                <?= $venta['User']['nombre_completo']?>
+                            <span id='contrato'>
+                               
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Mensualidad:</b>
                             <br> 
-                            <span>
-                                texto
-                                <?= $venta['User']['nombre_completo']?>
+                            <span id='mensualidad'>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Precio de venta:</b>
                             <br> 
-                            <span>
-                                <?= "$".number_format($venta['Venta']['precio_cerrado'],2)?>
+                            <span id ='precio_cierre'>
+                               
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Saldo:</b>
                             <br> 
-                            <span>
-                                <?= "$".number_format($venta['Venta']['precio_cerrado']-$pagos[0][0]['SUM(monto)'],2)?>
+                            <span id='totalpagado'>
+                                
                             </span>
                         </div>
                     </div>
@@ -358,7 +350,7 @@
                             <a class="nav-link active" href="#plan_pagos" data-toggle="tab" onclick="">Plan de pagos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#historial_pagos" data-toggle="tab" onclick="">Historial de pagos</a>
+                            <a class="nav-link" href="#historial_pagos" data-toggle="tab">Historial de pagos</a>
                         </li>
                     </ul>
                     <div class="card">
@@ -534,125 +526,136 @@
 ?>
 
 <script>
-    
-'use strict';
+        
+    'use strict';
 
-function editarFac(){
-    $("#modal_edit_factura").modal('show')
-    document.getElementById("FacturaId").value = id;
-}
-function uploadFac(){
-    $("#modal_upload_factura").modal('show')
-    document.getElementById("FacturaId").value = id;
-}
+    function editarFac(){
+        $("#modal_edit_factura").modal('show')
+        document.getElementById("FacturaId").value = id;
+    }
+    function uploadFac(){
+        $("#modal_upload_factura").modal('show')
+        document.getElementById("FacturaId").value = id;
+    }
 
-function rechazarFac(id){
-    $("#modal_status_factura").modal('show')
-    document.getElementById("FacturaId").value = id;
-    // console.log('rechazar factura con el id '+id);
-}
-$(document).ready(function () {
+    function rechazarFac(id){
+        $("#modal_status_factura").modal('show')
+        document.getElementById("FacturaId").value = id;
+        // console.log('rechazar factura con el id '+id);
+    }
+    $(document).ready(function () {
 
-    $('.fecha').datepicker({
-        format: 'dd-mm-yyyy',
-        todayHighlight: true,
-        autoclose: true,
-        orientation:"bottom"
+        $('.fecha').datepicker({
+            format: 'dd-mm-yyyy',
+            todayHighlight: true,
+            autoclose: true,
+            orientation:"bottom"
+        });
+
+        TableAdvanced.init();
+        $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
+        
+        $('[data-toggle="popover"]').popover()
+
     });
-
-    TableAdvanced.init();
-    $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
-    
-    $('[data-toggle="popover"]').popover()
-
-});
-    
-var TableAdvanced = function() {
-    // ===============table 1====================
-    var initTable1 = function() {
-        var table = $('#sample_1');
-        /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
-        /* Set tabletools buttons and button container */
-        table.DataTable({
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-            order: [[ 4, "desc" ]],
-            dom: 'Bflr<"table-responsive"t>ip',
-            buttons: [
-                {
-                extend: 'csv',
-                text: '<i class="fa  fa-download"></i> Descargar',
-                filename: 'Proveedores',
-                class : 'excel',
-                className: 'mt-2 btn btn-secondary-o'
-                },
-                {
-                extend: 'print',
-                text: '<i class="fa  fa-print"></i> Imprimir',
-                filename: 'Proveedores',
-                className: 'mt-2 ml-1 btn btn-secondary-o'
-                },
-                
-                
-            ]
-        });
         
-    }
-    var initTable2 = function() {
-        var table = $('#sample_2');
-        /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
-        /* Set tabletools buttons and button container */
-        table.DataTable({
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-            order: [[ 4, "desc" ]],
-            dom: 'Bflr<"table-responsive"t>ip',
-            buttons: [
-                {
-                extend: 'csv',
-                text: '<i class="fa  fa-download"></i> Descargar',
-                filename: 'Proveedores',
-                class : 'excel',
-                className: 'mt-2 btn btn-secondary-o'
-                },
-                {
-                extend: 'print',
-                text: '<i class="fa  fa-print"></i> Imprimir',
-                filename: 'Proveedores',
-                className: 'mt-2 ml-1 btn btn-secondary-o'
-                },
-                
-                
-            ]
-        });
-        
-    }
-    return {
-        //main function to initiate the module
-        init: function() {
-            if (!jQuery().dataTable) {
-                return;
-            }
-            initTable1();
-            initTable2();
+    var TableAdvanced = function() {
+        // ===============table 1====================
+        var initTable1 = function() {
+            var table = $('#sample_1');
+            /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
+            /* Set tabletools buttons and button container */
+            table.DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                order: [[ 4, "desc" ]],
+                dom: 'Bflr<"table-responsive"t>ip',
+                buttons: [
+                    {
+                    extend: 'csv',
+                    text: '<i class="fa  fa-download"></i> Descargar',
+                    filename: 'Proveedores',
+                    class : 'excel',
+                    className: 'mt-2 btn btn-secondary-o'
+                    },
+                    {
+                    extend: 'print',
+                    text: '<i class="fa  fa-print"></i> Imprimir',
+                    filename: 'Proveedores',
+                    className: 'mt-2 ml-1 btn btn-secondary-o'
+                    },
+                    
+                    
+                ]
+            });
+            
         }
-    };
+        var initTable2 = function() {
+            var table = $('#sample_2');
+            /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
+            /* Set tabletools buttons and button container */
+            table.DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                order: [[ 4, "desc" ]],
+                dom: 'Bflr<"table-responsive"t>ip',
+                buttons: [
+                    {
+                    extend: 'csv',
+                    text: '<i class="fa  fa-download"></i> Descargar',
+                    filename: 'Proveedores',
+                    class : 'excel',
+                    className: 'mt-2 btn btn-secondary-o'
+                    },
+                    {
+                    extend: 'print',
+                    text: '<i class="fa  fa-print"></i> Imprimir',
+                    filename: 'Proveedores',
+                    className: 'mt-2 ml-1 btn btn-secondary-o'
+                    },
+                    
+                    
+                ]
+            });
+            
+        }
+        return {
+            //main function to initiate the module
+            init: function() {
+                if (!jQuery().dataTable) {
+                    return;
+                }
+                initTable1();
+                initTable2();
+            }
+        };
 
-}();
+    }();
 
-$(document).ready(function () {
-        let cliente_id = '<?= $venta['Cliente']['id'] ?>'
+    $(document).ready(function () {
+        let cliente_id = 58104;
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "LogPagos", "action" => "view_datos_cliente")); ?>",
-            data: {api_key: 'adryo', cliente_id, },
+            data: {api_key: 'api_key', cliente_id:cliente_id },
             dataType: "Json",
-            success: function (res) {
-                console.log(res);
+            success: function (response) {
+                // console.log(response);
+                for (let i in response.respuesta) {
+                    document.getElementById("propiedad_referencia").innerHTML =response.respuesta[i].cliente.referencia;
+                    document.getElementById("fecha_operacion").innerHTML =response.respuesta[i].cliente.fecha;
+                    document.getElementById("user_venta").innerHTML =response.respuesta[i].cliente.user_nombre;
+                    document.getElementById("apertado").innerHTML =response.respuesta[i].cliente.apartado;
+                    document.getElementById("escrituracion").innerHTML =response.respuesta[i].cliente.escrituracion;
+                    document.getElementById("contrato").innerHTML =response.respuesta[i].cliente.contrato;
+                    document.getElementById("mensualidad").innerHTML =response.respuesta[i].cliente.mensualidad;
+                    document.getElementById("precio_cierre").innerHTML =response.respuesta[i].cliente.precio_cierre;
+                    document.getElementById("totalpagado").innerHTML =response.respuesta[i].cliente.totalpagado;
+				}
+                
             },
             error: function ( response ) {
                 console.log('arroja error');
                 console.log(response.responseText);
             }
         });
-
     });
 </script>

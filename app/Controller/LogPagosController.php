@@ -22,12 +22,12 @@ class LogPagosController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow(array('view_datos_cliente','pago_mes_cliente','log_pago_lleno'));
+        $this->Auth->allow(array('view_datos_cliente','pago_mes_cliente_','log_pago_lleno'));
       
     }
     /**
      * 
-     * comentario
+     * 
      * 
      * 
     */
@@ -396,7 +396,7 @@ class LogPagosController extends AppController {
      * 
      * 
     */
-    function pago_mes_cliente(){
+    function pago_mes_cliente_(){
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('LogPago');
         $this->LogPago->Behaviors->load('Containable');
