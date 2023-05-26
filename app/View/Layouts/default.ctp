@@ -625,20 +625,20 @@
                 <div style="text-align: center;padding-top: 5%;padding-bottom: 5%;">
 
                 <?php 
-                        if ($this->Session->read('CuentaUsuario.Cuenta.logo')==""|| $this->Session->read('CuentaUsuario.Cuenta.logo')=="/img/"){
-                            echo $this->Html->image('logo_inmosystem.png',array('class'=>'admin_img'));
+                    if ($this->Session->read('CuentaUsuario.Cuenta.logo')==""|| $this->Session->read('CuentaUsuario.Cuenta.logo')=="/img/"){
+                        echo $this->Html->image('logo_inmosystem.png',array('class'=>'admin_img'));
+                    }else{
+                        if (empty($this->Session->read('Desarrollador'))) {
+                            echo $this->Html->image($this->Session->read('CuentaUsuario.Cuenta.logo'),array('class'=>'admin_img','style'=>'max-height:150px;max-width: 100%;padding-left: 5%;padding-right: 5%;padding-top: 5%;'));
                         }else{
-                            if (empty($this->Session->read('Desarrollador'))) {
-                                echo $this->Html->image($this->Session->read('CuentaUsuario.Cuenta.logo'),array('class'=>'admin_img','style'=>'max-height:150px;max-width: 100%;padding-left: 5%;padding-right: 5%;padding-top: 5%;'));
+                            if (!empty($this->Session->read('Desarrollador.Desarrollo.logotipo'))) {
+                                echo $this->Html->image($this->Session->read('Desarrollador.Desarrollo.logotipo'),array('class'=>'admin_img','alt'=>'Logo Inmosystem', 'style'=>'max-height:150px;max-width: 100%;padding-left: 5%;padding-right: 5%;padding-top: 5%;'));
                             }else{
-                                if (!empty($this->Session->read('Desarrollador.Desarrollo.logotipo'))) {
-                                    echo $this->Html->image($this->Session->read('Desarrollador.Desarrollo.logotipo'),array('class'=>'admin_img','alt'=>'Logo Inmosystem', 'style'=>'max-height:150px;max-width: 100%;padding-left: 5%;padding-right: 5%;padding-top: 5%;'));
-                                }else{
-                                    echo $this->Html->image($this->Session->read('CuentaUsuario.Cuenta.logo'),array('class'=>'admin_img','style'=>'max-height:150px;max-width: 100%;padding-left: 5%;padding-right: 5%;padding-top: 5%;'));
-                                }
+                                echo $this->Html->image($this->Session->read('CuentaUsuario.Cuenta.logo'),array('class'=>'admin_img','style'=>'max-height:150px;max-width: 100%;padding-left: 5%;padding-right: 5%;padding-top: 5%;'));
                             }
                         }
-                        ?>
+                    }
+                ?>
                 </div>
 
                 <ul id="menu" style="font-size: 1.03rem !important;">
@@ -781,7 +781,7 @@
                         <?php endif; ?>
 
 
-
+                    <!-- Desarrollos **Korner 25-05-2023** -->
                     <li class="treeview">
                       <a href="#">
                        <i class="fa fa-building"></i>
@@ -803,6 +803,34 @@
                         <?php if ( $this->Session->read('Permisos.Group.dr') == 1 ): ?>
                             
                             <li><?php echo $this->Html->link('<i class="fa fa-list"></i> Listar Desarrollos',array('controller'=>'desarrollos','action'=>'index'),array('escape'=>false))?></li>
+
+                        <?php endif; ?>
+
+                      </ul>
+
+                    </li>
+                    <!-- Mesa de control **Korner 25-05-2023** -->
+                    <li class="treeview">
+                      <a href="#">
+                       <i class="fa fa-tasks"></i>
+                       <span class="link-title menu_hide">Mesa de control</span>
+                        <i class="fa fa-angle-left pull-right menu_hide"></i>
+                      </a>
+
+                      <ul class="treeview-menu">
+                            
+                        <?php if( $this->Session->read('Permisos.Group.id') == 5 ): ?>
+                            <li><?php echo $this->Html->link('<i class="fa fa-file-archive-o"></i><span> Procesos</span>','#',array('escape'=>false, 'class'=>'disable-custom'))?></li>
+                        
+                        <?php elseif( $this->Session->read('Permisos.Group.dc') == 1): ?>
+                            
+                            <li><?php echo $this->Html->link('<i class="fa fa-file-archive-o"></i><span> Procesos</span>',array('controller'=>'desarrollos','action'=>'control_table'),array('escape'=>false))?></li>
+
+                        <?php endif; ?>
+
+                        <?php if ( $this->Session->read('Permisos.Group.dr') == 1 ): ?>
+                            
+                            <li><?php echo $this->Html->link('<i class="fa fa-folder-open"></i> Validación',array('controller'=>'desarrollos','action'=>'validation'),array('escape'=>false))?></li>
 
                         <?php endif; ?>
 
@@ -1076,5 +1104,6 @@
         
     });
 </script>
+<script src="https://kit.fontawesome.com/b0d8aefb17.js" crossorigin="anonymous"></script>
 
 <?php //echo $this->element('sql_dump');?>

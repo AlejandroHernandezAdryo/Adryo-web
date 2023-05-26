@@ -90,7 +90,7 @@
                         </div> -->
                         <div class="col-sm-12 col-lg-3 mt-2 offset-lg-9">
                             <?= $this->Form->input('contador', array(
-                                'class'       => 'form-control',
+                                'class'       => 'form-control tools',
                                 'div'         => false,
                                 'placeholder' => 'Buscador',
                                 'label'       => false
@@ -137,7 +137,26 @@
                                             </div>
                                         </div>
                                         <!-- Disponibilidad e inventario -->
-                                        <div class="row mt-1">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div style="display:flex;justify-content:space-between;">
+                                                    <div>
+                                                        <p style="font-size: 15px; font-weight: 700;margin:0;">
+                                                            Disponibilidad total
+                                                        </p>
+                                                        <p style="font-size: 19px; font-weight: 400;margin:0;" class="text-sm-center">
+                                                            <?= sizeof($desarrollo['Disponibles'])?> / <?= sizeof($desarrollo['Propiedades'])?>
+                                                        </p>
+                                                    </div>
+                                                    <div class="text-sm-right">
+                                                        <small class="text-sm-right">
+                                                            <?= $this->Html->link('Ver inventario',array('controller'=>'desarrollos','action'=>'inventario',$desarrollo['Desarrollo']['id']))?>
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row mt-1">
                                             <div class="col-sm-12 col-lg-6">
                                                 <p style="font-size: 15px; font-weight: 700;">
                                                     Disponibilidad total
@@ -145,37 +164,70 @@
                                                 </p>
                                             </div>
                                             <div class="col-sm-12 col-lg-6">
-                                                <div class="text-sm-right">
+                                                <div class="float-right">
                                                     <small>
-                                                        <?= $this->Html->link('Ver inventario',array('controller'=>'desarrollos','action'=>'inventario',$desarrollo['Desarrollo']['id']))?>
-                                                        <!-- <a href="#">Ver inventario</a> -->
+                                                        <//?= $this->Html->link('Ver inventario',array('controller'=>'desarrollos','action'=>'inventario',$desarrollo['Desarrollo']['id']))?>
                                                     </small>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- Iconos y asignacion de equipos -->
                                         <div class="row">
+                                            <div class="col-sm-12" style="display:flex;justify-content:space-between;align-items:end;">
+                                                <div>
+                                                    <span style="margin:0;">
+                                                        Equipo
+                                                    </span>
+                                                    <span style="margin:0;">
+                                                        <?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "No asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?>
+                                                    </span>
+                                                    <br>
+                                                    <span style="margin:0;">
+                                                        Privado
+                                                    </span>
+                                                    <span style="margin:0;">
+                                                        <?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?>
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    Compartir
+                                                    <br>
+                                                    <span>
+                                                        <a href="https://www.facebook.com/share.php?u=<?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
+                                                            <?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:20px;')); ?>
+                                                        </a>
+                                                    </span>
+                                                    <span>
+                                                        <?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:20px;')); ?>
+                                                    </span>
+                                                    <span>
+                                                        <?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:20px;')); ?>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row">
                                             <div class="col-sm-12 col-lg-6">
-                                                Equipo <span class="text-sm-right"> <?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "Sin equipo asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </span>
+                                                Equipo <p class="text-sm-right"> <//?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "Sin equipo asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </p>
                                                 <br>
-                                                Privado <span class="text-sm-right"> <?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </span>
+                                                Privado <p class="text-sm-right"> <//?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </p>
                                             </div>
                                             <div class="col-sm-12 col-lg-6 text-sm-right">
                                                 Compartir
                                                 <br>
                                                 <span>
-                                                    <a href="https://www.facebook.com/share.php?u=<?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
-                                                        <?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <a href="https://www.facebook.com/share.php?u=<//?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
+                                                        <//?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
                                                     </a>
                                                 </span>
                                                 <span>
-                                                    <?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <//?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
                                                 </span>
                                                 <span>
-                                                    <?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <//?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
                                                 </span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- Separador -->
                                         <div class="row mt-2">
                                             <div class="col-sm-12">
@@ -184,69 +236,124 @@
                                         </div>
                                         <!-- Metrajes -->
                                         <div class="row">
-                                            <div class="col-sm-12 col-lg-6">
-                                                <div>
-                                                    <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                    <span>
-                                                        <?= $desarrollo['Desarrollo']['m2_low']?> - <?= $desarrollo['Desarrollo']['m2_top']?> 
-                                                        <!-- m<sup>2</sup> -->
-                                                    </span>
+                                            <div class="col-sm-12">
+                                                <div style="display:flex;justify-content:space-between;align-items:end;">
+                                                    <div style="width:49%;">
+                                                        <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                        <span>
+                                                            <?= $desarrollo['Desarrollo']['m2_low']?> - <?= $desarrollo['Desarrollo']['m2_top']?> 
+                                                            <!-- m<sup>2</sup> -->
+                                                        </span>
+                                                    </div>
+                                                    <div style="width:49%;">
+                                                        <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                        <span>
+                                                            <?= $desarrollo['Desarrollo']['rec_low']?>-<?= $desarrollo['Desarrollo']['rec_top']?>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <br>
-                                                <div>
-                                                    <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                    <span>
-                                                        <?= $desarrollo['Desarrollo']['rec_low']?>-<?= $desarrollo['Desarrollo']['rec_top']?>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-lg-6">
-                                                <div>
-                                                    <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                    <span>
-                                                        <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
-                                                    </span>
-                                                </div>
-                                                <br>
-                                                <div>
-                                                    <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                                    <span>
-                                                        <?= $desarrollo['Desarrollo']['est_low']?>-<?= $desarrollo['Desarrollo']['est_top']?>
-                                                    </span>
+                                                <div style="display:flex;justify-content:space-between;align-items:end;">
+                                                    <div style="width:49%;">
+                                                        <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                        <span>
+                                                            <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
+                                                        </span>
+                                                    </div>
+                                                    <div style="width:49%;" class="mt-1">
+                                                        <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                        <span>
+                                                            <?= $desarrollo['Desarrollo']['est_low']?>-<?= $desarrollo['Desarrollo']['est_top']?>
+                                                        </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- <div class="row">
+                                            <div class="col-sm-12 col-lg-6">
+                                                <div>
+                                                    <//?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <span>
+                                                        <//?= $desarrollo['Desarrollo']['m2_low']?> - <//?= $desarrollo['Desarrollo']['m2_top']?> 
+                                                    </span>
+                                                </div>
+                                                <br>
+                                                <div>
+                                                    <//?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <span>
+                                                        <//?= $desarrollo['Desarrollo']['rec_low']?>-<//?= $desarrollo['Desarrollo']['rec_top']?>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <div>
+                                                    <//?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <span>
+                                                        <//?= $desarrollo['Desarrollo']['banio_low']?>-<//?= $desarrollo['Desarrollo']['banio_top']?>
+                                                    </span>
+                                                </div>
+                                                <br>
+                                                <div>
+                                                    <//?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                                    <span>
+                                                        <//?= $desarrollo['Desarrollo']['est_low']?>-<//?= $desarrollo['Desarrollo']['est_top']?>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div> -->
                                         <!-- Descripciones -->
-                                        <div class="row">
+                                        <div class="row mt-1">
+                                            <div class="col-sm-12">
+                                                <div style="display:flex;justify-content:space-between;">
+                                                    <div style="width:49%;">Tipo de desarrollo</div>
+                                                    <div style="width:49%;"><?= $desarrollo['Desarrollo']['tipo_desarrollo']?></div>
+                                                </div>
+                                                <div style="display:flex;justify-content:space-between;">
+                                                    <div style="width:49%;">Torres</div>
+                                                    <div style="width:49%;"><?= $desarrollo['Desarrollo']['torres']?></div>
+                                                </div>
+                                                <div style="display:flex;justify-content:space-between;">
+                                                    <div style="width:49%;">Unidades totales</div>
+                                                    <div style="width:49%;"><?= $desarrollo['Desarrollo']['unidades_totales']?></div>
+                                                </div>
+                                                <div style="display:flex;justify-content:space-between;">
+                                                    <div style="width:49%;">Entrega</div>
+                                                    <div style="width:49%;"><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></div>
+                                                </div>
+                                                <div style="display:flex;justify-content:space-between;">
+                                                    <div style="width:49%;">Colonia</div>
+                                                    <div style="width:49%;"><?= $desarrollo['Desarrollo']['colonia']?></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="row">
                                             <div class="col-sm-12">
                                                 <table class="table table-sm">
                                                     <tbody>
                                                         <tr>
                                                             <td>Tipo de desarrollo</td>
-                                                            <td><?= $desarrollo['Desarrollo']['tipo_desarrollo']?></td>
+                                                            <td><//?= $desarrollo['Desarrollo']['tipo_desarrollo']?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Torres</td>
-                                                            <td><?= $desarrollo['Desarrollo']['torres']?></td>
+                                                            <td><//?= $desarrollo['Desarrollo']['torres']?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Unidades totales</td>
-                                                            <td><?= $desarrollo['Desarrollo']['unidades_totales']?></td>
+                                                            <td><//?= $desarrollo['Desarrollo']['unidades_totales']?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Entrega</td>
-                                                            <td><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></td>
+                                                            <td><//?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></td>
                                                         </tr>
                                                         <tr>
                                                             <td>Colonia</td>
-                                                            <td><?= $desarrollo['Desarrollo']['colonia']?></td>
+                                                            <td><//?= $desarrollo['Desarrollo']['colonia']?></td>
                                                         </tr>
-
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
-                                        <div class="row">
+                                        </div> -->
+                                        <div class="row mt-1">
                                             <div class="col-sm-12">
                                                 <button class="btn btn-primary float-right ml-1">Vendido</button>
                                                 <button class="btn btn-secondary-o float-right">Liberado</button>
@@ -291,11 +398,6 @@
 ?>
 <script>
 
-$("#shareFbDesarrollo").attr('href', "https://www.facebook.com/share.php?u="+URL+"&title=Desarrollo" );
 
-    'use strict';
-    $(document).ready(function) () {
-
-    }();
 
 </script>

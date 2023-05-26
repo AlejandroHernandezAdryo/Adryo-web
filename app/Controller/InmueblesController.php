@@ -3483,6 +3483,8 @@ public function view_tipo($id = null,$desarrollo_id = null){
                 $response[$i]['Desarrollo']['id']               = $value['Desarrollo']['id'];
                 $response[$i]['Desarrollo']['tipo_desarrollo']  = $value['Desarrollo']['tipo_desarrollo'];
                 $response[$i]['Desarrollo']['unidades_totales'] = $value['Desarrollo']['unidades_totales'];
+                $response[$i]['Desarrollo']['colonia']          = $value['Desarrollo']['colonia'];
+                $response[$i]['Desarrollo']['torres']           = $value['Desarrollo']['torres'];
                 $response[$i]['Desarrollo']['fecha_entrega']    = $value['Desarrollo']['fecha_entrega'];
                 $response[$i]['Desarrollo']['m2']               = $value['Desarrollo']['m2_low'] .' - ' . $value['Desarrollo']['m2_top'];
                 $response[$i]['Desarrollo']['rec']              = $value['Desarrollo']['rec_low'] .' - ' . $value['Desarrollo']['rec_top'];

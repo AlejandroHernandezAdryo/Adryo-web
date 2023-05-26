@@ -5065,4 +5065,16 @@ class DesarrollosController extends AppController {
 
     }
 
+    public function control_table($id=null){
+
+    }
+
+    public function validation($id=null){
+
+    }
+
+    public function inicio_proceso($id=null){
+
+    }
+
 }
