@@ -292,97 +292,10 @@
                             </span>
                         </div>
                     </div>
-                    <!-- <div class="col-sm-12 col-lg-12">
-                        <div class="col-sm-12 col-lg-4">
-                            <b>Propiedad:</b>
-                            <br> 
-                            <span>
-                            <?= $venta['Venta']['tipo_operacion'].": ".$venta['Inmueble']['referencia']?>
-                            </span>
-                        </div>
-                        <table class="table table-sm">
-                            <tbody>
-                                <tr>
-                                    <td>Nombre de Cliente:</td>
-                                    <td class="text-lg-left">
-                                        <?= $venta['Cliente']['nombre']?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Inmueble Comprado:</td>
-                                    <td class="text-lg-left">
-                                        <?= $venta['Inmueble']['referencia']?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Precio Cerrado:</td>
-                                    <td class="text-lg-left">
-                                        <?= "$".number_format($venta['Venta']['precio_cerrado'],2)?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Saldo:</td>
-                                    <td class="text-lg-left">
-                                        <?= "$".number_format($venta['Venta']['precio_cerrado']-$pagos[0][0]['SUM(monto)'],2)?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Fecha de cierre de venta:</td>
-                                    <td class="text-lg-left">
-                                        <?= date("d/M/Y",strtotime($venta['Venta']['fecha']))?>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Asesor que cierra la venta:</td>
-                                    <td class="text-lg-left">
-                                        <?= $venta['User']['nombre_completo']?>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>   
-                    </div> -->
+                    
                 </div>
             </div>
-            <!-- Historial y plan de pagos ** Korner 01-05-1990** -->
-            <!-- <div class="card mt-1">
-                <div class="card-header bg-blue-is">
-                    Plan de pagos
-                </div>
-                <div class="card-block m-t-35">
-                    <div class="card-block">
-                        <div class="row">
-                            <div class="col-sm-12 col-lg-12">
-                                <table class="table table-striped table-hover table-sm" id="sample_1" class="m-t-40">
-                                    <thead>
-                                        <tr>
-                                            <th>Referencia</th>
-                                            <th>Fecha de pago</th>
-                                            <th>Total</th>
-                                            <th>Estatus</th>
-                                            <th>Rechazar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <//?php foreach ($aportaciones as $factura): ?>
-                                            <tr>
-                                                <td><//?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
-                                                <td><//?= $factura['Factura']['fecha_emision'] ?></td>
-                                                <td class="text-xs-right"><//?= '$ '.number_format($factura['Factura']['total']) ?></td>
-                                                <td><//?= $status_factura[$factura['Factura']['estado']] ?></td>
-                                                <td class="text-sm-center">
-                                                    <//?php if ($factura['Factura']['estado'] != 2 && $factura['Factura']['estado'] != 5): ?>
-                                                        <a class="pointer" onclick="rechazarFac(<//?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Rechazar factura"><i class="fa fa-close"></i></a>
-                                                    <//?php endif ?>
-                                                </td>
-                                            </tr>
-                                        <//?php endforeach ?>
-                                    </tbody>
-                                </table>   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            
             <div class="row mt-1">
                 <div class="col-sm-12 ">
                     <ul class="nav nav-tabs">
@@ -402,33 +315,7 @@
                                         <div class="col-sm-12">
                                             <div class="card-block">
                                                 <table class="table table-striped table-hover table-sm" id="sample_1" class="m-t-40">
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>Referencia</th>
-                                                            <th>Fecha de pago</th>
-                                                            <th>Número de pago</th>
-                                                            <th>Total</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php foreach ($aportaciones as $factura): ?>
-                                                            <tr>
-                                                                <td class="text-sm-center">
-                                                                    <?php if ($factura['Factura']['estado'] != 2 && $factura['Factura']['estado'] != 5): ?>
-                                                                        <a class="pointer" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Rechazar factura"><i class="fa fa-close"></i></a>
-                                                                    <?php endif ?>
-                                                                </td>
-                                                                <td><?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
-                                                                <td><?= $factura['Factura']['fecha_emision'] ?></td>
-                                                                <td>
-                                                                    <?php for ($count = 1; $count < 100; $count++): ?>
-                                                                    <?php endfor ;?>
-                                                                </td>
-                                                                <td class=""><?= '$ '.number_format($factura['Factura']['total']) ?></td>
-                                                            </tr>
-                                                        <?php endforeach ?>
-                                                    </tbody>
+                                
                                                 </table>   
                                             </div>
                                         </div>
@@ -437,46 +324,11 @@
                                 <!-- tab historial de pagos -->
                                 <div class="tab-pane" id="historial_pagos">
                                     <div class="row">
-                                        <!-- Estatus de seguimiento **Korner 24-04-2023** -->
+                                        <!-- Estatus de seguimiento **rogue 24-04-2023** -->
                                         <div class="col-sm-12">
                                             <div class="card-block">
                                                 <table class="table table-striped table-hover table-sm w-100" id="sample_2" class="m-t-40">
-                                                    <!-- <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>Referencia </th>
-                                                            <th>Fecha de pago</th>
-                                                            <th>Número de pago</th>
-                                                            <th>Total</th>
-                                                            <th>Fecha de registro</th>
-                                                            <th>Estatus</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php  $i = 1; ?>
-                                                        <?php foreach ($aportaciones as $factura): ?>
-                                                            <tr>
-                                                                <td class="text-sm-center">
-                                                                    <?php if ($factura['Factura']['estado'] != 2 && $factura['Factura']['estado'] != 5): ?>
-                                                                        <a class="pointer" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Ver comprobante"><i class="fa fa-eye"></i></a>
-                                                                        <a class="pointer" onclick="editarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Editar" style="margin-left:8px;"><i class="fa fa-pencil"></i></a>
-                                                                    <?php else :?>
-                                                                        <a class="disabled" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-eye"></i></a>
-                                                                        <a class="pointer" onclick="uploadFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Editar" style="margin-left:8px;"><i class="fa fa-upload"></i></a>
-                                                                    <?php endif ;?>
-                                                                </td>
-                                                                <td><?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
-                                                                <td><?= $factura['Factura']['fecha_emision'] ?></td>
-                                                                <td>
-                                                                    <?php  echo$i++; ?>
-                                                                <td><?= '$ '.number_format($factura['Factura']['total']) ?></td>
-                                                                <td>
-                                                                    Texto
-                                                                </td>
-                                                                <td><?= $status_factura[$factura['Factura']['estado']] ?></td>
-                                                            </tr>
-                                                        <?php endforeach ?>
-                                                    </tbody> -->
+                                                    
                                                 </table>   
                                             </div>
                                         </div>
@@ -489,49 +341,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="outer m-t-15">
-        <div class="inner bg-light lter bg-container">
-            <div class="card">
-                <div class="card-header bg-blue-is">
-                    Plan de pagos
-                </div>
-                <div class="card-block m-t-35">
-                    <div class="card-block">
-                        <div class="row">
-                            <div class="col-sm-12 col-lg-12">
-                                <table class="table table-striped table-hover table-sm" id="sample_1" class="m-t-40">
-                                    <thead>
-                                        <tr>
-                                            <th>Referencia</th>
-                                            <th>Fecha de pago</th>
-                                            <th>Total</th>
-                                            <th>Estatus</th>
-                                            <th>Rechazar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($aportaciones as $factura): ?>
-                                            <tr>
-                                                <td><?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
-                                                <td><?= $factura['Factura']['fecha_emision'] ?></td>
-                                                <td class="text-xs-right"><?= '$ '.number_format($factura['Factura']['total']) ?></td>
-                                                <td><?= $status_factura[$factura['Factura']['estado']] ?></td>
-                                                <td class="text-sm-center">
-                                                    <?php if ($factura['Factura']['estado'] != 2 && $factura['Factura']['estado'] != 5): ?>
-                                                        <a class="pointer" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Rechazar factura"><i class="fa fa-close"></i></a>
-                                                    <?php endif ?>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach ?>
-                                    </tbody>
-                                </table>   
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>
 
 <?php 
@@ -578,6 +387,9 @@
         
         $('[data-toggle="popover"]').popover()
         let cliente_id = 58104;
+        /**
+         * 
+         */
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "LogPagos", "action" => "view_datos_cliente")); ?>",
@@ -602,12 +414,69 @@
                 console.log(response.responseText);
             }
         });
+        /** 
+         * 
+        */
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "LogPagos", "action" => "historico_pagos")); ?>",
+            data: {api_key: 'api_key', cliente_id:cliente_id },
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                $('#sample_1').dataTable( {
+                    destroy: true,
+                    data : response,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                    dom: 'Bflr<"table-responsive"t>ip',
+                    columnDefs: [
+                        {
+                            targets: [ 3 ],
+                            visible: true,
+                            searchable: false
+                        },
+                    ],
+                    language: {
+                        sSearch: "Buscador",
+                        lengthMenu: '_MENU_ registros por página',
+                        info: 'Mostrando _TOTAL_ registro(s)',
+                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                        emptyTable: "Sin información",
+                        paginate: {
+                            previous: 'Anterior',
+                            next: 'Siguiente'
+                        },
+                    },
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                            filename: 'ClientList',
+                            class : 'excel',
+                            charset: 'utf-8',
+                            bom: true,
+                            // enabled: false,
+        
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="fa  fa-print"></i> Imprimir',
+                            filename: 'ClientList',
+                        },
+                    ]
+                });
+            }
+        });
+        /***
+         * 
+         */
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "LogPagos", "action" => "pagos_log")); ?>",
             data: {api_key: 'api_key', cliente_id:cliente_id },
             dataType: 'json',
             success: function (response) {
+                console.log(response);
                 $('#sample_2').dataTable( {
                     destroy: true,
                     data : response,
@@ -692,11 +561,6 @@
         let id_pago=$("#id_pago").text();
         let pagoMas=$("#pago_mas").val()
         let Image=$("#pagoImagen").val();
-        let remplazar = Image.replace(/_/g, " ");
-        // valorCampo = $("#ProcesoInmueblesApartadoTipoDocumento").val();
-        // remplazar = valorCampo.replace(/_/g, " ");
-        // pagoImagen
-        // console.log(remplazar);
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "LogPagos", "action" => "pago_mes_cliente_")); ?>",
@@ -713,8 +577,9 @@
         document.getElementById("FacturaId").value = id;
         // console.log('rechazar factura con el id '+id);
     }
+
     var TableAdvanced = function() {
-        // ===============table 1====================
+        // ===============table 2====================
         var initTable2 = function() {
             var table = $('#sample_2');
             table.DataTable({
@@ -772,6 +637,62 @@
             var tableWrapper = $('#sample_2_wrapper');
             tableWrapper.find('.dataTables_length select').select2();
         }
+         // ===============table 1====================
+        var initTable1 = function() {
+            var table = $('#sample_1');
+            table.DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                columnDefs: [
+                    {
+                        targets: [ 3 ],
+                        visible: false,
+                        searchable: false
+                    },
+                ],
+                language: {
+                    sSearch: "Buscador",
+                    lengthMenu: '_MENU_ registros por página',
+                    info: 'Mostrando _TOTAL_ registro(s)',
+                    infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                    emptyTable: "Sin información.",
+                    paginate: {
+                        previous: 'Anterior',
+                        next: 'Siguiente'
+                    },
+                },
+                columns: [
+
+                    { title: "ver" },
+                    { title: "Comprobante" },
+                    { title: "Referencia" },
+                    { title: "programada de Pago" },
+                    { title: "Número de pago" },
+    
+                    
+                ],
+                dom: 'Bflr<"table-responsive"t>ip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                        filename: 'ClientList',
+                        class : 'excel',
+                        charset: 'utf-8',
+                        bom: true,
+                        enabled: false,
+
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa  fa-print"></i> Imprimir',
+                        filename: 'ClientList',
+                        enabled: false,
+                    },
+                ]
+            });
+            var tableWrapper = $('#sample_1_wrapper');
+            tableWrapper.find('.dataTables_length select').select2();
+        }
         
         return {
             //main function to initiate the module
@@ -780,6 +701,7 @@
                     return;
                 }
                 initTable2();
+                initTable1();
                 
             }
         };
