@@ -64,7 +64,7 @@
             '/vendors/radio_css/css/radiobox.min',
             'custom',
             'style_operaciones',
-            'components_adryo',
+            'componentsadryo',
         ),
         array('inline'=>false)); 
 ?>

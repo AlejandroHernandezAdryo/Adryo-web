@@ -16,7 +16,7 @@
     <!--global styles-->
     <?php echo $this->Html->css(array(
         'components',
-        'components_adryo',
+        'componentsadryo',
         'custom',
 
         'pages/layouts',
