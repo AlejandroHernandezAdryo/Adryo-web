@@ -689,7 +689,7 @@ class LogPagosController extends AppController {
         return $periodos;
     
     }
-    /***
+     /***
      * 
      * 
      * 
@@ -701,7 +701,10 @@ class LogPagosController extends AppController {
 
         if ($this->request->is('post')) {
                 
-            $id = $this->request->data['LogPago']['id'];
+            $id = $this->request->data['id_pago'];
+            $file= $this->request->data['Image'];
+            $sinvocales = substr ($file,12);
+            mkdir(getcwd()."/img/pagos/".$id,0777);           
             $operacion=$this->LogPago->find('first',array(
                 'conditions'=>array(
                     'LogPago.id' =>  $id,
@@ -714,11 +717,11 @@ class LogPagosController extends AppController {
             ));
             $this->request->data['LogPago']['id']          = $id;
             if ($this->request->data['LogPago']['imagen'] != null ) {
-                $filename = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id'];
+                $filename = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."".$sinvocales;
                 move_uploaded_file('pagos',$filename);
-                $ruta = "/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id'];
-                $this->LogPago->query("INSERT INTO comprobante VALUES (0,$id,'".$ruta."','',0)");
-                
+                $ruta = "/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$sinvocales;
+                $this->request->data['LogPago']['comprobante'] =$ruta;
+
             }
             
             
