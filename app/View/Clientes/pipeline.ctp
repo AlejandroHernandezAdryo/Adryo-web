@@ -26,7 +26,7 @@
         'pages/wizards',
         'components',
         'pages/new_dashboard',
-        'componentsadryo'
+        'components_adryo'
     ),
     array('inline'=>false))
 ?>
@@ -487,7 +487,7 @@
 
             '/vendors/chosen/js/chosen.jquery',
             'form',
-            'componentsadryo'
+            'components_adryo'
 
         ),
         array('inline'=>false))

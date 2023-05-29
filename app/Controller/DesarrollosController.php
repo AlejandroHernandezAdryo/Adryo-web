@@ -5062,6 +5062,24 @@ class DesarrollosController extends AppController {
     }
     
     public function inventario($id=null){
+        $this->set(compact('id'));
+        // $id_desarrollo = $id;
+        // $this->set;
+    }
+
+    public function control_table($id=null){
+
+    }
+
+    public function validation($id=null){
+
+    }
+
+    public function inicio_proceso($id=null){
+
+    }
+
+    public function proceso_tabla($id=null){
 
     }
 

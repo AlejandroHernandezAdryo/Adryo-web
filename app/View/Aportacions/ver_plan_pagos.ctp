@@ -233,21 +233,22 @@
                         <div class="col-sm-12 col-lg-4">
                             <b>Propiedad:</b>
                             <br> 
-                            <span id=propiedad_referencia>
+                            <span>
+                            <?= $venta['Venta']['tipo_operacion'].": ".$venta['Inmueble']['referencia']?>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-4">
                             <b>Fecha de cierre:</b>
-                            <br>
-                            <span id='fecha_operacion'>
-                                
+                            <br> 
+                            <span>
+                                <?= date("d/M/Y",strtotime($venta['Venta']['fecha']))?>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-4">
                             <b>Asesor cerro venta:</b>
                             <br> 
-                            <span id='user_venta'>
-                            
+                            <span>
+                            <?= $venta['User']['nombre_completo']?>
                             </span>
                         </div>
                     </div>
@@ -255,40 +256,47 @@
                         <div class="col-sm-12 col-lg-2">
                             <b>Apartado:</b>
                             <br> 
-                            <span id=apertado>
+                            <span>
+                                texto
+                            <?= $venta['User']['nombre_completo']?>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Escrituración:</b>
                             <br> 
-                            <span id='escrituracion'>
+                            <span>
+                                texto
+                            <?= $venta['User']['nombre_completo']?>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Contrato:</b>
                             <br> 
-                            <span id='contrato'>
-                               
+                            <span>
+                                texto
+                                <?= $venta['User']['nombre_completo']?>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Mensualidad:</b>
                             <br> 
-                            <span id='mensualidad'>
+                            <span>
+                                texto
+                                <?= $venta['User']['nombre_completo']?>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Precio de venta:</b>
                             <br> 
-                            <span id ='precio_cierre'>
-                               
+                            <span>
+                                <?= "$".number_format($venta['Venta']['precio_cerrado'],2)?>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Saldo:</b>
                             <br> 
-                            <span id='totalpagado'>
-                                
+                            <span>
+                                <?= "$".number_format($venta['Venta']['precio_cerrado']-$pagos[0][0]['SUM(monto)'],2)?>
                             </span>
                         </div>
                     </div>
@@ -372,339 +380,125 @@
 ?>
 
 <script>
-        
-    'use strict';
-    $(document).ready(function () {
-        $('.fecha').datepicker({
-            format: 'dd-mm-yyyy',
-            todayHighlight: true,
-            autoclose: true,
-            orientation:"bottom"
-        });
+    
+'use strict';
 
-        TableAdvanced.init();
-        $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
+function editarFac(){
+    $("#modal_edit_factura").modal('show')
+    document.getElementById("FacturaId").value = id;
+}
+function uploadFac(){
+    $("#modal_upload_factura").modal('show')
+    document.getElementById("FacturaId").value = id;
+}
+
+function rechazarFac(id){
+    $("#modal_status_factura").modal('show')
+    document.getElementById("FacturaId").value = id;
+    // console.log('rechazar factura con el id '+id);
+}
+$(document).ready(function () {
+
+    $('.fecha').datepicker({
+        format: 'dd-mm-yyyy',
+        todayHighlight: true,
+        autoclose: true,
+        orientation:"bottom"
+    });
+
+    TableAdvanced.init();
+    $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
+    
+    $('[data-toggle="popover"]').popover()
+
+});
+    
+var TableAdvanced = function() {
+    // ===============table 1====================
+    var initTable1 = function() {
+        var table = $('#sample_1');
+        /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
+        /* Set tabletools buttons and button container */
+        table.DataTable({
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+            order: [[ 4, "desc" ]],
+            dom: 'Bflr<"table-responsive"t>ip',
+            buttons: [
+                {
+                extend: 'csv',
+                text: '<i class="fa  fa-download"></i> Descargar',
+                filename: 'Proveedores',
+                class : 'excel',
+                className: 'mt-2 btn btn-secondary-o'
+                },
+                {
+                extend: 'print',
+                text: '<i class="fa  fa-print"></i> Imprimir',
+                filename: 'Proveedores',
+                className: 'mt-2 ml-1 btn btn-secondary-o'
+                },
+                
+                
+            ]
+        });
         
-        $('[data-toggle="popover"]').popover()
-        let cliente_id = 58104;
-        /**
-         * 
-         */
+    }
+    var initTable2 = function() {
+        var table = $('#sample_2');
+        /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
+        /* Set tabletools buttons and button container */
+        table.DataTable({
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+            order: [[ 4, "desc" ]],
+            dom: 'Bflr<"table-responsive"t>ip',
+            buttons: [
+                {
+                extend: 'csv',
+                text: '<i class="fa  fa-download"></i> Descargar',
+                filename: 'Proveedores',
+                class : 'excel',
+                className: 'mt-2 btn btn-secondary-o'
+                },
+                {
+                extend: 'print',
+                text: '<i class="fa  fa-print"></i> Imprimir',
+                filename: 'Proveedores',
+                className: 'mt-2 ml-1 btn btn-secondary-o'
+                },
+                
+                
+            ]
+        });
+        
+    }
+    return {
+        //main function to initiate the module
+        init: function() {
+            if (!jQuery().dataTable) {
+                return;
+            }
+            initTable1();
+            initTable2();
+        }
+    };
+
+}();
+
+$(document).ready(function () {
+        let cliente_id = '<?= $venta['Cliente']['id'] ?>'
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "LogPagos", "action" => "view_datos_cliente")); ?>",
-            data: {api_key: 'api_key', cliente_id:cliente_id },
-            dataType: 'json',
-            success: function (response) {
-                for (let i in response.respuesta) {
-                    
-                    document.getElementById("propiedad_referencia").innerHTML =response.respuesta[i].cliente.referencia;
-                    document.getElementById("fecha_operacion").innerHTML =response.respuesta[i].cliente.fecha;
-                    document.getElementById("user_venta").innerHTML =response.respuesta[i].cliente.user_nombre;
-                    document.getElementById("apertado").innerHTML =response.respuesta[i].cliente.apartado;
-                    document.getElementById("escrituracion").innerHTML =response.respuesta[i].cliente.escrituracion;
-                    document.getElementById("contrato").innerHTML =response.respuesta[i].cliente.contrato;
-                    document.getElementById("mensualidad").innerHTML =response.respuesta[i].cliente.mensualidad;
-                    document.getElementById("precio_cierre").innerHTML =response.respuesta[i].cliente.precio_cierre;
-                    document.getElementById("totalpagado").innerHTML =response.respuesta[i].cliente.totalpagado;
-				}
+            data: {api_key: 'adryo', cliente_id, },
+            dataType: "Json",
+            success: function (res) {
+                console.log(res);
             },
             error: function ( response ) {
                 console.log('arroja error');
                 console.log(response.responseText);
             }
         });
-        /** 
-         * 
-        */
-        $.ajax({
-            type: "POST",
-            url: "<?= Router::url(array("controller" => "LogPagos", "action" => "historico_pagos")); ?>",
-            data: {api_key: 'api_key', cliente_id:cliente_id },
-            dataType: 'json',
-            success: function (response) {
-                console.log(response);
-                $('#sample_1').dataTable( {
-                    destroy: true,
-                    data : response,
-                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                    dom: 'Bflr<"table-responsive"t>ip',
-                    columnDefs: [
-                        {
-                            targets: [ 3 ],
-                            visible: true,
-                            searchable: false
-                        },
-                    ],
-                    language: {
-                        sSearch: "Buscador",
-                        lengthMenu: '_MENU_ registros por página',
-                        info: 'Mostrando _TOTAL_ registro(s)',
-                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
-                        emptyTable: "Sin información",
-                        paginate: {
-                            previous: 'Anterior',
-                            next: 'Siguiente'
-                        },
-                    },
-                    buttons: [
-                        {
-                            extend: 'excel',
-                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
-                            filename: 'ClientList',
-                            class : 'excel',
-                            charset: 'utf-8',
-                            bom: true,
-                            // enabled: false,
-        
-                        },
-                        {
-                            extend: 'print',
-                            text: '<i class="fa  fa-print"></i> Imprimir',
-                            filename: 'ClientList',
-                        },
-                    ]
-                });
-            }
-        });
-        /***
-         * 
-         */
-        $.ajax({
-            type: "POST",
-            url: "<?= Router::url(array("controller" => "LogPagos", "action" => "pagos_log")); ?>",
-            data: {api_key: 'api_key', cliente_id:cliente_id },
-            dataType: 'json',
-            success: function (response) {
-                console.log(response);
-                $('#sample_2').dataTable( {
-                    destroy: true,
-                    data : response,
-                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                    dom: 'Bflr<"table-responsive"t>ip',
-                    columnDefs: [
-                        {
-                            targets: [ 3 ],
-                            visible: false,
-                            searchable: false
-                        },
-                    ],
-                    language: {
-                        sSearch: "Buscador",
-                        lengthMenu: '_MENU_ registros por página',
-                        info: 'Mostrando _TOTAL_ registro(s)',
-                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
-                        emptyTable: "Sin información",
-                        paginate: {
-                            previous: 'Anterior',
-                            next: 'Siguiente'
-                        },
-                    },
-                    buttons: [
-                        {
-                            extend: 'excel',
-                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
-                            filename: 'ClientList',
-                            class : 'excel',
-                            charset: 'utf-8',
-                            bom: true,
-                            // enabled: false,
-        
-                        },
-                        {
-                            extend: 'print',
-                            text: '<i class="fa  fa-print"></i> Imprimir',
-                            filename: 'ClientList',
-                        },
-                    ]
-                });
-            }
-        });
 
     });
-
-
-
-    function editarFac(id) {
-        $("#modal_edit_factura").modal('show')
-        document.getElementById("FacturaId").value = id;
-       
-    }
-    function uploadFac(id){
-        let id_pago = id;
-        $("#modal_upload_factura").modal('show')
-        // document.getElementById("FacturaId").value = id;
-        $.ajax({
-            type: "POST",
-            url: "<?= Router::url(array("controller" => "LogPagos", "action" => "view_pago")); ?>",
-            data: {api_key: 'api_key', id_pago:id_pago },
-            dataType: "Json",
-            success: function (response) {
-                console.log(response);
-                for (let i in response) {
-                    document.getElementById("apagar_monto").innerHTML =response[i].pago_programado;
-                    // document.getElementById("pago_mes_fijo").innerHTML =response[i].pago_programado;
-                    document.getElementById("id_pago").innerHTML =response[i].id;
-                    // pago_mes_fijo
-                }
-                // apagar_monto
-            }
-        });
-        // console.log( id );
-    }
-    /**
-     * 
-     * 
-    */
-    function subir(){
-        let pago=$("#apagar_monto").text();
-        let id_pago=$("#id_pago").text();
-        let pagoMas=$("#pago_mas").val()
-        let Image=$("#pagoImagen").val();
-        $.ajax({
-            type: "POST",
-            url: "<?= Router::url(array("controller" => "LogPagos", "action" => "pago_mes_cliente_")); ?>",
-            data: { id_pago: id_pago, pago:pago, Image:Image , pagoMas:pagoMas},
-            dataType: "Json",
-            success: function (response) {
-                console.log(response);
-            }
-        });
-    }
-
-    function viewfac(id){
-        $("#modal_status_factura").modal('show')
-        document.getElementById("FacturaId").value = id;
-        // console.log('rechazar factura con el id '+id);
-    }
-
-    var TableAdvanced = function() {
-        // ===============table 2====================
-        var initTable2 = function() {
-            var table = $('#sample_2');
-            table.DataTable({
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                columnDefs: [
-                    {
-                        targets: [ 3 ],
-                        visible: false,
-                        searchable: false
-                    },
-                ],
-                language: {
-                    sSearch: "Buscador",
-                    lengthMenu: '_MENU_ registros por página',
-                    info: 'Mostrando _TOTAL_ registro(s)',
-                    infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
-                    emptyTable: "Sin información.",
-                    paginate: {
-                        previous: 'Anterior',
-                        next: 'Siguiente'
-                    },
-                },
-                columns: [
-
-                    { title: "ver" },
-                    { title: "Comprobante" },
-                    { title: "Referencia" },
-                    { title: "Fecha programada de Pago" },
-                    { title: "Número de pago" },
-                    { title: "Total" },
-                    { title: "Fecha programada de Pago" },
-                    { title: "Estatus" },
-                    { title: "Fecha de registro de pago" },
-                ],
-                dom: 'Bflr<"table-responsive"t>ip',
-                buttons: [
-                    {
-                        extend: 'excel',
-                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
-                        filename: 'ClientList',
-                        class : 'excel',
-                        charset: 'utf-8',
-                        bom: true,
-                        enabled: false,
-
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="fa  fa-print"></i> Imprimir',
-                        filename: 'ClientList',
-                        enabled: false,
-                    },
-                ]
-            });
-            var tableWrapper = $('#sample_2_wrapper');
-            tableWrapper.find('.dataTables_length select').select2();
-        }
-         // ===============table 1====================
-        var initTable1 = function() {
-            var table = $('#sample_1');
-            table.DataTable({
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                columnDefs: [
-                    {
-                        targets: [ 3 ],
-                        visible: false,
-                        searchable: false
-                    },
-                ],
-                language: {
-                    sSearch: "Buscador",
-                    lengthMenu: '_MENU_ registros por página',
-                    info: 'Mostrando _TOTAL_ registro(s)',
-                    infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
-                    emptyTable: "Sin información.",
-                    paginate: {
-                        previous: 'Anterior',
-                        next: 'Siguiente'
-                    },
-                },
-                columns: [
-
-                    { title: "ver" },
-                    { title: "Comprobante" },
-                    { title: "Referencia" },
-                    { title: "programada de Pago" },
-                    { title: "Número de pago" },
-    
-                    
-                ],
-                dom: 'Bflr<"table-responsive"t>ip',
-                buttons: [
-                    {
-                        extend: 'excel',
-                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
-                        filename: 'ClientList',
-                        class : 'excel',
-                        charset: 'utf-8',
-                        bom: true,
-                        enabled: false,
-
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="fa  fa-print"></i> Imprimir',
-                        filename: 'ClientList',
-                        enabled: false,
-                    },
-                ]
-            });
-            var tableWrapper = $('#sample_1_wrapper');
-            tableWrapper.find('.dataTables_length select').select2();
-        }
-        
-        return {
-            //main function to initiate the module
-            init: function() {
-                if (!jQuery().dataTable) {
-                    return;
-                }
-                initTable2();
-                initTable1();
-                
-            }
-        };
-    }();
-    
 </script>

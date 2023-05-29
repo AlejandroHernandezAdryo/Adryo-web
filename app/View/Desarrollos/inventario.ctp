@@ -554,10 +554,11 @@
 
     $(document).ready(function () {
         let cuenta = '<?= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'); ?>';
+        let desarrollo = '<?= $id ?>';
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "inmuebles", "action" => "inmueble_view_info")); ?>",
-            data: {api_key: 'adryo', cuenta_id: cuenta},
+            data: {api_key: 'adryo', cuenta_id: cuenta, desarrollo_id: desarrollo},
             dataType: "Json",
             success: function (response) {
                 // for each para info de desarrollo 
@@ -672,7 +673,7 @@
                                         <p style="font-size: 15px; font-weight: 700;margin:0;">
                                             Disponibilidad total
                                             <p style="font-size: 19px; font-weight: 400;" class="text-sm-right"> 
-                                               
+                                                `+value['contadores']['disponible_libres']+`
                                             </p>
                                         </p>
                                     </div>
@@ -714,7 +715,7 @@
                                         Baja
                                         <div class="number chips bg-baja" style="padding: 2px 5px 2px 5px;">
                                             <span id="baja">
-                                               
+                                                `+value['contadores']['bloquedos']+`
                                             </span>
                                         </div>
                                     </div>
@@ -722,7 +723,7 @@
                                         Bloqueados
                                         <div class="number chips bg-bloqueado" style="padding: 2px 5px 2px 5px;">
                                             <span id="bloqueado"> 
-                                                
+                                                `+value['contadores']['bloquedos']+`
                                             </span>
                                         </div>
                                     </div>
@@ -730,7 +731,7 @@
                                         En venta
                                         <div class="number chips bg-status-desarrollo-venta">
                                             <span id="libre">
-                                                
+                                                `+value['contadores']['libres']+`
                                             </span>
                                         </div>
                                     </div>
@@ -738,7 +739,7 @@
                                         Apartados
                                         <div class="number chips bg-status-desarrollo-bloqueado">
                                             <span id="no_liberado">
-                                                
+                                                `+value['contadores']['apartados']+`
                                             </span>
                                         </div>
                                     </div>
@@ -746,7 +747,7 @@
                                         Vendidos
                                         <div class="number chips bg-status-desarrollo-vendido">
                                             <span id="vendido"> 
-                                                
+                                                `+value['contadores']['ventas']+`
                                             </span>
                                         </div>
                                     </div>
@@ -754,7 +755,7 @@
                                         Escriturados
                                         <div class="number chips bg-escriturado" style="padding: 2px 5px 2px 5px;">
                                             <span id="escrituracion"> 
-                                               
+                                                `+value['contadores']['escriturados']+`
                                             </span>
                                         </div>
                                     </div>
@@ -762,60 +763,176 @@
                                         Venta
                                         <div style="vertical-align: top;">
                                             <b>
-                                                
+                                                `+value['contadores']['dinero']+`
                                                 </?= (!isset($desarrollo['ObjetivoAplicable'][0]['monto'])?"No definido":"$".number_format($desarrollo['ObjetivoAplicable'][0]['monto'],0))?>
                                             </b>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12 mt-1">
-                                    <div style="display:flex; gap:8px; align-items:center;width:100%;">
-                                        <div class="level" id="level" style="background-color:purple;border-radius:100%;color:white;">
-                                            <p style="width:20px;text-align:center;">
-                                               
-                                            </p>
-                                            
-                                        </div>
-                                        <div class="apt-tower">
-                                            <div>
-                                                <p class="m-0">
-                                                    S-101
-                                                </p>
-                                            </div>
-                                            <div>S-102</div>
-                                            <div>S-103</div>
-                                            <div>S-104</div>
-                                            <div>S-105</div>
-                                            <div>S-106</div>
-                                            <div>S-107</div>
-                                            <div>S-108</div>
-                                            <div>S-109</div>
-                                            <div>S-110</div>
-                                            <div>S-111</div>
-                                            <div>S-112</div>
-                                            <div>S-113</div>
-                                            <div>S-114</div>
-                                            <div>S-115</div>
-                                            <div>S-116</div>
-                                            <div>S-117</div>
-                                            <div>S-118</div>
-                                        </div>
-                                    </div>
+                            <div class="row" id="detail-apt">
+                                
+                            </div>
+                        </div>`
+                    )
+                    // console.log(value['Desarrollo']);
+                });
+                // for each para los niveles de una torre
+                $.each(response, function(index, value) {
+                    $('#detail-apt').append(
+                        `<div class="col-sm-12 mt-1">
+                            <div style="display:flex; gap:8px; align-items:center;width:100%;">
+                                <div class="level" id="level" style="background-color:purple;border-radius:100%;color:white;">
+                                    <p style="width:20px;text-align:center;">
+                                        `+value['inmueble']['nivel_propiedad']+`
+                                    </p>
+                                </div>
+                                <div class="apt-tower" id="apt-tower">
+                                    
                                 </div>
                             </div>
                         </div>`
                     )
                     console.log(value['Desarrollo']);
                 });
-                // for each para info de desarrollo 
+                // for para cada departamento por nivel 
                 $.each(response, function(index, value) {
-                    $('#inventory-detail').append(
-                        ``
+                    $('#apt-tower').append(
+                        `<div class="m-0 apt-level">
+                            <p>
+                                S-101
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-102
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-103
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-104
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-105
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-106
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-107
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-108
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-109
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-110
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-111
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-112
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-113
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-114
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-115
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-116
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-117
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-118
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-119
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-120
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-121
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-122
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-123
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-124
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-125
+                            </p>
+                        </div>
+                        <div class="m-0 apt-level">
+                            <p>
+                                S-126
+                            </p>
+                        </div>
+                        `
                     )
-                    console.log(value['Desarrollo']);
+                    // console.log(value['Desarrollo']);
                 });
+            console.log(response);
             },
             error: function ( response ) {
                 console.log(reponse);
