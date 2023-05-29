@@ -281,29 +281,7 @@ class LogPagosController extends AppController {
                         $this->request->data['LogPago']['desarrollo_id']           = $desarollo_id['DesarrolloInmueble']['desarrollo_id'];
                         $this->request->data['LogPago']['inmueble_id']             =  $cotizacion['Cotizacion']['inmueble_id'];
                         $this->request->data['LogPago']['referencia']              = $desarollo_id['DesarrolloInmueble']['referencia'] ;
-        
-                        // $response[$i]['cliente_id'] = $operacion['OperacionesInmueble']['cliente_id']                                                     ;
-                        // $response[$i]['fecha_pago'] = null                                                     ;
-                        // $response[$i]['fecha_programada'] = $key                                        ;
-                        // $response[$i]['monto_programado'] = $mensualidades                                               ;
-                        // $response[$i]['monto_pagado'] = 0                                                                        ;
-                        // $response[$i]['monto_total'] = 0                                                                        ;
-                        // $response[$i]['valor_unidad'] = $operacion['OperacionesInmueble']['precio_cierre']                       ;
-                        // $response[$i]['status'] = 'Pendiente'                                                              ;
-                        // $response[$i]['folio'] = uniqid();                  
-                        // $response[$i]['cotizacion_id'] = $cotizacion['Cotizacion']['id']                                          ;
-                        // $response[$i]['comprobante'] = null                                                                     ;
-                        // $response[$i]['interes'] = 0                                                                        ;
-                        // $response[$i]['monto_adelantado'] = 0                                                                        ;
-                        // $response[$i]['operaciones_inmueble_id'] = $operacion['OperacionesInmueble']['id'];
-                        // $response[$i]['user_id'] = $operacion['OperacionesInmueble']['user_id']                             ;
-                        // $response[$i]['cuenta_id'] = $cuenta_id                        ;
-                        // $response[$i]['mes'] = $p                          ;
-                        // $response[$i]['desarollo_id'] = $desarollo_id['DesarrolloInmueble']['desarrollo_id']                     ;
-                        // $response[$i]['referencia'] = $desarollo_id['DesarrolloInmueble']['referencia']                ;
-                        // $response[$i]['f'] = $financiamiento                ;
                         $p++;
-                        // $i++;
                         if ($this->LogPago->save($this->request->data)){
                             
                             $log = $this->LogPago->getInsertID();
@@ -620,14 +598,7 @@ class LogPagosController extends AppController {
                     $reponse_[$i]['fecha']    ,  
                     $reponse_[$i]['status'] ,      
                     $reponse_[$i]['fecha_pago'],   
-                    // "<a href='".Router::url('/inmuebles/view/'.$venta['Inmueble']['id'], true)."' target='Blank'>".rtrim(str_replace( $limpieza, "", $venta['Inmueble']['referencia']))."</a>",
-                    // "<a href='".Router::url('/clientes/view/'.$venta['Cliente']['id'], true)."' target='Blank'>".rtrim(str_replace( $limpieza, "", $venta['Cliente']['nombre']))."</a>",
-                    // $venta['Cliente']['DicLineaContacto']['linea_contacto'],
-                    // "<a href='".Router::url('/clientes/view/'.$venta['User']['id'], true)."' target='Blank'>".rtrim(str_replace( $limpieza, "", $venta['User']['nombre_completo']))."</a>",
-                    // date('Y-m-d', strtotime($venta['OperacionesInmueble']['fecha'])),
-                    // date('Y-m-d', strtotime($venta['OperacionesInmueble']['vigencia_operacion'])),
-                    
-                    // $response[$i]['total'],
+                  
                     
                 );
                 $count++;
@@ -792,13 +763,7 @@ class LogPagosController extends AppController {
                 'contain' => false
             ));
             $this->request->data['LogPago']['id']          = $id;
-            // if ($this->request->data['LogPago']['imagen'] != null ) {
-            //     $filename = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."".$sinvocales;
-            //     move_uploaded_file('pagos',$filename);
-            //     $ruta = "/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$sinvocales;
-            //     $this->request->data['LogPago']['comprobante'] =$ruta;
-
-            // }
+           
             if ($this->request->data['Image'] != null ) {
                 $filename = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$sinvocales;
                 move_uploaded_file($filename, 'pagos');
