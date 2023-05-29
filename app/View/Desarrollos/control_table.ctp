@@ -306,10 +306,12 @@
                             </h2>
                         </div>
                     <!-- </div> -->
-                    <div class="mt-1" style="width:300px;margin:0 auto;">
+                    <div class="mt-1" style="width: 315px;margin:0 auto;">
                         <div class="text-sm-center" style="display: flex;align-items: center;justify-content: space-between;">
-                            <a href="">Conoce el proceso de <b>Adryo</b></a>
-                            <button class="btn btn-primary">Crear Proceso</button>
+                            <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
+                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary'))?>
+                            <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
+                            <button class="btn btn-primary">Crear Proceso</button> -->
                         </div>
                     </div>
                 </div>

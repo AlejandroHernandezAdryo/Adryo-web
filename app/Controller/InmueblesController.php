@@ -3436,10 +3436,11 @@ public function view_tipo($id = null,$desarrollo_id = null){
         $i=0;
         if ($this->request->is('post') && $this->request->data['api_key'] != null ) {
             $cuenta_id=$this->request->data['cuenta_id'];
+            $desarrollo_id=$this->request->data['desarrollo_id'];
             $search_desarollo=$this->Desarrollo->find( 'all',array(
                 'conditions'=>array(
                     'Desarrollo.cuenta_id'=> $cuenta_id, 
-                    // 'Desarrollo.id'=> 246, 
+                    'Desarrollo.id'=> $desarrollo_id, 
                 ), 
                 'fields'=>array(
                     'nombre','id','visible','tipo_desarrollo','torres','unidades_totales','fecha_entrega',

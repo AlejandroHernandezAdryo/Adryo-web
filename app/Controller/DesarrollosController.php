@@ -5062,7 +5062,9 @@ class DesarrollosController extends AppController {
     }
     
     public function inventario($id=null){
-
+        $this->set(compact('id'));
+        // $id_desarrollo = $id;
+        // $this->set;
     }
 
     public function control_table($id=null){
@@ -5074,6 +5076,10 @@ class DesarrollosController extends AppController {
     }
 
     public function inicio_proceso($id=null){
+
+    }
+
+    public function proceso_tabla($id=null){
 
     }
 

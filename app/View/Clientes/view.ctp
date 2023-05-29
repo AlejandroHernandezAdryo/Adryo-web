@@ -1682,19 +1682,19 @@
                                                                         ?>
                                                                         </div> -->
                                                                         <div class="col-sm-12 col-lg-4 mt-1">
-                                                                                <button type="button" class="btn btn-secondary-o btn-block" onclick="modalShared( 
-                                                                                            <?= $inmueble['Inmueble']['id']?> , 
-                                                                                            <?= $this->Session->read('Auth.User.id') ?>, 
-                                                                                            <?= $cliente['Cliente']['id'] ?>, 
-                                                                                            '<?= $cliente['Cliente']['telefono1'] ?>', 
-                                                                                            '<?= $cliente['Cliente']['nombre'] ?>',
-                                                                                            2,
-                                                                                            '<?= $this->Session->read('Auth.User.nombre_completo') ?>',
-                                                                                            '<?= $cliente['Cliente']['correo_electronico']?>',
-                                                                                            '<?= $inmueble['Inmueble']['referencia']?>',
-                                                                                        )">
-                                                                                    <i class="fa fa-share-alt" aria-hidden="true"></i>
-                                                                                </button>
+                                                                            <button type="button" class="btn btn-secondary-o btn-block" onclick="modalShared( 
+                                                                                        <?= $inmueble['Inmueble']['id']?> , 
+                                                                                        <?= $this->Session->read('Auth.User.id') ?>, 
+                                                                                        <?= $cliente['Cliente']['id'] ?>, 
+                                                                                        '<?= $cliente['Cliente']['telefono1'] ?>', 
+                                                                                        '<?= $cliente['Cliente']['nombre'] ?>',
+                                                                                        2,
+                                                                                        '<?= $this->Session->read('Auth.User.nombre_completo') ?>',
+                                                                                        '<?= $cliente['Cliente']['correo_electronico']?>',
+                                                                                        '<?= $inmueble['Inmueble']['referencia']?>',
+                                                                                    )">
+                                                                                <i class="fa fa-share-alt" aria-hidden="true"></i>
+                                                                            </button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
