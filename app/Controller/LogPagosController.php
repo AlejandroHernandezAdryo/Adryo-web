@@ -650,11 +650,87 @@ class LogPagosController extends AppController {
         $this->loadModel('OperacionesInmueble');
         $this->loadModel('DesarrolloInmueble');
         $this->loadModel('Desarrollo');
+        $this->loadModel('PagosPrincipale');
+        $this->PagosPrincipale->Behaviors->load('Containable');
         $this->Desarrollo->Behaviors->load('Containable');
         $this->DesarrolloInmueble->Behaviors->load('Containable');
         $this->OperacionesInmueble->Behaviors->load('Containable');
         $this->Cliente->Behaviors->load('Containable');
-        echo json_encode( $clientes_json , true );          
+        $i=0;
+        $count=0;
+        if ( $this->request->is('post') && $this->request->data['api_key'] != null ) {
+            $cliente=58104;
+        
+            $view=$this->PagosPrincipale->find('all',array(
+                'conditions' => array(
+                    'PagosPrincipale.cliente_id'=> $cliente,
+                ),
+                'contain' => false
+            ));
+            foreach ($view as  $value) {
+                $inmueble= $this->DesarrolloInmueble->find('first', array(
+                    'conditions' => array(
+                        'DesarrolloInmueble.inmueble_id'=> $value['PagosPrincipale']['inmueble_id'],
+                    ),
+                    'fields' => array(
+                        'desarrollo_id',
+                        'referencia',
+                    ),
+                ));
+                if ($value['PagosPrincipale']['tipo_pago'] ==0) {
+    
+                    $reponse[$i]['tipo']='Apartado de la propiedad '.$inmueble['DesarrolloInmueble']['referencia'];
+                }
+                elseif ($value['PagosPrincipale']['tipo_pago'] ==1) {
+    
+                    $reponse[$i]['tipo']='contrato de la propiedad '.$inmueble['DesarrolloInmueble']['referencia'];
+                }else {
+                    $reponse[$i]['tipo']='escrituracion de la propiedad '.$inmueble['DesarrolloInmueble']['referencia'];
+                    
+                }
+                if ($value['PagosPrincipale']['status']==0) {
+    
+                    $reponse[$i]['status']='sin pago';
+                }else {
+    
+                    $reponse[$i]['status']='pagado';
+                    
+                }
+                if ($value['PagosPrincipale']['fecha_pago']==null) {
+    
+                    $reponse[$i]['fecha']='sin fecha ';
+    
+                }else {
+                    $reponse[$i]['fecha']=$value['PagosPrincipale']['fecha_pago'];
+                    
+                }
+                if ($value['PagosPrincipale']['comprobante']!= null) {
+                    
+                    $reponse[$i]['comprobante']=$value['PagosPrincipale']['comprobante'];
+                }else{
+                    $reponse[$i]['comprobante']='sin comprobante';
+                }
+                $reponse[$i]['monto']=$value['PagosPrincipale']['monto'];
+                $reponse[$i]['id']=$i;
+                $reponse_json[$count]=array(
+                    // $reponse[$i]['id'],
+                    $reponse[$i]['tipo'],
+                    $reponse[$i]['status']  , 
+                    $reponse[$i]['fecha'],           
+                    $reponse[$i]['comprobante'],
+                    $reponse[$i]['monto']  ,            
+                );
+                $i++;
+                $count++;
+            }
+        }else {
+            $reponse_json = array(
+                'Ok' => false,
+                'mensaje' => 'Hubo un error intente nuevamente'
+            );
+        }
+       
+        echo json_encode( $reponse_json , true );          
 		exit();
 		$this->autoRender = false;
     }
