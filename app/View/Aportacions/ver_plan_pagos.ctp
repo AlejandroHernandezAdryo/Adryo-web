@@ -1,23 +1,34 @@
 <?= $this->Html->css(
-        array(
-           '/vendors/datatables/css/dataTables.bootstrap.min',
-            'pages/dataTables.bootstrap',
-            'pages/tables',
-            
-            '/vendors/datatables/css/colReorder.bootstrap.min',
+    array(
+        '/vendors/datatables/css/dataTables.bootstrap.min',
+        'pages/dataTables.bootstrap',
+        '/vendors/datatables/css/scroller.bootstrap.min',
+        'pages/tables',
+        '/vendors/select2/css/select2.min',
+        
+        '/vendors/datatables/css/colReorder.bootstrap.min',
+        '/vendors/datepicker/css/bootstrap-datepicker.min',
 
-            // Chozen select
-            '/vendors/chosen/css/chosen',
-            '/vendors/bootstrap-switch/css/bootstrap-switch.min',
-            '/vendors/fileinput/css/fileinput.min',
+        // Chozen select
+        '/vendors/chosen/css/chosen',
+        '/vendors/bootstrap-switch/css/bootstrap-switch.min',
+        '/vendors/fileinput/css/fileinput.min',
+        // Calendario
+      '/vendors/inputlimiter/css/jquery.inputlimiter',
+      '/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min',
+      '/vendors/jquery-tagsinput/css/jquery.tagsinput',
+      '/vendors/daterangepicker/css/daterangepicker',
+      '/vendors/datepicker/css/bootstrap-datepicker.min',
+      '/vendors/bootstrap-timepicker/css/bootstrap-timepicker.min',
+      '/vendors/bootstrap-switch/css/bootstrap-switch.min',
+      '/vendors/jasny-bootstrap/css/jasny-bootstrap.min',
+      '/vendors/j_timepicker/css/jquery.timepicker',
+      '/vendors/datetimepicker/css/DateTimePicker.min',
 
-            // Calendario
-            '/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min',
-            '/vendors/datepicker/css/bootstrap-datepicker.min',
-            'pages/colorpicker_hack',
-                      
-        ),
-        array('inline'=>false))
+
+                    
+    ),
+    array('inline'=>false))
 ?>
 <style>
     textarea{
@@ -132,38 +143,67 @@
 </div>
 <!-- Subir factura  **Korner 02-05-2023** -->
 <div class="modal fade" id="modal_upload_factura">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-      <div class="modal-content">
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h3 class="text-center" style="color: black;">
-                        ¿ Estas seguro de rechazar esta factura ?
-                    </h3>
-                </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                Resgistra el pago
             </div>
-            <!-- Form delete cliente -->
-            <?php
-                echo $this->Form->create('Factura', array('url'=>array('controller'=>'facturas', 'action'=>'status')));
-                echo $this->Form->hidden('id');
-                echo $this->Form->hidden('estado', array('value'=>5));
-                echo $this->Form->hidden('redirect', array('value'=>0));
-                echo $this->Form->hidden('venta_id', array('value'=>$venta['Venta']['id']));
-            ?>
-            <div class="row">
-                <?= $this->Form->input('comentario', array('class'=>'form-control', 'div'=>'col-sm-12', 'required'=>true, 'label'=>'Motivo de Rechazo*', 'type'=>'textarea', 'rows' => '1', 'data-min-rows' => '1')); ?>
-            </div>
-            <div class="row mt-2">
-                <div class="col-sm-12 col-lg-6">
-                    <button type="submit" class="btn btn-success">Aceptar</button>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="" style="color: black;">
+                            En caso de que el monto sea mayor a la mensualidad selecciona <b>otro monto</b> e ingresa la cantidad.
+                        </h3>
+                    </div>
                 </div>
-                <div class="col-sm-12 col-lg-6">
-                    <button type="button" class="btn btn-primary float-right" data-dismiss="modal">Cancelar</button>
+                <div class="row mt-1">
+                    <div class="custom-control custom-radio col-sm-12 col-md-6">
+                        <input type="radio" id="pago_mes_fijo" name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label"  for="pago_mes_fijo">Monto mensual</label>
+                        <br>
+                        <p style="padding-left:8px;" id='apagar_monto'></p>
+                        <p style="padding-left:8px;" hidden><span id='id_pago'></span></p>
+                    </div>
+                    <div class="custom-control custom-radio col-sm-12 col-md-6 float-right" style="margin-left:0 !important;">
+                        <input type="radio" id="pago_monto_mayor"  name="customRadio" class="custom-control-input">
+                        <label class="custom-control-label" for="">Otro monto</label>
+                        <br>
+                        <input type="number" name="" for="pago_monto_mayor"  value="" id="pago_mas" class="form-control" placeholder="$ Ingresa la cantidad">
+                    </div>
                 </div>
+                <div class="row mt-1">
+                    <div class="col-sm-12 col-md-6">
+                        <p style="margin:0;"><b>Comprobante de pago</b></p>
+                        <p>Sólo archivos jpg, png y pdf. Tamaño máximo 5mb</p>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input"  lang="es" required>
+                            <!-- 
+                            <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label> -->
+                             
+                                <input type="file" name="" id="pagoImagen" accept="image/*, .pdf" required="required"> 
+                        </div>
+                    </div>
+                </div>
+                <!-- Form delete cliente -->
+                <!-- <?php
+                    //echo $this->Form->create('LogPago', array('url'=>array('controller'=>'LogPago', 'action'=>'pago_mes_cliente_')));
+                    //echo $this->Form->hidden('id');
+                ?> -->
+                <!-- <div class="row">
+                    <//?= $this->Form->input('comentario', array('class'=>'form-control', 'div'=>'col-sm-12', 'required'=>true, 'label'=>'Motivo de Rechazo*', 'type'=>'textarea', 'rows' => '1', 'data-min-rows' => '1')); ?>
+                </div> -->
+                <div class="row mt-1">
+                    <div class="col-sm-12">
+
+                        <button type="button" class="btn btn-primary float-right" onclick="subir()" style="margin-left:8px;">Aceptar</button>
+                        <button type="button" class="btn btn-primary-o float-right" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+                <?= $this->Form->end(); ?>
             </div>
-            <?= $this->Form->end(); ?>
         </div>
-      </div>
     </div>
 </div>
 
@@ -193,22 +233,21 @@
                         <div class="col-sm-12 col-lg-4">
                             <b>Propiedad:</b>
                             <br> 
-                            <span>
-                            <?= $venta['Venta']['tipo_operacion'].": ".$venta['Inmueble']['referencia']?>
+                            <span id=propiedad_referencia>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-4">
                             <b>Fecha de cierre:</b>
-                            <br> 
-                            <span>
-                                <?= date("d/M/Y",strtotime($venta['Venta']['fecha']))?>
+                            <br>
+                            <span id='fecha_operacion'>
+                                
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-4">
                             <b>Asesor cerro venta:</b>
                             <br> 
-                            <span>
-                            <?= $venta['User']['nombre_completo']?>
+                            <span id='user_venta'>
+                            
                             </span>
                         </div>
                     </div>
@@ -216,47 +255,40 @@
                         <div class="col-sm-12 col-lg-2">
                             <b>Apartado:</b>
                             <br> 
-                            <span>
-                                texto
-                            <?= $venta['User']['nombre_completo']?>
+                            <span id=apertado>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Escrituración:</b>
                             <br> 
-                            <span>
-                                texto
-                            <?= $venta['User']['nombre_completo']?>
+                            <span id='escrituracion'>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Contrato:</b>
                             <br> 
-                            <span>
-                                texto
-                                <?= $venta['User']['nombre_completo']?>
+                            <span id='contrato'>
+                               
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Mensualidad:</b>
                             <br> 
-                            <span>
-                                texto
-                                <?= $venta['User']['nombre_completo']?>
+                            <span id='mensualidad'>
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Precio de venta:</b>
                             <br> 
-                            <span>
-                                <?= "$".number_format($venta['Venta']['precio_cerrado'],2)?>
+                            <span id ='precio_cierre'>
+                               
                             </span>
                         </div>
                         <div class="col-sm-12 col-lg-2">
                             <b>Saldo:</b>
                             <br> 
-                            <span>
-                                <?= "$".number_format($venta['Venta']['precio_cerrado']-$pagos[0][0]['SUM(monto)'],2)?>
+                            <span id='totalpagado'>
+                                
                             </span>
                         </div>
                     </div>
@@ -408,8 +440,8 @@
                                         <!-- Estatus de seguimiento **Korner 24-04-2023** -->
                                         <div class="col-sm-12">
                                             <div class="card-block">
-                                                <table class="table table-striped table-hover table-sm" id="sample_2" class="m-t-40">
-                                                    <thead>
+                                                <table class="table table-striped table-hover table-sm w-100" id="sample_2" class="m-t-40">
+                                                    <!-- <thead>
                                                         <tr>
                                                             <th></th>
                                                             <th>Referencia </th>
@@ -444,7 +476,7 @@
                                                                 <td><?= $status_factura[$factura['Factura']['estado']] ?></td>
                                                             </tr>
                                                         <?php endforeach ?>
-                                                    </tbody>
+                                                    </tbody> -->
                                                 </table>   
                                             </div>
                                         </div>
@@ -506,6 +538,7 @@
     echo $this->Html->script([
         'components',
         'custom',
+        '/vendors/select2/js/select2',
         '/vendors/datatables/js/jquery.dataTables.min',
         'pluginjs/dataTables.tableTools',
         '/vendors/datatables/js/dataTables.colReorder.min',
@@ -518,141 +551,238 @@
         '/vendors/datatables/js/buttons.bootstrap.min',
         '/vendors/datatables/js/buttons.print.min',
         '/vendors/datatables/js/dataTables.scroller.min',
-
-        // Calendario
-        '/vendors/moment/js/moment.min',
-        '/vendors/datepicker/js/bootstrap-datepicker.min',
-
-        // Chosen select
-        // 'pages/form_elements',
-        '/vendors/chosen/js/chosen.jquery',
-        // 'form',
-
-
         
+        '/vendors/datepicker/js/bootstrap-datepicker.min',
+        
+        '/vendors/jquery.uniform/js/jquery.uniform',
+        '/vendors/inputlimiter/js/jquery.inputlimiter',
+        '/vendors/moment/js/moment.min',
+        '/vendors/daterangepicker/js/daterangepicker',
+        '/vendors/bootstrap-switch/js/bootstrap-switch.min'
     ], array('inline'=>false));
 ?>
 
 <script>
-    
-'use strict';
-
-function editarFac(){
-    $("#modal_edit_factura").modal('show')
-    document.getElementById("FacturaId").value = id;
-}
-function uploadFac(){
-    $("#modal_upload_factura").modal('show')
-    document.getElementById("FacturaId").value = id;
-}
-
-function rechazarFac(id){
-    $("#modal_status_factura").modal('show')
-    document.getElementById("FacturaId").value = id;
-    // console.log('rechazar factura con el id '+id);
-}
-$(document).ready(function () {
-
-    $('.fecha').datepicker({
-        format: 'dd-mm-yyyy',
-        todayHighlight: true,
-        autoclose: true,
-        orientation:"bottom"
-    });
-
-    TableAdvanced.init();
-    $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
-    
-    $('[data-toggle="popover"]').popover()
-
-});
-    
-var TableAdvanced = function() {
-    // ===============table 1====================
-    var initTable1 = function() {
-        var table = $('#sample_1');
-        /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
-        /* Set tabletools buttons and button container */
-        table.DataTable({
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-            order: [[ 4, "desc" ]],
-            dom: 'Bflr<"table-responsive"t>ip',
-            buttons: [
-                {
-                extend: 'csv',
-                text: '<i class="fa  fa-download"></i> Descargar',
-                filename: 'Proveedores',
-                class : 'excel',
-                className: 'mt-2 btn btn-secondary-o'
-                },
-                {
-                extend: 'print',
-                text: '<i class="fa  fa-print"></i> Imprimir',
-                filename: 'Proveedores',
-                className: 'mt-2 ml-1 btn btn-secondary-o'
-                },
-                
-                
-            ]
-        });
         
-    }
-    var initTable2 = function() {
-        var table = $('#sample_2');
-        /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
-        /* Set tabletools buttons and button container */
-        table.DataTable({
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-            order: [[ 4, "desc" ]],
-            dom: 'Bflr<"table-responsive"t>ip',
-            buttons: [
-                {
-                extend: 'csv',
-                text: '<i class="fa  fa-download"></i> Descargar',
-                filename: 'Proveedores',
-                class : 'excel',
-                className: 'mt-2 btn btn-secondary-o'
-                },
-                {
-                extend: 'print',
-                text: '<i class="fa  fa-print"></i> Imprimir',
-                filename: 'Proveedores',
-                className: 'mt-2 ml-1 btn btn-secondary-o'
-                },
-                
-                
-            ]
+    'use strict';
+    $(document).ready(function () {
+        $('.fecha').datepicker({
+            format: 'dd-mm-yyyy',
+            todayHighlight: true,
+            autoclose: true,
+            orientation:"bottom"
         });
+
+        TableAdvanced.init();
+        $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
         
-    }
-    return {
-        //main function to initiate the module
-        init: function() {
-            if (!jQuery().dataTable) {
-                return;
-            }
-            initTable1();
-            initTable2();
-        }
-    };
-
-}();
-
-$(document).ready(function () {
-        let cliente_id = '<?= $venta['Cliente']['id'] ?>'
+        $('[data-toggle="popover"]').popover()
+        let cliente_id = 58104;
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "LogPagos", "action" => "view_datos_cliente")); ?>",
-            data: {api_key: 'adryo', cliente_id, },
-            dataType: "Json",
-            success: function (res) {
-                console.log(res);
+            data: {api_key: 'api_key', cliente_id:cliente_id },
+            dataType: 'json',
+            success: function (response) {
+                for (let i in response.respuesta) {
+                    
+                    document.getElementById("propiedad_referencia").innerHTML =response.respuesta[i].cliente.referencia;
+                    document.getElementById("fecha_operacion").innerHTML =response.respuesta[i].cliente.fecha;
+                    document.getElementById("user_venta").innerHTML =response.respuesta[i].cliente.user_nombre;
+                    document.getElementById("apertado").innerHTML =response.respuesta[i].cliente.apartado;
+                    document.getElementById("escrituracion").innerHTML =response.respuesta[i].cliente.escrituracion;
+                    document.getElementById("contrato").innerHTML =response.respuesta[i].cliente.contrato;
+                    document.getElementById("mensualidad").innerHTML =response.respuesta[i].cliente.mensualidad;
+                    document.getElementById("precio_cierre").innerHTML =response.respuesta[i].cliente.precio_cierre;
+                    document.getElementById("totalpagado").innerHTML =response.respuesta[i].cliente.totalpagado;
+				}
             },
             error: function ( response ) {
                 console.log('arroja error');
                 console.log(response.responseText);
             }
         });
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "LogPagos", "action" => "pagos_log")); ?>",
+            data: {api_key: 'api_key', cliente_id:cliente_id },
+            dataType: 'json',
+            success: function (response) {
+                $('#sample_2').dataTable( {
+                    destroy: true,
+                    data : response,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                    dom: 'Bflr<"table-responsive"t>ip',
+                    columnDefs: [
+                        {
+                            targets: [ 3 ],
+                            visible: false,
+                            searchable: false
+                        },
+                    ],
+                    language: {
+                        sSearch: "Buscador",
+                        lengthMenu: '_MENU_ registros por página',
+                        info: 'Mostrando _TOTAL_ registro(s)',
+                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                        emptyTable: "Sin información",
+                        paginate: {
+                            previous: 'Anterior',
+                            next: 'Siguiente'
+                        },
+                    },
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                            filename: 'ClientList',
+                            class : 'excel',
+                            charset: 'utf-8',
+                            bom: true,
+                            // enabled: false,
+        
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="fa  fa-print"></i> Imprimir',
+                            filename: 'ClientList',
+                        },
+                    ]
+                });
+            }
+        });
 
     });
+
+
+
+    function editarFac(id) {
+        $("#modal_edit_factura").modal('show')
+        document.getElementById("FacturaId").value = id;
+       
+    }
+    function uploadFac(id){
+        let id_pago = id;
+        $("#modal_upload_factura").modal('show')
+        // document.getElementById("FacturaId").value = id;
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "LogPagos", "action" => "view_pago")); ?>",
+            data: {api_key: 'api_key', id_pago:id_pago },
+            dataType: "Json",
+            success: function (response) {
+                console.log(response);
+                for (let i in response) {
+                    document.getElementById("apagar_monto").innerHTML =response[i].pago_programado;
+                    // document.getElementById("pago_mes_fijo").innerHTML =response[i].pago_programado;
+                    document.getElementById("id_pago").innerHTML =response[i].id;
+                    // pago_mes_fijo
+                }
+                // apagar_monto
+            }
+        });
+        // console.log( id );
+    }
+    /**
+     * 
+     * 
+    */
+    function subir(){
+        let pago=$("#apagar_monto").text();
+        let id_pago=$("#id_pago").text();
+        let pagoMas=$("#pago_mas").val()
+        let Image=$("#pagoImagen").val();
+        let remplazar = Image.replace(/_/g, " ");
+        // valorCampo = $("#ProcesoInmueblesApartadoTipoDocumento").val();
+        // remplazar = valorCampo.replace(/_/g, " ");
+        // pagoImagen
+        // console.log(remplazar);
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "LogPagos", "action" => "pago_mes_cliente_")); ?>",
+            data: { id_pago: id_pago, pago:pago, Image:Image , pagoMas:pagoMas},
+            dataType: "Json",
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
+    function viewfac(id){
+        $("#modal_status_factura").modal('show')
+        document.getElementById("FacturaId").value = id;
+        // console.log('rechazar factura con el id '+id);
+    }
+    var TableAdvanced = function() {
+        // ===============table 1====================
+        var initTable2 = function() {
+            var table = $('#sample_2');
+            table.DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                columnDefs: [
+                    {
+                        targets: [ 3 ],
+                        visible: false,
+                        searchable: false
+                    },
+                ],
+                language: {
+                    sSearch: "Buscador",
+                    lengthMenu: '_MENU_ registros por página',
+                    info: 'Mostrando _TOTAL_ registro(s)',
+                    infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                    emptyTable: "Sin información.",
+                    paginate: {
+                        previous: 'Anterior',
+                        next: 'Siguiente'
+                    },
+                },
+                columns: [
+
+                    { title: "ver" },
+                    { title: "Comprobante" },
+                    { title: "Referencia" },
+                    { title: "Fecha programada de Pago" },
+                    { title: "Número de pago" },
+                    { title: "Total" },
+                    { title: "Fecha programada de Pago" },
+                    { title: "Estatus" },
+                    { title: "Fecha de registro de pago" },
+                ],
+                dom: 'Bflr<"table-responsive"t>ip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                        filename: 'ClientList',
+                        class : 'excel',
+                        charset: 'utf-8',
+                        bom: true,
+                        enabled: false,
+
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa  fa-print"></i> Imprimir',
+                        filename: 'ClientList',
+                        enabled: false,
+                    },
+                ]
+            });
+            var tableWrapper = $('#sample_2_wrapper');
+            tableWrapper.find('.dataTables_length select').select2();
+        }
+        
+        return {
+            //main function to initiate the module
+            init: function() {
+                if (!jQuery().dataTable) {
+                    return;
+                }
+                initTable2();
+                
+            }
+        };
+    }();
+    
 </script>
