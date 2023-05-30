@@ -774,13 +774,10 @@ class LogPagosController extends AppController {
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('LogPago');
         $this->LogPago->Behaviors->load('Containable');
-
         if ($this->request->is('post')) {
                 
-            $id = $this->request->data['id_pago'];
-            $file= $this->request->data['Image'];
-            $sinvocales = substr ($file,12);
-            mkdir(getcwd()."/img/pagos/".$id,0777);           
+            $id = $this->request->data['LogPagos']['id'];
+           
             $operacion=$this->LogPago->find('first',array(
                 'conditions'=>array(
                     'LogPago.id' =>  $id,
@@ -791,21 +788,21 @@ class LogPagosController extends AppController {
                 ),
                 'contain' => false
             ));
-            $this->request->data['LogPago']['id']          = $id;
-            if ($this->request->data['LogPago']['imagen'] != null ) {
-                $filename = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."".$sinvocales;
-                move_uploaded_file('pagos',$filename);
-                $ruta = "/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$sinvocales;
-                $this->request->data['LogPago']['comprobante'] =$ruta;
-
+            $this->request->data['LogPago']['id'] =$id;
+            if ($this->request->data['LogPagos']['foto_pago'] != null ) {
+                $path = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id'];
+                if (!is_dir($path)) {
+                    mkdir(getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id'],0777);
+                }
+                $archivo=$this->request->data['LogPagos']['foto_pago'];
+                if (isset($archivo) && $archivo['name']!=""){
+                    $unitario = $archivo;
+                    $filename = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$unitario['name'];
+                    move_uploaded_file($unitario['tmp_name'],$filename);
+                    $ruta = "/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$unitario['name'];
+                    $this->request->data['LogPago']['comprobante'] =$ruta;
+                }
             }
-            
-            
-            if ($this->request->data['LogPago']['pago'] > $operacion['LogPago']['monto_programado']) {
-                $resto = ($operacion['LogPago']['monto_programado']) - ($this->request->data['LogPago']['pago']);
-                $this->request->data['LogPago']['monto_adelantado'];
-            }
-
 
             if ( $this->LogPago->save($this->request->data['LogPago']) ) {
 

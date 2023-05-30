@@ -145,6 +145,7 @@
 <div class="modal fade" id="modal_upload_factura">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+        <?= $this->Form->create('LogPagos', array('type'=>'file'))?>
             <div class="modal-header">
                 Resgistra el pago
             </div>
@@ -156,20 +157,35 @@
                         </h3>
                     </div>
                 </div>
+                
                 <div class="row mt-1">
-                    <div class="custom-control custom-radio col-sm-12 col-md-6">
-                        <input type="radio" id="pago_mes_fijo" name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label"  for="pago_mes_fijo">Monto mensual</label>
-                        <br>
-                        <p style="padding-left:8px;" id='apagar_monto'></p>
-                        <p style="padding-left:8px;" hidden><span id='id_pago'></span></p>
-                    </div>
-                    <div class="custom-control custom-radio col-sm-12 col-md-6 float-right" style="margin-left:0 !important;">
-                        <input type="radio" id="pago_monto_mayor"  name="customRadio" class="custom-control-input">
-                        <label class="custom-control-label" for="">Otro monto</label>
-                        <br>
-                        <input type="number" name="" for="pago_monto_mayor"  value="" id="pago_mas" class="form-control" placeholder="$ Ingresa la cantidad">
-                    </div>
+                
+                    <?=
+                            $this->Form->input('apagar_monto',
+                                array(
+                                    'label'   => 'Monto mensual',
+                                    'div'     => 'col-sm-12 col-lg-6 mt-1',
+                                    'class'   => 'form-control',
+                                    'readonly' => true,
+                                    'id' => 'apagar_monto',
+                                )
+                            );
+                        ?>
+                    <?php 
+                    echo $this->Form->hidden('pagoId', array('id'=>'id_pago', 'value'=>'pagoId', 'name'=>'data[LogPagos][id]')); 
+                     ?>
+                    <?=
+                            $this->Form->input('monto_mas',
+                                array(
+                                    'label'   => 'Otro monto',
+                                    'div'     => 'col-sm-12 col-lg-6 mt-1',
+                                    'class'   => 'form-control',
+                                    'disabled' => false,
+                                    'placeholder'=>'$ Ingresa la cantidad',
+                                    'pattern'=> '[0-9]+',
+                                )
+                            );
+                        ?>
                 </div>
                 <div class="row mt-1">
                     <div class="col-sm-12 col-md-6">
@@ -178,32 +194,29 @@
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input"  lang="es" required>
+                            <!-- <input type="file" class="custom-file-input"  lang="es" required> -->
                             <!-- 
                             <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label> -->
-                             
-                                <input type="file" name="" id="pagoImagen" accept="image/*, .pdf" required="required"> 
+                            
+                            <?= $this->Form->file('foto_pago',array('accept'=>'image/*'))?>
+                                <!-- <input type="file" name="image"  id="pagoImagen" accept="image/*, .pdf" required="required">  -->
                         </div>
                     </div>
                 </div>
-                <!-- Form delete cliente -->
-                <!-- <?php
-                    //echo $this->Form->create('LogPago', array('url'=>array('controller'=>'LogPago', 'action'=>'pago_mes_cliente_')));
-                    //echo $this->Form->hidden('id');
-                ?> -->
+
                 <!-- <div class="row">
                     <//?= $this->Form->input('comentario', array('class'=>'form-control', 'div'=>'col-sm-12', 'required'=>true, 'label'=>'Motivo de Rechazo*', 'type'=>'textarea', 'rows' => '1', 'data-min-rows' => '1')); ?>
                 </div> -->
                 <div class="row mt-1">
                     <div class="col-sm-12">
 
-                        <button type="button" class="btn btn-primary float-right" onclick="subir()" style="margin-left:8px;">Aceptar</button>
+                        <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Aceptar</button>
                         <button type="button" class="btn btn-primary-o float-right" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
-                <?= $this->Form->end(); ?>
             </div>
-        </div>
+            </div>
+        <?= $this->Form->end(); ?>
     </div>
 </div>
 
@@ -292,10 +305,97 @@
                             </span>
                         </div>
                     </div>
-                    
+                    <!-- <div class="col-sm-12 col-lg-12">
+                        <div class="col-sm-12 col-lg-4">
+                            <b>Propiedad:</b>
+                            <br> 
+                            <span>
+                            <?= $venta['Venta']['tipo_operacion'].": ".$venta['Inmueble']['referencia']?>
+                            </span>
+                        </div>
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <td>Nombre de Cliente:</td>
+                                    <td class="text-lg-left">
+                                        <?= $venta['Cliente']['nombre']?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Inmueble Comprado:</td>
+                                    <td class="text-lg-left">
+                                        <?= $venta['Inmueble']['referencia']?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Precio Cerrado:</td>
+                                    <td class="text-lg-left">
+                                        <?= "$".number_format($venta['Venta']['precio_cerrado'],2)?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Saldo:</td>
+                                    <td class="text-lg-left">
+                                        <?= "$".number_format($venta['Venta']['precio_cerrado']-$pagos[0][0]['SUM(monto)'],2)?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha de cierre de venta:</td>
+                                    <td class="text-lg-left">
+                                        <?= date("d/M/Y",strtotime($venta['Venta']['fecha']))?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Asesor que cierra la venta:</td>
+                                    <td class="text-lg-left">
+                                        <?= $venta['User']['nombre_completo']?>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                    </div> -->
                 </div>
             </div>
-            
+            <!-- Historial y plan de pagos ** Korner 01-05-1990** -->
+            <!-- <div class="card mt-1">
+                <div class="card-header bg-blue-is">
+                    Plan de pagos
+                </div>
+                <div class="card-block m-t-35">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-12">
+                                <table class="table table-striped table-hover table-sm" id="sample_1" class="m-t-40">
+                                    <thead>
+                                        <tr>
+                                            <th>Referencia</th>
+                                            <th>Fecha de pago</th>
+                                            <th>Total</th>
+                                            <th>Estatus</th>
+                                            <th>Rechazar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <//?php foreach ($aportaciones as $factura): ?>
+                                            <tr>
+                                                <td><//?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
+                                                <td><//?= $factura['Factura']['fecha_emision'] ?></td>
+                                                <td class="text-xs-right"><//?= '$ '.number_format($factura['Factura']['total']) ?></td>
+                                                <td><//?= $status_factura[$factura['Factura']['estado']] ?></td>
+                                                <td class="text-sm-center">
+                                                    <//?php if ($factura['Factura']['estado'] != 2 && $factura['Factura']['estado'] != 5): ?>
+                                                        <a class="pointer" onclick="rechazarFac(<//?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Rechazar factura"><i class="fa fa-close"></i></a>
+                                                    <//?php endif ?>
+                                                </td>
+                                            </tr>
+                                        <//?php endforeach ?>
+                                    </tbody>
+                                </table>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
             <div class="row mt-1">
                 <div class="col-sm-12 ">
                     <ul class="nav nav-tabs">
@@ -315,7 +415,33 @@
                                         <div class="col-sm-12">
                                             <div class="card-block">
                                                 <table class="table table-striped table-hover table-sm" id="sample_1" class="m-t-40">
-                                
+                                                    <!-- <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Referencia</th>
+                                                            <th>Fecha de pago</th>
+                                                            <th>Número de pago</th>
+                                                            <th>Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php foreach ($aportaciones as $factura): ?>
+                                                            <tr>
+                                                                <td class="text-sm-center">
+                                                                    <?php if ($factura['Factura']['estado'] != 2 && $factura['Factura']['estado'] != 5): ?>
+                                                                        <a class="pointer" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Rechazar factura"><i class="fa fa-close"></i></a>
+                                                                    <?php endif ?>
+                                                                </td>
+                                                                <td><?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
+                                                                <td><?= $factura['Factura']['fecha_emision'] ?></td>
+                                                                <td>
+                                                                    <?php for ($count = 1; $count < 100; $count++): ?>
+                                                                    <?php endfor ;?>
+                                                                </td>
+                                                                <td class=""><?= '$ '.number_format($factura['Factura']['total']) ?></td>
+                                                            </tr>
+                                                        <?php endforeach ?>
+                                                    </tbody> -->
                                                 </table>   
                                             </div>
                                         </div>
@@ -324,11 +450,22 @@
                                 <!-- tab historial de pagos -->
                                 <div class="tab-pane" id="historial_pagos">
                                     <div class="row">
-                                        <!-- Estatus de seguimiento **rogue 24-04-2023** -->
+                                        <!-- Estatus de seguimiento **Korner 24-04-2023** -->
                                         <div class="col-sm-12">
                                             <div class="card-block">
                                                 <table class="table table-striped table-hover table-sm w-100" id="sample_2" class="m-t-40">
-                                                    
+                                                    <!-- <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Referencia </th>
+                                                            <th>Fecha de pago</th>
+                                                            <th>Número de pago</th>
+                                                            <th>Total</th>
+                                                            <th>Fecha de registro</th>
+                                                            <th>Estatus</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody> -->
                                                 </table>   
                                             </div>
                                         </div>
@@ -341,6 +478,49 @@
             </div>
         </div>
     </div>
+    <!-- <div class="outer m-t-15">
+        <div class="inner bg-light lter bg-container">
+            <div class="card">
+                <div class="card-header bg-blue-is">
+                    Plan de pagos
+                </div>
+                <div class="card-block m-t-35">
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-12">
+                                <table class="table table-striped table-hover table-sm" id="sample_1" class="m-t-40">
+                                    <thead>
+                                        <tr>
+                                            <th>Referencia</th>
+                                            <th>Fecha de pago</th>
+                                            <th>Total</th>
+                                            <th>Estatus</th>
+                                            <th>Rechazar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($aportaciones as $factura): ?>
+                                            <tr>
+                                                <td><?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
+                                                <td><?= $factura['Factura']['fecha_emision'] ?></td>
+                                                <td class="text-xs-right"><?= '$ '.number_format($factura['Factura']['total']) ?></td>
+                                                <td><?= $status_factura[$factura['Factura']['estado']] ?></td>
+                                                <td class="text-sm-center">
+                                                    <?php if ($factura['Factura']['estado'] != 2 && $factura['Factura']['estado'] != 5): ?>
+                                                        <a class="pointer" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Rechazar factura"><i class="fa fa-close"></i></a>
+                                                    <?php endif ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 </div>
 
 <?php 
@@ -542,25 +722,21 @@
             success: function (response) {
                 console.log(response);
                 for (let i in response) {
-                    document.getElementById("apagar_monto").innerHTML =response[i].pago_programado;
-                    // document.getElementById("pago_mes_fijo").innerHTML =response[i].pago_programado;
-                    document.getElementById("id_pago").innerHTML =response[i].id;
-                    // pago_mes_fijo
+                    $("#apagar_monto").val( response[i].pago_programado);
+                    $("#id_pago").val( response[i].id);
                 }
-                // apagar_monto
             }
         });
-        // console.log( id );
     }
     /**
      * 
      * 
     */
     function subir(){
-        let pago=$("#apagar_monto").text();
-        let id_pago=$("#id_pago").text();
-        let pagoMas=$("#pago_mas").val()
-        let Image=$("#pagoImagen").val();
+        // let pago=$("#apagar_monto").text();
+        // let id_pago=$("#id_pago").text();
+        // let pagoMas=$("#pago_mas").val()
+        // let Image=$("#pagoImagen").val();
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "LogPagos", "action" => "pago_mes_cliente_")); ?>",
@@ -571,6 +747,37 @@
             }
         });
     }
+    /***
+     * 
+     */
+    $(document).on("submit", "#LogPagosVerPlanPagosForm", function (event) {
+        event.preventDefault();
+        
+        $.ajax({
+            url        : '<?php echo Router::url(array("controller" => "LogPagos", "action" => "pago_mes_cliente_")); ?>',
+            type       : "POST",
+            dataType   : "json",
+            data       : new FormData(this),
+            processData: false,
+            contentType: false,
+            // beforeSend: function () {
+            //     $("#overlay").fadeIn();
+            // },
+            success: function (response) {
+                // window.location.reload();
+                console.log(response);
+            },
+            error: function ( response ) {
+
+                document.getElementById("m_success").innerHTML = 'Ocurrio un problema al intentar guardar el apartado, favor de comunicarlo al administrador con el código ERC-001';
+                location.reload();
+            },
+        });
+    });
+    /**
+     * 
+     * 
+     */
 
     function viewfac(id){
         $("#modal_status_factura").modal('show')
