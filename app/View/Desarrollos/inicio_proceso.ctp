@@ -1,43 +1,43 @@
 <?= $this->Html->css(
-        array(
+    array(
 
-            '/vendors/select2/css/select2.min',
-            '/vendors/datatables/css/scroller.bootstrap.min',
-            '/vendors/datatables/css/dataTables.bootstrap.min',
-            'pages/dataTables.bootstrap',
-            'pages/tables',
-            '/vendors/datatables/css/colReorder.bootstrap.min',
-            '/vendors/inputlimiter/css/jquery.inputlimiter',
-            '/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min',
-            '/vendors/jquery-tagsinput/css/jquery.tagsinput',
-            '/vendors/daterangepicker/css/daterangepicker',
-            '/vendors/datepicker/css/bootstrap-datepicker.min',
-            '/vendors/bootstrap-timepicker/css/bootstrap-timepicker.min',
-            '/vendors/bootstrap-switch/css/bootstrap-switch.min',
-            '/vendors/jasny-bootstrap/css/jasny-bootstrap.min',
-            '/vendors/j_timepicker/css/jquery.timepicker',
-            '/vendors/datetimepicker/css/DateTimePicker.min',
-            '/vendors/clockpicker/css/jquery-clockpicker',
-            'pages/colorpicker_hack',
-            'custom'
-            //'pages/form_elements'
-        ),
-        array('inline'=>false)),
-        
-        $bg_propiedades = array(
-            0 => 'bg-bloqueado',
-            1 => 'bg-libre',
-            2 => 'bg-apartado',
-            3 => 'bg-vendido',
-            4 => 'bg-escriturado',
-            5 => 'bg-baja',
-        );
+        '/vendors/select2/css/select2.min',
+        '/vendors/datatables/css/scroller.bootstrap.min',
+        '/vendors/datatables/css/dataTables.bootstrap.min',
+        'pages/dataTables.bootstrap',
+        'pages/tables',
+        '/vendors/datatables/css/colReorder.bootstrap.min',
+        '/vendors/inputlimiter/css/jquery.inputlimiter',
+        '/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min',
+        '/vendors/jquery-tagsinput/css/jquery.tagsinput',
+        '/vendors/daterangepicker/css/daterangepicker',
+        '/vendors/datepicker/css/bootstrap-datepicker.min',
+        '/vendors/bootstrap-timepicker/css/bootstrap-timepicker.min',
+        '/vendors/bootstrap-switch/css/bootstrap-switch.min',
+        '/vendors/jasny-bootstrap/css/jasny-bootstrap.min',
+        '/vendors/j_timepicker/css/jquery.timepicker',
+        '/vendors/datetimepicker/css/DateTimePicker.min',
+        '/vendors/clockpicker/css/jquery-clockpicker',
+        'pages/colorpicker_hack',
+        'custom'
+        //'pages/form_elements'
+    ),
+    array('inline'=>false)),
+    
+    $bg_propiedades = array(
+        0 => 'bg-bloqueado',
+        1 => 'bg-libre',
+        2 => 'bg-apartado',
+        3 => 'bg-vendido',
+        4 => 'bg-escriturado',
+        5 => 'bg-baja',
+    );
 ?>
 <!-- Modal para la edicion y eliminar el seguimiento rapido. -->
 <div class="fade side-bar" id="myModal">
     <div class="card-block" style="background-color:green;">
         <span style="color:white;">
-            Departamento A-05
+            Validar "documento"
         </span> 
         <div class="float-right pointer">
             <i class='fa fa-times' style="color:white;" data-dismiss="modal"></i>
@@ -45,108 +45,42 @@
     </div>
     <!-- <div> -->
     <div class="col-sm-12">
-        <div id="carouselExampleIndicators" class="carousel slide mt-1" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active text-center">
-                    <div>
-                        imagen 1
-                    </div>
-                    <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 150px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                    <!-- <img src="https://www.google.com/imgres?imgurl=http%3A%2F%2Fwww.nasa.gov%2Fsites%2Fdefault%2Ffiles%2Fthumbnails%2Fimage%2Fweb_first_images_release_0.png&tbnid=XxvXRQC92RJQ8M&vet=12ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygAegUIARCPAQ..i&imgrefurl=https%3A%2F%2Fwww.nasa.gov%2Fpress-release%2Fla-nasa-revela-las-primeras-im-genes-del-telescopio-webb-de-un-universo-nunca-antes&docid=RUrOsO8QXSU4zM&w=2048&h=1186&q=imagenes&ved=2ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygAegUIARCPAQ" class="d-block w-100" alt="..."> -->
-                </div>
-                <div class="carousel-item text-center">
-                    <div>
-                        imagen 2
-                    </div>
-                    <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 150px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                    <!-- <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2015%2F04%2F23%2F22%2F00%2Ftree-736885_1280.jpg&tbnid=aVgXecnmQ_f1MM&vet=12ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygDegUIARCVAQ..i&imgrefurl=https%3A%2F%2Fpixabay.com%2Fes%2Fimages%2Fsearch%2Fpaisaje%2F&docid=IQGKdq9vA1YGTM&w=1280&h=797&q=imagenes&ved=2ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygDegUIARCVAQ" class="d-block w-100" alt="..."> -->
-                </div>
-                <div class="carousel-item text-center">
-                    <div>
-                        imagen 3
-                    </div>
-                    <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 150px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                    <!-- <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fphantom-marca-mx.unidadeditorial.es%2F35e37481788873f19c37456f9bbae9b3%2Fresize%2F1320%2Ff%2Fjpg%2Fmx%2Fassets%2Fmultimedia%2Fimagenes%2F2023%2F04%2F03%2F16805545425507.jpg&tbnid=q52yeX_WHyh4GM&vet=12ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygKegUIARCjAQ..i&imgrefurl=https%3A%2F%2Fwww.marca.com%2Fmx%2Ftecnologia%2F2023%2F04%2F03%2F642b3a8ee2704ed8078b45e2.html&docid=dONfUfA5ltVMXM&w=1320&h=880&q=imagenes&ved=2ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygKegUIARCjAQ" class="d-block w-100" alt="..."> -->
-                </div>
-            </div>
-        </div>
         <div class="mt-1">
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 8px 0;">
-                <div style="width:49%;">
-                    <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['m2_low']?> - <?= $desarrollo['Desarrollo']['m2_top']?> 
-                    </span>
-                </div>
-                <br>
-                <div style="width:49%;">
-                    <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['est_low']?>-<?= $desarrollo['Desarrollo']['est_top']?>
-                    </span>
-                </div>
-                
-            </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 8px 0;">
-                <div style="width:49%;">
-                    <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
-                    </span>
-                </div>
-                <br>
-                <div style="width:49%;">
-                    <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['rec_low']?>-<?= $desarrollo['Desarrollo']['rec_top']?>
-                    </span>
-                </div>
-            </div>
-            <div class="" style="padding: 8px 0;">
-                <div style="width:49%;">
-                    <?= $this->Html->image('clientes_icons/toilet.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
-                    </span>
-                </div>
-            </div>
+            <h2 class="text-black">
+                Nombre de documento
+            </h2>
         </div>
         <div class="mt-1">
             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;background-color:#CCDADA;padding:0 8px;">
                     <small>
-                        Precio de lista
+                        Asesor
                     </small>
                 </div>
                 <br>
                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                     <small>
-                        $ 5,780,902.00
+                        Alejandro Hernández
                     </small>
                 </div>
             </div>
             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                     <small>
-                        Renta / Venta
+                        Fecha de inicio
                     </small>
                 </div>
                 <br>
                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                     <small>
-                        Venta
+                        03-05-2023
                     </small>
                 </div>
             </div>
             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                     <small>
-                        Tipo de propiedad
+                        Fecha de fin
                     </small>
                 </div>
                 <br>
@@ -159,7 +93,7 @@
             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                     <small>
-                        Estado
+                        Validado por
                     </small>
                 </div>
                 <br>
@@ -169,55 +103,53 @@
                     </small>
                 </div>
             </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Comisión
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        4%
-                    </small>
-                </div>
-            </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Comparte
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Si / 1%
-                    </small>
-                </div>
-            </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Horario de atención
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        9:00 a 18:00 hrs
-                    </small>
-                </div>
-            </div>
         </div>
         <div class="mt-1">
-            <div class="text-sm-right">
-                <small>
-                    <a href="">
-                        Ir a propiedad
-                    </a>
-                </small>
+            <div style="display:flex;flex-direction:column;">
+                <label for="Observaciones">Observaciones</label>
+                <textarea class="form-control" name="Observaciones" id="" cols="30" rows="10"></textarea>
             </div>
         </div>
+        <div class="mt-1" style="border: 1px dashed lightgray;border-radius:8px;">
+            <div class="file-drop-area" style="display:flex;flex-direction:column;">
+                <span class="file-message text-center">Arrastra tus archivos aquí <br> o</span>
+                <span class="choose-file-button btn btn-primary-o">Buscar archivos</span>
+                <input class="file-input" type="file" multiple>
+            </div>
+        </div>
+        <div class="mt-3" >
+                        <div>
+                            <div style="border-bottom:1px solid lightgray;display:flex;justify-content:space-between;">
+                                <div style="width:40%">
+                                    <small>
+                                        comprobante de pago.jpg
+                                    </small>
+                                </div>
+                                <div style="width:10%">
+                                    <i class="fa fa-file"></i>
+                                </div>
+                                <div style="width:10%">
+                                    <i class="fa fa-trash"></i>
+                                </div>
+                                <div style="display:flex;gap:4px;">
+                                    <button clas="btn btn-primary">
+                                        <small>
+                                            Validar
+                                        </small>
+                                    </button>
+                                    <button class="btn btn-danger-o">
+                                        <small>
+                                            Rechazar
+                                        </small>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
+                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary'))?> -->
+                            <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
+                            <button class="btn btn-primary">Crear Proceso</button> -->
+                        </div>
+                    </div>
     </div>
     <!-- </div> -->
     <!-- <div class="">
@@ -280,87 +212,93 @@
     <div class="outer">
         <div class="inner bg-light lter bg-container">
             <div class="card mt-1" id="inventory-detail">
-                <div class="card-block">
+                <div class="card-block" style="height:80vh;">
                     <!-- Información superior -->
-                    <div class="row" >
-                    <div class="col-sm-12">
-                        <button class="btn btn-secondary-o ml-4"><i class="fa fa-file-excel"></i> Descargar</button>
-                        <button class="btn btn-secondary-o"><i class="fa fa-print"></i> Imprimir</button>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="col-sm-12 col-lg-1 mt-2">
-                                <?= $this->Form->input('contador', array(
-                                    'class'       => 'form-control text-sm-center',
-                                    'div'         => false,
-                                    'placeholder' => 0,
-                                    'label'       => false
-                                )) ?>
-                            </div> 
-                            <div class="col-sm-12 col-lg-3 mt-2 offset-lg-8">
-                                <?= $this->Form->input('contador', array(
-                                    'class'       => 'form-control tools',
-                                    'div'         => false,
-                                    'placeholder' => 'Buscador',
-                                    'label'       => false
-                                )) ?>
+                    <div class="row mt-1" >
+                        <div class="col-sm-12 col-lg-6">
+                            <div>
+                                <p style="background-color: #FBD89B;margin-bottom:0;padding:0 4px;">
+                                    <b>Yoselin Medina</b>
+                                </p>
+                                <div style="display:flex;">
+                                    <div style="width:50%;padding:0 4px;">
+                                        Proceso
+                                    </div>
+                                    <div style="width:50%;padding:0 4px;">
+                                        Validación B
+                                    </div>
+                                </div>
+                                <div style="display:flex;">
+                                    <div style="width:50%;background-color:#E6ECEC;padding:0 4px;">
+                                        Creado
+                                    </div>
+                                    <div style="width:50%;background-color:#E6ECEC;padding:0 4px;">
+                                        Ian Sánchez Pérez
+                                    </div>
+                                </div>
+                                <div style="display:flex;">
+                                    <div style="width:50%;padding:0 4px;">
+                                        Fecha de creación
+                                    </div>
+                                    <div style="width:50%;padding:0 4px;">
+                                        03-05-2023
+                                    </div>
+                                </div>
+                                <div style="display:flex;">
+                                    <div style="width:50%;background-color:#E6ECEC;padding:0 4px;">
+                                        Fecha de finalización
+                                    </div>
+                                    <div style="width:50%;background-color:#E6ECEC;padding:0 4px;">
+                                        
+                                    </div>
+                                </div>
+                                <div style="display:flex;">
+                                    <div style="width:50%;padding:0 4px;">
+                                        Etapa
+                                    </div>
+                                    <div style="width:50%;padding:0 4px;">
+                                        5. Perfilado
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-6 text-sm-center">
+                            Grafica
                         </div>
                     </div>
                     
-                    <div class="mt-1 col-sm-12">
-                        <table class="table table-striped" style="overflow:scroll;">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Acciones
-                                    </th>
-                                    <th>
-                                        Cliente
-                                    </th>
-                                    <th>
-                                        Propiedad
-                                    </th>
-                                    <th>
-                                        Asesor
-                                    </th>
-                                    <th>
-                                        Etapa
-                                    </th>
-                                    <th >
-                                        Estatus
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <?= $this->Html->link('Icono',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
-                                    </td>
-                                    <td>
-                                        Cristina Cruz Hernández
-                                    </td>
-                                    <td>
-                                        Cumbres Herradura Tipo A depto 4
-                                    </td>
-                                    <td>
-                                        Ana Luisa Medina del Toro
-                                    </td>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td style="text-align:right;">
-                                        Rechazado
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <!-- </div> -->
+                    <div class="mt-3" >
+                        <div>
+                            <div style="border-bottom:1px solid lightgray;display:flex;justify-content:space-between;padding: 0 16px;">
+                                <div style="width:10%">
+                                    <i class="fa fa-check-circle"></i>
+                                </div>
+                                <div style="width:40%">
+                                    <?= $this->Html->link('Validar comprobante de pago','#', array('escape'=>false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
+                                </div>
+                                <div style="width:10%">
+                                    24 hrs.
+                                </div>
+                                <div style="width:10%">
+                                    Gerente
+                                </div>
+                                <div style="width:10%">
+                                    1
+                                    <span>
+                                        <i class="fa fa-file-o" style="margin-left:8px;"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
+                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary'))?> -->
+                            <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
+                            <button class="btn btn-primary">Crear Proceso</button> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="side-bar" onclick="mod()">
     </div>
 </div>
 <!-- <table class="table table-sm">
@@ -392,6 +330,22 @@
 
 <script>
 
+$(document).on('change', '.file-input', function() {
+        
+
+        var filesCount = $(this)[0].files.length;
+        
+        var textbox = $(this).prev();
+      
+        if (filesCount === 1) {
+          var fileName = $(this).val().split('\\').pop();
+          textbox.text(fileName);
+        } else {
+          textbox.text(filesCount + ' files selected');
+        }
+      });
+
+    $('.file-upload').file_upload();
 
     // $(document).ready(function () {
     //     let cuenta = '<?= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'); ?>';

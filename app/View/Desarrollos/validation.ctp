@@ -335,7 +335,8 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <?= $this->Html->link('Icono',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
+                                        <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;margin-left:8px;"></i>', array( 'controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']),array('escape' => false))?>
+                                        <!-- </?= $this->Html->link('Icono',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?> -->
                                     </td>
                                     <td>
                                         Cristina Cruz Hernández
