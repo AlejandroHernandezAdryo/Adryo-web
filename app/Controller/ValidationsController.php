@@ -47,7 +47,7 @@ class ValidationsController extends AppController {
 
                 $response = array(
                     'Ok' => true,
-                    'mensaje' => 'Se creo la tarea '
+                    'mensaje' => 'Se creo la tarea'
                 );
 
             }else {
@@ -70,6 +70,65 @@ class ValidationsController extends AppController {
 		exit();
 		$this->autoRender = false;
     }
-
+    /*** *
+     * 
+     * 
+     * 
+    */
+    function view(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('User');
+        $this->loadModel('Validation');
+        $this->User->Behaviors->load('Containable');
+        $this->Validation->Behaviors->load('Containable');
+        $i=0;
+        $count=0;
+        $cuenta_id=179;
+        $search=$this->Validation->find('all',array(
+            'conditions'=>array(
+                'Validation.cuenta_id' =>  $cuenta_id,
+            ),
+            'contain' => false
+        ));
+        foreach ($search as $value) {
+        
+            $user=$this->User->find('first',array(
+                'conditions'=>array(
+                    'User.id' =>  $value['Validation']['user_id'],
+                ),
+                'fields' => array(
+                    'User.nombre_completo',
+                ),
+                'contain' => false
+            ));
+            $reponse_[$i]['id']=$value['Validation']['id'];
+            $response[$i]['edit']            =//array(
+                // 'agregar' => "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-edit'> </i> </a>",
+                "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-add'></i> </a>";
+           // ); 
+            $response[$i]['user']            = $user['User']['nombre_completo'];
+            $response[$i]['validacion_name'] = $value['Validation']['validacion_name'];
+            if ( $value['Validation']['status']==0) {
+                $response[$i]['status']          ='Inactivo';
+            }else {
+                $response[$i]['status']          ='Activo';
+                
+            }
+            $response[$i]['etapa_id']        = $value['Validation']['etapa_id'];
+            // }
+            $json[$count]=array(
+                $response[$i]['edit'],
+                $response[$i]['validacion_name'],           
+                $response[$i]['user']  , 
+                $response[$i]['etapa_id']  ,            
+                $response[$i]['status'],
+            );
+            $i++;
+            $count++;
+        }
+        echo json_encode( $json , true );          
+		exit();
+		$this->autoRender = false;
+    }
 
 }
