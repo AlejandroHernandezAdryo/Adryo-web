@@ -1,6 +1,10 @@
 <?php
 App::uses('AppController', 'Controller');
 App::uses('HttpSocket', 'Network/Http');
+App::import('Vendor', 'ImageTool');
+use Cake\Filesystem\Folder;
+
+
 
 /**
  * Clientes Controller
@@ -22,12 +26,12 @@ class LogPagosController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow(array('view_datos_cliente','pago_mes_cliente','log_pago_lleno'));
+        $this->Auth->allow(array('historico_pagos','view_datos_cliente','pago_mes_cliente_','log_pago_lleno', 'pagos_log'));
       
     }
     /**
      * 
-     * comentario
+     * 
      * 
      * 
     */
@@ -38,6 +42,8 @@ class LogPagosController extends AppController {
         $this->loadModel('DesarrolloInmueble');
         $this->loadModel('LogPago');
         $this->loadModel('Cliente');
+        $this->loadModel('PagosPrincipale');
+        $this->PagosPrincipale->Behaviors->load('Containable');
         $this->Cliente->Behaviors->load('Containable');
         $this->LogPago->Behaviors->load('Containable');
         $this->DesarrolloInmueble->Behaviors->load('Containable');
@@ -115,8 +121,8 @@ class LogPagosController extends AppController {
                         $mensualidades=( $cotizacion['Cotizacion']['financiamiento'] * $cotizacion['Cotizacion']['precio_final'] );
                         $financiamiento=( $cotizacion['Cotizacion']['financiamiento'] * $cotizacion['Cotizacion']['precio_final'] );
                     }else{
-                        $mensualidades= ( ( $cotizacion['Cotizacion']['financiamiento'] * $cotizacion['Cotizacion']['precio_final'] ) / ($meses));
-                        $financiamiento=( $cotizacion['Cotizacion']['financiamiento'] * $cotizacion['Cotizacion']['precio_final'] );
+                        $mensualidades= ( (( $cotizacion['Cotizacion']['financiamiento'] * $cotizacion['Cotizacion']['precio_final'] ) / 100) / ($meses));
+                        $financiamiento=( ($cotizacion['Cotizacion']['financiamiento'] * $cotizacion['Cotizacion']['precio_final']) / 100 );
 
                     }
                     
@@ -127,7 +133,6 @@ class LogPagosController extends AppController {
                     }else{
                         $mensualidades =( $cotizacion['Cotizacion']['financiamiento'] / $meses);
                         $financiamiento=$cotizacion['Cotizacion']['financiamiento'];
-
                     }
                 }
                 
@@ -141,7 +146,120 @@ class LogPagosController extends AppController {
                         'LogPago.operaciones_inmueble_id'=> $operacion['OperacionesInmueble']['id'],
                     ),
                 ));
+                $pagos_principal=$this->PagosPrincipale->find('all', array(
+                    'conditions' => array(
+                        'PagosPrincipale.cotizacion_id'=> $cotizacion['Cotizacion']['id'],
+                    ),
+                ));
+                if ($pagos_principal==null) {
+                    if ( $cotizacion['Cotizacion']['apartado'] < 100 ) {
+                        if ($cotizacion['Cotizacion']['apartado']==0) {
+                            $apartado=0;
+                        }else{
+                            $apartado= ( (( $cotizacion['Cotizacion']['apartado'] * $cotizacion['Cotizacion']['precio_final'] ) / 100));    
+                        }
+                        
+                    }else {
+                        if ($cotizacion['Cotizacion']['apartado']==0) {
+                            $apartado=0;
+                        }else{
+                            $apartado= ( $cotizacion['Cotizacion']['apartado']);    
+                        }
+                    }
+                    $this->PagosPrincipale->create();
+                    $this->request->data['PagosPrincipale']['id']            = null;
+                    $this->request->data['PagosPrincipale']['cliente_id']    = $operacion['OperacionesInmueble']['cliente_id'];
+                    $this->request->data['PagosPrincipale']['cotizacion_id'] = $cotizacion['Cotizacion']['id'];
+                    $this->request->data['PagosPrincipale']['user_id']       = $operacion['OperacionesInmueble']['user_id'];
+                    $this->request->data['PagosPrincipale']['cuenta_id']     =  $cuenta_id;
+                    $this->request->data['PagosPrincipale']['fecha_pago']    = null;
+                    $this->request->data['PagosPrincipale']['tipo_pago']     = 0;
+                    $this->request->data['PagosPrincipale']['monto']         = $apartado;
+                    $this->request->data['PagosPrincipale']['status']        = 0;
+                    $this->request->data['PagosPrincipale']['nota']          = null;
+                    $this->request->data['PagosPrincipale']['desarrollo_id'] = $desarollo_id['DesarrolloInmueble']['desarrollo_id'];
+                    $this->request->data['PagosPrincipale']['inmueble_id']   = $cotizacion['Cotizacion']['inmueble_id'];
+                    $this->request->data['PagosPrincipale']['validation_id'] = null;
+                    if ($this->PagosPrincipale->save($this->request->data)){
+                            
+                        $response_ = array(
+                            'Ok' => false,
+                            'mensaje0' => 'se actualizo la base de datos PagosPrincipale 0'
+                        );
+                    }
+                    if ( $cotizacion['Cotizacion']['contrato'] < 100 ) {
+                        if ($cotizacion['Cotizacion']['contrato']==0) {
+                            $contrato=0;
+                        }else{
+                            $contrato= ( (( $cotizacion['Cotizacion']['contrato'] * $cotizacion['Cotizacion']['precio_final'] ) / 100));    
+                        }
+                        
+                    }else {
+                        if ($cotizacion['Cotizacion']['contrato']==0) {
+                            $contrato=0;
+                        }else{
+                            $contrato= ( $cotizacion['Cotizacion']['contrato']);    
+                        }
+                    }
+                    $this->PagosPrincipale->create();
+                    $this->request->data['PagosPrincipale']['id']            = null;
+                    $this->request->data['PagosPrincipale']['cliente_id']    = $operacion['OperacionesInmueble']['cliente_id'];
+                    $this->request->data['PagosPrincipale']['cotizacion_id'] = $cotizacion['Cotizacion']['id'];
+                    $this->request->data['PagosPrincipale']['user_id']       = $operacion['OperacionesInmueble']['user_id'];
+                    $this->request->data['PagosPrincipale']['cuenta_id']     =  $cuenta_id;
+                    $this->request->data['PagosPrincipale']['fecha_pago']    = null;
+                    $this->request->data['PagosPrincipale']['tipo_pago']     = 1;
+                    $this->request->data['PagosPrincipale']['monto']         = $contrato;
+                    $this->request->data['PagosPrincipale']['status']        = 0;
+                    $this->request->data['PagosPrincipale']['nota']          = null;
+                    $this->request->data['PagosPrincipale']['desarrollo_id'] = $desarollo_id['DesarrolloInmueble']['desarrollo_id'];
+                    $this->request->data['PagosPrincipale']['inmueble_id']   = $cotizacion['Cotizacion']['inmueble_id'];
+                    $this->request->data['PagosPrincipale']['validation_id'] = null;
+                    if ($this->PagosPrincipale->save($this->request->data)){
+                            
+                        $response_ = array(
+                            'Ok' => false,
+                            'mensaje1' => 'se actualizo la base de datos PagosPrincipale 1'
+                        );
+                    }
+                    if ( $cotizacion['Cotizacion']['escrituracion'] < 100 ) {
+                        if ($cotizacion['Cotizacion']['escrituracion']==0) {
+                            $escrituracion=0;
+                        }else{
+                            $escrituracion= ( (( $cotizacion['Cotizacion']['escrituracion'] * $cotizacion['Cotizacion']['precio_final'] ) / 100));    
+                        }
+                        
+                    }else {
+                        if ($cotizacion['Cotizacion']['escrituracion']==0) {
+                            $escrituracion=0;
+                        }else{
+                            $escrituracion= ( $cotizacion['Cotizacion']['escrituracion']);    
+                        }
+                    }
+                    $this->PagosPrincipale->create();
+                    $this->request->data['PagosPrincipale']['id']            = null;
+                    $this->request->data['PagosPrincipale']['cliente_id']    = $operacion['OperacionesInmueble']['cliente_id'];
+                    $this->request->data['PagosPrincipale']['cotizacion_id'] = $cotizacion['Cotizacion']['id'];
+                    $this->request->data['PagosPrincipale']['user_id']       = $operacion['OperacionesInmueble']['user_id'];
+                    $this->request->data['PagosPrincipale']['cuenta_id']     =  $cuenta_id;
+                    $this->request->data['PagosPrincipale']['fecha_pago']    = null;
+                    $this->request->data['PagosPrincipale']['tipo_pago']     = 2;
+                    $this->request->data['PagosPrincipale']['monto']         = $escrituracion;
+                    $this->request->data['PagosPrincipale']['status']        = 0;
+                    $this->request->data['PagosPrincipale']['nota']          = null;
+                    $this->request->data['PagosPrincipale']['desarrollo_id'] = $desarollo_id['DesarrolloInmueble']['desarrollo_id'];
+                    $this->request->data['PagosPrincipale']['inmueble_id']   = $cotizacion['Cotizacion']['inmueble_id'];
+                    $this->request->data['PagosPrincipale']['validation_id'] = null;
+                    if ($this->PagosPrincipale->save($this->request->data)){
+                            
+                        $response_ = array(
+                            'Ok' => false,
+                            'mensaje2' => 'se actualizo la base de datos PagosPrincipale 1'
+                        );
+                    }
+                }
                 if ( $log_pgo == null) {
+
                     foreach ($periodos as $key => $value) {
                     
                         $this->LogPago->create();
@@ -165,15 +283,37 @@ class LogPagosController extends AppController {
                         $this->request->data['LogPago']['cuenta_id']               = $cuenta_id;
                         $this->request->data['LogPago']['mes']                     = $p;
                         $this->request->data['LogPago']['desarrollo_id']           = $desarollo_id['DesarrolloInmueble']['desarrollo_id'];
-                        $this->request->data['LogPago']['inmueble_id']             = $operacion['OperacionesInmueble']['inmueble_id'] ;
+                        $this->request->data['LogPago']['inmueble_id']             =  $cotizacion['Cotizacion']['inmueble_id'];
                         $this->request->data['LogPago']['referencia']              = $desarollo_id['DesarrolloInmueble']['referencia'] ;
+        
+                        // $response[$i]['cliente_id'] = $operacion['OperacionesInmueble']['cliente_id']                                                     ;
+                        // $response[$i]['fecha_pago'] = null                                                     ;
+                        // $response[$i]['fecha_programada'] = $key                                        ;
+                        // $response[$i]['monto_programado'] = $mensualidades                                               ;
+                        // $response[$i]['monto_pagado'] = 0                                                                        ;
+                        // $response[$i]['monto_total'] = 0                                                                        ;
+                        // $response[$i]['valor_unidad'] = $operacion['OperacionesInmueble']['precio_cierre']                       ;
+                        // $response[$i]['status'] = 'Pendiente'                                                              ;
+                        // $response[$i]['folio'] = uniqid();                  
+                        // $response[$i]['cotizacion_id'] = $cotizacion['Cotizacion']['id']                                          ;
+                        // $response[$i]['comprobante'] = null                                                                     ;
+                        // $response[$i]['interes'] = 0                                                                        ;
+                        // $response[$i]['monto_adelantado'] = 0                                                                        ;
+                        // $response[$i]['operaciones_inmueble_id'] = $operacion['OperacionesInmueble']['id'];
+                        // $response[$i]['user_id'] = $operacion['OperacionesInmueble']['user_id']                             ;
+                        // $response[$i]['cuenta_id'] = $cuenta_id                        ;
+                        // $response[$i]['mes'] = $p                          ;
+                        // $response[$i]['desarollo_id'] = $desarollo_id['DesarrolloInmueble']['desarrollo_id']                     ;
+                        // $response[$i]['referencia'] = $desarollo_id['DesarrolloInmueble']['referencia']                ;
+                        // $response[$i]['f'] = $financiamiento                ;
                         $p++;
+                        // $i++;
                         if ($this->LogPago->save($this->request->data)){
                             
                             $log = $this->LogPago->getInsertID();
                             $response_ = array(
                                 'Ok' => false,
-                                'mensaje' => 'se actualizo la base de datos '
+                                'mensajelog' => 'se actualizo la base de datos '
                             );
                         }
                     }
@@ -285,10 +425,23 @@ class LogPagosController extends AppController {
 
             ));
             if ( $cliente[0]['Cotizacion']['financiamiento'] < 100 ) {
-                $mesualidades=( ($cliente[0]['Cotizacion']['financiamiento'] * $cliente[0]['Cotizacion']['precio_final']) / $cliente[0]['Cotizacion']['meses']);
+                // $mesualidades=( ($cliente[0]['Cotizacion']['financiamiento'] * $cliente[0]['Cotizacion']['precio_final']) / $cliente[0]['Cotizacion']['meses']);
+                $mesualidades=( (($cliente[0]['Cotizacion']['financiamiento'] * $cliente[0]['Cotizacion']['precio_final'])/ 100) / $cliente[0]['Cotizacion']['meses']);
             
             }else {
                 $mesualidades=($cliente[0]['Cotizacion']['financiamiento']/$cliente[0]['Cotizacion']['meses']);
+            }
+            if ($cliente[0]['Cotizacion']['escrituracion'] < 100 ) {
+                $escrituracion=( ($cliente[0]['Cotizacion']['escrituracion'] * $cliente[0]['Cotizacion']['precio_final']) / 100 );
+            }else{
+                $escrituracion=$cliente[0]['Cotizacion']['escrituracion'];
+
+            }
+            if ($cliente[0]['Cotizacion']['contrato'] < 100 ) {
+                $contrato=( ($cliente[0]['Cotizacion']['contrato'] * $cliente[0]['Cotizacion']['precio_final']) / 100 );
+            }else{
+                $contrato=$cliente[0]['Cotizacion']['contrato'];
+
             }
             $i=0;
             $j=0;
@@ -301,9 +454,11 @@ class LogPagosController extends AppController {
                 $reponse_[$i]['cliente']['logo']               = Router::url($desarollo['Desarrollo']['logotipo'],true) ;
                 $reponse_[$i]['cliente']['financiamiento']     = $value['Cotizacion']['financiamiento'];
                 $reponse_[$i]['cliente']['apartado']           = $value['Cotizacion']['apartado'];
-                $reponse_[$i]['cliente']['contrato']           = $value['Cotizacion']['contrato'];
+                $reponse_[$i]['cliente']['contrato']           = $contrato;
                 $reponse_[$i]['cliente']['meses']              = $value['Cotizacion']['meses'];
-                $reponse_[$i]['cliente']['precio_cierre']      = round($value['OperacionesInmueble']['precio_cierre'],2);
+                $reponse_[$i]['cliente']['escrituracion']      = $escrituracion;
+                $reponse_[$i]['cliente']['precio_cierre']      = round($value['Cotizacion']['precio_final'],2);
+                $reponse_[$i]['cliente']['fecha']              = $value['OperacionesInmueble']['fecha'];
                 $reponse_[$i]['cliente']['user_nombre']        = $value['User']['nombre_completo'];
                 // $reponse_[$i]['cliente']['totalpagado']        = $value[0]['LogPago']['monto_total_pagado'];
 
@@ -317,7 +472,13 @@ class LogPagosController extends AppController {
                     $reponse_[$i]['pagos'][$j]['status']           = $pagos['status'];
                     $reponse_[$i]['pagos'][$j]['comprobante']      = $pagos['comprobante'];
                     $reponse_[$i]['pagos'][$j]['fecha_pago']       = $pagos['fecha_pago'];
-                    $reponse_[$i]['cliente']['totalpagado']               = $pagos['monto_total_pagado'];
+                    if ( $pagos['monto_total_pagado']==null) {
+                        $reponse_[$i]['cliente']['totalpagado']               = 'sin pagos';
+                        
+                    }else {
+                        $reponse_[$i]['cliente']['totalpagado']               = $pagos['monto_total_pagado'];
+                        
+                    }
                     $j++;
                 }
                 $i++;
@@ -325,7 +486,7 @@ class LogPagosController extends AppController {
             $i=0;
             $res = array(
                 'Ok' => true,
-                'respuesta' => $cliente
+                'respuesta' => $reponse_
             );
 
         } else {
@@ -435,9 +596,14 @@ class LogPagosController extends AppController {
                 $reponse_[$i]['mes']              = $pagos['mes'];
                 $reponse_[$i]['status']           = $pagos['status'];
                 if ($pagos['comprobante']==null) {
-                    $reponse_[$i]['comprobante'] ='falta'  ;
+                    $reponse_[$i]['comprobante']      = " <a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer' ><i class='fa fa-upload'></i> </a> ";
                 }else {
-                    $reponse_[$i]['comprobante']      = $pagos['comprobante'];
+                    $reponse_[$i]['comprobante']      =  "<a onclick= 'editarFac(".$reponse_[$i]['id'].")' class='pointer' ><i class='fa fa-edit'></i> </a>";
+                }
+                if ($pagos['comprobante']==null) {
+                    $reponse_[$i]['ver_doc']      = " <a class='pointer disabled' ><i class='fa fa-eye'></i> </a> ";
+                }else {
+                    $reponse_[$i]['ver_doc']      =  "<a onclick= 'viewfac(".$reponse_[$i]['id'].")' class='pointer' ><i class='fa fa-eye'></i> </a>";
                 }
                 if ($pagos['fecha_pago']==null) {
 
@@ -455,8 +621,8 @@ class LogPagosController extends AppController {
                 }
                 $reponse_[$i]['carlos']       =  'roberto puto';
                 $clientes_json[$count] = array(
-                    $reponse_[$i]['id'],
-                    $reponse_[$i]['comprobante']  ,   
+                    $reponse_[$i]['ver_doc'],
+                    $reponse_[$i]['comprobante']  , 
                     $reponse_[$i]['referencia'] ,     
                     $reponse_[$i]['fecha'],           
                     $reponse_[$i]['mes']  ,           
@@ -464,17 +630,49 @@ class LogPagosController extends AppController {
                     $reponse_[$i]['fecha']    ,  
                     $reponse_[$i]['status'] ,      
                     $reponse_[$i]['fecha_pago'],   
-                  
-                    
                 );
                 $count++;
                 $i++;
 
             }
-            echo json_encode( $clientes_json , true );          
+        
+        } else {
+            $clientes_json = array(
+                'Ok' => false,
+                'mensaje' => 'Hubo un error intente nuevamente'
+            );
+        }
+        echo json_encode( $clientes_json , true );          
 		exit();
 		$this->autoRender = false;
-        } 
+    }
+    /**
+     * 
+     * 
+     * 
+     */
+    function view_pago(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('LogPago');
+        $this->LogPago->Behaviors->load('Containable');
+        $i=0;
+        $id_pago=$this->request->data['id_pago'];
+        $pago_view=$this->LogPago->find('all',array(
+            'conditions' => array(
+                'LogPago.id'=> $id_pago
+            ),
+            'contain' => false
+
+        ));
+
+        foreach ($pago_view as $value) {
+            $response[$i]['id'] = $value['LogPago']['id']; 
+            $response[$i]['pago_programado'] = $value['LogPago']['monto_programado']; 
+            $i++;
+        }
+        echo json_encode( $response , true );          
+		exit();
+		$this->autoRender = false;
     }
     /***
      * 
@@ -602,12 +800,12 @@ class LogPagosController extends AppController {
         return $periodos;
     
     }
-     /***
+    /***
      * 
      * 
      * 
     */
-    function pago_mes_cliente(){
+    function pago_mes_cliente_(){
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('LogPago');
         $this->LogPago->Behaviors->load('Containable');
@@ -666,6 +864,63 @@ class LogPagosController extends AppController {
 		exit();
 		$this->autoRender = false;
     }
+    /***
+     * 
+     * 
+     */
+    function carga_archivo( $archivo, $data ){
+
+        $bandera = true;
+        $mensaje = '';
+        /** ---------------------------------- Hola ------------------------------------
+         * 
+         * Comprobacion de que una carpeta existe para el almacenamiento de los archivos de los clientes.
+         * Este proceso es nuevo, por eso se crea desde aqui.
+         * SaaK - Alejandro Hernandez 01-02-2022
+         * 
+         */
+        $path = getcwd()."/files/cuentas/".$data['cuenta_id']."/clientes/";
+        if (!is_dir($path)) {
+            mkdir(getcwd()."/files/cuentas/".$data['cuenta_id']."/clientes/",0777);
+        }
+
+        if (isset($archivo) && $archivo['name']!=""){
+                
+            $unitario = $archivo;
+            $filename = getcwd()."/files/cuentas/".$data['cuenta_id']."/clientes/".$unitario['name'];
+            move_uploaded_file($unitario['tmp_name'],$filename);
+            $ruta = "/files/cuentas/".$data['cuenta_id']."/clientes/".$unitario['name'];
+            
+            $this->DocsCliente->create();
+            $this->request->data['DocsCliente']['documento']      = $data['documento'];
+            $this->request->data['DocsCliente']['ruta']           = $ruta;
+            $this->request->data['DocsCliente']['tipo_documento'] = $data['tipo_documento'];
+            $this->request->data['DocsCliente']['comentarios']    = $data['comentarios'];
+            $this->request->data['DocsCliente']['user_id']        = $data['user_id'];
+            $this->request->data['DocsCliente']['inmueble_id']    = $data['inmueble_id'];
+            $this->request->data['DocsCliente']['cliente_id']     = $data['cliente_id'];
+            $this->request->data['DocsCliente']['operacion_id']   = $data['operacion_id'];
+            
+            if( $this->DocsCliente->save($this->request->data) ){
+                $mensaje = 'Se guardo correctamente el documento.';
+            }else{
+                $bandera = false;
+                $mensaje = 'Ocurrio un problema al guardar el documento.';
+            }
+
+        }
+
+        $save = array(
+            'bandera' => $bandera,
+            'mensaje' => $mensaje
+        );
+
+        
+        $this->autoRender = false;
+        return $save;
+
+    }
+
 
 
 
