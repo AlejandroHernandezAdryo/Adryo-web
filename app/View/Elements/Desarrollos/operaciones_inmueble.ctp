@@ -20,6 +20,7 @@
 
         '/vendors/swiper/css/swiper.min',
         'pages/widgets',
+        'adryo_components',
     ),
     array('inline'=>false))
 ?>
