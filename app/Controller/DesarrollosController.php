@@ -5075,11 +5075,19 @@ class DesarrollosController extends AppController {
 
     }
 
-    public function inicio_proceso($id=null){
+    public function add_tarea($id=null){
 
     }
 
     public function proceso_tabla($id=null){
+
+    }
+
+    public function inicio_proceso($id=null){
+
+    }
+
+    public function edit_proceso($id=null){
 
     }
 
