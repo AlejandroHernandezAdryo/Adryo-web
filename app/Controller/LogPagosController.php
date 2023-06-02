@@ -598,7 +598,7 @@ class LogPagosController extends AppController {
                 if ($pagos['comprobante']==null) {
                     $reponse_[$i]['comprobante']      = " <a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer' ><i class='fa fa-upload'></i> </a> ";
                 }else {
-                    $reponse_[$i]['comprobante']      =  "<a onclick= 'editarFac(".$reponse_[$i]['id'].")' class='pointer' ><i class='fa fa-edit'></i> </a>";
+                    $reponse_[$i]['comprobante']      =  "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer' ><i class='fa fa-edit'></i> </a>";
                 }
                 if ($pagos['comprobante']==null) {
                     $reponse_[$i]['ver_doc']      = " <a class='pointer disabled' ><i class='fa fa-eye'></i> </a> ";
