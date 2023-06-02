@@ -56,6 +56,15 @@ class OperacionesInmueble extends AppModel {
             'finderQuery'  => '',
             'counterQuery' => ''
         ),
+		
+		'LogPago' => array(
+			'className' => 'LogPago',
+			'foreignKey' => 'operaciones_inmueble_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
     );
+
 
 }

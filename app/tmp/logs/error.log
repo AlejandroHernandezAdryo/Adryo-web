@@ -13461,3 +13461,329 @@ Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
 Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
 [main] - APP\webroot\index.php, line 118
 
+2023-06-02 18:19:35 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web//files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:41 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/componentsadryo.css
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:41 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:41 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:42 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/fondo_trans.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:43 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:44 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\Adryo-web\app\Controller\ClientesController.php, line 8885]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ClientesController::clientes_mes_das() - APP\Controller\ClientesController.php, line 8885
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-06-02 18:19:53 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/componentsadryo.css
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:19:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:28:39 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web//files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:28:45 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/componentsadryo.css
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:28:45 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:28:45 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:28:46 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/fondo_trans.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:28:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:28:47 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\Adryo-web\app\Controller\ClientesController.php, line 8885]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ClientesController::clientes_mes_das() - APP\Controller\ClientesController.php, line 8885
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-06-02 18:29:00 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/componentsadryo.css
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:29:00 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:29:00 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:29:01 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:29:01 Error: [MissingTableException] Table pagos_principales for model PagosPrincipale was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'pagos_principales',
+  'class' => 'PagosPrincipale',
+  'ds' => 'default',
+)
+Request URL: /Adryo-web/LogPagos/historico_pagos
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\lib\Cake\Model\Model.php(3686): Model->setSource('pagos_principal...')
+#1 C:\xampp\htdocs\Adryo-web\lib\Cake\Model\Model.php(3053): Model->getDataSource()
+#2 C:\xampp\htdocs\Adryo-web\lib\Cake\Model\Model.php(3025): Model->_readDataSource('all', Array)
+#3 C:\xampp\htdocs\Adryo-web\app\Controller\LogPagosController.php(506): Model->find('all', Array)
+#4 [internal function]: LogPagosController->historico_pagos()
+#5 C:\xampp\htdocs\Adryo-web\lib\Cake\Controller\Controller.php(499): ReflectionMethod->invokeArgs(Object(LogPagosController), Array)
+#6 C:\xampp\htdocs\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#7 C:\xampp\htdocs\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LogPagosController), Object(CakeRequest))
+#8 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2023-06-02 18:29:01 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [C:\xampp\htdocs\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 265
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-06-02 18:29:01 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\Adryo-web\app\Controller\LogPagosController.php, line 311]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 311
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-06-02 18:29:01 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [C:\xampp\htdocs\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 406
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-06-02 18:29:01 Warning: Warning (2): Invalid argument supplied for foreach() in [C:\xampp\htdocs\Adryo-web\app\Controller\LogPagosController.php, line 430]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 430
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-06-02 18:30:43 Error: [MissingControllerException] Controller class CssController could not be found.
+Exception Attributes: array (
+  'class' => 'CssController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/css/componentsadryo.css
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:30:43 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:30:43 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:30:43 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-02 18:30:43 Error: [MissingTableException] Table pagos_principales for model PagosPrincipale was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'pagos_principales',
+  'class' => 'PagosPrincipale',
+  'ds' => 'default',
+)
+Request URL: /Adryo-web/LogPagos/historico_pagos
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\lib\Cake\Model\Model.php(3686): Model->setSource('pagos_principal...')
+#1 C:\xampp\htdocs\Adryo-web\lib\Cake\Model\Model.php(3053): Model->getDataSource()
+#2 C:\xampp\htdocs\Adryo-web\lib\Cake\Model\Model.php(3025): Model->_readDataSource('all', Array)
+#3 C:\xampp\htdocs\Adryo-web\app\Controller\LogPagosController.php(506): Model->find('all', Array)
+#4 [internal function]: LogPagosController->historico_pagos()
+#5 C:\xampp\htdocs\Adryo-web\lib\Cake\Controller\Controller.php(499): ReflectionMethod->invokeArgs(Object(LogPagosController), Array)
+#6 C:\xampp\htdocs\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#7 C:\xampp\htdocs\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LogPagosController), Object(CakeRequest))
+#8 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}

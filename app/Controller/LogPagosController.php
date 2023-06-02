@@ -625,7 +625,6 @@ class LogPagosController extends AppController {
                 ),
                 'contain' => false
             ));
-<<<<<<< HEAD
             $this->request->data['LogPago']['id'] =$id;
             if ($this->request->data['LogPagos']['foto_pago'] != null ) {
                 $path = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id'];
@@ -640,16 +639,6 @@ class LogPagosController extends AppController {
                     $ruta = "/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$unitario['name'];
                     $this->request->data['LogPago']['comprobante'] =$ruta;
                 }
-=======
-            $this->request->data['LogPago']['id']          = $id;
-           
-            if ($this->request->data['Image'] != null ) {
-                $filename = getcwd()."/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$sinvocales;
-                move_uploaded_file($filename, 'pagos');
-                $ruta = "/img/pagos/".$operacion['LogPago']['operaciones_inmueble_id']."/".$sinvocales;
-                $this->request->data['LogPago']['comprobante'] =$ruta;
-
->>>>>>> e30ea0cabe82df079bed4cc6f7e6aa7f8895cbde
             }
 
             if ( $this->LogPago->save($this->request->data['LogPago']) ) {
