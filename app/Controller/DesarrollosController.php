@@ -5087,6 +5087,8 @@ class DesarrollosController extends AppController {
 
     }
 
-    
+    public function edit_proceso($id=null){
+
+    }
 
 }

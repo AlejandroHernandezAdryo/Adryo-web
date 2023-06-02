@@ -52,7 +52,8 @@
         <!-- Modal footer -->
         <div class="modal-footer">
             <?= $this->Html->link('Agregar tareas',array('controller'=>'desarrollos','action'=>'add_tarea',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary float-xs-right', 'style' => 'margin-left:8px;'))?>
-            <button type="button" class="btn btn-primary-o float-xs-right" data-dismiss="modal">Salir</button>
+            <?= $this->Html->link('Regresar',array('controller'=>'desarrollos','action'=>'control_table',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary float-xs-right', 'style' => 'margin-left:8px;'))?>
+            <!-- <button type="button" class="btn btn-primary-o float-xs-right" data-dismiss="modal">Salir</button> -->
             <!-- <button type="submit" class="btn btn-success">Registrar</button> -->
         </div>
         <?= $this->Form->end(); ?>
@@ -297,7 +298,6 @@
             <div class="col-lg-6 col-md-4 col-sm-4">
                 <h4 class="nav_top_align">
                     Crear proceso 
-                    <?= $this->Html->link('<i class="fa fa-edit"></i>','#', array('escape'=>false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
                 </h4>
             </div>
         </div>
@@ -311,7 +311,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="col-sm-12 col-lg-4 mt-2">
-                                    <?= $this->Form->input('contador', array(
+                                    <?= $this->Form->input('name_proceso', array(
                                         'class'       => 'form-control',
                                         'div'         => false,
                                         'placeholder' => 'Escribe un nombre para el proceso',
@@ -319,7 +319,7 @@
                                     )) ?>
                                 </div> 
                                 <div class="col-sm-12 col-lg-2 mt-2">
-                                    <?= $this->Form->input('contador', array(
+                                    <?= $this->Form->input('etapa_inicio', array(
                                         'class'       => 'form-control select',
                                         'div'         => false,
                                         'placeholder' => 'Selecciona etapa',
@@ -333,101 +333,13 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-sm-12">
-                                <div class="col-sm-12 col-lg-4 mt-2">
-                                    <?= $this->Form->input('contador', array(
-                                        'class'       => 'form-control',
-                                        'div'         => false,
-                                        'placeholder' => 'Escribe un nombre para la tarea',
-                                        'label'       => 'Nombre de la tarea'
-                                    )) ?>
-                                </div> 
-                                <div class="col-sm-12 col-lg-2 mt-2">
-                                    <?= $this->Form->input('contador', array(
-                                        'class'       => 'form-control select',
-                                        'div'         => false,
-                                        'placeholder' => 'Buscador',
-                                        'label'       => 'Duración en horas',
-                                        'options'     =>  array(
-                                            '1' => '1 hrs',
-                                            '2' => '2 hrs',
-                                            '3' => '3 hrs',
-                                            '4' => '4 hrs',
-                                            '5' => '5 hrs',
-                                            '6' => '6 hrs',
-                                            '7' => '7 hrs',
-                                            '8' => '8 hrs',
-                                            '9' => '9 hrs',
-                                            '10' => '10 hrs',
-                                            '11' => '11 hrs',
-                                            '12' => '12 hrs',
-                                            '13' => '13 hrs',
-                                            '14' => '14 hrs',
-                                            '15' => '15 hrs',
-                                            '16' => '16 hrs',
-                                            '17' => '17 hrs',
-                                            '18' => '18 hrs',
-                                            '19' => '19 hrs',
-                                            '20' => '20 hrs',
-                                            '21' => '21 hrs',
-                                            '22' => '22 hrs',
-                                            '23' => '23 hrs',
-                                            '24' => '24 hrs',
-                                        )
-                                    )) ?>
-                                </div>
-                                <div class="col-sm-12 col-lg-2 mt-2">
-                                    <?= $this->Form->input('contador', array(
-                                        'class'       => 'form-control select',
-                                        'div'         => false,
-                                        'placeholder' => 'Buscador',
-                                        'label'       => 'Documentación',
-                                        'options'     => array(
-                                            'empty' => 'Elige una opción',
-                                            '1' => 'Option 1',
-                                            '2' => 'Option 2',
-                                            '3' => 'Option 3'
-                                        )
-                                    )) ?>
-                                </div>
-                                <div class="col-sm-12 col-lg-2 mt-2">
-                                    <?= $this->Form->input('contador', array(
-                                        'class'       => 'form-control select',
-                                        'div'         => false,
-                                        'placeholder' => 'Buscador',
-                                        'label'       => 'Validación',
-                                        'options'     => array(
-                                            'empty' => 'Elige una opción',
-                                            '1' => 'Option 1',
-                                            '2' => 'Option 2',
-                                            '3' => 'Option 3'
-                                        )
-                                    )) ?>
-                                </div>
-                                <div class="col-sm-12 col-lg-2 mt-2">
-                                    <?= $this->Form->input('contador', array(
-                                        'class'       => 'form-control select',
-                                        'div'         => false,
-                                        'placeholder' => 'Buscador',
-                                        'label'       => 'Perfil',
-                                        'options'     => array(
-                                            'empty' => 'Elige una opción',
-                                            '1' => 'Option 1',
-                                            '2' => 'Option 2',
-                                            '3' => 'Option 3'
-                                        )
-                                    )) ?>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="col-sm-12 mt-1">
-                            <button class="btn btn-primary float-right">
+                            <?= $this->Html->link('Guardar', array(), array('escape' => false, 'class' => 'btn btn-primary', 'style'=>'margin-left: 5px;float:right;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
+                            <!-- <button class="btn btn-primary float-right">
                                 Guardar
-                            </button>
+                            </button> -->
                         </div>
                     </div>
-                    
                     <div class="mt-5 col-sm-12">
                         <table class="table table-striped" style="overflow:scroll;">
                             <thead>
@@ -452,14 +364,13 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;margin-left:8px;"></i>', array(), array('escape' => false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
-                                        <?= $this->Html->link('<i class="fa fa-eye" style="color:#215D9C;margin-left:8px;"></i>', array('controller'=>'desarrollos','action'=>'add_tarea'), array('escape' => false))?>
-                                        <?= $this->Html->link('<i class="fa fa-edit" style="color:#215D9C;margin-left:8px;"></i>', '',array('escape' => false, 'controller'=>'desarrollos','action'=>'edit_proceso',$desarrollo['Desarrollo']['id']))?>
-                                        <?= $this->Html->link('<i class="fa fa-trash" style="color:#215D9C;margin-left:8px;"></i>', '',array('escape' => false, 'controller'=>'desarrollos','action'=>'edit_proceso',$desarrollo['Desarrollo']['id']))?>
-                                        <!-- </?= $this->Html->link('Icono',array('controller'=>'desarrollos','action'=>'add_tarea',$desarrollo['Desarrollo']['id']))?> -->
+                                        <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;margin-left:8px;"></i>',array('controller'=>'desarrollos','action'=>'add_tarea'), array('escape' => false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Agregar tareas'))?>
+                                        <!-- <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;margin-left:8px;"></i>', array('controller'=>'desarrollos','action'=>'add_tarea'), array('escape' => false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?> -->
+                                        <?= $this->Html->link('<i class="fa fa-edit" style="color:#215D9C;margin-left:8px;"></i>', array('controller'=>'desarrollos','action'=>'edit_proceso'), array('escape' => false, 'id'=>'btn_show_status', 'data-toggle'=>'tooltip', 'title' => 'Editar proceso', 'data-placement' =>'top', 'data-target'=>'#myModal'))?>
                                     </td>
                                     <td>
-                                        Cristina Cruz Hernández
+                                        Nombre proceso
+                                        <!-- </?= $this->Html->link('Nombre proceso', array(), array('escape' => false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?> -->
                                     </td>
                                     <td>
                                         Ana Luisa Medina del Toro

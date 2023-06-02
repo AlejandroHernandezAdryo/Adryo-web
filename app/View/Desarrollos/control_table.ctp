@@ -272,7 +272,6 @@
             <div class="col-lg-6 col-md-4 col-sm-4">
                 <h4 class="nav_top_align">
                     Procesos
-                    <?= $this->Html->link('<i class="fa fa-edit"></i>','#', array('escape'=>false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
                 </h4>
             </div>
         </div>
@@ -363,14 +362,10 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <!-- <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;"></i>','', array( 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?> -->
-                                        <!-- <?= $this->Html->link('<i class="fa fa-eye" style="color:#215D9C;margin-left:8px;"></i>', '',array('escape' => false, 'controller'=>'desarrollos','action'=>'add_tarea'))?> -->
-                                        <?= $this->Html->link('<i class="fa fa-edit" style="color:#215D9C;margin-left:8px;"></i>', '',array('escape' => false, 'controller'=>'desarrollos','action'=>'edit_proceso',$desarrollo['Desarrollo']['id']))?>
-                                        <!-- <?= $this->Html->link('<i class="fa fa-trash" style="color:#215D9C;margin-left:8px;"></i>', '',array('escape' => false, 'controller'=>'desarrollos','action'=>'edit_proceso',$desarrollo['Desarrollo']['id']))?> -->
-                                        <?= $this->Html->link('Icono',array('controller'=>'desarrollos','action'=>'add_tarea',$desarrollo['Desarrollo']['id']))?>
+                                        <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;margin-left:8px;"></i>',array('controller'=>'desarrollos','action'=>'add_tarea'), array('escape' => false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Agregar tareas'))?>
                                     </td>
                                     <td>
-                                        Cristina Cruz Hernández
+                                        Nombre proceso
                                     </td>
                                     <td>
                                         Ana Luisa Medina del Toro
@@ -379,7 +374,7 @@
                                         5
                                     </td>
                                     <td>
-                                        Activo
+                                        Inactivo
                                     </td>
                                 </tr>
                             </tbody>
