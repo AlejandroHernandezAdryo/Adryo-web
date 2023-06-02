@@ -272,7 +272,6 @@
             <div class="col-lg-6 col-md-4 col-sm-4">
                 <h4 class="nav_top_align">
                     Validaciones
-                    <?= $this->Html->link('<i class="fa fa-edit"></i>','#', array('escape'=>false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
                 </h4>
             </div>
         </div>
@@ -335,7 +334,8 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <?= $this->Html->link('Icono',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
+                                        <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;margin-left:8px;"></i>', array( 'controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']),array('escape' => false))?>
+                                        <!-- </?= $this->Html->link('Icono',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?> -->
                                     </td>
                                     <td>
                                         Cristina Cruz Hernández

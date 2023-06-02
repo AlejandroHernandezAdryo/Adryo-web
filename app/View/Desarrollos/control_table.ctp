@@ -272,7 +272,6 @@
             <div class="col-lg-6 col-md-4 col-sm-4">
                 <h4 class="nav_top_align">
                     Procesos
-                    <?= $this->Html->link('<i class="fa fa-edit"></i>','#', array('escape'=>false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
                 </h4>
             </div>
         </div>
@@ -313,6 +312,73 @@
                             <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
                             <button class="btn btn-primary">Crear Proceso</button> -->
                         </div>
+                    </div>
+                    <div class="mt-5 col-sm-12">
+                    <div class="row" >
+                    <div class="col-sm-12">
+                        <button class="btn btn-secondary-o float-right ml-4" style="margin-left:8px;"><i class="fa fa-file-excel"></i> Descargar</button>
+                        <button class="btn btn-secondary-o float-right"><i class="fa fa-print"></i> Imprimir</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-12 col-lg-1 mt-2">
+                                <?= $this->Form->input('contador', array(
+                                    'class'       => 'form-control text-sm-center',
+                                    'div'         => false,
+                                    'placeholder' => 0,
+                                    'label'       => false
+                                )) ?>
+                            </div> 
+                            <div class="col-sm-12 col-lg-3 mt-2 offset-lg-8">
+                                <?= $this->Form->input('contador', array(
+                                    'class'       => 'form-control tools',
+                                    'div'         => false,
+                                    'placeholder' => 'Buscador',
+                                    'label'       => false
+                                )) ?>
+                            </div>
+                        </div>
+                    </div>
+                        <table class="table table-striped mt-1" style="overflow:scroll;">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Acciones
+                                    </th>
+                                    <th>
+                                        Nombre
+                                    </th>
+                                    <th>
+                                        Creador
+                                    </th>
+                                    <th>
+                                        Etapa
+                                    </th>
+                                    <th >
+                                        Estatus
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;margin-left:8px;"></i>',array('controller'=>'desarrollos','action'=>'add_tarea'), array('escape' => false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Agregar tareas'))?>
+                                    </td>
+                                    <td>
+                                        Nombre proceso
+                                    </td>
+                                    <td>
+                                        Ana Luisa Medina del Toro
+                                    </td>
+                                    <td>
+                                        5
+                                    </td>
+                                    <td>
+                                        Inactivo
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
