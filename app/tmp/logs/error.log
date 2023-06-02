@@ -12857,3 +12857,1002 @@ Request URL: /adryo/Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
 Stack Trace:
 #0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-05-30 20:11:30 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:11:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/img/adryo_iconos/icons-profile/aspect_ratio.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:11:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/img/adryo_iconos/icons-profile/car-sport.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:11:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/img/adryo_iconos/icons-profile/bathtub.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:11:30 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/img/adryo_iconos/icons-profile/king_bed.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:11:31 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:11:31 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/img/clientes_icons/toilet.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:14:36 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/img/logo1.ico
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:16:09 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web//files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:16:15 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web//files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:16:49 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:16:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/img/fondo_trans.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:17:31 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:17:52 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:17:54 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 265
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:17:54 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 311]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 311
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:17:54 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 406
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:17:54 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 430]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 430
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:17:54 Error: [MissingTableException] Table pagos_principales for model PagosPrincipale was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'pagos_principales',
+  'class' => 'PagosPrincipale',
+  'ds' => 'default',
+)
+Request URL: /adryo/Adryo-web/LogPagos/historico_pagos
+Stack Trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Model\Model.php(3686): Model->setSource('pagos_principal...')
+#1 F:\adryo\Adryo-web\lib\Cake\Model\Model.php(3053): Model->getDataSource()
+#2 F:\adryo\Adryo-web\lib\Cake\Model\Model.php(3025): Model->_readDataSource('all', Array)
+#3 F:\adryo\Adryo-web\app\Controller\LogPagosController.php(506): Model->find('all', Array)
+#4 [internal function]: LogPagosController->historico_pagos()
+#5 F:\adryo\Adryo-web\lib\Cake\Controller\Controller.php(499): ReflectionMethod->invokeArgs(Object(LogPagosController), Array)
+#6 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#7 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LogPagosController), Object(CakeRequest))
+#8 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2023-05-30 20:52:21 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:52:23 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 265
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:52:23 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 311]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 311
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:52:23 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 406
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:52:23 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 430]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 430
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:52:23 Error: [MissingTableException] Table pagos_principales for model PagosPrincipale was not found in datasource default.
+Exception Attributes: array (
+  'table' => 'pagos_principales',
+  'class' => 'PagosPrincipale',
+  'ds' => 'default',
+)
+Request URL: /adryo/Adryo-web/LogPagos/historico_pagos
+Stack Trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Model\Model.php(3686): Model->setSource('pagos_principal...')
+#1 F:\adryo\Adryo-web\lib\Cake\Model\Model.php(3053): Model->getDataSource()
+#2 F:\adryo\Adryo-web\lib\Cake\Model\Model.php(3025): Model->_readDataSource('all', Array)
+#3 F:\adryo\Adryo-web\app\Controller\LogPagosController.php(506): Model->find('all', Array)
+#4 [internal function]: LogPagosController->historico_pagos()
+#5 F:\adryo\Adryo-web\lib\Cake\Controller\Controller.php(499): ReflectionMethod->invokeArgs(Object(LogPagosController), Array)
+#6 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#7 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LogPagosController), Object(CakeRequest))
+#8 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#9 {main}
+2023-05-30 20:52:40 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:52:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:53:04 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:53:06 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 265
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:53:07 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 311]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 311
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:53:07 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 406
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:53:07 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 430]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 430
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:53:13 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:53:13 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:53:14 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:56:00 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:56:01 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:56:01 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:56:02 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:56:05 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 405
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:56:05 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 466]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 466
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:56:05 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 567
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:56:05 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 591]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 591
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:57:32 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:57:32 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:57:32 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:57:57 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:57:57 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:57:58 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:57:58 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 20:57:58 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 567
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:57:58 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 591]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 591
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:57:58 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 405
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 20:57:58 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 466]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 466
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:33 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:00:35 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 405
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:35 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 466]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 466
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:35 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 567
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:35 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 591]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 591
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:49 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:00:50 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 405
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:50 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 466]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 466
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:50 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 567
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:50 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 591]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 591
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:00:57 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:00:57 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:00:57 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:21 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:22 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:22 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:22 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:25 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 405
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:01:25 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 466]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 466
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:01:25 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 567
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:01:25 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 591]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 591
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:01:45 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:46 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:46 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:46 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:01:48 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 567
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:01:48 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 591]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::pagos_log() - APP\Controller\LogPagosController.php, line 591
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:01:48 Warning: Warning (512): Model "OperacionesInmueble" is not associated with model "LogPago" in [F:\adryo\Adryo-web\lib\Cake\Model\Behavior\ContainableBehavior.php, line 342]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+ContainableBehavior::containments() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 342
+ContainableBehavior::beforeFind() - CORE\Cake\Model\Behavior\ContainableBehavior.php, line 123
+ObjectCollection::trigger() - CORE\Cake\Utility\ObjectCollection.php, line 129
+call_user_func - [internal], line ??
+CakeEventManager::dispatch() - CORE\Cake\Event\CakeEventManager.php, line 244
+Model::buildQuery() - CORE\Cake\Model\Model.php, line 3110
+Model::find() - CORE\Cake\Model\Model.php, line 3020
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 405
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:01:49 Warning: Warning (2): Invalid argument supplied for foreach() in [F:\adryo\Adryo-web\app\Controller\LogPagosController.php, line 466]
+Trace:
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 230
+LogPagosController::view_datos_cliente() - APP\Controller\LogPagosController.php, line 466
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 499
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 118
+
+2023-05-30 21:05:25 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:05:25 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:05:25 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:05:26 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:05:50 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/files/cuentas/7/users/01BOS.png
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:05:51 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:05:51 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-05-30 21:05:51 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /adryo/Adryo-web/vendors/datepicker/css/bootstrap-datepicker.min.css.map
+Stack Trace:
+#0 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
