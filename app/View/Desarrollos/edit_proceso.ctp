@@ -330,6 +330,18 @@
                                         )
                                     )) ?>
                                 </div>
+                                <div class="col-sm-12 col-lg-2 mt-2">
+                                    <?= $this->Form->input('estatus_proceso', array(
+                                        'class'       => 'form-control select',
+                                        'div'         => false,
+                                        'placeholder' => 'Selecciona etapa',
+                                        'label'       => 'Estatus',
+                                        'options'     =>  array(
+                                            '1' => 'Habilitado',
+                                            '2' => 'Deshabilitado',
+                                        )
+                                    )) ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-12 mt-1">

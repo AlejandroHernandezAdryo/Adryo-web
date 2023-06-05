@@ -380,6 +380,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        <?php  $i = 1; ?>
                                                         <?php foreach ($aportaciones as $factura): ?>
                                                             <tr>
                                                                 <td class="text-sm-center">
@@ -387,11 +388,12 @@
                                                                         <a class="pointer" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Rechazar factura"><i class="fa fa-close"></i></a>
                                                                     <?php endif ?>
                                                                 </td>
-                                                                <td><?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
+                                                                <td><?= $this->Text->truncate($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline', 'readonly' => 'readonly')); ?></td>
                                                                 <td><?= $factura['Factura']['fecha_emision'] ?></td>
                                                                 <td>
-                                                                    <?php for ($count = 1; $count < 100; $count++): ?>
-                                                                    <?php endfor ;?>
+                                                                    <?php  echo$i++; ?>
+                                                                    <!-- </?php for ($count = 1; $count < 100; $count++): ?>
+                                                                    </?php endfor ;?> -->
                                                                 </td>
                                                                 <td class=""><?= '$ '.number_format($factura['Factura']['total']) ?></td>
                                                             </tr>
@@ -426,7 +428,7 @@
                                                             <tr>
                                                                 <td class="text-sm-center">
                                                                     <?php if ($factura['Factura']['estado'] != 2 && $factura['Factura']['estado'] != 5): ?>
-                                                                        <a class="pointer" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Ver comprobante"><i class="fa fa-eye"></i></a>
+                                                                        <a class="pointer" target="_blank" href="https://www.google.com/imgres?imgurl=https%3A%2F%2Fcnnespanol.cnn.com%2Fwp-content%2Fuploads%2F2022%2F07%2F220713165438-rba-web-nasa-full-169.jpg%3Fquality%3D100%26strip%3Dinfo%26w%3D384%26h%3D216%26crop%3D1&tbnid=5RF1v5FEDd8NNM&vet=12ahUKEwjRxNzdn63_AhVjE94AHUpkChAQMygBegUIARCPAQ..i&imgrefurl=https%3A%2F%2Fcnnespanol.cnn.com%2Ftag%2Fimagenes%2F&docid=d2niqty7GaZR3M&w=384&h=216&q=imagenes&ved=2ahUKEwjRxNzdn63_AhVjE94AHUpkChAQMygBegUIARCPAQ" data-toggle="tooltip" data-placement="top" title="Ver comprobante"><i class="fa fa-eye"></i></a>
                                                                         <a class="pointer" onclick="editarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Editar" style="margin-left:8px;"><i class="fa fa-pencil"></i></a>
                                                                     <?php else :?>
                                                                         <a class="disabled" onclick="rechazarFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title=""><i class="fa fa-eye"></i></a>
@@ -437,6 +439,7 @@
                                                                 <td><?= $factura['Factura']['fecha_emision'] ?></td>
                                                                 <td>
                                                                     <?php  echo$i++; ?>
+                                                                </td>
                                                                 <td><?= '$ '.number_format($factura['Factura']['total']) ?></td>
                                                                 <td>
                                                                     Texto
