@@ -22,7 +22,7 @@
             'custom'
             //'pages/form_elements'
         ),
-        array('inline'=>false)),
+        array('inline'=>false));
         
         $bg_propiedades = array(
             0 => 'bg-bloqueado',
@@ -279,242 +279,7 @@
     <div class="outer">
         <div class="inner bg-light lter bg-container">
             <div class="card mt-1" id="inventory-detail">
-                <!-- <div class="card-header </?= $bg_propiedades[$desarrollo['Desarrollo']['visible']] ?>">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-8">
-                            <p class="m-0">
-                                </?= $desarrollo['Desarrollo']['nombre'] ?>
-                            </p>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 text-sm-right">
-                            <p class="m-0">
-                                </?php 
-                                    switch ($desarrollo['Desarrollo']['visible']):
-                                        case(0):
-                                            echo "Libre";
-                                        break;
-                                        case(1):
-                                            echo "En venta";
-                                        break;
-                                        case(2):
-                                            echo "No liberado";
-                                        break;
-                                    endswitch;
-                                ?>
-                            </p>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="card-block">
-                    Información superior
-                    <div class="row" >
-                        <div class="col-sm-12 col-lg-2">
-                            <div class="pointer" style="background-image: url('</?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 220px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                        </div>
-                        <div class="col-sm-12 col-lg-2">
-                            <div>
-                                <b class="m-0">Tipo de desarrollo</b>
-                                <p></?= $desarrollo['Desarrollo']['tipo_desarrollo']?></p>
-                            </div>
-                            <div>
-                                <b class="m-0">Torres</b>
-                                <p></?= $desarrollo['Desarrollo']['torres']?></p>
-                            </div>
-                            <div>
-                                <b class="m-0">Unidades totales</b>
-                                <p></?= $desarrollo['Desarrollo']['unidades_totales']?></p>
-                            </div>
-                            <div>
-                                <b class="m-0">Entrega</b>
-                                <p></?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></p>
-                            </div>
-                            <div>
-                                <b class="m-0">Colonia</b>
-                                <p></?= $desarrollo['Desarrollo']['colonia']?></p>
-                            </div>
-                            
-                        </div>
-                        <div class="col-sm-12 col-lg-2">
-                            <div class="text-sm-center" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-                                <div style="width:49%;">
-                                    </?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    <br>
-                                    <span>
-                                        </?= $desarrollo['Desarrollo']['m2_low']?> - </?= $desarrollo['Desarrollo']['m2_top']?> 
-                                    </span>
-                                </div>
-                                <br>
-                                <div style="width:49%;">
-                                    </?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    <br>
-                                    <span>
-                                        </?= $desarrollo['Desarrollo']['rec_low']?>-</?= $desarrollo['Desarrollo']['rec_top']?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-sm-center" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-                                <div style="width:49%;">
-                                    </?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    <br>
-                                    <span>
-                                        </?= $desarrollo['Desarrollo']['banio_low']?>-</?= $desarrollo['Desarrollo']['banio_top']?>
-                                    </span>
-                                </div>
-                                <br>
-                                <div style="width:49%;">
-                                    </?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    <br>
-                                    <span>
-                                        </?= $desarrollo['Desarrollo']['est_low']?>-</?= $desarrollo['Desarrollo']['est_top']?>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-2">
-                            <div>
-                                <p class="m-0">
-                                    Equipo
-                                </p>
-                                <p class="m-0"> </?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "Sin equipo asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </p>
-                                <br>
-                                <p class="m-0">
-                                    Privado 
-                                </p>
-                                <p class="m-0"> </?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <div class="text-sm-right">
-                                <p style="font-size: 15px; font-weight: 700;margin:0;">
-                                    Disponibilidad total
-                                    <p style="font-size: 19px; font-weight: 400;" class="text-sm-right"> </?= sizeof($desarrollo['Disponibles'])?> / </?= sizeof($desarrollo['Propiedades'])?></p>
-                                </p>
-                            </div>
-                            <div>
-                                Equipo <span class="text-sm-right"> </?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "Sin equipo asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </span>
-                                <br>
-                                Privado <span class="text-sm-right"> </?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </span>
-                            </div>
-                            <div class="text-sm-right">
-                                Compartir
-                                <br>
-                                <span>
-                                    <a href="https://www.facebook.com/share.php?u=<?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
-                                        <?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    </a>
-                                </span>
-                                <span>
-                                    <?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                </span>
-                                <span>
-                                    <?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                </span>
-                            </div>
-                            <div class="mt-1 text-sm-right" style="position:sticky;right:16px;">
-                                <button class="btn btn-primary float-right ml-1">Vendido</button>
-                                <button class="btn btn-secondary-o float-right">Liberado</button>
-                            </div>
-                        </div>
-                    </div>
-                    separador
-                    <div class="row mt-1">
-                        <div class="col-sm-12">
-                            <hr>
-                        </div>
-                    </div>
-                    Inventario
-                    <div class="row">
-                        <div class="col-sm-12" style="display:flex;justify-content:space-between;flex-wrap:wrap;">
-                            <div class="text-center mt-1 ">
-                                Total de desarrollos 
-                                <div class="number chips bg-status-desarrollo-total">
-                                    <?= count($desarrollos); ?>
-                                </div>
-                            </div>
-                            <div class="text-center mt-1">
-                                Baja
-                                <div class="number chips bg-baja" style="padding: 2px 5px 2px 5px;">
-                                    <span id="baja"> <?= isset($contadores[5])? $contadores[5] : 0 ?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center mt-1">
-                                Bloqueados
-                                <div class="number chips bg-bloqueado" style="padding: 2px 5px 2px 5px;">
-                                    <span id="bloqueado"> <?= isset($contadores[0])? $contadores[0] : 0 ?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center mt-1">
-                                En venta
-                                <div class="number chips bg-status-desarrollo-venta">
-                                    <span id="libre"> 0 </span>
-                                </div>
-                            </div>
-                            <div class="text-center mt-1">
-                                Apartados
-                                <div class="number chips bg-status-desarrollo-bloqueado">
-                                    <span id="no_liberado"> 0 </span>
-                                </div>
-                            </div>
-                            <div class="text-center mt-1">
-                                Vendidos
-                                <div class="number chips bg-status-desarrollo-vendido">
-                                    <span id="vendido"> 0 </span>
-                                </div>
-                            </div>
-                            <div class="text-center mt-1">
-                                Escriturados
-                                <div class="number chips bg-escriturado" style="padding: 2px 5px 2px 5px;">
-                                    <span id="escrituracion"> <?= isset($contadores[4])? $contadores[4] : 0 ?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="mt-1">
-                                Venta
-                                <div style="vertical-align: top;"><b><?= (!isset($desarrollo['ObjetivoAplicable'][0]['monto'])?"No definido":"$".number_format($desarrollo['ObjetivoAplicable'][0]['monto'],0))?></b></div>
-                            </div>
-                        </div>
-                    </div>
-                    Cuadricula de pisos
-                    
-                    <div class="row">
-                        <div class="col-sm-12 mt-1">
-                            <div style="display:flex; gap:8px; align-items:center;width:100%;">
-                                <div class="level" style="background-color:purple;border-radius:100%;color:white;">
-                                    <p style="width:20px;text-align:center;">
-                                        1
-                                    </p>
-                                    
-                                </div>
-                                <div class="apt-tower">
-                                    <div>
-                                        <p class="m-0">
-                                            S-101
-                                        </p>
-                                    </div>
-                                    <div>S-102</div>
-                                    <div>S-103</div>
-                                    <div>S-104</div>
-                                    <div>S-105</div>
-                                    <div>S-106</div>
-                                    <div>S-107</div>
-                                    <div>S-108</div>
-                                    <div>S-109</div>
-                                    <div>S-110</div>
-                                    <div>S-111</div>
-                                    <div>S-112</div>
-                                    <div>S-113</div>
-                                    <div>S-114</div>
-                                    <div>S-115</div>
-                                    <div>S-116</div>
-                                    <div>S-117</div>
-                                    <div>S-118</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
+                <img src="app/webroot/img/adryo_iconos/icons-profile/aspect_ratio.png" alt="">
             </div>
         </div>
     </div>
@@ -522,34 +287,10 @@
         hola
     </div>
 </div>
-<!-- <table class="table table-sm">
-            <//?= $p = 1; ?> -->
-        <!-- <//?= $p++; ?>
-        <tbody>
-            <tr>
-                <td>Tipo de desarrollo</td>
-                <td><?= $desarrollo['Desarrollo']['tipo_desarrollo']?></td>
-            </tr>
-            <tr>
-                <td>Torres</td>
-                <td><?= $desarrollo['Desarrollo']['torres']?></td>
-            </tr>
-            <tr>
-                <td>Unidades totales</td>
-                <td><?= $desarrollo['Desarrollo']['unidades_totales']?></td>
-            </tr>
-            <tr>
-                <td>Entrega</td>
-                <td><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></td>
-            </tr>
-            <tr>
-                <td>Colonia</td>
-                <td><?= $desarrollo['Desarrollo']['colonia']?></td>
-            </tr>
-        </tbody>
-    </table> -->
 
 <script>
+
+    let urlapi = `https://adryo.com.mx/inmuebles/inmueble_view_info`;
 
 
     $(document).ready(function () {
@@ -557,382 +298,165 @@
         let desarrollo = '<?= $id ?>';
         $.ajax({
             type: "POST",
-            url: "<?= Router::url(array("controller" => "inmuebles", "action" => "inmueble_view_info")); ?>",
+            url: urlapi,
             data: {api_key: 'adryo', cuenta_id: cuenta, desarrollo_id: desarrollo},
             dataType: "Json",
             success: function (response) {
-                // for each para info de desarrollo 
-                $.each(response, function(index, value) {
-                    $('#inventory-detail').append(
-                        `<div class="card-header  </?= $bg_propiedades[$desarrollo['Desarrollo']['visible']] ?>">
+
+                // console.log( response[0].Desarrollo );
+
+                $('#inventory-detail').append(`
+                        <div class="card-header">
                             <div class="row">
                                 <div class="col-sm-12 col-lg-8">
                                     <p class="m-0">
-                                        `+value['Desarrollo']['desarrollo']+`
-                                        </?= $desarrollo['Desarrollo']['nombre'] ?>
+                                        `+response[0].Desarrollo['desarrollo']+`
                                     </p>
                                 </div>
                                 <div class="col-sm-12 col-lg-4 text-sm-right">
                                     <p class="m-0">
-                                        <?php 
-                                            switch ($desarrollo['Desarrollo']['visible']):
-                                                case(0):
-                                                    echo "Libre";
-                                                break;
-                                                case(1):
-                                                    echo "En venta";
-                                                break;
-                                                case(2):
-                                                    echo "No liberado";
-                                                break;
-                                            endswitch;
-                                        ?>
+                                    `+response[0].Inmuebles['liberada']+`
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="card-block">
-                            <div class="row" >
+                            <div class="row">
                                 <div class="col-sm-12 col-lg-2">
-                                    <div class="pointer" style="background-image: url('</?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 220px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
+                                
                                 </div>
                                 <div class="col-sm-12 col-lg-2">
                                     <div>
                                         <b class="m-0">Tipo de desarrollo</b>
-                                        <p class="m-0">`+value['Desarrollo']['tipo_desarrollo']+`</p>
+                                        <p class="m-0">`+response[0].Desarrollo['tipo_desarrollo']+`</p>
                                     </div>
                                     <div>
                                         <b class="m-0">Torres</b>
-                                        <p class="m-0">`+value['Desarrollo']['torres']+`</p>
+                                        <p class="m-0">`+response[0].Desarrollo['torres']+`</p>
                                     </div>
                                     <div>
                                         <b class="m-0">Unidades totales</b>
-                                        <p class="m-0">`+value['Desarrollo']['unidades_totales']+`</p>
+                                        <p class="m-0">`+response[0].Desarrollo['unidades_totales']+`</p>
                                     </div>
                                     <div>
                                         <b class="m-0">Entrega</b>
-                                        <p class="m-0"><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></p>
+                                        <p class="m-0">`+response[0].Desarrollo['fecha_entrega']+`</p>
                                     </div>
                                     <div>
                                         <b class="m-0">Colonia</b>
-                                        <p>`+value['Desarrollo']['colonia']+`</p>
+                                        <p class="m-0">`+response[0].Desarrollo['colonia']+`</p>
                                     </div>
-                                    
                                 </div>
                                 <div class="col-sm-12 col-lg-2">
-                                    <div class="text-sm-center mt-1" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-                                        <div style="width:49%;">
+                                    <div style="display: flex;flex-direction: column;justify-content: space-evenly;gap: 16px;">
+                                        <div style="display: flex;align-items: center;">
                                             <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                            <br>
-                                            <span>
-                                                `+value['Desarrollo']['m2']+`
+                                            <span style="margin-left: 16px;">
+                                                `+response[0].Desarrollo['m2']+` m <sup>2</sup>
                                             </span>
                                         </div>
-                                        <br>
-                                        <div style="width:49%;">
-                                            <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                            <br>
-                                            <span>
-                                                `+value['Desarrollo']['rec']+`
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="text-sm-center mt-1" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-                                        <div style="width:49%;">
-                                            <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                            <br>
-                                            <span>
-                                                `+value['Desarrollo']['banio']+`
-                                            </span>
-                                        </div>
-                                        <br>
-                                        <div style="width:49%;">
+                                        <div style="display: flex;align-items: center;">
                                             <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                            <br>
-                                            <span>
-                                                `+value['Desarrollo']['est']+`
+                                            <span style="margin-left: 16px;">
+                                                `+response[0].Desarrollo['est']+`
+                                            </span>
+                                        </div>
+                                        <div style="display: flex;align-items: center;">
+                                            <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                            <span style="margin-left: 16px;">
+                                                `+response[0].Desarrollo['rec']+`
+                                            </span>
+                                        </div>
+                                        <div style="display: flex;align-items: center;">
+                                            <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                            <span style="margin-left: 16px;">
+                                                `+response[0].Desarrollo['banio']+`
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-lg-2">
                                     <div>
-                                        <p class="m-0">
-                                            Equipo
-                                        </p>
-                                        <p class="m-0"> <?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "No asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </p>
-                                        <br>
-                                        <p class="m-0">
-                                            Privado 
-                                        </p>
-                                        <p class="m-0"> <?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </p>
+                                        <b class="m-0">Equipo</b>
+                                        <p class="m-0">`+response[0].Desarrollo['equipo']+`</p>
+                                    </div>
+                                    <div>
+                                        <b class="m-0">Privado</b>
+                                        <p class="m-0"><?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?></p>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-lg-4">
-                                    <div class="text-sm-right">
-                                        <p style="font-size: 15px; font-weight: 700;margin:0;">
-                                            Disponibilidad total
-                                            <p style="font-size: 19px; font-weight: 400;" class="text-sm-right"> 
-                                                `+value['contadores']['disponible_libres']+`
-                                            </p>
-                                        </p>
+                                <div class="col-sm-12 col-lg-4" style="display: flex;flex-direction: column;align-items: flex-end;">
+                                    <div class="float-right">
+                                        <b class="m-0">Disponibilidad total</b>
+                                        <p class="m-0" style="text-align:center;">`+response[0].Contadores['disponible_libres']+`</p>
                                     </div>
-                                    <div class="text-sm-right">
-                                        Compartir
-                                        <br>
-                                        <span>
-                                            <a href="https://www.facebook.com/share.php?u=<?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
-                                                <?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                            </a>
-                                        </span>
-                                        <span>
-                                            <?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                        </span>
-                                        <span>
-                                            <?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                        </span>
+                                    <div class="float-right mt-1">
+                                        <a>
+                                            <span><i class="fa fa-share-alt"></i>  Compartir</span>
+                                        </a>
                                     </div>
-                                    <div class="mt-1 text-sm-right" style="position:sticky;right:16px;">
-                                        <button class="btn btn-primary float-right ml-1">Vendido</button>
-                                        <button class="btn btn-secondary-o float-right">Liberado</button>
+                                    <div class="mt-3">
+                                        <button class="btn btn-primary-o">Liberado</button>
+                                        <button class="btn btn-primary">Vendido</button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-1">
-                                <div class="col-sm-12">
-                                    <hr>
-                                </div>
+                            <div class="mt-2">
+                                <hr>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-12" style="display:flex;justify-content:space-between;flex-wrap:wrap;">
-                                    <div class="text-center mt-1 ">
-                                        Total de unidades
-                                        <div class="number chips bg-status-desarrollo-total">
-                                            `+value['Desarrollo']['unidades_totales']+`
-                                        </div>
+                            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+                                <div>
+                                    <b>Total Unidades</b>
+                                    <div class="text-center bg-status-desarrollo-total">
+                                        `+response[0].Desarrollo['unidades_totales']+`
                                     </div>
-                                    <div class="text-center mt-1">
-                                        Baja
-                                        <div class="number chips bg-baja" style="padding: 2px 5px 2px 5px;">
-                                            <span id="baja">
-                                                `+value['contadores']['bloquedos']+`
-                                            </span>
-                                        </div>
+                                </div>
+                                <div>
+                                    <b>Baja</b>
+                                    <div class="text-center bg-status-desarrollo-baja">
+                                        `+response[0].Contadores['unidades_totales']+`
                                     </div>
-                                    <div class="text-center mt-1">
-                                        Bloqueados
-                                        <div class="number chips bg-bloqueado" style="padding: 2px 5px 2px 5px;">
-                                            <span id="bloqueado"> 
-                                                `+value['contadores']['bloquedos']+`
-                                            </span>
-                                        </div>
+                                </div>
+                                <div>
+                                    <b>Bloqueados</b>
+                                    <div class="text-center bg-status-desarrollo-bloqueado">
+                                        `+response[0].Contadores['bloquedos']+`
                                     </div>
-                                    <div class="text-center mt-1">
-                                        En venta
-                                        <div class="number chips bg-status-desarrollo-venta">
-                                            <span id="libre">
-                                                `+value['contadores']['libres']+`
-                                            </span>
-                                        </div>
+                                </div>
+                                <div>
+                                    <b>En venta</b>
+                                    <div class="text-center bg-status-desarrollo-venta">
+                                        `+response[0].Contadores['libres']+`
                                     </div>
-                                    <div class="text-center mt-1">
-                                        Apartados
-                                        <div class="number chips bg-status-desarrollo-bloqueado">
-                                            <span id="no_liberado">
-                                                `+value['contadores']['apartados']+`
-                                            </span>
-                                        </div>
+                                </div>
+                                <div>
+                                    <b>Apartados</b>
+                                    <div class="text-center bg-status-desarrollo-reservado">
+                                        `+response[0].Contadores['apartados']+`
                                     </div>
-                                    <div class="text-center mt-1">
-                                        Vendidos
-                                        <div class="number chips bg-status-desarrollo-vendido">
-                                            <span id="vendido"> 
-                                                `+value['contadores']['ventas']+`
-                                            </span>
-                                        </div>
+                                </div>
+                                <div>
+                                    <b>Vendidos</b>
+                                    <div class="text-center bg-status-desarrollo-vendido">
+                                        `+response[0].Contadores['ventas']+`
                                     </div>
-                                    <div class="text-center mt-1">
-                                        Escriturados
-                                        <div class="number chips bg-escriturado" style="padding: 2px 5px 2px 5px;">
-                                            <span id="escrituracion"> 
-                                                `+value['contadores']['escriturados']+`
-                                            </span>
-                                        </div>
+                                </div>
+                                <div>
+                                    <b>Escriturados</b>
+                                    <div class="text-center bg-status-desarrollo-escriturado">
+                                        `+response[0].Contadores['escriturados']+`
                                     </div>
-                                    <div class="text-center mt-1">
-                                        Venta
-                                        <div style="vertical-align: top;">
-                                            <b>
-                                                `+value['contadores']['dinero']+`
-                                                </?= (!isset($desarrollo['ObjetivoAplicable'][0]['monto'])?"No definido":"$".number_format($desarrollo['ObjetivoAplicable'][0]['monto'],0))?>
-                                            </b>
-                                        </div>
+                                </div>
+                                <div>
+                                    <b>Venta</b>
+                                    <div class="text-center">
+                                        `+response[0].Contadores['dinero']+`
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" id="detail-apt">
-                                
-                            </div>
-                        </div>`
-                    )
-                    // console.log(value['Desarrollo']);
-                });
-                // for each para los niveles de una torre
-                $.each(response, function(index, value) {
-                    $('#detail-apt').append(
-                        `<div class="col-sm-12 mt-1">
-                            <div style="display:flex; gap:8px; align-items:center;width:100%;">
-                                <div class="level" id="level" style="background-color:purple;border-radius:100%;color:white;">
-                                    <p style="width:20px;text-align:center;">
-                                        `+value['inmueble']['nivel_propiedad']+`
-                                    </p>
-                                </div>
-                                <div class="apt-tower" id="apt-tower">
-                                    
-                                </div>
-                            </div>
-                        </div>`
-                    )
-                    console.log(value['Desarrollo']);
-                });
-                // for para cada departamento por nivel 
-                $.each(response, function(index, value) {
-                    $('#apt-tower').append(
-                        `<div class="m-0 apt-level">
-                            <p>
-                                S-101
-                            </p>
                         </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-102
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-103
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-104
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-105
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-106
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-107
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-108
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-109
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-110
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-111
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-112
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-113
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-114
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-115
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-116
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-117
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-118
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-119
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-120
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-121
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-122
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-123
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-124
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-125
-                            </p>
-                        </div>
-                        <div class="m-0 apt-level">
-                            <p>
-                                S-126
-                            </p>
-                        </div>
-                        `
-                    )
-                    // console.log(value['Desarrollo']);
-                });
-            console.log(response);
+                `);
+
             },
             error: function ( response ) {
                 console.log(reponse);

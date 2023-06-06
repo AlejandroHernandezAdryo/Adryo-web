@@ -34,7 +34,7 @@
 ?>
 <!-- Modal para la edicion y eliminar el seguimiento rapido. -->
 <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
     <?= $this->Form->create('Cliente', array('url'=>array('controller'=>'clientes', 'action' => 'registrar_llamada', $cliente['Cliente']['id']))); ?>
       <div class="modal-content">
         <div class="modal-header bg-blue-is">
@@ -44,8 +44,12 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-sm-12">
-                    <label for="mensaje">Mensaje <small class="text-light">(Máximo 250 caracteres.)</small></label>
-                    <?= $this->Form->textarea('mensaje', array('class'=>'form-control textarea', 'maxlength'=>250)); ?>
+                    <p>
+                        Para que tu proceso pueda ser implementado es necesario que cuente con tareas.
+                        <br>
+                        <br>
+                        Puedes agregar las tareas ahora o más tarde desde el listado de procesos en el ícono   <i class="fa fa-add" style="color:#215D9C;"></i>
+                    </p>
                 </div>
             </div>
         </div>

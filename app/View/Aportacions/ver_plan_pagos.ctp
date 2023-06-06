@@ -435,7 +435,7 @@
                                                                         <a class="pointer" onclick="uploadFac(<?= $factura['Factura']['id'] ?>)" data-toggle="tooltip" data-placement="top" title="Editar" style="margin-left:8px;"><i class="fa fa-upload"></i></a>
                                                                     <?php endif ;?>
                                                                 </td>
-                                                                <td><?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline')); ?></td>
+                                                                <td><?= $this->Html->link($factura['Factura']['referencia'], array('controller'=>'aportacions', 'action'=>'pagos_factura', $factura['Factura']['id'], 1), array('style'=>'text-decoration: underline', 'ellipsis' => '...',)); ?></td>
                                                                 <td><?= $factura['Factura']['fecha_emision'] ?></td>
                                                                 <td>
                                                                     <?php  echo$i++; ?>
