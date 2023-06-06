@@ -84,7 +84,8 @@
                                         'class'       => 'form-control',
                                         'div'         => false,
                                         'placeholder' => 'Escribe un nombre para el proceso',
-                                        'label'       => 'Nombre de proceso'
+                                        'label'       => 'Nombre de proceso',
+                                        'required'     => true,
                                     )) ?>
                                 </div> 
                                 <div class="col-sm-12 col-lg-2 mt-2">
@@ -105,13 +106,13 @@
                             </div>
                         </div>
                         <div class="col-sm-12 mt-1">
-                            <?= $this->Html->link('Guardar', array(), array('escape' => false, 'class' => 'btn btn-primary', 'style'=>'margin-left: 5px;float:right;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
-                           
+                            <!-- <?= $this->Html->link('Guardar', array(), array('escape' => false, 'class' => 'btn btn-primary', 'style'=>'margin-left: 5px;float:right;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?> -->
+                            <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Aceptar</button>
                         </div>
                         <?= $this->Form->end(); ?>
                     </div>
                     <div class="mt-5 col-sm-12">
-                        <table class="table table-striped" id="sample_1" style="overflow:scroll;">
+                        <table class="table table-striped" id="sample_1">
                         
                         </table>
                     </div>
@@ -166,7 +167,7 @@
                     dom: 'Bflr<"table-responsive"t>ip',
                     columnDefs: [
                         {
-                            targets: [ 3 ],
+                            targets: [ 4 ],
                             visible: true,
                             searchable: false
                         },
@@ -203,7 +204,6 @@
             }
         });
     });
-// ValidationsProcesoTablaForm
     $(document).on("submit", "#ValidationsProcesoTablaForm", function (event) {
         event.preventDefault();
         
@@ -214,11 +214,11 @@
             data       : new FormData(this),
             processData: false,
             contentType: false,
-            // beforeSend: function () {
-            //     $("#overlay").fadeIn();
-            // },
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
             success: function (response) {
-                // window.location.reload();
+                window.location.reload();
                 console.log(response);
             },
             error: function ( response ) {
@@ -255,11 +255,12 @@
                 },
                 columns: [
 
-                    { title: "ver" },
+                    { title: "plus" },
                     { title: "Comprobante" },
                     { title: "Referencia" },
                     { title: "programada de Pago" },
                     { title: "estatus" },
+                    { title: "negro" },
     
                     
                 ],

@@ -39,10 +39,10 @@ class ValidationsController extends AppController {
             $this->request->data['Validation']['id']              = null;
             $this->request->data['Validation']['user_id']         = $this->request->data['Validations']['user_id'];
             $this->request->data['Validation']['cuenta_id']       = $this->request->data['Validations']['cuenta_id'];
-            $this->request->data['Validation']['etapa_id']        = $this->request->data['Validations']['proceso'];
+            $this->request->data['Validation']['etapa_id']        = $this->request->data['Validations']['etapa_inicio'];
             $this->request->data['Validation']['fecha_create']    = date('Y-m-d');
             $this->request->data['Validation']['status']          = 0;
-            $this->request->data['Validation']['validacion_name'] = $this->request->data['Validations']['nombre'];
+            $this->request->data['Validation']['validacion_name'] = $this->request->data['Validations']['name_proceso'];
             if ( $this->Validation->save($this->request->data['Validation']) ) {
 
                 $response = array(
@@ -83,49 +83,60 @@ class ValidationsController extends AppController {
         $this->Validation->Behaviors->load('Containable');
         $i=0;
         $count=0;
-        $cuenta_id=179;
-        $search=$this->Validation->find('all',array(
-            'conditions'=>array(
-                'Validation.cuenta_id' =>  $cuenta_id,
-            ),
-            'contain' => false
-        ));
-        foreach ($search as $value) {
-        
-            $user=$this->User->find('first',array(
+        if ($this->request->is('post')) {
+
+            $cuenta_id=$this->request->data['cuenta_id'];
+            $search=$this->Validation->find('all',array(
                 'conditions'=>array(
-                    'User.id' =>  $value['Validation']['user_id'],
-                ),
-                'fields' => array(
-                    'User.nombre_completo',
+                    'Validation.cuenta_id' =>  $cuenta_id,
                 ),
                 'contain' => false
             ));
-            $reponse_[$i]['id']=$value['Validation']['id'];
-            $response[$i]['edit']            =//array(
-                // 'agregar' => "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-edit'> </i> </a>",
-                "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-add'></i> </a>";
-           // ); 
-            $response[$i]['user']            = $user['User']['nombre_completo'];
-            $response[$i]['validacion_name'] = $value['Validation']['validacion_name'];
-            if ( $value['Validation']['status']==0) {
-                $response[$i]['status']          ='Inactivo';
-            }else {
-                $response[$i]['status']          ='Activo';
-                
+            foreach ($search as $value) {
+            
+                $user=$this->User->find('first',array(
+                    'conditions'=>array(
+                        'User.id' =>  $value['Validation']['user_id'],
+                    ),
+                    'fields' => array(
+                        'User.nombre_completo',
+                    ),
+                    'contain' => false
+                ));
+                $reponse_[$i]['id']=$value['Validation']['id'];
+                $response[$i]['nuevo']            =//array(
+                    // 'agregar' => "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-edit'> </i> </a>",
+                    "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-add'></i> </a>";
+                // ); 
+                $response[$i]['edit']= "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-edit'> </i> </a>";
+                $response[$i]['user']            = $user['User']['nombre_completo'];
+                $response[$i]['validacion_name'] = $value['Validation']['validacion_name'];
+                if ( $value['Validation']['status']==0) {
+                    $response[$i]['status']          ="<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <p style='color:#C22419'>Inactivo </p></a>";
+                }else {
+                    $response[$i]['status']          ="<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <p style='color:#3DAE07'>Activo </p></a>";
+                    
+                }
+                $response[$i]['etapa_id']        = $value['Validation']['etapa_id'];
+                // }
+                $json[$count]=array(
+                    $response[$i]['nuevo'],
+                    $response[$i]['edit'],
+                    $response[$i]['validacion_name'],           
+                    $response[$i]['user']  , 
+                    $response[$i]['etapa_id']  ,            
+                    $response[$i]['status'],
+                );
+                $i++;
+                $count++;
             }
-            $response[$i]['etapa_id']        = $value['Validation']['etapa_id'];
-            // }
-            $json[$count]=array(
-                $response[$i]['edit'],
-                $response[$i]['validacion_name'],           
-                $response[$i]['user']  , 
-                $response[$i]['etapa_id']  ,            
-                $response[$i]['status'],
+        }else {
+            $json = array(
+                'Ok' => false,
+                'mensaje' => 'Hubo un error intente nuevamente'
             );
-            $i++;
-            $count++;
         }
+
         echo json_encode( $json , true );          
 		exit();
 		$this->autoRender = false;

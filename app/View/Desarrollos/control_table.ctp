@@ -11,7 +11,6 @@
         '/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min',
         '/vendors/jquery-tagsinput/css/jquery.tagsinput',
         '/vendors/daterangepicker/css/daterangepicker',
-        '/vendors/datepicker/css/bootstrap-datepicker.min',
         '/vendors/bootstrap-timepicker/css/bootstrap-timepicker.min',
         '/vendors/bootstrap-switch/css/bootstrap-switch.min',
         '/vendors/jasny-bootstrap/css/jasny-bootstrap.min',
@@ -22,16 +21,12 @@
         'custom'
         //'pages/form_elements'
     ),
-    array('inline'=>false)),
+    array('inline'=>false))
     
-    $bg_propiedades = array(
-        0 => 'bg-bloqueado',
-        1 => 'bg-libre',
-        2 => 'bg-apartado',
-        3 => 'bg-vendido',
-        4 => 'bg-escriturado',
-        5 => 'bg-baja',
-    );
+    ;
+    
+    
+    
 ?>
 <!-- Modal para la edicion y eliminar el seguimiento rapido. -->
 <div class="fade side-bar" id="myModal">
@@ -219,53 +214,8 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
-    <!-- <div class="">
-        <div class="modal-content">
-            <div class="modal-header" style="background: #2e3c54;">
-            <h4 class="modal-title col-sm-10" id="modal-seguimiento-titulo"></h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div id="seguimeinto-eliminar">
-                </?= $this->Form->create('agendaEliminar', array('url'=>array('controller'=>'agendas', 'action' => 'delete', $cliente['Cliente']['id']))); ?>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <label for="mensaje">¿ Desea eliminar este comentario de seguimeinto ?</label>
-                        </div>
-                    </div>
-                </div>
-                 Modal footer 
-                <div class="modal-footer">
-                </?= $this->Form->hidden('id_seguimiento') ?>
-                <button type="button" class="btn btn-danger float-xs-left" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-success">Eliminar</button>
-                </div>
-                </?= $this->Form->end(); ?>
-            </div>
-            <div id="seguimeinto-edicion">
-                </?= $this->Form->create('agendaEdicion', array('url'=>array('controller'=>'agendas', 'action' => 'edit', $cliente['Cliente']['id']))); ?>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <label for="mensaje">Mensaje</label>
-                            </?= $this->Form->textarea('mensaje', array('class'=>'form-control textarea', 'maxlength'=>250)); ?>
-                        </div>
-                    </div>
-                </div>
-                
-                Modal footer 
-                <div class="modal-footer">
-                </?= $this->Form->hidden('id_seguimiento') ?>
-                <button type="button" class="btn btn-danger float-xs-left" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-success">Guardar mensaje</button>
-                </div>
-                </?= $this->Form->end(); ?>
-            </div>
-        </div>
-    </div> -->
+   
 </div>
-
 <div id="content" class="bg-container">
     <header class="head">
         <div class="main-bar row">
@@ -314,378 +264,208 @@
                         </div>
                     </div>
                     <div class="mt-5 col-sm-12">
-                    <div class="row" >
-                    <div class="col-sm-12">
-                        <button class="btn btn-secondary-o float-right ml-4" style="margin-left:8px;"><i class="fa fa-file-excel"></i> Descargar</button>
-                        <button class="btn btn-secondary-o float-right"><i class="fa fa-print"></i> Imprimir</button>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="col-sm-12 col-lg-1 mt-2">
-                                <?= $this->Form->input('contador', array(
-                                    'class'       => 'form-control text-sm-center',
-                                    'div'         => false,
-                                    'placeholder' => 0,
-                                    'label'       => false
-                                )) ?>
-                            </div> 
-                            <div class="col-sm-12 col-lg-3 mt-2 offset-lg-8">
-                                <?= $this->Form->input('contador', array(
-                                    'class'       => 'form-control tools',
-                                    'div'         => false,
-                                    'placeholder' => 'Buscador',
-                                    'label'       => false
-                                )) ?>
+                    <div class="card-block">
+                    <!-- Información superior -->
+                        <div class="card-block" style="background-color:#f5f5f5 !important;border-radius:8px; padding:16px 0;">
+                            <div class="row">
+                            <?= $this->Form->create('Validations', array('type'=>'file'))?>
+                                <div class="col-sm-12">
+                                    <div class="col-sm-12 col-lg-4 mt-2">
+                                        <?= $this->Form->input('name_proceso', array(
+                                            'class'       => 'form-control',
+                                            'div'         => false,
+                                            'placeholder' => 'Escribe un nombre para el proceso',
+                                            'label'       => 'Nombre de proceso',
+                                            'required'     => true,
+                                        )) ?>
+                                    </div> 
+                                    <div class="col-sm-12 col-lg-2 mt-2">
+                                        <?= $this->Form->input('etapa_inicio', array(
+                                            'class'       => 'form-control select',
+                                            'div'         => false,
+                                            'placeholder' => 'Selecciona etapa',
+                                            'label'       => 'Etapa <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona la etapa <br> Esta es la etapa en la que se iniciará el proceso." data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
+                                            'options'     =>  array(
+                                                '5' => 'Etapa 5',
+                                                '6' => 'Etapa 6',
+                                                '7' => 'Etapa 7',
+                                            )
+                                        )) ?>
+                                    </div>
+                                    <?= $this->Form->hidden('cuenta_id', array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'))); ?>
+                                    <?= $this->Form->hidden('user_id', array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.user_id'))); ?>
+                                </div>
                             </div>
+                            <div class="col-sm-12 mt-1">
+                                <!-- <?= $this->Html->link('Guardar', array(), array('escape' => false, 'class' => 'btn btn-primary', 'style'=>'margin-left: 5px;float:right;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?> -->
+                                <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Aceptar</button>
+                            </div>
+                            <?= $this->Form->end(); ?>
                         </div>
-                    </div>
-                        <table class="table table-striped mt-1" style="overflow:scroll;">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Acciones
-                                    </th>
-                                    <th>
-                                        Nombre
-                                    </th>
-                                    <th>
-                                        Creador
-                                    </th>
-                                    <th>
-                                        Etapa
-                                    </th>
-                                    <th >
-                                        Estatus
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <?= $this->Html->link('<i class="fa fa-add" style="color:#215D9C;margin-left:8px;"></i>',array('controller'=>'desarrollos','action'=>'add_tarea'), array('escape' => false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Agregar tareas'))?>
-                                    </td>
-                                    <td>
-                                        Nombre proceso
-                                    </td>
-                                    <td>
-                                        Ana Luisa Medina del Toro
-                                    </td>
-                                    <td>
-                                        5
-                                    </td>
-                                    <td>
-                                        Inactivo
-                                    </td>
-                                </tr>
-                            </tbody>
+                    <div class="mt-5 col-sm-12">
+                        <table class="table table-striped" id="sample_1">
+                        
                         </table>
                     </div>
-                </div>
+                
             </div>
         </div>
     </div>
 </div>
-<!-- <table class="table table-sm">
-            <//?= $p = 1; ?> -->
-        <!-- <//?= $p++; ?>
-        <tbody>
-            <tr>
-                <td>Tipo de desarrollo</td>
-                <td><?= $desarrollo['Desarrollo']['tipo_desarrollo']?></td>
-            </tr>
-            <tr>
-                <td>Torres</td>
-                <td><?= $desarrollo['Desarrollo']['torres']?></td>
-            </tr>
-            <tr>
-                <td>Unidades totales</td>
-                <td><?= $desarrollo['Desarrollo']['unidades_totales']?></td>
-            </tr>
-            <tr>
-                <td>Entrega</td>
-                <td><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></td>
-            </tr>
-            <tr>
-                <td>Colonia</td>
-                <td><?= $desarrollo['Desarrollo']['colonia']?></td>
-            </tr>
-        </tbody>
-    </table> -->
+<?php 
+    echo $this->Html->script([
+        'components',
+        'custom',
+        '/vendors/select2/js/select2',
+        '/vendors/datatables/js/jquery.dataTables.min',
+        'pluginjs/dataTables.tableTools',
+        '/vendors/datatables/js/dataTables.colReorder.min',
+        '/vendors/datatables/js/dataTables.bootstrap.min',
+        '/vendors/datatables/js/dataTables.buttons.min',
+        '/vendors/datatables/js/dataTables.responsive.min',
+        '/vendors/datatables/js/dataTables.rowReorder.min',
+        '/vendors/datatables/js/buttons.colVis.min',
+        '/vendors/datatables/js/buttons.html5.min',
+        '/vendors/datatables/js/buttons.bootstrap.min',
+        '/vendors/datatables/js/buttons.print.min',
+        '/vendors/datatables/js/dataTables.scroller.min',
+        
+        
+        '/vendors/jquery.uniform/js/jquery.uniform',
+        '/vendors/inputlimiter/js/jquery.inputlimiter',
+        '/vendors/moment/js/moment.min',
+        '/vendors/daterangepicker/js/daterangepicker',
+        '/vendors/bootstrap-switch/js/bootstrap-switch.min'
+    ], array('inline'=>false));
+?>
 
 <script>
 
 
-    // $(document).ready(function () {
-    //     let cuenta = '<?= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'); ?>';
-    //     $.ajax({
-    //         type: "POST",
-    //         url: "<?= Router::url(array("controller" => "inmuebles", "action" => "inmueble_view_info")); ?>",
-    //         data: {api_key: 'adryo', cuenta_id: cuenta},
-    //         dataType: "Json",
-    //         success: function (response) {
-    //             // for each para info de desarrollo 
-    //             $.each(response, function(index, value) {
-    //                 $('#inventory-detail').append(
-    //                     `<div class="card-header  </?= $bg_propiedades[$desarrollo['Desarrollo']['visible']] ?>">
-    //                         <div class="row">
-    //                             <div class="col-sm-12 col-lg-8">
-    //                                 <p class="m-0">
-    //                                     `+value['Desarrollo']['desarrollo']+`
-    //                                     </?= $desarrollo['Desarrollo']['nombre'] ?>
-    //                                 </p>
-    //                             </div>
-    //                             <div class="col-sm-12 col-lg-4 text-sm-right">
-    //                                 <p class="m-0">
-    //                                     <?php 
-    //                                         switch ($desarrollo['Desarrollo']['visible']):
-    //                                             case(0):
-    //                                                 echo "Libre";
-    //                                             break;
-    //                                             case(1):
-    //                                                 echo "En venta";
-    //                                             break;
-    //                                             case(2):
-    //                                                 echo "No liberado";
-    //                                             break;
-    //                                         endswitch;
-    //                                     ?>
-    //                                 </p>
-    //                             </div>
-    //                         </div>
-    //                     </div>
-    //                     <div class="card-block">
-    //                         <div class="row" >
-    //                             <div class="col-sm-12 col-lg-2">
-    //                                 <div class="pointer" style="background-image: url('</?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 220px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-    //                             </div>
-    //                             <div class="col-sm-12 col-lg-2">
-    //                                 <div>
-    //                                     <b class="m-0">Tipo de desarrollo</b>
-    //                                     <p class="m-0">`+value['Desarrollo']['tipo_desarrollo']+`</p>
-    //                                 </div>
-    //                                 <div>
-    //                                     <b class="m-0">Torres</b>
-    //                                     <p class="m-0">`+value['Desarrollo']['torres']+`</p>
-    //                                 </div>
-    //                                 <div>
-    //                                     <b class="m-0">Unidades totales</b>
-    //                                     <p class="m-0">`+value['Desarrollo']['unidades_totales']+`</p>
-    //                                 </div>
-    //                                 <div>
-    //                                     <b class="m-0">Entrega</b>
-    //                                     <p class="m-0"><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></p>
-    //                                 </div>
-    //                                 <div>
-    //                                     <b class="m-0">Colonia</b>
-    //                                     <p>`+value['Desarrollo']['colonia']+`</p>
-    //                                 </div>
-                                    
-    //                             </div>
-    //                             <div class="col-sm-12 col-lg-2">
-    //                                 <div class="text-sm-center mt-1" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-    //                                     <div style="width:49%;">
-    //                                         <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-    //                                         <br>
-    //                                         <span>
-    //                                             `+value['Desarrollo']['m2']+`
-    //                                         </span>
-    //                                     </div>
-    //                                     <br>
-    //                                     <div style="width:49%;">
-    //                                         <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-    //                                         <br>
-    //                                         <span>
-    //                                             `+value['Desarrollo']['rec']+`
-    //                                         </span>
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="text-sm-center mt-1" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-    //                                     <div style="width:49%;">
-    //                                         <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-    //                                         <br>
-    //                                         <span>
-    //                                             `+value['Desarrollo']['banio']+`
-    //                                         </span>
-    //                                     </div>
-    //                                     <br>
-    //                                     <div style="width:49%;">
-    //                                         <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-    //                                         <br>
-    //                                         <span>
-    //                                             `+value['Desarrollo']['est']+`
-    //                                         </span>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                             <div class="col-sm-12 col-lg-2">
-    //                                 <div>
-    //                                     <p class="m-0">
-    //                                         Equipo
-    //                                     </p>
-    //                                     <p class="m-0"> <?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "No asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </p>
-    //                                     <br>
-    //                                     <p class="m-0">
-    //                                         Privado 
-    //                                     </p>
-    //                                     <p class="m-0"> <?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </p>
-    //                                 </div>
-    //                             </div>
-    //                             <div class="col-sm-12 col-lg-4">
-    //                                 <div class="text-sm-right">
-    //                                     <p style="font-size: 15px; font-weight: 700;margin:0;">
-    //                                         Disponibilidad total
-    //                                         <p style="font-size: 19px; font-weight: 400;" class="text-sm-right"> 
-    //                                             `+value['contadores']['disponible_libres']+`
-    //                                         </p>
-    //                                     </p>
-    //                                 </div>
-    //                                 <div class="text-sm-right">
-    //                                     Compartir
-    //                                     <br>
-    //                                     <span>
-    //                                         <a href="https://www.facebook.com/share.php?u=<?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
-    //                                             <?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-    //                                         </a>
-    //                                     </span>
-    //                                     <span>
-    //                                         <?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-    //                                     </span>
-    //                                     <span>
-    //                                         <?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-    //                                     </span>
-    //                                 </div>
-    //                                 <div class="mt-1 text-sm-right" style="position:sticky;right:16px;">
-    //                                     <button class="btn btn-primary float-right ml-1">Vendido</button>
-    //                                     <button class="btn btn-secondary-o float-right">Liberado</button>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    //                         <div class="row mt-1">
-    //                             <div class="col-sm-12">
-    //                                 <hr>
-    //                             </div>
-    //                         </div>
-    //                         <div class="row">
-    //                             <div class="col-sm-12" style="display:flex;justify-content:space-between;flex-wrap:wrap;">
-    //                                 <div class="text-center mt-1 ">
-    //                                     Total de unidades
-    //                                     <div class="number chips bg-status-desarrollo-total">
-    //                                         `+value['Desarrollo']['unidades_totales']+`
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="text-center mt-1">
-    //                                     Baja
-    //                                     <div class="number chips bg-baja" style="padding: 2px 5px 2px 5px;">
-    //                                         <span id="baja">
-    //                                             `+value['contadores']['bloquedos']+`
-    //                                         </span>
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="text-center mt-1">
-    //                                     Bloqueados
-    //                                     <div class="number chips bg-bloqueado" style="padding: 2px 5px 2px 5px;">
-    //                                         <span id="bloqueado"> 
-    //                                             `+value['contadores']['bloquedos']+`
-    //                                         </span>
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="text-center mt-1">
-    //                                     En venta
-    //                                     <div class="number chips bg-status-desarrollo-venta">
-    //                                         <span id="libre">
-    //                                             `+value['contadores']['libres']+`
-    //                                         </span>
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="text-center mt-1">
-    //                                     Apartados
-    //                                     <div class="number chips bg-status-desarrollo-bloqueado">
-    //                                         <span id="no_liberado">
-    //                                             `+value['contadores']['apartados']+`
-    //                                         </span>
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="text-center mt-1">
-    //                                     Vendidos
-    //                                     <div class="number chips bg-status-desarrollo-vendido">
-    //                                         <span id="vendido"> 
-    //                                             `+value['contadores']['ventas']+`
-    //                                         </span>
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="text-center mt-1">
-    //                                     Escriturados
-    //                                     <div class="number chips bg-escriturado" style="padding: 2px 5px 2px 5px;">
-    //                                         <span id="escrituracion"> 
-    //                                             `+value['contadores']['escriturados']+`
-    //                                         </span>
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="text-center mt-1">
-    //                                     Venta
-    //                                     <div style="vertical-align: top;">
-    //                                         <b>
-    //                                             `+value['contadores']['dinero']+`
-    //                                             </?= (!isset($desarrollo['ObjetivoAplicable'][0]['monto'])?"No definido":"$".number_format($desarrollo['ObjetivoAplicable'][0]['monto'],0))?>
-    //                                         </b>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    //                         <div class="row">
-    //                             <div class="col-sm-12 mt-1">
-    //                                 <div style="display:flex; gap:8px; align-items:center;width:100%;">
-    //                                     <div class="level" id="level" style="background-color:purple;border-radius:100%;color:white;">
-    //                                         <p style="width:20px;text-align:center;">
-    //                                             `+value['inmueble']['nivel_propiedad']+`
-    //                                         </p>
-                                            
-    //                                     </div>
-    //                                     <div class="apt-tower">
-    //                                         <div>
-    //                                             <p class="m-0">
-    //                                                 S-101
-    //                                             </p>
-    //                                         </div>
-    //                                         <div>S-102</div>
-    //                                         <div>S-103</div>
-    //                                         <div>S-104</div>
-    //                                         <div>S-105</div>
-    //                                         <div>S-106</div>
-    //                                         <div>S-107</div>
-    //                                         <div>S-108</div>
-    //                                         <div>S-109</div>
-    //                                         <div>S-110</div>
-    //                                         <div>S-111</div>
-    //                                         <div>S-112</div>
-    //                                         <div>S-113</div>
-    //                                         <div>S-114</div>
-    //                                         <div>S-115</div>
-    //                                         <div>S-116</div>
-    //                                         <div>S-117</div>
-    //                                         <div>S-118</div>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    //                     </div>`
-    //                 )
-    //                 console.log(value['Desarrollo']);
-    //             });
-    //             // for each para info de desarrollo 
-    //             $.each(response, function(index, value) {
-    //                 $('#inventory-detail').append(
-    //                     ``
-    //                 )
-    //                 console.log(value['Desarrollo']);
-    //             });
-    //         },
-    //         error: function ( response ) {
-    //             console.log(reponse);
-    //         }
-    //     });
+    $(document).ready(function () {
+        let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
+        console.log(cuenta_id);
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Validations", "action" => "view")); ?>",
+            data: {cuenta_id: cuenta_id },
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                $('#sample_1').dataTable( {
+                    destroy: true,
+                    data : response,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                    dom: 'Bflr<"table-responsive"t>ip',
+                    columnDefs: [
+                        {
+                            targets: [ 5 ],
+                            visible: true,
+                            searchable: false
+                        },
+                    ],
+                    language: {
+                        sSearch: "Buscador",
+                        lengthMenu: '_MENU_ registros por página',
+                        info: 'Mostrando _TOTAL_ registro(s)',
+                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                        emptyTable: "Sin información",
+                        paginate: {
+                            previous: 'Anterior',
+                            next: 'Siguiente'
+                        },
+                    },
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                            filename: 'ClientList',
+                            class : 'excel',
+                            charset: 'utf-8',
+                            bom: true,
+                            // enabled: false,
+        
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="fa  fa-print"></i> Imprimir',
+                            filename: 'ClientList',
+                        },
+                    ]
+                });
+            }
+        });
+    });
+    var TableAdvanced = function() {
+         // ===============table 1====================
+        var initTable1 = function() {
+            var table = $('#sample_1');
+            table.DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                columnDefs: [
+                    {
+                        targets: [ 3 ],
+                        visible: false,
+                        searchable: false
+                    },
+                ],
+                language: {
+                    sSearch: "Buscador",
+                    lengthMenu: '_MENU_ registros por página',
+                    info: 'Mostrando _TOTAL_ registro(s)',
+                    infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                    emptyTable: "Sin información.",
+                    paginate: {
+                        previous: 'Anterior',
+                        next: 'Siguiente'
+                    },
+                },
+                columns: [
 
-    // });
+                    { title: "ver" },
+                    { title: "Comprobante" },
+                    { title: "Referencia" },
+                    { title: "programada de Pago" },
+                    { title: "nose" },
+                    { title: "estatus" },
+    
+                    
+                ],
+                dom: 'Bflr<"table-responsive"t>ip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                        filename: 'ClientList',
+                        class : 'excel',
+                        charset: 'utf-8',
+                        bom: true,
+                        enabled: false,
+
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa  fa-print"></i> Imprimir',
+                        filename: 'ClientList',
+                        enabled: false,
+                    },
+                ]
+            });
+            var tableWrapper = $('#sample_1_wrapper');
+            tableWrapper.find('.dataTables_length select').select2();
+        }
+        
+        return {
+            //main function to initiate the module
+            init: function() {
+                if (!jQuery().dataTable) {
+                    return;
+                }
+                initTable1();
+                
+            }
+        };
+    }();
 
 
 </script>
