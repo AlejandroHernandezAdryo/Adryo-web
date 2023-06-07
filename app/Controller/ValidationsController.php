@@ -112,9 +112,9 @@ class ValidationsController extends AppController {
                 $response[$i]['user']            = $user['User']['nombre_completo'];
                 $response[$i]['validacion_name'] = $value['Validation']['validacion_name'];
                 if ( $value['Validation']['status']==0) {
-                    $response[$i]['status']          ="<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <p style='color:#C22419'>Inactivo </p></a>";
+                    $response[$i]['status']          ="<a onclick= 'activarDesactivar(".$reponse_[$i]['id'].")' class='pointer'> <p style='color:#C22419'>Inactivo </p></a>";
                 }else {
-                    $response[$i]['status']          ="<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <p style='color:#3DAE07'>Activo </p></a>";
+                    $response[$i]['status']          ="<a onclick= 'activarDesactivar(".$reponse_[$i]['id'].")' class='pointer'> <p style='color:#3DAE07'>Activo </p></a>";
                     
                 }
                 $response[$i]['etapa_id']        = $value['Validation']['etapa_id'];
@@ -138,6 +138,117 @@ class ValidationsController extends AppController {
         }
 
         echo json_encode( $json , true );          
+		exit();
+		$this->autoRender = false;
+    }
+    /**
+     * 
+     * 
+    */
+    function activar_desactivar(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('Validation');
+        $this->Validation->Behaviors->load('Containable');
+        if ( $this->request->is('post') && $this->request->data['api_key'] != null ) {
+            $search=$this->request->data['validacionId'];
+            $validation=$this->Validation->find('first',array(
+                'conditions' => array(
+                    'Validation.id' => $search,
+                ),
+                'contain' => false
+            ));
+            if ($validation['Validation']['status']==1) {
+                $this->request->data['Validation']['id']              = $search;
+                // $this->request->data['Validation']['fecha_create']    = date('Y-m-d');
+                $this->request->data['Validation']['status']          = 0;
+                if ( $this->Validation->save($this->request->data['Validation']) ) {
+
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Se Desactivo la tarea'
+                    );
+    
+                }
+            }else {
+                $this->request->data['Validation']['id']              = $search;
+                // $this->request->data['Validation']['fecha_create']    = date('Y-m-d');
+                $this->request->data['Validation']['status']          = 1;
+                if ( $this->Validation->save($this->request->data['Validation']) ) {
+
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Se Activo la tarea'
+                    );
+    
+                }
+            }
+            $this->Session->setFlash('', 'default', array(), 'success'); // Autorizacion para mensaje
+            $this->Session->setFlash( $response['mensaje'] , 'default', array(), 'm_success');
+        }
+        echo json_encode( $validation , true );          
+		exit();
+		$this->autoRender = false;
+    }
+    /**
+     * 
+     * 
+    */
+    function view_edit_validacion(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('Validation');
+        $this->Validation->Behaviors->load('Containable');
+        $i=0;
+        if ( $this->request->is('post') ) {
+            $search=$this->request->data['valiadacion_id'];
+            $validation=$this->Validation->find('all',array(
+                'conditions' => array(
+                    'Validation.id' => $search,
+                ),
+                'contain' => false
+            ));
+            foreach ($validation as $value) {
+                $reponse[$i]['nombre']=$value['Validation']['validacion_name'];
+                $reponse[$i]['etapa_id']=$value['Validation']['etapa_id'];
+                $reponse[$i]['id']=$value['Validation']['id'];
+                $reponse[$i]['status']=$value['Validation']['status'];
+                $i++;
+            }
+        }
+        echo json_encode( $reponse , true );          
+		exit();
+		$this->autoRender = false;
+    }
+    /***
+     * 
+     * 
+    */
+    function edit_validacion(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('Validation');
+        $this->Validation->Behaviors->load('Containable');
+        if ( $this->request->is('post') ){
+            $this->request->data['Validation']['id']              = $this->request->data['Validacions']['validacion_id'];
+            $this->request->data['Validation']['validacion_name'] = $this->request->data['Validacions']['nombre'];
+            $this->request->data['Validation']['etapa_id'] = $this->request->data['Validacions']['etapa_inicio'];
+            $this->request->data['Validation']['status']          =  $this->request->data['Validacions']['status'];
+            if ( $this->Validation->save($this->request->data['Validation']) ) {
+
+                $response = array(
+                    'Ok' => true,
+                    'mensaje' => 'Se Edito la Tarea'
+                );
+
+            }else {
+                $response = array(
+                    'Ok' => true,
+                    'mensaje' => 'Intente De nuevo'
+                );
+            }
+
+        }
+        $this->Session->setFlash('', 'default', array(), 'success'); // Autorizacion para mensaje
+        $this->Session->setFlash( $response['mensaje'] , 'default', array(), 'm_success');
+        echo json_encode( $response , true );          
 		exit();
 		$this->autoRender = false;
     }

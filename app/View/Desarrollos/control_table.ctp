@@ -28,194 +28,76 @@
     
     
 ?>
-<!-- Modal para la edicion y eliminar el seguimiento rapido. -->
-<div class="fade side-bar" id="myModal">
-    <div class="card-block" style="background-color:green;">
-        <span style="color:white;">
-            Departamento A-05
-        </span> 
-        <div class="float-right pointer">
-            <i class='fa fa-times' style="color:white;" data-dismiss="modal"></i>
-        </div>
-    </div>
-    <!-- <div> -->
-    <div class="col-sm-12">
-        <div id="carouselExampleIndicators" class="carousel slide mt-1" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active text-center">
-                    <div>
-                        imagen 1
-                    </div>
-                    <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 150px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                    <!-- <img src="https://www.google.com/imgres?imgurl=http%3A%2F%2Fwww.nasa.gov%2Fsites%2Fdefault%2Ffiles%2Fthumbnails%2Fimage%2Fweb_first_images_release_0.png&tbnid=XxvXRQC92RJQ8M&vet=12ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygAegUIARCPAQ..i&imgrefurl=https%3A%2F%2Fwww.nasa.gov%2Fpress-release%2Fla-nasa-revela-las-primeras-im-genes-del-telescopio-webb-de-un-universo-nunca-antes&docid=RUrOsO8QXSU4zM&w=2048&h=1186&q=imagenes&ved=2ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygAegUIARCPAQ" class="d-block w-100" alt="..."> -->
-                </div>
-                <div class="carousel-item text-center">
-                    <div>
-                        imagen 2
-                    </div>
-                    <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 150px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                    <!-- <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2015%2F04%2F23%2F22%2F00%2Ftree-736885_1280.jpg&tbnid=aVgXecnmQ_f1MM&vet=12ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygDegUIARCVAQ..i&imgrefurl=https%3A%2F%2Fpixabay.com%2Fes%2Fimages%2Fsearch%2Fpaisaje%2F&docid=IQGKdq9vA1YGTM&w=1280&h=797&q=imagenes&ved=2ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygDegUIARCVAQ" class="d-block w-100" alt="..."> -->
-                </div>
-                <div class="carousel-item text-center">
-                    <div>
-                        imagen 3
-                    </div>
-                    <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 150px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                    <!-- <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fphantom-marca-mx.unidadeditorial.es%2F35e37481788873f19c37456f9bbae9b3%2Fresize%2F1320%2Ff%2Fjpg%2Fmx%2Fassets%2Fmultimedia%2Fimagenes%2F2023%2F04%2F03%2F16805545425507.jpg&tbnid=q52yeX_WHyh4GM&vet=12ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygKegUIARCjAQ..i&imgrefurl=https%3A%2F%2Fwww.marca.com%2Fmx%2Ftecnologia%2F2023%2F04%2F03%2F642b3a8ee2704ed8078b45e2.html&docid=dONfUfA5ltVMXM&w=1320&h=880&q=imagenes&ved=2ahUKEwjNg-mJyYz_AhVANd4AHRjEALQQMygKegUIARCjAQ" class="d-block w-100" alt="..."> -->
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="modal_edit_validacion">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <?= $this->Form->create('Validacions', array('type'=>'file'))?>
+            <div class="modal-header">
+                Edicion de la Tarea
             </div>
-        </div>
-        <div class="mt-1">
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 8px 0;">
-                <div style="width:49%;">
-                    <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['m2_low']?> - <?= $desarrollo['Desarrollo']['m2_top']?> 
-                    </span>
-                </div>
-                <br>
-                <div style="width:49%;">
-                    <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['est_low']?>-<?= $desarrollo['Desarrollo']['est_top']?>
-                    </span>
-                </div>
+            <div class="modal-body">
+                <div class="row mt-1">
                 
-            </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 8px 0;">
-                <div style="width:49%;">
-                    <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
-                    </span>
+                    <?=
+                        $this->Form->input('nombre',
+                            array(
+                                'label'   => 'Nombre',
+                                'div'     => 'col-sm-12 col-lg-6 mt-1',
+                                'class'   => 'form-control',
+                                // 'readonly' => true,
+                                'id' => 'nombre',
+                            )
+                        );
+                    ?>
+                    
+                    <?= 
+                        $this->Form->input('etapa_inicio', array(
+                            'div'     => 'col-sm-12 col-lg-6 mt-1',
+                            'class'   => 'form-control',
+                            'placeholder' => 'Selecciona etapa',
+                            'id' => 'etapa_inicio',
+                            'label'       => 'Etapa <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona la etapa <br> Esta es la etapa en la que se iniciará el proceso." data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
+                            'options'     =>  array(
+                                '5' => 'Etapa 5',
+                                '6' => 'Etapa 6',
+                                '7' => 'Etapa 7',
+                            )
+                        )) 
+                    ?>
+                    <?= 
+                        $this->Form->input('status', array(
+                            'div'     => 'col-sm-12 col-lg-6 mt-1',
+                            'label'   => 'Estatus',
+                            'class'   => 'form-control',
+                            'id' => 'status',
+                            'placeholder' => 'Activar o Desactivar',
+                            // 'label'       => 'Etapa <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona la etapa <br> Esta es la etapa en la que se iniciará el proceso." data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
+                            'options'     =>  array(
+                                '0' => 'Inactivo',
+                                '1' => 'Activo',
+                               
+                            )
+                        )) 
+                    ?>
+                    <?php 
+                    echo $this->Form->hidden('validacion_id', array('id'=>'validacion_id', 'value'=>'validacion_id')); 
+                     ?>
                 </div>
-                <br>
-                <div style="width:49%;">
-                    <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['rec_low']?>-<?= $desarrollo['Desarrollo']['rec_top']?>
-                    </span>
-                </div>
-            </div>
-            <div class="" style="padding: 8px 0;">
-                <div style="width:49%;">
-                    <?= $this->Html->image('clientes_icons/toilet.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                    <span>
-                        <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="mt-1">
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Precio de lista
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        $ 5,780,902.00
-                    </small>
-                </div>
-            </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Renta / Venta
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Venta
-                    </small>
-                </div>
-            </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Tipo de propiedad
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Departamento
-                    </small>
+                <div class="row mt-1">
+                    <div class="col-sm-12">
+
+                        <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Aceptar</button>
+                        <button type="button" class="btn btn-primary-o float-right" data-dismiss="modal">Cancelar</button>
+                    </div>
                 </div>
             </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Estado
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Nuevo
-                    </small>
-                </div>
             </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Comisión
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        4%
-                    </small>
-                </div>
-            </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Comparte
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Si / 1%
-                    </small>
-                </div>
-            </div>
-            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        Horario de atención
-                    </small>
-                </div>
-                <br>
-                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
-                    <small>
-                        9:00 a 18:00 hrs
-                    </small>
-                </div>
-            </div>
-        </div>
-        <div class="mt-1">
-            <div class="text-sm-right">
-                <small>
-                    <a href="">
-                        Ir a propiedad
-                    </a>
-                </small>
-            </div>
-        </div>
+        <?= $this->Form->end(); ?>
     </div>
-   
 </div>
+<!-- Modal -->
+
 <div id="content" class="bg-container">
     <header class="head">
         <div class="main-bar row">
@@ -302,11 +184,11 @@
                             </div>
                             <?= $this->Form->end(); ?>
                         </div>
-                    <div class="mt-5 col-sm-12">
-                        <table class="table table-striped" id="sample_1">
-                        
-                        </table>
-                    </div>
+                        <div class="mt-5 col-sm-12">
+                            <table class="table table-striped" id="sample_1">
+                            
+                            </table>
+                        </div>
                 
             </div>
         </div>
@@ -344,14 +226,14 @@
 
     $(document).ready(function () {
         let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
-        console.log(cuenta_id);
+        // console.log(cuenta_id);
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "Validations", "action" => "view")); ?>",
             data: {cuenta_id: cuenta_id },
             dataType: 'json',
             success: function (response) {
-                console.log(response);
+                // console.log(response);
                 $('#sample_1').dataTable( {
                     destroy: true,
                     data : response,
@@ -466,6 +348,67 @@
             }
         };
     }();
+    function uploadFac(id){
+        let valiadacion_id = id;
+        $("#modal_edit_validacion").modal('show')
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Validations", "action" => "view_edit_validacion")); ?>",
+            data: {api_key: 'api_key', valiadacion_id:valiadacion_id },
+            dataType: "Json",
+            success: function (response) {
+                // console.log(response);
+                for (let i in response) {
+                    $("#nombre").val( response[i].nombre);
+                    $("#status").val( response[i].status);
+                    $("#etapa_inicio").val( response[i].etapa_id);
+                    $("#validacion_id").val( response[i].id);
 
+                }
+            }
+        });
+    }
+    function activarDesactivar(id){
+        let validacionId = id;
+        console.log(validacionId);
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Validations", "action" => "activar_desactivar")); ?>",
+            data: {api_key: 'api_key', validacionId:validacionId },
+            dataType: "Json",
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function (response) {
+                window.location.reload();
+
+            }
+        });
+    }
+    // ValidacionsControlTableForm
+    $(document).on("submit", "#ValidacionsControlTableForm", function (event) {
+        event.preventDefault();
+        
+        $.ajax({
+            url        : '<?php echo Router::url(array("controller" => "Validations", "action" => "edit_validacion")); ?>',
+            type       : "POST",
+            dataType   : "json",
+            data       : new FormData(this),
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function (response) {
+                window.location.reload();
+                // console.log(response);
+            },
+            error: function ( response ) {
+
+                document.getElementById("m_success").innerHTML = 'Ocurrio un problema al intentar guardar el apartado, favor de comunicarlo al administrador con el código ERC-001';
+                location.reload();
+            },
+        });
+    });
 
 </script>
