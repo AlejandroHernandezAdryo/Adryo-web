@@ -5076,7 +5076,7 @@ class DesarrollosController extends AppController {
     }
 
     public function add_tarea($id=null){
-
+        $this->set(compact('id'));
     }
 
     public function proceso_tabla($id=null){

@@ -106,7 +106,8 @@ class ValidationsController extends AppController {
                 $reponse_[$i]['id']=$value['Validation']['id'];
                 $response[$i]['nuevo']            =//array(
                     // 'agregar' => "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-edit'> </i> </a>",
-                    "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-add'></i> </a>";
+                    "<a href='".Router::url(array('controller'=>'desarrollos', 'action'=>'add_tarea', $reponse_[$i]['id']))."' class='pointer'> <i class='fa fa-add'></i> </a>";
+                    // "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-add'></i> </a>";
                 // ); 
                 $response[$i]['edit']= "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-edit'> </i> </a>";
                 $response[$i]['user']            = $user['User']['nombre_completo'];

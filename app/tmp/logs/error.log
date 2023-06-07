@@ -48317,3 +48317,617 @@ Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
 Stack Trace:
 #0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-06-07 02:15:42 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:42 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:42 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:42 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:47 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:50 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:50 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:50 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:15:50 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:20:12 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:20:12 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:20:12 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:20:13 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:21:22 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:21:22 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:21:22 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:21:22 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:30:44 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:30:44 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:30:44 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:30:45 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:30:47 Error: [MissingControllerException] Controller class DesarollosController could not be found.
+Exception Attributes: array (
+  'class' => 'DesarollosController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/desarollos/add_tarea
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:30:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:30:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:30 Error: [MissingControllerException] Controller class DesarollosController could not be found.
+Exception Attributes: array (
+  'class' => 'DesarollosController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/desarollos/add_tarea
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:30 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:30 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:40 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:40 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:46 Error: [MissingControllerException] Controller class DesarollosController could not be found.
+Exception Attributes: array (
+  'class' => 'DesarollosController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/desarollos/add_tarea/1
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:31:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:32:56 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+))
+#1 {main}
+2023-06-07 02:32:56 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:32:56 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:33:01 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:33:01 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:33:01 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:33:02 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:33:04 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:33:20 Error: [MissingControllerException] Controller class VendorsController could not be found.
+Exception Attributes: array (
+  'class' => 'VendorsController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css.map
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:33:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:33:53 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:34:05 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:34:05 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:34:05 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:34:57 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:34:57 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:35:26 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:35:26 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:35:27 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:42 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:42 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:43 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:44 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:44 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:45 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:47 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:47 Error: [MissingControllerException] Controller class ImgController could not be found.
+Exception Attributes: array (
+  'class' => 'ImgController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/img/img/flujo-de-trabajo-1.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:50 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:37:50 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:38:19 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:38:22 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/users/perfil_demo.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2023-06-07 02:38:22 Error: [MissingControllerException] Controller class FilesController could not be found.
+Exception Attributes: array (
+  'class' => 'FilesController',
+  'plugin' => NULL,
+)
+Request URL: /Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
+Stack Trace:
+#0 C:\xampp\htdocs\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
