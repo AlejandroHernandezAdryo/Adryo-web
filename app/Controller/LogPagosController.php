@@ -864,62 +864,7 @@ class LogPagosController extends AppController {
 		exit();
 		$this->autoRender = false;
     }
-    /***
-     * 
-     * 
-     */
-    function carga_archivo( $archivo, $data ){
 
-        $bandera = true;
-        $mensaje = '';
-        /** ---------------------------------- Hola ------------------------------------
-         * 
-         * Comprobacion de que una carpeta existe para el almacenamiento de los archivos de los clientes.
-         * Este proceso es nuevo, por eso se crea desde aqui.
-         * SaaK - Alejandro Hernandez 01-02-2022
-         * 
-         */
-        $path = getcwd()."/files/cuentas/".$data['cuenta_id']."/clientes/";
-        if (!is_dir($path)) {
-            mkdir(getcwd()."/files/cuentas/".$data['cuenta_id']."/clientes/",0777);
-        }
-
-        if (isset($archivo) && $archivo['name']!=""){
-                
-            $unitario = $archivo;
-            $filename = getcwd()."/files/cuentas/".$data['cuenta_id']."/clientes/".$unitario['name'];
-            move_uploaded_file($unitario['tmp_name'],$filename);
-            $ruta = "/files/cuentas/".$data['cuenta_id']."/clientes/".$unitario['name'];
-            
-            $this->DocsCliente->create();
-            $this->request->data['DocsCliente']['documento']      = $data['documento'];
-            $this->request->data['DocsCliente']['ruta']           = $ruta;
-            $this->request->data['DocsCliente']['tipo_documento'] = $data['tipo_documento'];
-            $this->request->data['DocsCliente']['comentarios']    = $data['comentarios'];
-            $this->request->data['DocsCliente']['user_id']        = $data['user_id'];
-            $this->request->data['DocsCliente']['inmueble_id']    = $data['inmueble_id'];
-            $this->request->data['DocsCliente']['cliente_id']     = $data['cliente_id'];
-            $this->request->data['DocsCliente']['operacion_id']   = $data['operacion_id'];
-            
-            if( $this->DocsCliente->save($this->request->data) ){
-                $mensaje = 'Se guardo correctamente el documento.';
-            }else{
-                $bandera = false;
-                $mensaje = 'Ocurrio un problema al guardar el documento.';
-            }
-
-        }
-
-        $save = array(
-            'bandera' => $bandera,
-            'mensaje' => $mensaje
-        );
-
-        
-        $this->autoRender = false;
-        return $save;
-
-    }
 
 
 
