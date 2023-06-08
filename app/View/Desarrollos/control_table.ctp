@@ -112,81 +112,88 @@
         <div class="inner bg-light lter bg-container">
             <div class="card mt-1" id="inventory-detail">
                 <div class="card-block">
-                    <!-- Información superior -->
-                    <div class="row mt-3" >
-                        <div class="col-sm-12 text-sm-center">
-                            <h2 class="text-black" style="text-transform:none !important;font-style: normal;font-weight: 700;font-size: 30px;line-height: 36px;"><b>No tienes procesos creados</b></h2>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-sm-12 text-sm-center">
-                            <?= $this->Html->image('img/flujo-de-trabajo-1.png', array('class' => 'img-fluid')); ?>
-                        </div>
-                    </div>
-                    <!-- <div class="row mt-1" > -->
-                        <div class="mt-1">
-                            <h2 class="text-black text-center" style="text-transform:none !important;font-style: normal;font-weight: 500;font-size: 26px;line-height: 31px;">
-                                Crea un nuevo proceso
-                                <br>
-                                    o
-                                <br>
-                                continua con el flujo normal de
-                                <b>
-                                    Adryo
-                                </b>
-                            </h2>
-                        </div>
-                    <!-- </div> -->
-                    <div class="mt-1" style="width: 315px;margin:0 auto;">
-                        <div class="text-sm-center" style="display: flex;align-items: center;justify-content: space-between;">
-                            <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
-                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary'))?>
-                            <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
-                            <button class="btn btn-primary">Crear Proceso</button> -->
-                        </div>
-                    </div>
-                    <div class="mt-5 col-sm-12">
-                    <div class="row" >
-                    <div class="col-sm-12">
-                        <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary float-right', 'style' => 'margin-left:8px;'))?>
-                        <!-- <button class="btn btn-secondary-o float-right ml-4" style="margin-left:8px;"><i class="fa fa-file-excel"></i> Descargar</button> -->
-                        <?= $this->Html->link('Proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary-o float-right'))?>
-                        <!-- <button class="btn btn-secondary-o float-right"><i class="fa fa-print"></i> Imprimir</button> -->
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="col-sm-12 col-lg-1 mt-2">
-                                <?= $this->Form->input('contador', array(
-                                    'class'       => 'form-control text-sm-center',
-                                    'div'         => false,
-                                    'placeholder' => 0,
-                                    'label'       => false
-                                )) ?>
-                            </div> 
-                            <div class="col-sm-12 col-lg-3 mt-2 offset-lg-8">
-                                <?= $this->Form->input('contador', array(
-                                    'class'       => 'form-control tools',
-                                    'div'         => false,
-                                    'placeholder' => 'Buscador',
-                                    'label'       => false
-                                )) ?>
+                    <?php  if ($validation == 0):?>
+                        <!-- Información superior -->
+                        <div class="row mt-3" >
+                            <div class="col-sm-12 text-sm-center">
+                                <h2 class="text-black" style="text-transform:none !important;font-style: normal;font-weight: 700;font-size: 30px;line-height: 36px;"><b>No tienes procesos creados</b></h2>
                             </div>
-                            <div class="col-sm-12 mt-1">
-                                <!-- <?= $this->Html->link('Guardar', array(), array('escape' => false, 'class' => 'btn btn-primary', 'style'=>'margin-left: 5px;float:right;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?> -->
-                                <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Aceptar</button>
-                            </div>
-                            <?= $this->Form->end(); ?>
                         </div>
+                        <div class="row mt-4">
+                            <div class="col-sm-12 text-sm-center">
+                                <?= $this->Html->image('img/flujo-de-trabajo-1.png', array('class' => 'img-fluid')); ?>
+                            </div>
+                        </div>
+                        <!-- <div class="row mt-1" > -->
+                            <div class="mt-1">
+                                <h2 class="text-black text-center" style="text-transform:none !important;font-style: normal;font-weight: 500;font-size: 26px;line-height: 31px;">
+                                    Crea un nuevo proceso
+                                    <br>
+                                        o
+                                    <br>
+                                    continua con el flujo normal de
+                                    <b>
+                                        Adryo
+                                    </b>
+                                </h2>
+                            </div>
+                        <!-- </div> -->
+                        <div class="mt-1" style="width: 315px;margin:0 auto;">
+                            <div class="text-sm-center" style="display: flex;align-items: center;justify-content: space-between;">
+                                <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
+                                <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary'))?>
+                                <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
+                                <button class="btn btn-primary">Crear Proceso</button> -->
+                            </div>
+                        </div>
+                    <?php else: ?>
+                    
                         <div class="mt-5 col-sm-12">
-                            <table class="table table-striped" id="sample_1">
-                            
-                            </table>
+                        <div class="row" >
+                        <div class="col-sm-12">
+                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary float-right', 'style' => 'margin-left:8px;'))?>
+                            <!-- <button class="btn btn-secondary-o float-right ml-4" style="margin-left:8px;"><i class="fa fa-file-excel"></i> Descargar</button> -->
+                            <?= $this->Html->link('Proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary-o float-right'))?>
+                            <!-- <button class="btn btn-secondary-o float-right"><i class="fa fa-print"></i> Imprimir</button> -->
                         </div>
-                
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-12 col-lg-1 mt-2">
+                                    <?= $this->Form->input('contador', array(
+                                        'class'       => 'form-control text-sm-center',
+                                        'div'         => false,
+                                        'placeholder' => 0,
+                                        'label'       => false
+                                    )) ?>
+                                </div> 
+                                <div class="col-sm-12 col-lg-3 mt-2 offset-lg-8">
+                                    <?= $this->Form->input('contador', array(
+                                        'class'       => 'form-control tools',
+                                        'div'         => false,
+                                        'placeholder' => 'Buscador',
+                                        'label'       => false
+                                    )) ?>
+                                </div>
+                                <div class="col-sm-12 mt-1">
+                                    <!-- <?= $this->Html->link('Guardar', array(), array('escape' => false, 'class' => 'btn btn-primary', 'style'=>'margin-left: 5px;float:right;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?> -->
+                                    <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Aceptar</button>
+                                </div>
+                                <?= $this->Form->end(); ?>
+                            </div>
+                            <div class="mt-5 col-sm-12">
+                                <table class="table table-striped" id="sample_1">
+                                
+                                </table>
+                            </div>
+                    
+            
+                        </div>
+                    
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> 
 <?php 
     echo $this->Html->script([
         'components',

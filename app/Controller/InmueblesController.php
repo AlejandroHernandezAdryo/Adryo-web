@@ -41,7 +41,7 @@ class InmueblesController extends AppController {
         
         public function beforeFilter() {
 		parent::beforeFilter();
-        $this->Auth->allow('inmueble_view_info','detalle', 'get_inmuebles', 'get_inmueble_detalle', 'get_images_inmueble');
+        $this->Auth->allow('view_info_inmueble_inventario','inmueble_view_info','detalle', 'get_inmuebles', 'get_inmueble_detalle', 'get_images_inmueble');
 
         $this->endPoint      = "https://us-central1-inmoviliarias-hmmx.cloudfunctions.net/mpSincronizarUnidad";
         $this->iDCorporativo = "Acciona";
@@ -3587,6 +3587,137 @@ public function view_tipo($id = null,$desarrollo_id = null){
                 $i++;
                 
             }
+        }else {
+            $response = array(
+                'Ok' => false,
+                'mensaje' => 'Hubo un error intente nuevamente'
+            );
+        }
+        
+        echo json_encode($response, true);
+        exit();
+        $this->autoRender = false;
+    }
+
+
+    function view_info_inmueble_inventario(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('Desarrollo');
+        $this->loadModel('DesarrolloInmueble');
+        $this->loadModel('FotoDesarrollo');
+        $this->loadModel('Inmueble');
+        $this->loadModel('OperacionesInmueble');
+        $this->loadModel('User');
+        $this->loadModel('Cliente');
+        $this->Cliente->Behaviors->load('Containable');
+        $this->User->Behaviors->load('Containable');
+        $this->OperacionesInmueble->Behaviors->load('Containable');
+        $this->FotoDesarrollo->Behaviors->load('Containable');
+        $this->DesarrolloInmueble->Behaviors->load('Containable');
+        $this->Desarrollo->Behaviors->load('Containable');
+        $this->Inmueble->Behaviors->load('Containable');
+        $response=[];
+        $i=0;
+        $bloqueada    = 0;
+        $liberada     = 0;
+        $reservada    = 0;
+        $contrato     = 0;
+        $escrituradas = 0;
+        $ventas       = 0;
+        if ($this->request->is('post') && $this->request->data['api_key'] != null ) {
+            $inmueble_id=$this->request->data['inmueble_id'];
+            $inmueble_info=$this->Inmueble->find('first',array(
+                'conditions'=>array(
+                    'Inmueble.id'=> $inmueble_id, 
+                ),
+                 
+                'contain' => false
+            ));
+            $inmueble_foto=$this->FotoInmueble->find('first',array(
+                'conditions'=>array(
+                    'FotoInmueble.inmueble_id'=> $inmueble_id, 
+                    'FotoInmueble.orden'=>0, 
+                ),
+                'fields'=>array(
+                    'ruta',
+                    'id',
+                ),
+            ));
+            $operacion=$this->OperacionesInmueble->find('first',array(
+                'conditions'=>array(
+                    'OperacionesInmueble.inmueble_id'=> $inmueble_id, 
+                    // 'OperacionesInmueble.tipo_operacion'=>3, 
+                ),
+                
+                'contain' => false
+            ));
+
+            if (!empty( $operacion)) {
+                
+                // $response[$i]['inmueble']['venta']  = $operacion['OperacionesInmueble']['precio_cierre'];
+                $user_name=$this->User->find('first', array(
+                    'conditions' => array('User.id' => $operacion['OperacionesInmueble']['user_id']),
+                    'fields' => array('User.nombre_completo'),
+                    'contain' => false
+                ));
+                $cliente_name= $this->Cliente->find('first',
+                    array(
+                        'conditions' => array('Cliente.id' => $operacion['OperacionesInmueble']['cliente_id']),
+                        'fields' => array('Cliente.nombre'),
+                        'contain' => false
+                    )
+                );
+                $response[$i]['inmueble']['user']= $user_name['User']['nombre_completo'];
+                if ($operacion['OperacionesInmueble']['tipo_operacion']==2) {
+                    $response[$i]['inmueble']['montoapartado']= $operacion['OperacionesInmueble']['precio_cierre'];
+                    $response[$i]['inmueble']['montoapartado']= $operacion['OperacionesInmueble']['precio_cierre'];
+                    $response[$i]['inmueble']['montoapartado']= $operacion['OperacionesInmueble']['precio_cierre'];
+                    $response[$i]['inmueble']['montoapartado']= $operacion['OperacionesInmueble']['precio_cierre'];
+                }elseif ($operacion['OperacionesInmueble']['tipo_operacion']==3) {
+                    $response[$i]['inmueble']['montoventa']= $operacion['OperacionesInmueble']['precio_cierre'];
+                }
+                $response[$i]['inmueble']['cliente']= $cliente_name['Cliente']['nombre'];
+                // $response[$i]['inmueble'][$j]['apartado'] = $inmueble_info['Inmueble']['niveles_totales'];
+                
+            }
+            $response[$i]['inmueble']['precio']=$inmueble_info['Inmueble']['precio'];
+            
+            $response[$i]['inmueble']['titulo']       = $inmueble_info['Inmueble']['titulo'];
+            if ($inmueble_info['Inmueble']['liberada']==0) {
+                $response[$i]['inmueble']['liberada']     = 'bloqueada';
+                $bloqueada ++;
+            }
+            elseif ($inmueble_info['Inmueble']['liberada']==1) {
+                $response[$i]['inmueble']['liberada']     = 'liberada';
+                $liberada ++;
+            }
+            elseif ($inmueble_info['Inmueble']['liberada']==2) {
+                $response[$i]['inmueble']['liberada']     = 'reservada';
+                $reservada ++;
+            }
+            else if ($inmueble_info['Inmueble']['liberada']==3) {
+                $response[$i]['inmueble']['liberada']     = 'contrato';
+                $contrato ++;
+            }else {
+                $response[$i]['inmueble']['liberada']     = 'escrituradas';
+                $escrituradas ++;
+            }
+            $response[$i]['inmueble']['id'] = $inmueble_info['Inmueble']['id'];
+            $response[$i]['inmueble']['noavitable'] = $inmueble_info['Inmueble']['construccion_no_habitable'];
+            $response[$i]['inmueble']['avitable'] = $inmueble_info['Inmueble']['construccion'];
+            if ($inmueble_info['Inmueble']['terreno']==null) {
+                $response[$i]['inmueble']['terrano'] = $inmueble_info['Inmueble']['construccion'];
+            }else {
+                $response[$i]['inmueble']['terrano'] = $inmueble_info['Inmueble']['terreno'];
+            }
+            $response[$i]['inmueble']['liberada']    = $inmueble_info['Inmueble']['liberada'];
+            $response[$i]['inmueble']['recamaras']    = $inmueble_info['Inmueble']['recamaras'];
+            $response[$i]['inmueble']['status']    = $inmueble_info['Inmueble']['recamaras'];
+            $response[$i]['inmueble']['banos']        = $inmueble_info['Inmueble']['banos'];
+            $response[$i]['inmueble']['nivel_propiedad']        = $inmueble_info['Inmueble']['nivel_propiedad'];
+            // $response[$i]['inmueble'][$j]['niveles_totales']        = $inmueble_info['Inmueble']['niveles_totales'];
+            $response[$i]['inmueble']['plano']        = Router::url($inmueble_foto['FotoInmueble']['ruta'],true);
+            $i++;
         }else {
             $response = array(
                 'Ok' => false,
