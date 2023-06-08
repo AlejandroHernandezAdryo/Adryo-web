@@ -44,17 +44,18 @@
                                     else{$op = 'R'; $class_op = 'bg_renta'; $name_op = 'Renta';}
                                 ?>
                                 <tr>
-                                    <?php if ($this->Session->read('Permisos.Group.id')==1): ?>
+                                    <!-- <?php if ($this->Session->read('Permisos.Group.id')==1): ?> -->
                                         <td class="text-sm-center finanzas">
-                                            <?php 
+                                            <!-- <?php 
                                             if (sizeof($venta_global['Facturas'])>0){
-                                                echo $this->Html->link('<i class="fa fa-eye fa-x2"></i>', array('controller'=>'aportacions', 'action'=>'ver_plan_pagos', $venta_global['Venta']['id']), array('escape'=>false)); 
+                                                // echo $this->Html->link('<i class="fa fa-eye fa-x2"></i>', array('controller'=>'aportacions', 'action'=>'ver_plan_pagos', $venta_global['Venta']['id']), array('escape'=>false)); 
                                             }else{
                                                 echo $this->Html->link('<i class="fa fa-file-o fa-x2"></i>', array('controller'=>'facturas', 'action'=>'add_factura_cliente', $venta_global['Venta']['id']), array('escape'=>false)); 
                                             }
-                                            ?>
+                                            ?> -->
+                                            <?php echo $this->Html->link('<i class="fa fa-eye fa-x2"></i>', array('controller'=>'aportacions', 'action'=>'ver_plan_pagos', $venta_global['Venta']['id']), array('escape'=>false)); s ?> 
                                         </td>
-                                    <?php endif; ?>
+                                    <!-- <?php endif; ?> -->
                                     <td class=""><span class=""><?= $name_op ?></span></td>
                                     <td>
                                         <?php if ($this->Session->read('Permisos.Group.dr') == 1): ?>
