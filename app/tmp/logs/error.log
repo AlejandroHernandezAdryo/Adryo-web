@@ -65885,3 +65885,47 @@ Request URL: /adryo/Adryo-web/files/cuentas/179/generales/Arboleda%20Norte.png
 Stack Trace:
 #0 C:\xampp\htdocs\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #1 {main}
+2023-06-09 22:38:06 Error: [MissingActionException] Action LogClientesEtapasController::funnelApp() could not be found.
+Exception Attributes: array (
+  'controller' => 'LogClientesEtapasController',
+  'action' => 'funnelApp',
+)
+Request URL: /adryo/Adryo-web/logclientesetapas/funnelApp
+Stack Trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LogClientesEtapasController), Object(CakeRequest))
+#2 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2023-06-09 22:39:08 Error: [MissingActionException] Action LogClientesEtapasController::funnelApp() could not be found.
+Exception Attributes: array (
+  'controller' => 'LogClientesEtapasController',
+  'action' => 'funnelApp',
+)
+Request URL: /adryo/Adryo-web/logclientesetapas/funnelApp
+Stack Trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(LogClientesEtapasController), Object(CakeRequest))
+#2 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2023-06-09 22:39:17 Error: [MissingActionException] Action EventsController::get_events_list() could not be found.
+Exception Attributes: array (
+  'controller' => 'EventsController',
+  'action' => 'get_events_list',
+)
+Request URL: /adryo/Adryo-web/events/get_events_list/
+Stack Trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(EventsController), Object(CakeRequest))
+#2 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
+2023-06-09 22:39:24 Error: [MissingActionException] Action InmueblesController::view_info_inmueble_inventario() could not be found.
+Exception Attributes: array (
+  'controller' => 'InmueblesController',
+  'action' => 'view_info_inmueble_inventario',
+)
+Request URL: /adryo/Adryo-web/Inmuebles/view_info_inmueble_inventario
+Stack Trace:
+#0 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(193): Controller->invokeAction(Object(CakeRequest))
+#1 F:\adryo\Adryo-web\lib\Cake\Routing\Dispatcher.php(167): Dispatcher->_invoke(Object(InmueblesController), Object(CakeRequest))
+#2 F:\adryo\Adryo-web\app\webroot\index.php(118): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#3 {main}
