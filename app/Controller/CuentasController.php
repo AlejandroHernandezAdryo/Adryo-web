@@ -844,17 +844,17 @@ class CuentasController extends AppController {
         if ($this->request->is('post') && $this->request->data['api_key'] != null  && $cuenta_id != null) {
 
             $roles = $this->Group->find('all', array(
-                    'conditions'=> array(
-                        'OR' => array(
-                            'Group.cuenta_id'=> $cuenta_id,
-                            'Group.id' => array(1,2,3)
-                        )
-                    ),
-                    'contain' => false,
-                    'order' => array(
-                        'Group.nombre'=> 'ASC',
+                'conditions'=> array(
+                    'OR' => array(
+                        'Group.cuenta_id'=> $cuenta_id,
+                        'Group.id' => array(1,2,3)
                     )
-                ));
+                ),
+                'contain' => false,
+                'order' => array(
+                    'Group.nombre'=> 'ASC',
+                )
+            ));
 
             //response
 

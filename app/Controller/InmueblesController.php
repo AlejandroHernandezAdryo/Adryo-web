@@ -343,6 +343,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
     $this->DesarrolloInmueble->Behaviors->load('Containable');
 
     // Definición de variables
+    $s=0;
     $inmueble       = [];
     $leads          = [];
     $mails          = 0;
@@ -665,6 +666,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
         $this->Inmueble->Behaviors->load('Containable');
 
         // Definición de variables
+        $s=0;
         $inmueble       = [];
         $leads          = [];
         $mails          = 0;
@@ -3630,7 +3632,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
                 'conditions'=>array(
                     'Inmueble.id'=> $inmueble_id, 
                 ),
-                 
+            
                 'contain' => false
             ));
             $inmueble_foto=$this->FotoInmueble->find('first',array(
@@ -3651,7 +3653,25 @@ public function view_tipo($id = null,$desarrollo_id = null){
                 
                 'contain' => false
             ));
-
+            $search_inmueble=$this->DesarrolloInmueble->find('first',array(
+                'conditions'=>array(
+                    'DesarrolloInmueble.inmueble_id'=> $inmueble_id, 
+                ),
+                'fields'=>array(
+                    'id',
+                    'desarrollo_id',
+                ), 
+                'contain' => false
+            ));
+            $search_desarollo=$this->Desarrollo->find('first',array(
+                'conditions'=>array(
+                    'Desarrollo.id'=> $search_inmueble['DesarrolloInmueble']['desarrollo_id'], 
+                ),
+                'fields'=>array(
+                    'fecha_entrega',
+                ), 
+                'contain' => false
+            ));
             if (!empty( $operacion)) {
                 
                 // $response[$i]['inmueble']['venta']  = $operacion['OperacionesInmueble']['precio_cierre'];
@@ -3681,6 +3701,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
                 
             }
             $response[$i]['inmueble']['precio']=$inmueble_info['Inmueble']['precio'];
+            $response[$i]['inmueble']['entrega']=$search_desarollo['Desarrollo']['fecha_entrega'];
             
             $response[$i]['inmueble']['titulo']       = $inmueble_info['Inmueble']['titulo'];
             if ($inmueble_info['Inmueble']['liberada']==0) {
@@ -3717,6 +3738,18 @@ public function view_tipo($id = null,$desarrollo_id = null){
             $response[$i]['inmueble']['nivel_propiedad']        = $inmueble_info['Inmueble']['nivel_propiedad'];
             // $response[$i]['inmueble'][$j]['niveles_totales']        = $inmueble_info['Inmueble']['niveles_totales'];
             $response[$i]['inmueble']['plano']        = Router::url($inmueble_foto['FotoInmueble']['ruta'],true);
+            // 'estacionamiento_techado',
+            if ( $inmueble_info['Inmueble']['estacionamiento_techado']==null) {
+                $response[$i]['inmueble']['estacionamiento_techado']        =0;
+            }else {
+                $response[$i]['inmueble']['estacionamiento_techado']        =$inmueble_info['Inmueble']['estacionamiento_techado'];
+            }
+            if ( $inmueble_info['Inmueble']['estacionamiento_descubierto']==null) {
+                $response[$i]['inmueble']['estacionamiento_descubierto']        =0;
+            }else {
+                $response[$i]['inmueble']['estacionamiento_descubierto']        =$inmueble_info['Inmueble']['estacionamiento_descubierto'];
+            }
+            // 'estacionamiento_descubierto',
             $i++;
         }else {
             $response = array(

@@ -151,9 +151,9 @@
                         <div class="mt-5 col-sm-12">
                         <div class="row" >
                         <div class="col-sm-12">
-                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary float-right', 'style' => 'margin-left:8px;'))?>
+                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla'), array('class' => 'btn btn-primary float-right', 'style' => 'margin-left:8px;'))?>
                             <!-- <button class="btn btn-secondary-o float-right ml-4" style="margin-left:8px;"><i class="fa fa-file-excel"></i> Descargar</button> -->
-                            <?= $this->Html->link('Proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary-o float-right'))?>
+                            <?= $this->Html->link('Proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso'), array('class' => 'btn btn-primary-o float-right'))?>
                             <!-- <button class="btn btn-secondary-o float-right"><i class="fa fa-print"></i> Imprimir</button> -->
                         </div>
                         <div class="row">
