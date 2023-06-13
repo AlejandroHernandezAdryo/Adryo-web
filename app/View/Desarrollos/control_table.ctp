@@ -30,7 +30,18 @@
     ),
     array('inline'=>false))
 ?>
-    
+<style>
+    textarea{
+        overflow:hidden;
+        display:block;
+        min-height: 30px;
+    }
+    .chosen-container {
+        width: 100% !important;
+        display: block;
+        height: 30px;
+    }
+</style>
 <!-- Modal -->
 <div class="modal fade" id="modal_edit_validacion">
     <div class="modal-dialog modal-dialog-centered">
@@ -201,18 +212,11 @@
                         
                     </div>
                 </div>
-                <div class="tab-pane" id="historial_pagos">
-                                    <div class="row">
-                                        <!-- Estatus de seguimiento **Korner 24-04-2023** -->
-                                        <div class="col-sm-12">
-                                            <div class="card-block">
-                                                <table class="table table-striped table-hover table-sm w-100" id="sample_2" class="m-t-40">
-                                                  
-                                                </table>   
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="mt-5 col-sm-12">
+                            <table class="table table-striped" id="sample_1">
+                            
+                            </table>
+                        </div>
             <?php endif; ?>
         </div>
     </div> 
@@ -295,7 +299,7 @@
             dataType: 'json',
             success: function (response) {
                 console.log(response);
-                $('#sample_2').dataTable( {
+                $('#sample_1').dataTable( {
                     destroy: true,
                     data : response,
                     lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
@@ -303,7 +307,7 @@
                     columnDefs: [
                         {
                             targets: [ 7 ],
-                            visible: false,
+                            visible: true,
                             searchable: false
                         },
                     ],
@@ -366,14 +370,14 @@
     });
 
     var TableAdvanced = function() {
-        // ===============table 1====================
-        var initTable2 = function() {
-            var table = $('#sample_2');
+         // ===============table 1====================
+        var initTable1 = function() {
+            var table = $('#sample_1');
             table.DataTable({
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
                 columnDefs: [
                     {
-                        targets: [ 3 ],
+                        targets: [ 7 ],
                         visible: true,
                         searchable: false
                     },
@@ -390,16 +394,14 @@
                     },
                 },
                 columns: [
-
-                    { title: "ver" },
-                    { title: "Comprobante" },
-                    { title: "Referencia" },
-                    { title: "Fecha programada de Pago" },
-                    { title: "Número de pago" },
-                    { title: "Total" },
-                    { title: "Fecha programada de Pago" },
-                    { title: "Estatus" },
-                    { title: "Fecha de registro de pago" },
+                    { title: "nueva tarea" },                    
+                    { title: "editar proceso" },
+                    { title: "usuario de creacion" },
+                    { title: "etapa" },
+                    { title: "nombre del proceso" },
+                    { title: "estatus" },
+                    { title: "orden" },                    
+                    { title: "progreso" },
                 ],
                 dom: 'Bflr<"table-responsive"t>ip',
                 buttons: [
@@ -421,9 +423,9 @@
                     },
                 ]
             });
-            var tableWrapper = $('#sample_2_wrapper');
+            var tableWrapper = $('#sample_1_wrapper');
             tableWrapper.find('.dataTables_length select').select2();
-        }   
+        }
         
         return {
             //main function to initiate the module
@@ -431,7 +433,7 @@
                 if (!jQuery().dataTable) {
                     return;
                 }
-                initTable2();
+                initTable1();
                 
             }
         };
