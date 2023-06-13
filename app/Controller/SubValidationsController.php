@@ -40,7 +40,7 @@ class SubValidationsController extends AppController {
             $this->SubValidation->create();
             $this->request->data['SubValidation']['id']              = null;
             $this->request->data['SubValidation']['user_create']         = $this->request->data['SubValidation']['user_id'];
-            // $this->request->data['SubValidation']['cuenta_id']       = $this->request->data['SubValidation']['cuenta_id'];
+            $this->request->data['SubValidation']['cuenta_id']       = $this->request->data['SubValidation']['cuenta_id'];
             $this->request->data['SubValidation']['validacion_id']        = $this->request->data['SubValidation']['validation_id'];
             $this->request->data['SubValidation']['fecha_create']    = date('Y-m-d');
             $this->request->data['SubValidation']['status']          =  $this->request->data['SubValidation']['status'];

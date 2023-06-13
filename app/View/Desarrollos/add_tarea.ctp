@@ -175,6 +175,7 @@
                                             )
                                         )) ?>
                                     </div>
+                                <?= $this->Form->hidden('cuenta_id', array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'))); ?>
                                 <?= $this->Form->hidden('validation_id', array('value'=>$validation['Validation']['id'])); ?>
                                 <?= $this->Form->hidden('user_id', array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.user_id'))); ?>
 
