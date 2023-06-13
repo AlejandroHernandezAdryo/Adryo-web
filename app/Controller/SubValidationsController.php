@@ -109,12 +109,14 @@ class SubValidationsController extends AppController {
                 $response[$i]['etapa_id']        = $validation['Validation']['etapa_id'];
                 $response[$i]['validacion']        = $validation['Validation']['validacion_name'];
                 $response[$i]['validacion_tarea'] = $value['SubValidation']['subvalidation_name'];
+                $response[$i]['orden'] = $value['SubValidation']['orden'];
                 $json[$count]=array(
                     $response[$i]['edit'],
                     $response[$i]['eliminar']  ,            
                     $response[$i]['validacion'],           
                     $response[$i]['etapa_id']  , 
-                    $response[$i]['validacion_tarea'],
+                    $response[$i]['validacion_tarea'],                    
+                    $response[$i]['orden'],
                 );
                 $i++;
                 $count++;

@@ -281,7 +281,7 @@
                     dom: 'Bflr<"table-responsive"t>ip',
                     columnDefs: [
                         {
-                            targets: [ 4 ],
+                            targets: [ 5 ],
                             visible: true,
                             searchable: false
                         },
@@ -326,7 +326,7 @@
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
                 columnDefs: [
                     {
-                        targets: [ 3 ],
+                        targets: [ 5 ],
                         visible: false,
                         searchable: false
                     },
@@ -350,6 +350,7 @@
                     { title: "programada de Pago" },
                     { title: "nose" },
                     { title: "estatus" },
+                    { title: "orden" },
     
                     
                 ],
