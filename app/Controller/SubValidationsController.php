@@ -44,6 +44,7 @@ class SubValidationsController extends AppController {
             $this->request->data['SubValidation']['validacion_id']        = $this->request->data['SubValidation']['validation_id'];
             $this->request->data['SubValidation']['fecha_create']    = date('Y-m-d');
             $this->request->data['SubValidation']['status']          =  $this->request->data['SubValidation']['status'];
+            $this->request->data['SubValidation']['orden']          =  $this->request->data['SubValidation']['orden'];
             $this->request->data['SubValidation']['rol_asignado'] = $this->request->data['SubValidation']['rol'];
             $this->request->data['SubValidation']['subvalidation_name'] = $this->request->data['SubValidation']['subnombre'];
             if ( $this->SubValidation->save($this->request->data['SubValidation']) ) {

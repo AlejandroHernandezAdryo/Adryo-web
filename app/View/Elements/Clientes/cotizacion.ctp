@@ -960,9 +960,15 @@
         $('#CotizacionTotal').attr('readonly', true);
         $('#CotizacionTotalQ').attr('readonly', true);
 
+        if (totalPorcentaje == 99.9 || totalPorcentaje == 99.99) {
+            $("#CotizacionTotal").val( 100 );
+        }else{
+
+            $("#CotizacionTotal").val( totalPorcentaje );
+        }
         // Bloquear el boton de enviar si no es el 100% o el monto total del precio de venta.
 
-        if( totalPorcentaje != 100  ){
+        if(  $("#CotizacionTotal").val() != 100  ){
             $("#registrar").prop('disabled', true);
         }else{
             $("#registrar").prop('disabled', false);
