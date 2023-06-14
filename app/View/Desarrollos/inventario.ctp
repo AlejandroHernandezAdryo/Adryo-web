@@ -479,36 +479,6 @@
             dataType: "Json",
             success: function (response) {
                 console.log(response);
-                // for (let i = 0; i < response[0].Inmuebles.length; i++){
-                //     let arr = [
-                //         {
-                //             estatus : 'liberada',
-                //             clase   : 'bg-libre'},
-                //         {
-                //             estatus : 'en_venta',
-                //             clase   : 'bg-status-desarrollo-venta'},
-                //         {
-                //             estatus : 'bloqueada',
-                //             clase   : 'bg-status-desarrollo-bloqueado'},
-                //         {
-                //             estatus : 'reservada',
-                //             clase   : 'bg-status-desarrollo-reservado'},
-                //         {
-                //             estatus : 'contrato',
-                //             clase   : 'bg-status-desarrollo-vendido'},
-                //         {
-                //             estatus : 'escrituradas',
-                //             clase   : 'bg-status-desarrollo-escriturado'},
-                //     ];
-                //     let piso = response[0].Inmuebles[i].nivel_propiedad;
-                //     let estatus = response[0].Inmuebles[i].liberada;
-                //     jQuery.each( arr, function( index, value ) {
-                //         if (value.estatus == estatus) {
-                //             $('.bg_'+estatus).addClass(value.clase);
-                //         }
-                //     });
-
-                // }
                 $('#myModal').append(`
                     <div class="card-block" style="background-color:#376D6C;">
                         <span style="color:white;">
@@ -652,17 +622,13 @@
                     </div>
                     `
                 );
-                switch{
-                    case 0: //apartado
-
-                }
-                if(response[0].inmueble.liberada == 4 || response[0].inmueble.liberada == 5 || response[0].inmueble.liberada == 6){
-                    $('#myModal').append(`
+                if(response[0].inmueble.liberada > 1){
+                    $('#forward').append(`
                         <div class="mt-1">
                             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        Precio de lista
+                                        ID operación
                                     </small>
                                 </div>
                                 <br>
@@ -675,7 +641,7 @@
                             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        Piso
+                                        Cliente
                                     </small>
                                 </div>
                                 <br>
@@ -688,7 +654,7 @@
                             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        M2 habitables
+                                        Asesor
                                     </small>
                                 </div>
                                 <br>
@@ -701,7 +667,7 @@
                             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        M2 no habitables
+                                        Fecha apartado
                                     </small>
                                 </div>
                                 <br>
@@ -714,7 +680,7 @@
                             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        M2 totales
+                                        Vigencia apartado
                                     </small>
                                 </div>
                                 <br>
@@ -727,7 +693,7 @@
                             <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        Entrega
+                                        Monto apartado
                                     </small>
                                 </div>
                                 <br>
@@ -739,8 +705,6 @@
                             </div>
                         </div>
                     `)
-                }else{
-
                 }
             },
             error: function ( response ) {
