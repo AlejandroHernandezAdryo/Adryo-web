@@ -612,10 +612,7 @@
                         <div class="mt-1">
                             <div class="text-sm-right">
                                 <small>
-                                    <?= $this->Html->image('Ir a propiedad', array('class' => 'img-icon', 'style' => 'width:24px;')); ?>
-                                    <a href="">
-                                        Ir a propiedad
-                                    </a>
+                                    <a href="http://localhost:8080/Adryo-web/inmuebles/view_tipo/`+response[0].inmueble.id+`/`+response[0].inmueble.desarrollo_id+`">Ir a propiedad</a>
                                 </small>
                             </div>
                         </div>
