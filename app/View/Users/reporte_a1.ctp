@@ -21,7 +21,8 @@
 
       'pages/widgets',
     ),
-    array('inline'=>false)); 
+    array('inline'=>false)
+  ); 
 ?>
 <style>
     .chosen-container-multi .chosen-choices {
@@ -270,314 +271,201 @@
           <div class="modal-body">
             <div class="row">
                 <?= $this->Form->input('rango_fechas', array('class'=>'form-control', 'placeholder'=>'dd/mm/yyyy - dd/mm/yyyy', 'div'=>'col-sm-12', 'label'=>'Rango de fechas', 'id'=>'date_range', 'required'=>true, 'autocomplete'=>'off')); ?>
-                 <?= $this->Form->input('user_id', array('type'=>'select','options'=>$users,'class'=>'form-control chzn-select', 'div'=>'col-sm-12', 'label'=>'Seleccionar Asesor', 'required'=>true)); ?>
+                 <?= $this->Form->input('user_id', array('type'=>'select','options'=>$users,'class'=>'form-control chzn-select', 'div'=>'col-sm-12', 'label'=>'Seleccionar Asesor', 'id'=>'asesor_id', 'required'=>true)); ?>
             </div>
           </div>
           <div class="modal-footer">
-              <button type="submit" class="btn btn-success float-xs-right ">
-                    Buscar
-              </button>
-              <button type="button" class="btn btn-danger pull-left " data-dismiss="modal">
-                    Cerrar
-              </button>
+            <!-- <button type="submit" class="btn btn-success float-xs-right" onclick='reporteAsesor()'>
+                      Buscar
+            </button> -->
+            <button type="button" class="btn btn-success float-xs-right" onclick='reporteAsesor()'>
+                      Buscar
+            </button>
+            <button type="button" class="btn btn-danger pull-left " data-dismiss="modal">
+                  Cerrar
+            </button>
           </div>
           <?= $this->Form->end(); ?>
       </div>
   </div>
 </div>
-
-<?php if(isset($asesor)){?>
 <div id="content" class="bg-container">
+  <header class="head">
+    <div class="main-bar row">
+      <div class="col-sm-12 col-lg-6">
+        <h4 class="nav_top_align">
+        REPORTE POR ASESOR
+        </h4>
+      </div>
+      <div class="col-sm-12 col-lg-6">
+        <?= $this->Html->link('<i class="fa fa-cogs fa-2x"></i> Cambiar Rango de Fechas y Asesor', '#myModal', array('data-toggle'=>'modal', 'escape'=>false,'class'=>'no-imprimir float-xs-right','style'=>"color:white")) ?>
+      </div>
+    </div>
+  </header>
   <div class="outer">
-      <div class="inner bg-light lter bg-container">
+    <div class="inner bg-light lter bg-container">
       <div class="row mt-3">
         <div class="col-sm-12">
           <div class="card">
-            <div class="card-header no-imprimir" style="background-color: #2e3c54; color:white;">
-              <div class="row">
-                <div class="col-sm-12 col-lg-6">
-                  <h3 class="text-white">Reporte por Asesor</h3>
-                </div>
-                <div class="col-sm-12 col-lg-6 text-lg-right">
-                  <?= $this->Html->link('<i class="fa fa-cogs fa-2x"></i> Cambiar Rango de Fechas y Asesor', '#myModal', array('data-toggle'=>'modal', 'escape'=>false,'class'=>'no-imprimir','style'=>"color:white")) ?>	
-                  <?= $this->Html->link('<i class="fa  fa-print fa-2x"></i>Imprimir Reporte',"javascript:window.print()",array('escape'=>false, 'style'=>'color:white'))?>
-                </div>
-              </div>
-            </div>
             <div class="card-block" style="padding-top: 10px;">
+              <!-- Encabezado -->
               <div class="row">
                 <div class="col-sm-12 col-lg-3 mt-1">
-                  <img src="<?= Router::url($this->Session->read('CuentaUsuario.Cuenta.logo'),true) ?>" alt="Logo cuenta" class="img-fluid logo-printer">
-                                                                  
+                  <img src="<?= Router::url($this->Session->read('CuentaUsuario.Cuenta.logo'),true) ?>"
+                    alt="Logo cuenta" class="img-fluid logo-printer">
                 </div>
                 <div class="col-sm-12 col-lg-6 mt-1">
-                  <h1 class="text-sm-center text-black">Reporte de Asesor: <?= $asesor['User']['nombre_completo'] ?></h1>
-                  <?php 
-                    $roles = array(
-                      1 => 'Superadministrador',
-                      2 => 'Gerente',
-                      3 => 'Asesor'
-                    );
-                  ?>                                           
-                  <div class="text-lg-center" style="font-size: 1rem; text-align:center">
-                    <p><b style="font-size:14px">Periodo del: <?= $periodo_reporte ?></b></p>
-                    <p><b>Proyectos Asignados: </b> <?= (empty($desarrollos_asignados[0][0]['asignados']) ? '' : $desarrollos_asignados[0][0]['asignados'] ) ?></p>
-                    <p><b>Fecha de Ingreso: </b><?= date("d/M/Y",strtotime($asesor['User']['created']))?></p>
-                    <p><b>Rol: </b><?= $roles[$asesor['Rol'][0]['cuentas_users']['group_id']]?></p>
-                  </div>
-
-                </div>
-                <div class="col-sm-12 col-lg-3 mt-1">
-                  <p class="text-lg-right">
-                    <?= $this->Html->image($asesor['User']['foto'],array('height'=>'150px'))?>
-                  </p>                                                                      
+                  <p>
+                    <h2 class="text-sm-center text-black">
+                      <?= $this->Session->read('CuentaUsuario.Cuenta.razon_social')?></h2>
+                  </p>
+                  <h1 class="text-sm-center text-black">
+                    Reporte del Asesor: <span id="nombreAsesor"></span>
+                  </h1>
+                  <p class="text-lg-center" style="font-size: 1rem;">
+                    <b style="font-size:14px">Periodo del: <span id="periodoReporte"> "Sin periodo" </span> </b>
+                  </p>
+                  <p class="text-lg-center"><b>Proyectos Asignados: <span id="desarrollos_Asignados"> "" </span> </b>
+                  </p>
+                  <p class="text-lg-center"><b>Fecha de Ingreso:<span id="cread"> "" </span> </b></p>
+                  <p class="text-lg-center"><b>Rol: <span id="rol"> "" </span></b></p>
                 </div>
               </div>
-              <!-- ./row hader  -->
-              <!-- <div class="row">
-                <div class="col-lg-12">
-                  <div class="card mt-2">
-                      <div class="card-header" style="background-color: #2e3c54; color:white;">
-                              <i class="fa fa-users"></i> Indicadores de Desempeño
-                      </div>
-                      <?php
-                          $ventas_unidades = 0;
-                          $ventas_mdp = 0;
-                          foreach ($ventas_grafica as $venta):
-                              $ventas_unidades ++;
-                              $ventas_mdp += $venta[0]['sum(precio_cerrado)'];
-                          endforeach;
-                      ?>
-                      <div class="card-block">
-                          <div class="row">
-                            <div class="col-sm-12">
-                              <table style="width:100%; text-align:center;">
-                                  <tr>
-                                      <th class="row-25">Clientes Asignados</th>
-                                      <th class="row-25">Ventas Unidades</th>
-                                      <th class="row-25">Ventas $ (MDP)</th>
-                                      <th class="row-25">% Efectividad</th>
-                                  </tr>
-                                  <tr>
-                                      <td class="row-25 padding-10 clientes"><?= $data_clientes_temp['frios']+$data_clientes_temp['tibios']+$data_clientes_temp['calientes'] ?></td>
-                                      <td class="row-25 padding-10 ventas"><?= $ventas_unidades?></td>
-                                      <td class="row-25 padding-10 mdp"><?= number_format($ventas_mdp/1000000,2)?></td>
-                                      <td class="row-25 padding-10 efectividad"><?= number_format(($ventas_unidades/($data_clientes_temp['frios']+$data_clientes_temp['tibios']+$data_clientes_temp['calientes'])*100),2) ?>%</td>
-                                  </tr>
-                              </table>
-                            </div>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-              </div> -->
-
-
-
-              <div class="row mt-1" id="estatus_temperatura_clientes"> 
-                <div class="col-sm-12 mt-1">
-                  <?= $this->Element('Clientes/clientes_estatus') ?>
-                </div>
-
-                <div class="col-sm-12 mt-1">
-                  <?= $this->Element('Clientes/clientes_distribucion_inactivos') ?>
-                </div>
-              </div>
-
-              <div class="row mt-1 salto">
-                  <div class="col-sm-12 col-lg-12 mt-1">
-                      <?= $this->Element('Clientes/clientes_distribucion_inactivos_temporales') ?>
-                  </div>
-                  <div class="col-sm-12 col-lg-12 mt-1">
-                      <?= $this->Element('Events/cancelaciones') ?>
-                  </div>
-                <div class="col-sm-12 mt-1">
-                  <?= $this->Element('Clientes/clientes_atencion') ?>
-                </div>
-                
-              </div>
-              
-              
-              
-
-            <div class="row mt-1 salto">
-              <div class="col-sm-12 col-lg-12">
-                  <?= $this->Element('Clientes/clientes_temperatura') ?>
-                </div>
-            </div>
-
-            <div class="row mt-1">
-                <div class="col-lg-6">
-                  <?= $this->element('Events/eventos_cards_reporte'); ?>
-                </div>
-                <div class="col-lg-6">
-                  <?= $this->element('Events/eventos_cards_acumulados'); ?>
-                </div>
-            </div>
-
-            <div class="row mt-1 salto">
-                <div class="col-sm-12">
-                  <?= $this->Element('Clientes/asignaciones_mes') ?>
-                </div>
-            </div>
-
-
-              <div class="row mt-1">
-                <div class="col-sm-12 mt-1">
-                  <?= $this->Element('Clientes/clientes_distribucion_desarrollos') ?>
-                </div>
-                
-                <div class="col-sm-12 mt-1 salto">
-                  <?= $this->Element('Users/asignados_vs_reasignados') ?>
-                </div>
-              </div>
-
-              <div class="row mt-1">
-                <div class="col-sm-12">
-                  <?= $this->Element('Clientes/motivos_reasignacion') ?>
-                </div>
-              </div>
-
-              
-
+              <!-- ESTATUS GENERAL DE CLIENTES -->
               <div class="row mt-1 salto">
                 <div class="col-sm-12">
-                  <?= $this->Element('Desarrollos/ventas_vs_metas') ?>
+                  <?= $this->Element('Clientes/clientes_estatus_by_ajax') ?>
                 </div>
               </div>
 
-              <div class="row mt-1">
-                <div class="col-sm-12">
-                  <?= $this->Element('Desarrollos/ventas_vs_metas_dinero') ?>
-                </div>
-              </div>  
-              
+              <!-- RAZONES DE INACTIVACIÓN DEFINITIVA DE CLIENTES -->
               <div class="row mt-1 salto">
                 <div class="col-sm-12">
-                  <?= $this->Element('Desarrollos/visitas_vs_ventas') ?>
+                  <?= $this->Element('Clientes/clientes_motivo_inactivo_definitivo_by_ajax') ?>
                 </div>
               </div>
 
-              <div class="row mt-1">
+              <!-- RAZONES DE INACTIVACIÓN TEMPORAL DE CLIENTES -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12 mt-1">
+                  <?= $this->Element('Clientes/clientes_motivo_inactivo_temporal_by_ajax') ?>
+                </div>
+              </div>
+
+              <!-- RAZONES DE CITAS CANCELADAS DEL PERIODO -->
+              <div class="row mt-1 salto">
                 <div class="col-sm-12">
-                  <?= $this->Element('Users/contactos_vs_visitas') ?>
+                  <?= $this->Element('Events/cancelaciones_citas_by_ajax') ?>
                 </div>
               </div>
 
-            <div class="row mt-2">
-                <div class="col-lg-12">
-                  <div class="card">
-                    <div class="card-header" style="background-color: #2e3c54; color:white;">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <i class="fa fa-money"></i> Listado de Ventas (<?= $periodo_reporte ?>)
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-block">
-                      
-                      <div class="row">
-                        <div class="col-sm-12 col-lg-6">
-                          Total monto $: <span id="ra_tot_monto_venta"></span>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                          Total unidades: <span id="ra_tot_unidades_venta"> <?= $ra_tot_unidades_venta = count($lista_ventas); ?> - U </span>
-                        </div>
-                      </div>
-
-                      <table class="table table-striped table-hover table-sm mt-2" id="table_v_general">
-                          <thead>
-                            <tr>
-                              <td class="text-sm-center">Tipo operación</td>
-                              <td>Propiedad</td>
-                              <td>Cliente</td>
-                              <td>Forma de Contacto</td>
-                              <td>Fecha operación</td>
-                              <td class="text-xs-right">Monto compra</td>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          <?php
-                            foreach ($lista_ventas as $venta_global):
-                              if($venta_global['Venta']['tipo_operacion'] == 'Venta'){$op = 'V'; $class_op = 'bg_venta'; $name_op = 'Venta';}
-                              else{$op = 'R'; $class_op = 'bg_renta'; $name_op = 'Renta';}
-                          ?>
-                            <tr>
-                                <td class="text-sm-center"><small><span class="<?= $class_op ?>"><?= $op ?></span></small><span class="text_hidden"><?= $name_op ?></span></td>
-                                <td>
-                                    <?php echo $venta_global['Inmueble']['titulo'] ?>
-                                <td>
-                                    <?php echo $venta_global['Cliente']['nombre']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $venta_global['Cliente']['DicLineaContacto']['linea_contacto']; ?>
-                                </td>
-                                <td><?= date('d/M/Y', strtotime($venta_global['Venta']['fecha'])) ?></td>
-                                <td class="text-xs-right">$ <?= number_format($venta_global['Venta']['precio_cerrado']) ?></td>
-                            </tr>
-                            <?php $ra_tot_monto_venta += $venta_global['Venta']['precio_cerrado']; ?>
-                          <?php endforeach ?>
-                            
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+              <!-- ESTATUS DE ATENCIÓN A CLIENTES ACTIVOS  -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12 mt-1">
+                  <?= $this->Element('Clientes/clientes_activos_atencion_by_ajax') ?>
                 </div>
+              </div>
 
+              <!-- ETAPAS DE CLIENTES ACTIVOS AL (FECHA DEL ÚLTIMO DÍA DEL PERIODO SOLICITADO) -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_activos_etapa_by_ajax') ?>
+                </div>
+              </div>
+
+              <!--cards  -->
+              <div class="row mt-1  salto">
+                <div class="col-sm-6  mt-1">
+                  <?= $this->element('Events/eventas_cards_by_ajax'); ?>
+                </div>
+                <div class="col-sm-6  mt-1">
+                  <?= $this->element('Events/eventas_cards_by__historico_ajax'); ?>
+                </div>
+              </div>
+
+              <!-- CLIENTES ASIGNADOS POR MES -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_asignados_mes_by_ajax') ?>
+                </div>
+              </div>
+
+              <!-- CLIENTES ASIGNADOS POR DESARROLLO O PROPIEDAD -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_asignados_desarrollo_by_ajax') ?>
+                </div>
+              </div>
+
+              <!--CLIENTES ASIGNADOS VS REASIGNADOS -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_asignados_reasignados_desarrollo_by_ajax') ?>
+                </div>
+              </div>
+
+              <!-- MOTIVOS DE REASIGNACIÓN DE CLIENTES -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_motivo_reasignacion_by_ajax') ?>
+                </div>
+              </div>
+
+              <!-- META VS. VENTAS ($ MONTO EN MDP) -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12 mt-1">
+                  <?= $this->Element('Desarrollos/desarrollo_ventas_metas_by_ajax') ?>
+                </div>
+              </div>
+
+              <!-- VENTAS EN UNIDADES Y MONTO EN MDP -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Desarrollos/desarrollo_ventas_metas__dinero_by_ajax') ?>
+                </div>
+              </div>
+
+              <!-- VENTAS VS VISITAS -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Desarrollos/visitas_vs_ventas_by_ajax') ?>
+                </div>
+              </div>
+              <!-- VENTAS VS VISITAS -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Users/clientes_visitas_by_ajax') ?>
+                </div>
+              </div>
+              <!-- LISTADO DE VENTAS -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Ventas/tabla_ventas_by_ajax') ?>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
       <!-- Footer -->
-                  <div class="footer">
-        <div class="row mt-3">
+      <div class="footer">
+        <div class="row">
           <div class="col-sm-12" style="background-color: #555555;">
             <p class="text-lg-center" style="color: white;">
               <br>
-              POWERED BY <br>
-              <img src="<?= Router::url('/img/logo_inmosystem.png',true) ?>" style="border: 0px; width: 80px; margin: 0px; height: 42px; width: auto;"><br>
-                <span style="color:#FFFFFF"><small>Todos los derechos reservados <?= date('Y')?></small></span>
+              POWERED BY
+              <br>
+              <img src="<?= Router::url('/img/logo_inmosystem.png',true) ?>"
+                style="border: 0px; width: 80px; margin: 0px; height: 42px; width: auto;"><br>
+              <span style="color:#FFFFFF"><small>Todos los derechos reservados <?= date('Y')?></small></span>
             </p>
-          </div>
-        </div>
-      </div>
-      </div>
-  </div>
-</div>
-<?php }else{ ?>
-  <div id="content" class="bg-container">
-    <div class="outer">
-      <div class="inner bg-light lter bg-container">
-          <div class="row mt-3">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-header no-imprimir" style="background-color: #2e3c54; color:white;">
-                  <div class="row">
-                    <div class="col-sm-12 col-lg-6">
-                      <h3 class="text-white">Reporte por Asesor</h3>
-                    </div>
-                    <div class="col-sm-12 col-lg-6 text-lg-right">
-                      <?= $this->Html->link('<i class="fa fa-cogs fa-2x"></i> Cambiar Rango de Fechas y Asesor', '#myModal', array('data-toggle'=>'modal', 'escape'=>false,'class'=>'no-imprimir','style'=>"color:white")) ?>	
-                    </div>
-                  </div>
-                </div>
-                <div class="card-block" style="padding-top: 10px;">
-                  <div class="row">
-                    <div class="col-sm-12 col-lg-12 mt-1">
-                      Introduce los parámetros de búsqueda
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-<?php }?>
+  </div>
+
 <?php 
   echo $this->Html->script([
     'components',
@@ -610,76 +498,88 @@
   ], array('inline'=>false));
 ?>
 <script>
+  function reporteAsesor(){
+    console.log( $("#date_range").val() );
+    console.log( $("#asesor_id").val() );
 
+    get_asesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
 
-$(document).ready(function () {
-	$('#date_range').daterangepicker({
-    orientation:"bottom",
-    autoUpdateInput: false,
-    locale: {
-        cancelLabel: 'Clear'
-    }
+    graficaClientesEstatus( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaMotivoInactivoDefinitivo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficarazonReasignados( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );    
+    graficaMotivoInactivoTempo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaMotivoCancelacionCita( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaClientesActivos( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaClientesEtapa( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaClientesAsignados( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaClientesAsignadosDesarrollo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaClientesAsignadosReasignados( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaVentasMetasDesarrollo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaVentasMetasMontoDesarrollo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaVentasVisitasDesarrollo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    graficaClientesVisitas( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    tablaVentasDesarrollo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    cardsPeriodo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    cardHistorico( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    console.log( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    window.setInterval(function(){
+      $('#myModal').modal('hide');
+      $("#overlay").fadeOut();
+    },7000);
+
+  } 
+
+  $(document).ready(function () {
+    $('#date_range').daterangepicker({
+      orientation:"bottom",
+      autoUpdateInput: false,
+      locale: {
+          cancelLabel: 'Clear'
+      }
+    });
+
+    $('#date_range').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+        return false;
+    });
+
+    $('#date_range').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+        return false;
+    });
+
+   
+
   });
+  function  get_asesor( rangoFechas, cuentaId, desarrolloId, asesorId ){
+    $("#periodoReporte").html($("#date_range").val());
+    $.ajax({
+      type: "POST",
+      url: '<?php echo Router::url(array("controller" => "users", "action" => "informacion_asesor")); ?>',
+      data: {
+				rango_fechas: rangoFechas,
+				cuenta_id: cuentaId,
+				desarrollo_id: desarrolloId,
+				user_id: asesorId
+			},
+      cache: false,
+      dataType: 'json',
+      success: function ( response ) {
+        document.getElementById("nombreAsesor").innerHTML =response[0].nombre;
+        document.getElementById("cread").innerHTML =response[0].creado;
+        document.getElementById("rol").innerHTML =response[0].rol;
+        for (let i in response[0].desarollos) {
+          document.getElementById("desarrollos_Asignados").innerHTML =response[0].desarollos[i].nombre;					
+          console.log(response[0].desarollos[i].nombre);					
+				}
+        console.log(response);
+      },
+      error: function ( err ){
+        console.log( err.responseText );
+      }
+    });
+  }
 
-  $('#date_range').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
-      return false;
-  });
-
-  $('#date_range').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-      return false;
-  });
-
-  TableAdvanced.init();
-  $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
-  $(".dataTables_wrapper .dt-buttons .btn").addClass('btn-secondary').removeClass('btn-default');
-
-});
 
 
-
-var TableAdvanced = function() {
-    // ===============table 1====================
-    var initTable1 = function() {
-        var table = $('#table_v_general');
-        /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
-        /* Set tabletools buttons and button container */
-        table.DataTable({
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-            order: [[3, "Desc"]],
-            dom: 'Bflr<"table-responsive"t>ip',
-            buttons: [
-              {
-                extend: 'csv',
-                text: '<i class="fa  fa-file-excel-o"></i> Exportar a Excel',
-                filename: 'ClientList',
-                class : 'excel',
-                charset: 'utf-8',
-                bom: true
-              },
-              {
-                extend: 'print',
-                text: '<i class="fa  fa-print"></i> Imprimir',
-                filename: 'ClientList',
-              },
-            ]
-        });
-        var tableWrapper = $('#sample_1_wrapper'); // datatable creates the table wrapper by adding with id {your_table_id}_wrapper
-        tableWrapper.find('.dataTables_length select').select2(); // initialize select2 dropdown
-    }
-    // ===============table 1===============
-
-    return {
-        //main function to initiate the module
-        init: function() {
-            if (!jQuery().dataTable) {
-                return;
-            }
-            initTable1();
-        }
-    };
-}();
-
-document.getElementById("ra_tot_monto_venta").innerHTML = '<?= number_format($ra_tot_monto_venta); ?>';
 </script>
