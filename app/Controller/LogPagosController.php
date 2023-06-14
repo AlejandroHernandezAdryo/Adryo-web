@@ -839,6 +839,28 @@ class LogPagosController extends AppController {
                 }
             }
 
+            if ($this->request->data['LogPagos']['monto_mas'] != null ) {
+
+                if ($this->request->data['LogPagos']['monto_mas'] > $this->request->data['LogPagos']['apagar_monto']) {
+                    
+
+                    $this->request->data['LogPago']['monto_pagado'] = $this->request->data['LogPagos']['monto_mas'];
+
+                } else {
+                   
+                    $response = array(
+                        'Ok' => false,
+                        'mensaje' => 'El pago debe ser mayor al pago programado'
+                    );
+                }
+                
+
+            }else {
+
+                $this->request->data['LogPago']['monto_pagado'] = $this->request->data['LogPagos']['apagar_monto'];
+
+            }
+            
             if ( $this->LogPago->save($this->request->data['LogPago']) ) {
 
                 $response = array(
