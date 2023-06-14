@@ -3688,20 +3688,17 @@ public function view_tipo($id = null,$desarrollo_id = null){
                     )
                 );
                 $response[$i]['inmueble']['user']= $user_name['User']['nombre_completo'];
-                if ($operacion['OperacionesInmueble']['tipo_operacion']==2) {
-                    $response[$i]['inmueble']['montoapartado']= $operacion['OperacionesInmueble']['precio_cierre'];
-                    $response[$i]['inmueble']['montoapartado']= $operacion['OperacionesInmueble']['precio_cierre'];
-                    $response[$i]['inmueble']['montoapartado']= $operacion['OperacionesInmueble']['precio_cierre'];
-                    $response[$i]['inmueble']['montoapartado']= $operacion['OperacionesInmueble']['precio_cierre'];
-                }elseif ($operacion['OperacionesInmueble']['tipo_operacion']==3) {
-                    $response[$i]['inmueble']['montoventa']= $operacion['OperacionesInmueble']['precio_cierre'];
-                }
+
+                
+                
                 $response[$i]['inmueble']['cliente']= $cliente_name['Cliente']['nombre'];
+                
                 // $response[$i]['inmueble'][$j]['apartado'] = $inmueble_info['Inmueble']['niveles_totales'];
                 
             }
             $response[$i]['inmueble']['precio']=$inmueble_info['Inmueble']['precio'];
             $response[$i]['inmueble']['entrega']=$search_desarollo['Desarrollo']['fecha_entrega'];
+            $response[$i]['inmueble']['desarrollo_id']=$search_inmueble['DesarrolloInmueble']['desarrollo_id'];
             
             $response[$i]['inmueble']['titulo']       = $inmueble_info['Inmueble']['titulo'];
             if ($inmueble_info['Inmueble']['liberada']==0) {
@@ -3715,13 +3712,54 @@ public function view_tipo($id = null,$desarrollo_id = null){
             elseif ($inmueble_info['Inmueble']['liberada']==2) {
                 $response[$i]['inmueble']['liberada']     = 'reservada';
                 $reservada ++;
+                $operacion_apartado=$this->OperacionesInmueble->find('first',array(
+                    'conditions'=>array(
+                        'OperacionesInmueble.inmueble_id'=> $inmueble_id, 
+                        'OperacionesInmueble.tipo_operacion'=>2, 
+                    ),
+                    
+                    'contain' => false
+                ));
+                if (!empty($operacion_apartado)) {
+                    $response[$i]['inmueble']['montoapartado']= $operacion_apartado['OperacionesInmueble']['precio_cierre'];
+                    $response[$i]['inmueble']['vigencia_operacion_apartado']= $operacion_apartado['OperacionesInmueble']['vigencia_operacion'];
+                    $response[$i]['inmueble']['operacion_id']= $operacion_apartado['OperacionesInmueble']['id'];
+                }
             }
             else if ($inmueble_info['Inmueble']['liberada']==3) {
                 $response[$i]['inmueble']['liberada']     = 'contrato';
                 $contrato ++;
+                $operacion_venta=$this->OperacionesInmueble->find('first',array(
+                    'conditions'=>array(
+                        'OperacionesInmueble.inmueble_id'=> $inmueble_id, 
+                        'OperacionesInmueble.tipo_operacion'=>3, 
+                    ),
+                    
+                    'contain' => false
+                ));
+               
+                if (!empty($operacion_venta)) {
+                    $response[$i]['inmueble']['operacion_id'] = $operacion_venta['OperacionesInmueble']['id'];
+                    $response[$i]['inmueble']['montoventa']   = $operacion_venta['OperacionesInmueble']['precio_cierre'];
+                    $response[$i]['inmueble']['vigencia_operacion_venta']   = $operacion_venta['OperacionesInmueble']['vigencia_operacion'];
+                }
             }else {
                 $response[$i]['inmueble']['liberada']     = 'escrituradas';
                 $escrituradas ++;
+                $operacion_escrituracion=$this->OperacionesInmueble->find('first',array(
+                    'conditions'=>array(
+                        'OperacionesInmueble.inmueble_id'=> $inmueble_id, 
+                        'OperacionesInmueble.tipo_operacion'=>4, 
+                    ),
+                    
+                    'contain' => false
+                ));
+               
+                if (!empty($operacion_escrituracion)) {
+                    $response[$i]['inmueble']['operacion_id'] = $operacion_venta['OperacionesInmueble']['id'];
+                    $response[$i]['inmueble']['montoescrituracion']   = $operacion_venta['OperacionesInmueble']['precio_cierre'];
+                    $response[$i]['inmueble']['vigencia_operacion_escrituracion']   = $operacion_venta['OperacionesInmueble']['vigencia_operacion'];
+                }
             }
             $response[$i]['inmueble']['id'] = $inmueble_info['Inmueble']['id'];
             $response[$i]['inmueble']['noavitable'] = $inmueble_info['Inmueble']['construccion_no_habitable'];
@@ -3731,7 +3769,7 @@ public function view_tipo($id = null,$desarrollo_id = null){
             }else {
                 $response[$i]['inmueble']['terrano'] = $inmueble_info['Inmueble']['terreno'];
             }
-            $response[$i]['inmueble']['liberada']    = $inmueble_info['Inmueble']['liberada'];
+            // $response[$i]['inmueble']['liberada']    = $inmueble_info['Inmueble']['liberada'];
             $response[$i]['inmueble']['recamaras']    = $inmueble_info['Inmueble']['recamaras'];
             $response[$i]['inmueble']['status']    = $inmueble_info['Inmueble']['recamaras'];
             $response[$i]['inmueble']['banos']        = $inmueble_info['Inmueble']['banos'];
