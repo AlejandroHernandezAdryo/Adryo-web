@@ -5022,24 +5022,40 @@ class DesarrollosController extends AppController {
     public function add_tarea($id=null){
         $this->set(compact('id'));
         $this->loadModel('Validation');
+        $this->loadModel('Group');
+        $this->Group->Behaviors->load('Containable');
         $this->Validation->Behaviors->load('Containable');
         $i=0;
-        $validation=$this->Validation->find('all',array(
+        $cuenta_id = $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
+        $validacion=array();
+        $permisos_nombre=array();
+        $permisos_id=array();
+        $validation=$this->Validation->find('first',array(
             'conditions' => array(
                 'Validation.id' => $id,
             ),
             'contain' => false
         ));
-        foreach ($validation as $value) {
-            $validacion[$i]['nombre']=$value['Validation']['validacion_name'];
-            $validacion[$i]['etapa_id']=$value['Validation']['etapa_id'];
-            $validacion[$i]['id']=$value['Validation']['id'];
-            
-            $i++;
-        }
-        $this->set(compact('validacion'));
+        $roles = $this->Group->find('list', array(
+            'conditions'=> array(
+                'OR' => array(
+                    'Group.cuenta_id'=> $cuenta_id,
+                    'Group.id' => array(1,2,3)
+                )
+            ),
+
+            'contain' => false,
+            'order' => array(
+                'Group.nombre'=> 'ASC',
+            )
+        ));
+
+
+        $this->set(compact('validation'));
+        $this->set(compact('roles'));
 
     }
+
 
     public function proceso_tabla($id=null){
 

@@ -1,33 +1,47 @@
 <?= $this->Html->css(
     array(
-
-        '/vendors/select2/css/select2.min',
-        '/vendors/datatables/css/scroller.bootstrap.min',
         '/vendors/datatables/css/dataTables.bootstrap.min',
         'pages/dataTables.bootstrap',
+        '/vendors/datatables/css/scroller.bootstrap.min',
         'pages/tables',
+        '/vendors/select2/css/select2.min',
+        
         '/vendors/datatables/css/colReorder.bootstrap.min',
-        '/vendors/inputlimiter/css/jquery.inputlimiter',
-        '/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min',
-        '/vendors/jquery-tagsinput/css/jquery.tagsinput',
-        '/vendors/daterangepicker/css/daterangepicker',
-        '/vendors/bootstrap-timepicker/css/bootstrap-timepicker.min',
+        '/vendors/datepicker/css/bootstrap-datepicker.min',
+
+        // Chozen select
+        '/vendors/chosen/css/chosen',
         '/vendors/bootstrap-switch/css/bootstrap-switch.min',
-        '/vendors/jasny-bootstrap/css/jasny-bootstrap.min',
-        '/vendors/j_timepicker/css/jquery.timepicker',
-        '/vendors/datetimepicker/css/DateTimePicker.min',
-        '/vendors/clockpicker/css/jquery-clockpicker',
-        'pages/colorpicker_hack',
-        'custom'
-        //'pages/form_elements'
+        '/vendors/fileinput/css/fileinput.min',
+        // Calendario
+      '/vendors/inputlimiter/css/jquery.inputlimiter',
+      '/vendors/bootstrap-colorpicker/css/bootstrap-colorpicker.min',
+      '/vendors/jquery-tagsinput/css/jquery.tagsinput',
+      '/vendors/daterangepicker/css/daterangepicker',
+      '/vendors/datepicker/css/bootstrap-datepicker.min',
+      '/vendors/bootstrap-timepicker/css/bootstrap-timepicker.min',
+      '/vendors/bootstrap-switch/css/bootstrap-switch.min',
+      '/vendors/jasny-bootstrap/css/jasny-bootstrap.min',
+      '/vendors/j_timepicker/css/jquery.timepicker',
+      '/vendors/datetimepicker/css/DateTimePicker.min',
+
+
+                    
     ),
     array('inline'=>false))
-    
-    ;
-    
-    
-    
 ?>
+<style>
+    textarea{
+        overflow:hidden;
+        display:block;
+        min-height: 30px;
+    }
+    .chosen-container {
+        width: 100% !important;
+        display: block;
+        height: 30px;
+    }
+</style>
 <!-- Modal -->
 <div class="modal fade" id="modal_edit_validacion">
     <div class="modal-dialog modal-dialog-centered">
@@ -110,91 +124,104 @@
     </header>
     <div class="outer">
         <div class="inner bg-light lter bg-container">
-            <div class="card mt-1" id="inventory-detail">
-                <div class="card-block">
-                    <?php  if ($validation == 0):?>
+            <?php  if ($validation == 0):?>
+                <!-- Información superior -->
+                    <div class="row mt-3" >
+                        <div class="col-sm-12 text-sm-center">
+                            <h2 class="text-black" style="text-transform:none !important;font-style: normal;font-weight: 700;font-size: 30px;line-height: 36px;"><b>No tienes procesos creados</b></h2>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-12 text-sm-center">
+                            <?= $this->Html->image('img/flujo-de-trabajo-1.png', array('class' => 'img-fluid')); ?>
+                        </div>
+                    </div>
+                <!-- <div class="row mt-1" > -->
+                    <div class="mt-1">
+                        <h2 class="text-black text-center" style="text-transform:none !important;font-style: normal;font-weight: 500;font-size: 26px;line-height: 31px;">
+                            Crea un nuevo proceso
+                            <br>
+                                o
+                            <br>
+                            continua con el flujo normal de
+                            <b>
+                                Adryo
+                            </b>
+                        </h2>
+                    </div>
+                <!-- </div> -->
+                <div class="mt-1" style="width: 315px;margin:0 auto;">
+                    <div class="text-sm-center" style="display: flex;align-items: center;justify-content: space-between;">
+                        <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso'))?>
+                        <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla'), array('class' => 'btn btn-primary'))?>
+                        <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
+                        <button class="btn btn-primary">Crear Proceso</button> -->
+                    </div>
+                </div>
+            <?php else: ?>
+
+                <div class="card mt-1" id="inventory-detail">
+                    <div class="card-block">
                         <!-- Información superior -->
-                        <div class="row mt-3" >
-                            <div class="col-sm-12 text-sm-center">
-                                <h2 class="text-black" style="text-transform:none !important;font-style: normal;font-weight: 700;font-size: 30px;line-height: 36px;"><b>No tienes procesos creados</b></h2>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-sm-12 text-sm-center">
-                                <?= $this->Html->image('img/flujo-de-trabajo-1.png', array('class' => 'img-fluid')); ?>
-                            </div>
-                        </div>
-                        <!-- <div class="row mt-1" > -->
-                            <div class="mt-1">
-                                <h2 class="text-black text-center" style="text-transform:none !important;font-style: normal;font-weight: 500;font-size: 26px;line-height: 31px;">
-                                    Crea un nuevo proceso
-                                    <br>
-                                        o
-                                    <br>
-                                    continua con el flujo normal de
-                                    <b>
-                                        Adryo
-                                    </b>
-                                </h2>
-                            </div>
-                        <!-- </div> -->
-                        <div class="mt-1" style="width: 315px;margin:0 auto;">
-                            <div class="text-sm-center" style="display: flex;align-items: center;justify-content: space-between;">
-                                <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
-                                <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary'))?>
-                                <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
-                                <button class="btn btn-primary">Crear Proceso</button> -->
-                            </div>
-                        </div>
-                    <?php else: ?>
-                    
-                        <div class="mt-5 col-sm-12">
-                        <div class="row" >
-                        <div class="col-sm-12">
-                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary float-right', 'style' => 'margin-left:8px;'))?>
-                            <!-- <button class="btn btn-secondary-o float-right ml-4" style="margin-left:8px;"><i class="fa fa-file-excel"></i> Descargar</button> -->
-                            <?= $this->Html->link('Proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary-o float-right'))?>
-                            <!-- <button class="btn btn-secondary-o float-right"><i class="fa fa-print"></i> Imprimir</button> -->
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="col-sm-12 col-lg-1 mt-2">
-                                    <?= $this->Form->input('contador', array(
-                                        'class'       => 'form-control text-sm-center',
-                                        'div'         => false,
-                                        'placeholder' => 0,
-                                        'label'       => false
-                                    )) ?>
-                                </div> 
-                                <div class="col-sm-12 col-lg-3 mt-2 offset-lg-8">
-                                    <?= $this->Form->input('contador', array(
-                                        'class'       => 'form-control tools',
-                                        'div'         => false,
-                                        'placeholder' => 'Buscador',
-                                        'label'       => false
-                                    )) ?>
+                        <div class="card-block" style="background-color:#f5f5f5 !important;border-radius:8px; padding:16px 0;">
+                            <?= $this->Form->create('Validations', array('type'=>'file'))?>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="col-sm-12 col-lg-4 mt-2">
+                                            <?= $this->Form->input('name_proceso', array(
+                                                'class'       => 'form-control',
+                                                'div'         => false,
+                                                'placeholder' => 'Escribe un nombre para el proceso',
+                                                'label'       => 'Nombre de proceso',
+                                                'required'     => true,
+                                            )) ?>
+                                        </div> 
+                                        <div class="col-sm-12 col-lg-2 mt-2">
+                                            <?= $this->Form->input('etapa_inicio', array(
+                                                'class'       => 'form-control select',
+                                                'div'         => false,
+                                                'placeholder' => 'Selecciona etapa',
+                                                'label'       => 'Etapa <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona la etapa <br> Esta es la etapa en la que se iniciará el proceso." data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
+                                                'options'     =>  array(
+                                                    '5' => 'Etapa 5',
+                                                    '6' => 'Etapa 6',
+                                                    '7' => 'Etapa 7',
+                                                )
+                                            )) ?>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-4 mt-2">
+                                            <?= $this->Form->input('orden', array(
+                                                'pattern'=> '[0-9]+',
+                                                'class'       => 'form-control',
+                                                'div'         => false,
+                                                'placeholder' => 'Escribe un orden para el proceso',
+                                                'label'       => 'Orden de proceso (solo números)',
+                                                'required'     => true,
+                                            )) ?>
+                                        </div> 
+                                        <?= $this->Form->hidden('cuenta_id', array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'))); ?>
+                                        <?= $this->Form->hidden('user_id', array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.user_id'))); ?>
+                                    </div>
                                 </div>
                                 <div class="col-sm-12 mt-1">
                                     <!-- <?= $this->Html->link('Guardar', array(), array('escape' => false, 'class' => 'btn btn-primary', 'style'=>'margin-left: 5px;float:right;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?> -->
-                                    <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Aceptar</button>
+                                    <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Guardar</button>
                                 </div>
-                                <?= $this->Form->end(); ?>
-                            </div>
-                            <div class="mt-5 col-sm-12">
-                                <table class="table table-striped" id="sample_1">
-                                
-                                </table>
-                            </div>
-                    
-            
+                            <?= $this->Form->end(); ?>
                         </div>
-                    
-                    <?php endif; ?>
+                        
+                    </div>
                 </div>
-            </div>
+                <div class="mt-5 col-sm-12">
+                            <table class="table table-striped" id="sample_1">
+                            
+                            </table>
+                        </div>
+            <?php endif; ?>
         </div>
     </div> 
-<?php 
+
+    <?php 
     echo $this->Html->script([
         'components',
         'custom',
@@ -212,6 +239,7 @@
         '/vendors/datatables/js/buttons.print.min',
         '/vendors/datatables/js/dataTables.scroller.min',
         
+        '/vendors/datepicker/js/bootstrap-datepicker.min',
         
         '/vendors/jquery.uniform/js/jquery.uniform',
         '/vendors/inputlimiter/js/jquery.inputlimiter',
@@ -223,131 +251,6 @@
 
 <script>
 
-
-    $(document).ready(function () {
-        let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
-        // console.log(cuenta_id);
-        $.ajax({
-            type: "POST",
-            url: "<?= Router::url(array("controller" => "Validations", "action" => "view")); ?>",
-            data: {cuenta_id: cuenta_id },
-            dataType: 'json',
-            success: function (response) {
-                // console.log(response);
-                $('#sample_1').dataTable( {
-                    destroy: true,
-                    data : response,
-                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                    dom: 'Bflr<"table-responsive"t>ip',
-                    columnDefs: [
-                        {
-                            targets: [ 5 ],
-                            visible: true,
-                            searchable: false
-                        },
-                    ],
-                    language: {
-                        sSearch: "Buscador",
-                        lengthMenu: '_MENU_ registros por página',
-                        info: 'Mostrando _TOTAL_ registro(s)',
-                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
-                        emptyTable: "Sin información",
-                        paginate: {
-                            previous: 'Anterior',
-                            next: 'Siguiente'
-                        },
-                    },
-                    buttons: [
-                        {
-                            extend: 'excel',
-                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
-                            filename: 'ClientList',
-                            class : 'excel',
-                            charset: 'utf-8',
-                            bom: true,
-                            // enabled: false,
-        
-                        },
-                        {
-                            extend: 'print',
-                            text: '<i class="fa  fa-print"></i> Imprimir',
-                            filename: 'ClientList',
-                        },
-                    ]
-                });
-            }
-        });
-    });
-    var TableAdvanced = function() {
-         // ===============table 1====================
-        var initTable1 = function() {
-            var table = $('#sample_1');
-            table.DataTable({
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                columnDefs: [
-                    {
-                        targets: [ 3 ],
-                        visible: false,
-                        searchable: false
-                    },
-                ],
-                language: {
-                    sSearch: "Buscador",
-                    lengthMenu: '_MENU_ registros por página',
-                    info: 'Mostrando _TOTAL_ registro(s)',
-                    infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
-                    emptyTable: "Sin información.",
-                    paginate: {
-                        previous: 'Anterior',
-                        next: 'Siguiente'
-                    },
-                },
-                columns: [
-
-                    { title: "ver" },
-                    { title: "Comprobante" },
-                    { title: "Referencia" },
-                    { title: "programada de Pago" },
-                    { title: "nose" },
-                    { title: "estatus" },
-    
-                    
-                ],
-                dom: 'Bflr<"table-responsive"t>ip',
-                buttons: [
-                    {
-                        extend: 'excel',
-                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
-                        filename: 'ClientList',
-                        class : 'excel',
-                        charset: 'utf-8',
-                        bom: true,
-                        enabled: false,
-
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="fa  fa-print"></i> Imprimir',
-                        filename: 'ClientList',
-                        enabled: false,
-                    },
-                ]
-            });
-            var tableWrapper = $('#sample_1_wrapper');
-            tableWrapper.find('.dataTables_length select').select2();
-        }
-        
-        return {
-            //main function to initiate the module
-            init: function() {
-                if (!jQuery().dataTable) {
-                    return;
-                }
-                initTable1();
-                
-            }
-        };
-    }();
     function uploadFac(id){
         let valiadacion_id = id;
         $("#modal_edit_validacion").modal('show')
@@ -385,12 +288,67 @@
             }
         });
     }
-    // ValidacionsControlTableForm
-    $(document).on("submit", "#ValidacionsControlTableForm", function (event) {
+
+    $(document).ready(function () {
+        let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
+        console.log(cuenta_id);
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Validations", "action" => "view")); ?>",
+            data: {cuenta_id: cuenta_id },
+            dataType: 'json',
+            success: function (response) {
+                console.log(response);
+                $('#sample_1').dataTable( {
+                    destroy: true,
+                    data : response,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                    dom: 'Bflr<"table-responsive"t>ip',
+                    columnDefs: [
+                        {
+                            targets: [ 7 ],
+                            visible: true,
+                            searchable: false
+                        },
+                    ],
+                    language: {
+                        sSearch: "Buscador",
+                        lengthMenu: '_MENU_ registros por página',
+                        info: 'Mostrando _TOTAL_ registro(s)',
+                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                        emptyTable: "Sin información",
+                        paginate: {
+                            previous: 'Anterior',
+                            next: 'Siguiente'
+                        },
+                    },
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                            filename: 'ClientList',
+                            class : 'excel',
+                            charset: 'utf-8',
+                            bom: true,
+                            // enabled: false,
+        
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="fa  fa-print"></i> Imprimir',
+                            filename: 'ClientList',
+                        },
+                    ]
+                });
+            }
+        });
+    });
+
+    $(document).on("submit", "#ValidationsControlTableForm", function (event) {
         event.preventDefault();
         
         $.ajax({
-            url        : '<?php echo Router::url(array("controller" => "Validations", "action" => "edit_validacion")); ?>',
+            url        : '<?php echo Router::url(array("controller" => "Validations", "action" => "add")); ?>',
             type       : "POST",
             dataType   : "json",
             data       : new FormData(this),
@@ -401,14 +359,85 @@
             },
             success: function (response) {
                 window.location.reload();
-                // console.log(response);
+                console.log(response);
             },
             error: function ( response ) {
-
+                console.log(response);
                 document.getElementById("m_success").innerHTML = 'Ocurrio un problema al intentar guardar el apartado, favor de comunicarlo al administrador con el código ERC-001';
                 location.reload();
             },
         });
     });
+
+    var TableAdvanced = function() {
+         // ===============table 1====================
+        var initTable1 = function() {
+            var table = $('#sample_1');
+            table.DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                columnDefs: [
+                    {
+                        targets: [ 7 ],
+                        visible: true,
+                        searchable: false
+                    },
+                ],
+                language: {
+                    sSearch: "Buscador",
+                    lengthMenu: '_MENU_ registros por página',
+                    info: 'Mostrando _TOTAL_ registro(s)',
+                    infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                    emptyTable: "Sin información.",
+                    paginate: {
+                        previous: 'Anterior',
+                        next: 'Siguiente'
+                    },
+                },
+                columns: [
+                    { title: "nueva tarea" },                    
+                    { title: "editar proceso" },
+                    { title: "usuario de creacion" },
+                    { title: "etapa" },
+                    { title: "nombre del proceso" },
+                    { title: "estatus" },
+                    { title: "orden" },                    
+                    { title: "progreso" },
+                ],
+                dom: 'Bflr<"table-responsive"t>ip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                        filename: 'ClientList',
+                        class : 'excel',
+                        charset: 'utf-8',
+                        bom: true,
+                        enabled: false,
+
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fa  fa-print"></i> Imprimir',
+                        filename: 'ClientList',
+                        enabled: false,
+                    },
+                ]
+            });
+            var tableWrapper = $('#sample_1_wrapper');
+            tableWrapper.find('.dataTables_length select').select2();
+        }
+        
+        return {
+            //main function to initiate the module
+            init: function() {
+                if (!jQuery().dataTable) {
+                    return;
+                }
+                initTable1();
+                
+            }
+        };
+    }();
+
 
 </script>

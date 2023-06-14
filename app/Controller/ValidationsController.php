@@ -39,6 +39,8 @@ class ValidationsController extends AppController {
             $this->request->data['Validation']['id']              = null;
             $this->request->data['Validation']['user_id']         = $this->request->data['Validations']['user_id'];
             $this->request->data['Validation']['cuenta_id']       = $this->request->data['Validations']['cuenta_id'];
+            $this->request->data['Validation']['orden']       = $this->request->data['Validations']['orden'];    
+            $this->request->data['Validation']['progreso']       = 0;        
             $this->request->data['Validation']['etapa_id']        = $this->request->data['Validations']['etapa_inicio'];
             $this->request->data['Validation']['fecha_create']    = date('Y-m-d');
             $this->request->data['Validation']['status']          = 0;
@@ -98,9 +100,6 @@ class ValidationsController extends AppController {
                     'conditions'=>array(
                         'User.id' =>  $value['Validation']['user_id'],
                     ),
-                    'fields' => array(
-                        'User.nombre_completo',
-                    ),
                     'contain' => false
                 ));
                 $reponse_[$i]['id']=$value['Validation']['id'];
@@ -111,6 +110,7 @@ class ValidationsController extends AppController {
                 // ); 
                 $response[$i]['edit']= "<a onclick= 'uploadFac(".$reponse_[$i]['id'].")' class='pointer'> <i class='fa fa-edit'> </i> </a>";
                 $response[$i]['user']            = $user['User']['nombre_completo'];
+                $response[$i]['etapa_id']        = $value['Validation']['etapa_id'];
                 $response[$i]['validacion_name'] = $value['Validation']['validacion_name'];
                 if ( $value['Validation']['status']==0) {
                     $response[$i]['status']          ="<a onclick= 'activarDesactivar(".$reponse_[$i]['id'].")' class='pointer'> <p style='color:#C22419'>Inactivo </p></a>";
@@ -118,15 +118,18 @@ class ValidationsController extends AppController {
                     $response[$i]['status']          ="<a onclick= 'activarDesactivar(".$reponse_[$i]['id'].")' class='pointer'> <p style='color:#3DAE07'>Activo </p></a>";
                     
                 }
-                $response[$i]['etapa_id']        = $value['Validation']['etapa_id'];
+                $response[$i]['orden']        = $value['Validation']['orden'];
+                $response[$i]['progreso']        = $value['Validation']['progreso'];
                 // }
                 $json[$count]=array(
                     $response[$i]['nuevo'],
                     $response[$i]['edit'],
-                    $response[$i]['validacion_name'],           
-                    $response[$i]['user']  , 
-                    $response[$i]['etapa_id']  ,            
+                    $response[$i]['user'],  
+                    $response[$i]['etapa_id'],
+                    $response[$i]['validacion_name'],             
                     $response[$i]['status'],
+                    $response[$i]['orden'],
+                    $response[$i]['progreso'],
                 );
                 $i++;
                 $count++;
