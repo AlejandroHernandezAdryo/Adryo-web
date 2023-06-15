@@ -562,189 +562,199 @@
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer">
                             <tr>
                                 <td valign="top" id="templatePreheader"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-                <!--[if mso]>
-        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-        <tr>
-        <![endif]-->
-          
-        <!--[if mso]>
-        <td valign="top" width="600" style="width:600px;">
-        <![endif]-->
-                <!-- <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; text-align: center;">
-                        
-                            <a href="*|ARCHIVE|*" target="_blank">View this email in your browser</a>
-                        </td>
-                    </tr>
-                </tbody></table> -->
-        <!--[if mso]>
-        </td>
-        <![endif]-->
-                
-        <!--[if mso]>
-        </tr>
-        </table>
-        <![endif]-->
-            </td>
-        </tr>
-    </tbody>
-</table></td>
+                                    <tbody class="mcnTextBlockOuter">
+                                        <tr>
+                                            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                                                <!--[if mso]>
+                                                <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                <tr>
+                                                <![endif]-->
+                                                
+                                                <!--[if mso]>
+                                                <td valign="top" width="600" style="width:600px;">
+                                                <![endif]-->
+                                                <!-- <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                                    <tbody><tr>
+                                                        
+                                                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; text-align: center;">
+                                                        
+                                                            <a href="*|ARCHIVE|*" target="_blank">View this email in your browser</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody></table> -->
+                                                <!--[if mso]>
+                                                </td>
+                                                <![endif]-->
+                                                        
+                                                <!--[if mso]>
+                                                </tr>
+                                                </table>
+                                                <![endif]-->
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </td>
                             </tr>
                             <tr>
-                                <td valign="top" id="templateHeader"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
-    <tbody class="mcnImageBlockOuter">
-            <tr>
-                <td valign="top" style="padding:9px" class="mcnImageBlockInner">
-                    <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
-                        <tbody><tr>
-                            <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
-                                
-                                    
-                                        <img align="center" alt="" src="<?= Router::url($this->Session->read('CuentaUsuario.Cuenta.logo'),true) ?>" width="200" style="max-width:200px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
-                                    
-                                
-                            </td>
-                        </tr>
-                    </tbody></table>
-                </td>
-            </tr>
-    </tbody>
-</table></td>
+                                <td valign="top" id="templateHeader">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageBlock" style="min-width:100%;">
+                                        <tbody class="mcnImageBlockOuter">
+                                            <tr>
+                                                <td valign="top" style="padding:9px" class="mcnImageBlockInner">
+                                                    <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width:100%;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
+                                                                    <img align="center" alt="" src="<?= Router::url($this->Session->read('CuentaUsuario.Cuenta.logo'),true) ?>" width="200" style="max-width:200px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
                             </tr>
+                            <!-- Cuerpo del correo -->
                             <tr>
-                                <td valign="top" id="templateBody"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-                <!--[if mso]>
-        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-        <tr>
-        <![endif]-->
-          
-        <!--[if mso]>
-        <td valign="top" width="600" style="width:600px;">
-        <![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 100%;">
-                        
-                            <span style="font-size:13px"><strong>Atención a: <?php echo $cliente['Cliente']['nombre']?></strong>&nbsp;<br><br>
-                              <?= $contenido?>
-                            </span>
-                        </td>
-                    </tr>
-                </tbody></table>
-        <!--[if mso]>
-        </td>
-        <![endif]-->
-                
-        <!--[if mso]>
-        </tr>
-        </table>
-        <![endif]-->
-            </td>
-        </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageCardBlock">
-    <tbody class="mcnImageCardBlockOuter">
-        <tr>
-            <td class="mcnImageCardBlockInner" valign="top" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                
-
-
-
-
-            </td>
-        </tr>
-    </tbody>
-</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageCardBlock">
-    <tbody class="mcnImageCardBlockOuter">
-        <tr>
-            <td class="mcnImageCardBlockInner" valign="top" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                
-<table border="0" cellpadding="0" cellspacing="0" class="mcnImageCardLeftContentOuter" width="100%">
-    <tbody><tr>
-        <td align="center" valign="top" class="mcnImageCardLeftContentInner" style="padding: 0px;background-color: #08A5B3;">
-            <table align="right" border="0" cellpadding="0" cellspacing="0" class="mcnImageCardLeftImageContentContainer" width="200">
-                <tbody><tr>
-                    <td class="mcnImageCardLeftImageContent" align="center" valign="top" style="padding-top:18px; padding-right:18px; padding-bottom:18px; padding-left:0;">
-                    
-                        
-                        <img alt="" src="<?= Router::url($usuario['User']['foto'], true); ?>" width="100" style="max-width: 100px; border-radius: 2%;" class="mcnImage">
-                        
-                    
-                    </td>
-                </tr>
-            </tbody></table>
-            <table class="mcnImageCardLeftTextContentContainer" align="left" border="0" cellpadding="0" cellspacing="0" width="346">
-                <tbody><tr>
-                    <td valign="top" class="mcnTextContent" style="padding-left: 18px;padding-top: 18px;padding-bottom: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 13px;font-style: normal;font-weight: normal;line-height: 150%;text-align: left;">
-                        Asesor: <?= $usuario['User']['nombre_completo']?><br>
-                        Email: <?= $usuario['User']['correo_electronico']?><br>
-                        Teléfono:<?= $usuario['User']['telefono1']?><br>
-                        <?php if ($usuario['User']['telefono2'] != ''): ?>
-                          Teléfono 2: <?= $usuario['User']['telefono2']?>
-                        <?php endif ?>
-                    </td>
-                </tr>
-            </tbody></table>
-        </td>
-    </tr>
-</tbody></table>
-
-
-
-
-            </td>
-        </tr>
-    </tbody>
-</table></td>
+                                <td valign="top" id="templateBody">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                        <tbody class="mcnTextBlockOuter">
+                                            <tr>
+                                                <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                                                    <!--[if mso]>
+                                                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                    <tr>
+                                                    <![endif]-->
+                                                    
+                                                    <!--[if mso]>
+                                                    <td valign="top" width="600" style="width:600px;">
+                                                    <![endif]-->
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 100%;">
+                                                                    <span style="font-size:13px">
+                                                                        <strong>
+                                                                            Atención a: <?php echo $cliente['Cliente']['nombre']?>
+                                                                        </strong>&nbsp;<br><br>
+                                                                        <?= $contenido?>
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <!--[if mso]>
+                                                    </td>
+                                                    <![endif]-->
+                                                            
+                                                    <!--[if mso]>
+                                                    </tr>
+                                                    </table>
+                                                    <![endif]-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageCardBlock">
+                                        <tbody class="mcnImageCardBlockOuter">
+                                            <tr>
+                                                <td class="mcnImageCardBlockInner" valign="top" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageCardBlock">
+                                        <tbody class="mcnImageCardBlockOuter">
+                                            <tr>
+                                                <td class="mcnImageCardBlockInner" valign="top" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" class="mcnImageCardLeftContentOuter" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" valign="top" class="mcnImageCardLeftContentInner" style="padding: 0px;background-color: #08A5B3;">
+                                                                    <table align="right" border="0" cellpadding="0" cellspacing="0" class="mcnImageCardLeftImageContentContainer" width="200">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="mcnImageCardLeftImageContent" align="center" valign="top" style="padding-top:18px; padding-right:18px; padding-bottom:18px; padding-left:0;">
+                                                                                    <img alt="" src="<?= Router::url($usuario['User']['foto'], true); ?>" width="100" style="max-width: 100px; border-radius: 2%;" class="mcnImage">
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <table class="mcnImageCardLeftTextContentContainer" align="left" border="0" cellpadding="0" cellspacing="0" width="346">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td valign="top" class="mcnTextContent" style="padding-left: 18px;padding-top: 18px;padding-bottom: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 13px;font-style: normal;font-weight: normal;line-height: 150%;text-align: left;">
+                                                                                    Asesor: <?= $usuario['User']['nombre_completo']?><br>
+                                                                                    Email: <?= $usuario['User']['correo_electronico']?><br>
+                                                                                    Teléfono:<?= $usuario['User']['telefono1']?><br>
+                                                                                    <?php if ($usuario['User']['telefono2'] != ''): ?>
+                                                                                    Teléfono 2: <?= $usuario['User']['telefono2']?>
+                                                                                    <?php endif ?>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
                             </tr>
+                            <!-- footer -->
                             <tr>
-                                <td valign="top" id="templateFooter"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
-    <tbody class="mcnTextBlockOuter">
-        <tr>
-            <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
-                <!--[if mso]>
-        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-        <tr>
-        <![endif]-->
-          
-        <!--[if mso]>
-        <td valign="top" width="600" style="width:600px;">
-        <![endif]-->
-                <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
-                        
-                            <div style="background-color: #555555; padding-top: 10px; padding-bottom: 10px;">
-<div style="text-align: center;"><span style="color:#FFFFFF">Power by</span><br>
-<img data-file-id="89917" height="42" src="<?= Router::url('/img/logo_inmosystem.png',true) ?>" style="border: 0px  ; width: 80px; height: 42px; margin: 0px;" width="80"><br>
-<span style="color:#FFFFFF">Todos los derechos reservados <?= date('Y'); ?></span></div>
-</div>
-
-                        </td>
-                    </tr>
-                </tbody></table>
-        <!--[if mso]>
-        </td>
-        <![endif]-->
-                
-        <!--[if mso]>
-        </tr>
-        </table>
-        <![endif]-->
-            </td>
-        </tr>
-    </tbody>
-</table></td>
+                                <td valign="top" id="templateFooter">
+                                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width:100%;">
+                                        <tbody class="mcnTextBlockOuter">
+                                            <tr>
+                                                <td valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                                                    <!--[if mso]>
+                                                    <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                                                    <tr>
+                                                    <![endif]-->
+                                                    
+                                                    <!--[if mso]>
+                                                    <td valign="top" width="600" style="width:600px;">
+                                                    <![endif]-->
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                                                                    <div style="background-color: #555555; padding-top: 10px; padding-bottom: 10px;">
+                                                                        <div style="text-align: center;">
+                                                                            <span style="color:#FFFFFF">
+                                                                                Power by
+                                                                            </span>
+                                                                            <br>
+                                                                            <img data-file-id="89917" height="42" src="<?= Router::url('/img/logo_inmosystem.png',true) ?>" style="border: 0px  ; width: 80px; height: 42px; margin: 0px;" width="80">
+                                                                            <br>
+                                                                            <span style="color:#FFFFFF">
+                                                                                Todos los derechos reservados <?= date('Y'); ?>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <!--[if mso]>
+                                                    </td>
+                                                    <![endif]-->
+                                                            
+                                                    <!--[if mso]>
+                                                    </tr>
+                                                    </table>
+                                                    <![endif]-->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
                             </tr>
                         </table>
                         <!--[if (gte mso 9)|(IE)]>

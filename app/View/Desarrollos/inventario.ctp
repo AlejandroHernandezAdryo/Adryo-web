@@ -250,7 +250,6 @@
 
     let urlapi = `https://adryo.com.mx/inmuebles/inmueble_view_info`;
 
-
     $(document).ready(function () {
         let cuenta = '<?= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'); ?>';
         let desarrollo = '<?= $id ?>';
@@ -469,8 +468,6 @@
 
     function view_detail(id = null){
         $('#myModal').html('');
-        // alert(id);
-        // let cuenta = '<?= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'); ?>';
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "Inmuebles", "action" => "view_info_inmueble_inventario")); ?>",
@@ -631,7 +628,7 @@
                                 <br>
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        $ `+response[0].inmueble.user+`
+                                        `+response[0].inmueble.user+`
                                     </small>
                                 </div>
                             </div>
@@ -644,7 +641,7 @@
                                 <br>
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        `+response[0].inmueble.nivel_propiedad+`
+                                        `+response[0].inmueble.cliente+`
                                     </small>
                                 </div>
                             </div>
@@ -657,7 +654,7 @@
                                 <br>
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        `+response[0].inmueble.avitable+`
+                                        `+response[0].inmueble.user+`
                                     </small>
                                 </div>
                             </div>
@@ -708,8 +705,6 @@
                 // console.log(reponse);
             }
         });
-        
-        // console.log(id);
     }
 
 

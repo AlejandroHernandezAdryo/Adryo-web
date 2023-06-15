@@ -774,7 +774,7 @@
 																					<td>
 																					</td>
 																					<td id="photo-asesor">
-																						<div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: 100% auto;">&nbsp;</div>
+																						<div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;">&nbsp;</div>
 																					</td>
 																					<td id="icons-asesor">
 																						<table style="height: 100%;width: 30px;background: #ADB5BD;border-radius: 4px;">
