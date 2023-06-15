@@ -231,10 +231,10 @@ class ValidationsController extends AppController {
         $this->loadModel('Validation');
         $this->Validation->Behaviors->load('Containable');
         if ( $this->request->is('post') ){
-            $this->request->data['Validation']['id']              = $this->request->data['Validacions']['validacion_id'];
-            $this->request->data['Validation']['validacion_name'] = $this->request->data['Validacions']['nombre'];
-            $this->request->data['Validation']['etapa_id'] = $this->request->data['Validacions']['etapa_inicio'];
-            $this->request->data['Validation']['status']          =  $this->request->data['Validacions']['status'];
+            $this->request->data['Validation']['id']              = $this->request->data['EditValidacions']['validacion_id'];
+            $this->request->data['Validation']['validacion_name'] = $this->request->data['EditValidacions']['nombre'];
+            $this->request->data['Validation']['etapa_id'] = $this->request->data['EditValidacions']['etapa_inicio'];
+            $this->request->data['Validation']['status']          =  $this->request->data['EditValidacions']['status'];
             if ( $this->Validation->save($this->request->data['Validation']) ) {
 
                 $response = array(
