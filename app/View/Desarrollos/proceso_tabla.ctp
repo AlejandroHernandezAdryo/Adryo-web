@@ -224,7 +224,6 @@
     }
     function activarDesactivar(id){
         let validacionId = id;
-        console.log(validacionId);
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "Validations", "action" => "activar_desactivar")); ?>",
@@ -235,6 +234,8 @@
             },
             success: function (response) {
                 window.location.reload();
+                // console.log(response);
+
 
             }
         });
