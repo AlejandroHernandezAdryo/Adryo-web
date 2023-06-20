@@ -5061,6 +5061,8 @@ class DesarrollosController extends AppController {
         $this->autoRender = false; 
     }
     
+    public function inventario($id=null){
 
+    }
 
 }

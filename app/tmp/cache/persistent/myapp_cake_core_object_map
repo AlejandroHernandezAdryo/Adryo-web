@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 1773598079
+=======
+1771262050
+>>>>>>> 3e906135cb641b6d92a72257eb9a20145f9bd534
 a:2:{i:0;b:0;s:3:"app";a:1:{s:7:"plugins";a:4:{i:0;s:7:"CakePdf";i:1;s:8:"DebugKit";i:2;s:6:"Dompdf";i:3;s:10:"TCPDF-main";}}}

@@ -1,5 +1,6 @@
 <?php
     $interesados = count($desarrollo['Interesados']);
+    // $interesados_ = count($desarrollo['operacionesInmuebles']);
     $count = 0;
     $data_status_prop = array('bloqueados'=>0, 'libres'=>0, 'reserva'=>0, 'contrato'=>0, 'escrituracion'=>0, 'baja'=>0);
     $estados = array(
@@ -140,7 +141,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title" id="myModalLabel1">
                     <i class="fa fa-line-chart"></i>
-                    Editar Campaña
+                    Editar Campaña 
                 </h4>
             </div>
             <?= $this->Form->create('Publicidad',array('url'=>array('action'=>'editPublicidad','controller'=>'publicidads')))?>
@@ -1780,7 +1781,7 @@
                 <div class="card-header bg-blue-is">
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
-                            Inventario
+                            Inventario <?php $interesados_ ?>
                         </div>
                         <?php 
                             if ($this->Session->read('CuentaUsuario.CuentasUser.cuenta_id') == $desarrollo['Desarrollo']['cuenta_id']):
@@ -1811,7 +1812,6 @@
                     </div>
                 </div>
                 <div class="card-block cards_section_margin">
-                    
                     <div class="row" style="background-color: #D1D1D1; margin: 5px; border-radius: 5px; text-transform: uppercase; font-weight: 600;">
                         <div class="col-sm-12 col-lg-6">
                             Total de unidades <?= count($desarrollo['Propiedades']) ?>
@@ -1820,8 +1820,6 @@
                             <span id="sum_propiedades_q"></span>
                         </div>
                     </div>
-
-
                     <div class="row mt-1">
                         <div class="col-sm-4 col-lg-2 text-center">
                             Baja
@@ -1830,7 +1828,6 @@
                                 </span>
                             </div>
                         </div>
-
                         <div class="col-sm-4 col-lg-2 text-center">
                             Bloqueados
                             <div class="number chips bg-bloqueado" style="padding: 2px 5px 2px 5px;">

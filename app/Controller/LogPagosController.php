@@ -22,7 +22,7 @@ class LogPagosController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow(array('view_datos_cliente','pago_mes_cliente','log_pago_lleno'));
+        $this->Auth->allow(array('view_datos_cliente','pago_mes_cliente_','log_pago_lleno'));
       
     }
     /**
@@ -325,6 +325,10 @@ class LogPagosController extends AppController {
                 $reponse_[$i]['cliente']['apartado']           = $value['Cotizacion']['apartado'];
                 $reponse_[$i]['cliente']['contrato']           = $value['Cotizacion']['contrato'];
                 $reponse_[$i]['cliente']['meses']              = $value['Cotizacion']['meses'];
+                $reponse_[$i]['cliente']['precio_cierre']      = round($value['OperacionesInmueble']['precio_cierre'],2);
+                $reponse_[$i]['cliente']['user_nombre']        = $value['User']['nombre_completo'];
+                // $reponse_[$i]['cliente']['totalpagado']        = $value[0]['LogPago']['monto_total_pagado'];
+
                 $reponse_[$i]['cliente']['mensualidad']        = round($mesualidades,2);
                 foreach ($value['LogPago'] as $pagos) {
                     $reponse_[$i]['pagos'][$j]['id']               = $pagos['id'];
@@ -335,7 +339,7 @@ class LogPagosController extends AppController {
                     $reponse_[$i]['pagos'][$j]['status']           = $pagos['status'];
                     $reponse_[$i]['pagos'][$j]['comprobante']      = $pagos['comprobante'];
                     $reponse_[$i]['pagos'][$j]['fecha_pago']       = $pagos['fecha_pago'];
-                    // $reponse[$j]['pagos']['fecha']                = $pagos['fecha_programada'];
+                    $reponse_[$i]['cliente']['totalpagado']               = $pagos['monto_total_pagado'];
                     $j++;
                 }
                 $i++;
@@ -392,7 +396,7 @@ class LogPagosController extends AppController {
      * 
      * 
     */
-    function pago_mes_cliente(){
+    function pago_mes_cliente_(){
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('LogPago');
         $this->LogPago->Behaviors->load('Containable');
