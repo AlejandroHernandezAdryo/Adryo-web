@@ -483,7 +483,6 @@
                     },
                 ]
             });
-            table.destroy();
             table = $('#sample_1').DataTable({
                 'destroy': true,
                 'paging': false,
