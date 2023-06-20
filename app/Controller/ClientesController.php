@@ -8757,7 +8757,7 @@ class ClientesController extends AppController {
     $response       = [];
     $user_id        = '';
 		$telefono_			= '';
-    if ($this->request->is('post')) {
+    if ($this->request->is('post') && $this->request->data['api_key'] != null) {
 
       // Buscamos el id del asesor por medio del email
       if( !empty($this->request->data['email_user']) ){
@@ -8771,6 +8771,12 @@ class ClientesController extends AppController {
 
 			// Obtener los �ltimos 10 caracteres
 			$phone = substr($cadenaSinEspacios, -10);
+      
+      if( !empty($this->request->data['comentario']) ){
+        $comentarios = $this->request->data['comentario'];
+      }else {
+        $comentarios = 'agregado por api - '.$this->request->data['api_key'];
+      }
 
       $params_cliente = array(
         'nombre'              => $this->request->data['nombre'],
@@ -8781,7 +8787,7 @@ class ClientesController extends AppController {
         'tipo_cliente'        => $this->request->data['dic_tipo_cliente_id'],
         'propiedades_interes' => 'D'.$this->request->data['propiedad_id'],
         'forma_contacto'      => $this->request->data['dic_linea_contacto_id'],
-        'comentario'          => '',
+        'comentario'          => $comentarios,
         'asesor_id'           => $user_id,
         'created'             => null,
       );
@@ -9578,27 +9584,7 @@ class ClientesController extends AppController {
         $i++;
       }
     }
-    // $response=array();
-    // $i=0;
-    // $fi='2021-10-01 00:00:00';
-    // $ff='2022-10-21 23:59:59';
-    // $user_id=630;
-    // $motivos_reasignaciones = $this->User->query(
-    //   "SELECT COUNT(*) AS reasignaciones, motivo_cambio 
-    //   FROM reasignacions 
-    //   WHERE (asesor_original = $user_id OR asesor_nuevo = $user_id) 
-    //   AND motivo_cambio IS NOT NULL 
-    //   AND fecha >= '$fi' 
-    //   AND fecha <= '$ff' 
-    //   GROUP BY motivo_cambio;"
-    // );
-    // foreach ($motivos_reasignaciones as  $value) {
-    //   $response[$i]['cantidad']=$value[0]['reasignaciones'];
-    //   $response[$i]['motivo']=$value['reasignacions']['motivo_cambio'];
-    //   // $response[$i]['']=$value[0][''];
-    //   // $response[$i]['']=$value[0][''];
-    //   $i++;
-    // }
+  
     if (empty($response)) {
       $response[$i]['cantidad']    = 100;
       $response[$i]['motivo']   = 'sin informacion';

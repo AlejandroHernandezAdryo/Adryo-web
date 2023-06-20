@@ -27,58 +27,61 @@
 <div class="modal fade" id="modal_edit_validacion">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-        <?= $this->Form->create('Validacions', array('type'=>'file'))?>
+        <?= $this->Form->create('EdictSubvalidacion', array('type'=>'file'))?>
             <div class="modal-header">
                 Edicion de la Tarea
             </div>
             <div class="modal-body">
                 <div class="row mt-1">
-                
-                    <?=
-                        $this->Form->input('nombre',
-                            array(
-                                'label'   => 'Nombre',
-                                'div'     => 'col-sm-12 col-lg-6 mt-1',
-                                'class'   => 'form-control',
-                                // 'readonly' => true,
-                                'id' => 'nombre',
-                            )
-                        );
+
+                    <?= $this->Form->input('subnombre', array(
+                        'class'       => 'form-control',
+                        'div'         =>'col-sm-12 col-lg-6 mt-1',
+                        // 'required' => true,
+                        'id' => 'subnombre',
+                        'placeholder' => 'Escribe un nombre para la tarea',
+                        'label'       => 'Nombre de la tarea'
+                        ))
                     ?>
-                    
-                    <?= 
-                        $this->Form->input('etapa_inicio', array(
-                            'div'     => 'col-sm-12 col-lg-6 mt-1',
-                            'class'   => 'form-control',
-                            'placeholder' => 'Selecciona etapa',
-                            'id' => 'etapa_inicio',
-                            'label'       => 'Etapa <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona la etapa <br> Esta es la etapa en la que se iniciará el proceso." data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
-                            'options'     =>  array(
-                                '5' => 'Etapa 5',
-                                '6' => 'Etapa 6',
-                                '7' => 'Etapa 7',
-                            )
+
+                    <?= $this->Form->input('status', array(
+                        'class'       => 'form-control',
+                        'div'         =>'col-sm-12 col-lg-6 mt-1',
+                        'id' => 'status',
+                        'placeholder' => 'Buscador',
+                        'label'       => 'Documentación',
+                        'options'     => array(
+                            '1' => 'Si',
+                            '0' => 'No',
+                        )
+                        ))
+                    ?>
+                    <?= $this->Form->input('rol', array(
+                        'class'       => 'form-control select',
+                        'div'         =>'col-sm-12 col-lg-6 mt-1',
+                        'placeholder' => 'Buscador',
+                        'required' => true,
+                        'type'=>'select',
+                        'id' => 'rol',
+                        'label'       => 'Perfil <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona el perfil <br> Es el perfil que esta asociado con esta tarea.<br>Puedes crear nuevos permisos y modificarlos desde <a>panel de control</a>" data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
+                        'options'     => array(
+                            $roles
+                        )
                         )) 
                     ?>
-                    <?= 
-                        $this->Form->input('status', array(
-                            'div'     => 'col-sm-12 col-lg-6 mt-1',
-                            'label'   => 'Estatus',
-                            'class'   => 'form-control',
-                            'id' => 'status',
-                            'placeholder' => 'Activar o Desactivar',
-                            // 'label'       => 'Etapa <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona la etapa <br> Esta es la etapa en la que se iniciará el proceso." data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
-                            'options'     =>  array(
-                                '0' => 'Inactivo',
-                                '1' => 'Activo',
-                               
-                            )
-                        )) 
-                    ?>
-                    <?php 
-                    echo $this->Form->hidden('validacion_id', array('id'=>'validacion_id', 'value'=>'validacion_id')); 
-                     ?>
+                    <?= $this->Form->input('orden', array(
+                        'id' => 'orden',
+                        'pattern'=> '[0-9]+',
+                        'class'       => 'form-control',
+                        'div'         =>'col-sm-12 col-lg-6 mt-1',
+                        'placeholder' => 'Escribe un orden para la tarea',
+                        'label'       => 'Orden de la tarea (solo números)',
+                    )) ?>
                 </div>
+                <?php 
+                    echo $this->Form->hidden('subvalidacion_id', array('id'=>'subvalidacion_id', 'value'=>'subvalidacion_id')); 
+                     ?>
+
                 <div class="row mt-1">
                     <div class="col-sm-12">
 
@@ -271,24 +274,45 @@
 ?>
 
 <script>
-      function edit(id){
+    function edit(id){
         let subvaliadacion_id = id;
+        console.log(subvaliadacion_id);
         $("#modal_edit_validacion").modal('show')
         $.ajax({
             type: "POST",
-            // url: "<?= Router::url(array("controller" => "Validations", "action" => "view_edit_validacion")); ?>",
+            url: "<?= Router::url(array("controller" => "SubValidations", "action" => "view_edit")); ?>",
             data: {api_key: 'api_key', subvaliadacion_id:subvaliadacion_id },
             dataType: "Json",
             success: function (response) {
-                // console.log(response);
-                // for (let i in response) {
-                //     $("#nombre").val( response[i].nombre);
-                //     $("#status").val( response[i].status);
-                //     $("#etapa_inicio").val( response[i].etapa_id);
-                //     $("#validacion_id").val( response[i].id);
+                console.log(response);
+                for (let i in response) {
+                    $("#subnombre").val( response[i].subvalidation_name);
+                    $("#status").val( response[i].status);
+                    $("#rol").val( response[i].rol_asignado);
+                    $("#orden").val( response[i].orden);
+                    $("#subvalidacion_id").val( response[i].id);
 
-                // }
+                }
             }
+        });
+    }
+    function eliminar(id){
+        let subvaliadacion_id = id;
+        console.log(subvaliadacion_id);
+        // $("#modal_edit_validacion").modal('show')
+
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "SubValidations", "action" => "eliminar")); ?>",
+            data: {api_key: 'api_key', subvaliadacion_id:subvaliadacion_id },
+            dataType: "Json",
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function (response) {
+                window.location.reload();
+                // console.log(response);
+            },
         });
     }
     $(document).on("submit", "#SubValidationAddTareaForm", function (event) {
@@ -317,15 +341,12 @@
     });
     $(document).ready(function () {
         let id=<?=$validation['Validation']['id']?>;
-        console.log(id);
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "SubValidations", "action" => "view")); ?>",
             data: {id: id },
             dataType: 'json',
             success: function (response) {
-                console.log(response);
-                console.log('donde ando');
                 $('#sample_1').dataTable( {
                     destroy: true,
                     data : response,
@@ -370,6 +391,32 @@
             }
         });
     });
+    $(document).on("submit", "#EdictSubvalidacionAddTareaForm", function (event) {
+        event.preventDefault();
+        
+        $.ajax({
+            url        : '<?php echo Router::url(array("controller" => "SubValidations", "action" => "edit")); ?>',
+            type       : "POST",
+            dataType   : "json",
+            data       : new FormData(this),
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function (response) {
+                window.location.reload();
+                // console.log(response);
+            },
+            error: function ( response ) {
+
+                document.getElementById("m_success").innerHTML = 'Ocurrio un problema al intentar guardar el apartado, favor de comunicarlo al administrador con el código ERC-001';
+                location.reload();
+            },
+        });
+    });
+    // EdictSubvalidacionAddTareaForm
+
     var TableAdvanced = function() {
          // ===============table 1====================
         var initTable1 = function() {
