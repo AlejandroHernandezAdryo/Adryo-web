@@ -46,7 +46,7 @@
 <div class="modal fade" id="modal_edit_validacion">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-        <?= $this->Form->create('Validacions', array('type'=>'file'))?>
+        <?= $this->Form->create('EditValidacions', array('type'=>'file'))?>
             <div class="modal-header">
                 Edicion de la Tarea
             </div>
@@ -360,6 +360,32 @@
             success: function (response) {
                 window.location.reload();
                 console.log(response);
+            },
+            error: function ( response ) {
+                console.log(response);
+                document.getElementById("m_success").innerHTML = 'Ocurrio un problema al intentar guardar el apartado, favor de comunicarlo al administrador con el código ERC-001';
+                location.reload();
+            },
+        });
+    });
+
+    // EditValidacions
+    $(document).on("submit", "#EditValidacionsControlTableForm", function (event) {
+        event.preventDefault();
+        
+        $.ajax({
+            url        : '<?php echo Router::url(array("controller" => "Validations", "action" => "edit_validacion")); ?>',
+            type       : "POST",
+            dataType   : "json",
+            data       : new FormData(this),
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function (response) {
+                window.location.reload();
+                // console.log(response);
             },
             error: function ( response ) {
                 console.log(response);
