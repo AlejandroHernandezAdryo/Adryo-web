@@ -481,7 +481,17 @@
                     },
                 ]
             });
-            var tableWrapper = $('#sample_1_wrapper');
+            table = $('#sample_1').DataTable({
+                'destroy': true,
+                'paging': false,
+                'lengthChange': true,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true                            
+            });
+            
+            var tableWrapper = $('#list_clientes_all_wrapper');
             tableWrapper.find('.dataTables_length select').select2();
         }
         

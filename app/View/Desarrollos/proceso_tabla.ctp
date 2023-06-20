@@ -30,38 +30,75 @@
     ),
     array('inline'=>false))
 ?>
-<!-- Modal para la edicion y eliminar el seguimiento rapido. -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-    <?= $this->Form->create('Cliente', array('url'=>array('controller'=>'clientes', 'action' => 'registrar_llamada', $cliente['Cliente']['id']))); ?>
-      <div class="modal-content">
-        <div class="modal-header bg-blue-is">
-          <h4 class="modal-title">Proceso creado</h4>
-          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p>
-                        Para que tu proceso pueda ser implementado es necesario que cuente con tareas.
-                        <br>
-                        <br>
-                        Puedes agregar las tareas ahora o más tarde desde el listado de procesos en el ícono   <i class="fa fa-add" style="color:#215D9C;"></i>
-                    </p>
+<!-- Modal -->
+<div class="modal fade" id="modal_edit_validacion">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <?= $this->Form->create('EditValidacions', array('type'=>'file'))?>
+            <div class="modal-header">
+                Edicion de la Tarea
+            </div>
+            <div class="modal-body">
+                <div class="row mt-1">
+                
+                    <?=
+                        $this->Form->input('nombre',
+                            array(
+                                'label'   => 'Nombre',
+                                'div'     => 'col-sm-12 col-lg-6 mt-1',
+                                'class'   => 'form-control',
+                                // 'readonly' => true,
+                                'id' => 'nombre',
+                            )
+                        );
+                    ?>
+                    
+                    <?= 
+                        $this->Form->input('etapa_inicio', array(
+                            'div'     => 'col-sm-12 col-lg-6 mt-1',
+                            'class'   => 'form-control',
+                            'placeholder' => 'Selecciona etapa',
+                            'id' => 'etapa_inicio',
+                            'label'       => 'Etapa <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona la etapa <br> Esta es la etapa en la que se iniciará el proceso." data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
+                            'options'     =>  array(
+                                '5' => 'Etapa 5',
+                                '6' => 'Etapa 6',
+                                '7' => 'Etapa 7',
+                            )
+                        )) 
+                    ?>
+                    <?= 
+                        $this->Form->input('status', array(
+                            'div'     => 'col-sm-12 col-lg-6 mt-1',
+                            'label'   => 'Estatus',
+                            'class'   => 'form-control',
+                            'id' => 'status',
+                            'placeholder' => 'Activar o Desactivar',
+                            // 'label'       => 'Etapa <i class="fa fa-circle-info text-left" data-html="true" data-placement="top" title="Selecciona la etapa <br> Esta es la etapa en la que se iniciará el proceso." data-toggle="tooltip" style="color:#215D9C;margin-left:8px;"></i>',
+                            'options'     =>  array(
+                                '0' => 'Inactivo',
+                                '1' => 'Activo',
+                               
+                            )
+                        )) 
+                    ?>
+                    <?php 
+                    echo $this->Form->hidden('validacion_id', array('id'=>'validacion_id', 'value'=>'validacion_id')); 
+                     ?>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-sm-12">
+
+                        <button type="submit" class="btn btn-primary float-right" style="margin-left:8px;">Aceptar</button>
+                        <button type="button" class="btn btn-primary-o float-right" data-dismiss="modal">Cancelar</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Modal footer -->
-        <div class="modal-footer">
-            <?= $this->Html->link('Agregar tareas',array('controller'=>'desarrollos','action'=>'add_tarea',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary float-xs-right', 'style' => 'margin-left:8px;'))?>
-            <?= $this->Html->link('Regresar',array('controller'=>'desarrollos','action'=>'control_table',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary float-xs-right', 'style' => 'margin-left:8px;'))?>
-            <!-- <button type="button" class="btn btn-primary-o float-xs-right" data-dismiss="modal">Salir</button> -->
-            <!-- <button type="submit" class="btn btn-success">Registrar</button> -->
-        </div>
+            </div>
         <?= $this->Form->end(); ?>
-      </div>
     </div>
 </div>
+<!-- Modal -->
 
 
 <div id="content" class="bg-container">
@@ -164,6 +201,45 @@
     ], array('inline'=>false));
 ?>
 <script>
+
+    function uploadFac(id){
+        let valiadacion_id = id;
+        $("#modal_edit_validacion").modal('show')
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Validations", "action" => "view_edit_validacion")); ?>",
+            data: {api_key: 'api_key', valiadacion_id:valiadacion_id },
+            dataType: "Json",
+            success: function (response) {
+                // console.log(response);
+                for (let i in response) {
+                    $("#nombre").val( response[i].nombre);
+                    $("#status").val( response[i].status);
+                    $("#etapa_inicio").val( response[i].etapa_id);
+                    $("#validacion_id").val( response[i].id);
+
+                }
+            }
+        });
+    }
+    function activarDesactivar(id){
+        let validacionId = id;
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Validations", "action" => "activar_desactivar")); ?>",
+            data: {api_key: 'api_key', validacionId:validacionId },
+            dataType: "Json",
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function (response) {
+                window.location.reload();
+                // console.log(response);
+
+
+            }
+        });
+    }
     $(document).ready(function () {
         let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
         console.log(cuenta_id);
@@ -181,7 +257,7 @@
                     dom: 'Bflr<"table-responsive"t>ip',
                     columnDefs: [
                         {
-                            targets: [ 4 ],
+                            targets: [ 7 ],
                             visible: true,
                             searchable: false
                         },
@@ -242,7 +318,30 @@
             },
         });
     });
-
+    $(document).on("submit", "#EditValidacionsProcesoTablaForm", function (event) {
+        event.preventDefault();
+        
+        $.ajax({
+            url        : '<?php echo Router::url(array("controller" => "Validations", "action" => "edit_validacion")); ?>',
+            type       : "POST",
+            dataType   : "json",
+            data       : new FormData(this),
+            processData: false,
+            contentType: false,
+            // beforeSend: function () {
+            //     $("#overlay").fadeIn();
+            // },
+            success: function (response) {
+                // window.location.reload();
+                console.log(response);
+            },
+            error: function ( response ) {
+                console.log(response);
+                document.getElementById("m_success").innerHTML = 'Ocurrio un problema al intentar guardar el apartado, favor de comunicarlo al administrador con el código ERC-001';
+                location.reload();
+            },
+        });
+    });
     var TableAdvanced = function() {
          // ===============table 1====================
         var initTable1 = function() {
@@ -251,8 +350,8 @@
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
                 columnDefs: [
                     {
-                        targets: [ 3 ],
-                        visible: false,
+                        targets: [ 7 ],
+                        visible: true,
                         searchable: false
                     },
                 ],
@@ -268,15 +367,14 @@
                     },
                 },
                 columns: [
-
-                    { title: "plus" },
-                    { title: "Comprobante" },
-                    { title: "Referencia" },
-                    { title: "programada de Pago" },
+                    { title: "nueva tarea" },                    
+                    { title: "editar proceso" },
+                    { title: "usuario de creacion" },
+                    { title: "etapa" },
+                    { title: "nombre del proceso" },
                     { title: "estatus" },
-                    { title: "negro" },
-    
-                    
+                    { title: "orden" },                    
+                    { title: "progreso" },
                 ],
                 dom: 'Bflr<"table-responsive"t>ip',
                 buttons: [

@@ -1,2 +1,2 @@
-1771358118
+1773599924
 a:3:{s:3:"int";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;s:3:"key";s:7:"primary";}s:10:"cluster_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}s:13:"desarrollo_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}}
