@@ -8771,6 +8771,7 @@ class ClientesController extends AppController {
 
 			// Obtener los �ltimos 10 caracteres
 			$phone = substr($cadenaSinEspacios, -10);
+      
       if( !empty($this->request->data['comentario']) ){
         $comentarios = $this->request->data['comentario'];
       }else {
@@ -9583,27 +9584,7 @@ class ClientesController extends AppController {
         $i++;
       }
     }
-    // $response=array();
-    // $i=0;
-    // $fi='2021-10-01 00:00:00';
-    // $ff='2022-10-21 23:59:59';
-    // $user_id=630;
-    // $motivos_reasignaciones = $this->User->query(
-    //   "SELECT COUNT(*) AS reasignaciones, motivo_cambio 
-    //   FROM reasignacions 
-    //   WHERE (asesor_original = $user_id OR asesor_nuevo = $user_id) 
-    //   AND motivo_cambio IS NOT NULL 
-    //   AND fecha >= '$fi' 
-    //   AND fecha <= '$ff' 
-    //   GROUP BY motivo_cambio;"
-    // );
-    // foreach ($motivos_reasignaciones as  $value) {
-    //   $response[$i]['cantidad']=$value[0]['reasignaciones'];
-    //   $response[$i]['motivo']=$value['reasignacions']['motivo_cambio'];
-    //   // $response[$i]['']=$value[0][''];
-    //   // $response[$i]['']=$value[0][''];
-    //   $i++;
-    // }
+  
     if (empty($response)) {
       $response[$i]['cantidad']    = 100;
       $response[$i]['motivo']   = 'sin informacion';

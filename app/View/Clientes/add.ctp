@@ -99,20 +99,33 @@
                                     <?= $this->Form->create('Cliente',array('class'=>'form-horizontal login_validator', 'id'=>'form_add_cliente')); ?>
                                         
                                         <div class="row" id="row1">
-                                          
-                                            <div class="col-sm-12 col-lg-4">
-                                                <label for="cliente">Nombre</label>
-                                                <input type="text" name="cliente" id="LabelClienteNombre" class="form-control" required>
-                                            </div>
-                                            <div class="col-sm-12 col-lg-4">
-                                                <label for="correo">Correo electrónico</label>
-                                                <input type="email" name="correo" id="LabelClienteCorreoElectronico" class="form-control" required>
-                                            </div>
-                                            <div class="col-sm-12 col-lg-4">
-                                                <label for="telefono">Telefono</label>
-                                                <input type="tel" max-length="10" name="telefono" id="telefono1_fake" class="form-control" pattern="[0-9]{2}-[0-9]{4}-[0-9]{4}" required>
-                                            </div>
-                                          
+                                            <?= $this->Form->input('nombre_fake',
+                                                array(
+                                                    'class'      => 'form-control',
+                                                    'div'        => 'col-sm-12 col-lg-4 form-group',
+                                                    'label'      => 'Nombre',
+                                                    'onkeypress' => "return checkNatural(event)"
+                                                )
+                                            )?>
+                                            <?= $this->Form->input('correo_electronico_fake',
+                                                array(
+                                                    'label'   => array('text' => 'Correo electrónico', 'id' => 'LabelClienteCorreoElectronico'),
+                                                    'div'     => 'col-sm-12 col-lg-4 form-group',
+                                                    'class'   => 'form-control',
+                                                    'onkeyup' => 'validarEmail(this)',
+                                                    'type'    => 'email',
+                                                )
+                                            ) ?>
+
+                                            <?= $this->Form->input('telefono1_fake',
+                                                array(
+                                                    'label'      => 'Teléfono',
+                                                    'div'        => 'col-sm-12 col-lg-4 form-group',
+                                                    'class'      => 'form-control',
+                                                    'onkeypress' => 'return event.charCode >= 48 && event.charCode <= 57',
+                                                    'maxlength' => 10
+                                                )
+                                            ) ?>
                                         </div>
 
                                         <div class="row mt-1">
@@ -449,7 +462,7 @@ function validate_user(){
             error: function ( response ) {
                 console.log( response );
                 $("#modal_success").modal('show');
-                document.getElementById("m_success").innerHTML = 'Ocurrió un error al intentar validar cliente en base de datos <br>Código: EVU-001'+response;
+                document.getElementById("m_success").innerHTML = 'Ocurrió un error al intentar validar cliente en base de datos <br>Código: EVU-001';
             }
         });
     }
