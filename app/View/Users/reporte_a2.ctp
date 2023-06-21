@@ -265,6 +265,7 @@
         color: #FFF
     }
 </style>
+<!-- model -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" >
   <div class="modal-dialog">
       <div class="modal-content">
@@ -279,14 +280,17 @@
           <div class="modal-body">
             <div class="row">
                 <?= $this->Form->input('rango_fechas', array('class'=>'form-control', 'placeholder'=>'dd/mm/yyyy - dd/mm/yyyy', 'div'=>'col-sm-12', 'label'=>'Rango de fechas', 'id'=>'date_range', 'required'=>true, 'autocomplete'=>'off')); ?>
-                 <?= $this->Form->input('user_id', array('type'=>'select','multiple'=>true,'options'=>$users,'class'=>'form-control chzn-select', 'div'=>'col-sm-12', 'label'=>'Seleccionar Asesor', 'required'=>true)); ?>
+                 <?= $this->Form->input('user_id', array('type'=>'select','multiple'=>true,'options'=>$users,'class'=>'form-control chzn-select', 'div'=>'col-sm-12', 'label'=>'Seleccionar Asesor','id'=>'users', 'required'=>true)); ?>
                 <button type="button" class="seleccionar_todos btn btn-primary select" style="margin-top:100px">Seleccionar Todos los Asesores</button>
             </div>
           </div>
           <div class="modal-footer">
-              <button type="submit" class="btn btn-success float-xs-right ">
+            <button type="button" class="btn btn-success float-xs-right" onclick='reporteGrupoAsesor()'>
+                      Buscar
+            </button>
+              <!-- <button type="submit" class="btn btn-success float-xs-right ">
                     Buscar
-              </button>
+              </button> -->
               <button type="button" class="btn btn-danger pull-left " data-dismiss="modal">
                     Cerrar
               </button>
@@ -294,6 +298,69 @@
           <?= $this->Form->end(); ?>
       </div>
   </div>
+</div>
+<!-- model -->
+<div id="content" class="bg-container">
+  <header class="head">
+    <div class="main-bar row">
+      <div class="col-sm-12 col-lg-6">
+        <h4 class="nav_top_align">
+          REPORTE POR GRUPO DE ASESORES
+        </h4>
+      </div>
+      <div class="col-sm-12 col-lg-6">
+        <?= $this->Html->link('<i class="fa fa-cogs fa-2x"></i> Cambiar Rango de Fechas y Asesor', '#myModal', array('data-toggle'=>'modal', 'escape'=>false,'class'=>'no-imprimir float-xs-right','style'=>"color:white")) ?>
+      </div>
+    </div>
+  </header>
+  <div class="outer">
+    <div class="inner bg-light lter bg-container">
+      <div class="row mt-3">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-block" style="padding-top: 10px;">
+              <!-- Encabezado -->
+              <div class="row">
+                <div class="col-sm-12 col-lg-3 mt-1">
+                  <img src="<?= Router::url($this->Session->read('CuentaUsuario.Cuenta.logo'),true) ?>"
+                    alt="Logo cuenta" class="img-fluid logo-printer">
+                </div>
+                <div class="col-sm-12 col-lg-6 mt-1">
+                  <p>
+                    <h2 class="text-sm-center text-black">
+                      <?= $this->Session->read('CuentaUsuario.Cuenta.razon_social')?></h2>
+                  </p>
+                  <h1 class="text-sm-center text-black">
+                    Reporte Grupo de Asesores: <span id=""></span>
+                  </h1>
+                  <p class="text-lg-center" style="font-size: 1rem;">
+                    <b style="font-size:14px">Periodo del: <span id="periodoReporte"> "Sin periodo" </span> </b>
+                  </p>
+                  
+                </div>
+              </div>
+              <!-- elementos -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_status_user_by_ajax') ?>
+                </div>
+              </div>
+              <!-- elementos -->
+              <!-- elementos -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_atencion_grupo_by_ajax') ?>
+                </div>
+              </div>
+              <!-- elementos -->
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </div>
 
 <?php if(isset($asesor)){?>
@@ -402,32 +469,32 @@
               
               
 
-            <div class="row mt-1 salto">
-              <div class="col-sm-12 col-lg-12">
-                  <?= $this->Element('Clientes/Grupo/clientes_temperatura') ?>
-                </div>
-            </div>
-
-
-            <div class="row mt-1 ">
-                <div class="col-sm-12">
-                  <?= $this->Element('Clientes/Grupo/leads_ventas_visitas') ?>
-                </div>
-            </div>
-
-
-
-            <div class="row mt-1 ">
-                <div class="col-sm-12">
-                  <?= $this->Element('Clientes/Grupo/ventas_metas_q') ?>
-                </div>
+              <div class="row mt-1 salto">
+                <div class="col-sm-12 col-lg-12">
+                    <?= $this->Element('Clientes/Grupo/clientes_temperatura') ?>
+                  </div>
               </div>
 
-                <div class="row mt-1 salto">
-                    <div class="col-sm-12">
-                        <?= $this->Element('Clientes/Grupo/ventas_metas') ?>
-                    </div>
+
+              <div class="row mt-1 ">
+                  <div class="col-sm-12">
+                    <?= $this->Element('Clientes/Grupo/leads_ventas_visitas') ?>
+                  </div>
+              </div>
+
+
+
+              <div class="row mt-1 ">
+                  <div class="col-sm-12">
+                    <?= $this->Element('Clientes/Grupo/ventas_metas_q') ?>
+                  </div>
                 </div>
+
+                  <div class="row mt-1 salto">
+                      <div class="col-sm-12">
+                          <?= $this->Element('Clientes/Grupo/ventas_metas') ?>
+                      </div>
+                  </div>
             </div>
           </div>
         </div>
@@ -513,84 +580,90 @@
   ], array('inline'=>false));
 ?>
 <script>
+  function reporteGrupoAsesor(){
+    console.log( $("#date_range").val() );
+    console.log( $("#users").val() );
+    // get_asesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    clientesStatusClientes( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    clientesAtencionClientes( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+  }
 
-
-$(document).ready(function () {
-	$('#date_range').daterangepicker({
-    orientation:"bottom",
-    autoUpdateInput: false,
-    locale: {
-        cancelLabel: 'Clear'
-    }
-  });
-
-  $('#date_range').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
-      return false;
-  });
-
-  $('#date_range').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-      return false;
-  });
-
-    $('.seleccionar_todos').each(function(index) {
-        console.log(index);
-        $(this).on('click', function() {
-            console.log($(this).parent().find('option').text());
-            $(this).parent().find('option').prop('selected', $(this).hasClass('select')).parent().trigger('chosen:updated');
-        });
+  $(document).ready(function () {
+    $('#date_range').daterangepicker({
+      orientation:"bottom",
+      autoUpdateInput: false,
+      locale: {
+          cancelLabel: 'Clear'
+      }
     });
 
-  TableAdvanced.init();
-  $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
-  $(".dataTables_wrapper .dt-buttons .btn").addClass('btn-secondary').removeClass('btn-default');
+    $('#date_range').on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+        return false;
+    });
 
-});
+    $('#date_range').on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+        return false;
+    });
+
+      $('.seleccionar_todos').each(function(index) {
+          console.log(index);
+          $(this).on('click', function() {
+              console.log($(this).parent().find('option').text());
+              $(this).parent().find('option').prop('selected', $(this).hasClass('select')).parent().trigger('chosen:updated');
+          });
+      });
+
+    TableAdvanced.init();
+    $(".dataTables_scrollHeadInner .table").addClass("table-responsive");
+    $(".dataTables_wrapper .dt-buttons .btn").addClass('btn-secondary').removeClass('btn-default');
+
+  });
 
 
 
-var TableAdvanced = function() {
-    // ===============table 1====================
-    var initTable1 = function() {
-        var table = $('#table_v_general');
-        /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
-        /* Set tabletools buttons and button container */
-        table.DataTable({
-            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-            order: [[3, "Desc"]],
-            dom: 'Bflr<"table-responsive"t>ip',
-            buttons: [
-              {
-                extend: 'csv',
-                text: '<i class="fa  fa-file-excel-o"></i> Exportar a Excel',
-                filename: 'ClientList',
-                class : 'excel',
-                charset: 'utf-8',
-                bom: true
-              },
-              {
-                extend: 'print',
-                text: '<i class="fa  fa-print"></i> Imprimir',
-                filename: 'ClientList',
-              },
-            ]
-        });
-        var tableWrapper = $('#sample_1_wrapper'); // datatable creates the table wrapper by adding with id {your_table_id}_wrapper
-        tableWrapper.find('.dataTables_length select').select2(); // initialize select2 dropdown
-    }
-    // ===============table 1===============
+  var TableAdvanced = function() {
+      // ===============table 1====================
+      var initTable1 = function() {
+          var table = $('#table_v_general');
+          /* Table tools samples: https://www.datatables.net/release-datatables/extras/TableTools/ */
+          /* Set tabletools buttons and button container */
+          table.DataTable({
+              lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+              order: [[3, "Desc"]],
+              dom: 'Bflr<"table-responsive"t>ip',
+              buttons: [
+                {
+                  extend: 'csv',
+                  text: '<i class="fa  fa-file-excel-o"></i> Exportar a Excel',
+                  filename: 'ClientList',
+                  class : 'excel',
+                  charset: 'utf-8',
+                  bom: true
+                },
+                {
+                  extend: 'print',
+                  text: '<i class="fa  fa-print"></i> Imprimir',
+                  filename: 'ClientList',
+                },
+              ]
+          });
+          var tableWrapper = $('#sample_1_wrapper'); // datatable creates the table wrapper by adding with id {your_table_id}_wrapper
+          tableWrapper.find('.dataTables_length select').select2(); // initialize select2 dropdown
+      }
+      // ===============table 1===============
 
-    return {
-        //main function to initiate the module
-        init: function() {
-            if (!jQuery().dataTable) {
-                return;
-            }
-            initTable1();
-        }
-    };
-}();
+      return {
+          //main function to initiate the module
+          init: function() {
+              if (!jQuery().dataTable) {
+                  return;
+              }
+              initTable1();
+          }
+      };
+  }();
 
-document.getElementById("ra_tot_monto_venta").innerHTML = '<?= number_format($ra_tot_monto_venta); ?>';
+  document.getElementById("ra_tot_monto_venta").innerHTML = '<?= number_format($ra_tot_monto_venta); ?>';
 </script>
