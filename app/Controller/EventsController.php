@@ -3093,6 +3093,9 @@ class EventsController extends AppController {
                 )
             );
         }
+        echo json_encode( $response, true );
+        exit();
+        $this->autoRender = false;
     }
 
 
