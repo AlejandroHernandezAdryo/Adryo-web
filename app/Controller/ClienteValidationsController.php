@@ -3,12 +3,12 @@ App::uses('AppController', 'Controller');
 App::uses('HttpSocket', 'Network/Http');
 
 /**
- * Clientes Controller log_validation
+ * 
  *
- * @property LogSubValidations $LogSubValidations
+ * @property ClienteValidations $ClienteValidations
  * @property PaginatorComponent $Paginator
  */
-class LogSubValidationsController extends AppController {
+class ClienteValidationsController extends AppController {
 
 
     public $components = array('Paginator' );
