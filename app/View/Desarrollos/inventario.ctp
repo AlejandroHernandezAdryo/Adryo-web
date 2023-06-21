@@ -34,9 +34,10 @@
         );
 ?>
 <!-- Modal para la edicion y eliminar el seguimiento rapido. -->
-<div class="fade side-bar p-0  " id="myModal" style="height: 100%;     padding-right: 0 !important;">
+<div class="fade side-bar" id="myModal">
 </div>
- 
+
+
 <div id="content" class="bg-container">
     <header class="head">
         <div class="main-bar row">
@@ -67,7 +68,6 @@
 
     let urlapi = `https://adryo.com.mx/inmuebles/inmueble_view_info`;
 
-
     $(document).ready(function () {
         let cuenta = '<?= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'); ?>';
         let desarrollo = '<?= $id ?>';
@@ -77,7 +77,7 @@
             data: {api_key: 'adryo', cuenta_id: cuenta, desarrollo_id: desarrollo},
             dataType: "Json",
             success: function (response) {
-                // console.log(response);
+                console.log(response);
 
                 $('#inventory-detail').append(`
                     <div class="card-header">
@@ -222,23 +222,43 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-1" style="display:flex;gap:16px;">
-                            <div id="niveles">
+                        <div id="rootwizard_no_val" class="mt-1">
+                            <ul class="nav nav-tabs" id="desarrollo_tabs">
                                 
-                            </div>
+                            </ul>
                         </div>
                     </div>
                     `);
+                        let torres = parseInt(response[0].Desarrollo.torres);
+                        let y = 1; y <= torres; y++;
+                        function tab_(y = null){
+                            let towers = getElementsByClassName("tower_");
+                            $("#"+y).addClass("active");
+                            console.log(y);
+                            y = 1; y = torres; y++;
+                        }
+                        for (let torre = 1; torre <= torres; torre++){
+                            console.log(torres);
+                            $("#desarrollo_tabs").append(`
+                                <li class="nav-item `+torre+`">
+                                    <a class="nav-link tower_"  id="`+y+`" href="#info_emp" data-toggle="tab" onclick="tab_(`+torre+`)">Torre `+torre+`</a>
+                                </li>
+                                <div class="mt-1" style="display:flex;gap:16px;">
+                                    <div id="niveles`+torre+`">
+                                        
+                                    </div>
+                                </div>
+                            `)
+                        }
                         for (let i = 0; i < response[0].Pisos.length; i++){
                             let piso = response[0].Pisos[i].piso;
-                            $("#niveles").append(`
-                                <div style="display:flex;align-items:baseline;gap:16px;" id="nivel_`+piso+`">
-                                    <div class="level text-center mt-1" id="pisos_`+piso+`">
-                                        `+piso+`
+                            $("#niveles"+torre).append(`
+                                <div style="display:flex;align-items:baseline;gap:16px;" id="nivel_`+piso+torre+`">
+                                    <div class="level text-center mt-1" id="pisos_`+piso+torre+`">
+                                        `+piso+torre+`
                                     </div>
-                                    <div class="apt-tower" id="deptos_`+piso+`"></div>
-                                </div>
-                            `
+                                    <div class="apt-tower" id="deptos_`+piso+torre+`"></div>
+                                </div>`
                             );
                         }
                         for (let i = 0; i < response[0].Inmuebles.length; i++){
@@ -270,13 +290,14 @@
                                     $('.bg_'+estatus).addClass(value.clase);
                                 }
                             });
-                            $("#deptos_"+piso).append(`
+                            $("#deptos_"+piso+torre).append(`
                                 <div onclick="view_detail(`+response[0].Inmuebles[i].id+`)" class="pointer bg_`+estatus+` " data-toggle="modal" data-target="#myModal" >
                                     `+response[0].Inmuebles[i].id+`
                                 </div>
                                 `
                             );
                         }
+                        
                     },
                     error: function ( response ) {
                         console.log(reponse);
@@ -286,8 +307,6 @@
 
     function view_detail(id = null){
         $('#myModal').html('');
-        // alert(id);
-        // let cuenta = '<?= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'); ?>';
         $.ajax({
             type: "POST",
             url: "<?= Router::url(array("controller" => "Inmuebles", "action" => "view_info_inmueble_inventario")); ?>",
@@ -448,7 +467,7 @@
                                 <br>
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        $ `+response[0].inmueble.user+`
+                                        `+response[0].inmueble.user+`
                                     </small>
                                 </div>
                             </div>
@@ -461,7 +480,7 @@
                                 <br>
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        `+response[0].inmueble.nivel_propiedad+`
+                                        `+response[0].inmueble.cliente+`
                                     </small>
                                 </div>
                             </div>
@@ -474,7 +493,7 @@
                                 <br>
                                 <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
                                     <small>
-                                        `+response[0].inmueble.avitable+`
+                                        `+response[0].inmueble.user+`
                                     </small>
                                 </div>
                             </div>
@@ -525,8 +544,6 @@
                 // console.log(reponse);
             }
         });
-        
-        // console.log(id);
     }
 
 

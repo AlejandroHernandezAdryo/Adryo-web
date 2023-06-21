@@ -19,7 +19,8 @@
         '/vendors/datetimepicker/css/DateTimePicker.min',
         '/vendors/clockpicker/css/jquery-clockpicker',
         'pages/colorpicker_hack',
-        'custom'
+        'custom',
+        'components_adryo'
         //'pages/form_elements'
     ),
     array('inline'=>false)),
@@ -110,46 +111,45 @@
                 <textarea class="form-control" name="Observaciones" id="" cols="30" rows="10"></textarea>
             </div>
         </div>
-        <div class="mt-1" style="border: 1px dashed lightgray;border-radius:8px;">
-            <div class="file-drop-area" style="display:flex;flex-direction:column;">
+        <div class="mt-1">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile">
+                <label class="btn btn-primay-o" for="customFile"></label>
+            </div>
+            <!-- <div class="file-drop-area" style="display:flex;flex-direction:column;">
                 <span class="file-message text-center">Arrastra tus archivos aquí <br> o</span>
                 <span class="choose-file-button btn btn-primary-o">Buscar archivos</span>
                 <input class="file-input" type="file" multiple>
-            </div>
+            </div> -->
         </div>
         <div class="mt-3" >
-                        <div>
-                            <div style="border-bottom:1px solid lightgray;display:flex;justify-content:space-between;">
-                                <div style="width:40%">
-                                    <small>
-                                        comprobante de pago.jpg
-                                    </small>
-                                </div>
-                                <div style="width:10%">
-                                    <i class="fa fa-file"></i>
-                                </div>
-                                <div style="width:10%">
-                                    <i class="fa fa-trash"></i>
-                                </div>
-                                <div style="display:flex;gap:4px;">
-                                    <button clas="btn btn-primary">
-                                        <small>
-                                            Validar
-                                        </small>
-                                    </button>
-                                    <button class="btn btn-danger-o">
-                                        <small>
-                                            Rechazar
-                                        </small>
-                                    </button>
-                                </div>
-                            </div>
-                            <!-- <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
-                            <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary'))?> -->
-                            <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
-                            <button class="btn btn-primary">Crear Proceso</button> -->
-                        </div>
+            <div>
+                <div style="border-bottom:1px solid lightgray;display:flex;justify-content:space-between;">
+                    <div style="width:10%">
+                        <i class="fa fa-file"></i>
                     </div>
+                    <div style="width:10%">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div style="display:flex;gap:4px;">
+                        <button class="btn btn-primary">
+                            <small>
+                                Validar
+                            </small>
+                        </button>
+                        <button class="btn btn-danger">
+                            <small>
+                                Rechazar
+                            </small>
+                        </button>
+                    </div>
+                </div>
+                <!-- <?= $this->Html->link('Conoce el proceso de Adryo',array('controller'=>'desarrollos','action'=>'inicio_proceso',$desarrollo['Desarrollo']['id']))?>
+                <?= $this->Html->link('Crear Proceso',array('controller'=>'desarrollos','action'=>'proceso_tabla',$desarrollo['Desarrollo']['id']), array('class' => 'btn btn-primary'))?> -->
+                <!-- <a href="">Conoce el proceso de <b>Adryo</b></a>
+                <button class="btn btn-primary">Crear Proceso</button> -->
+            </div>
+        </div>
     </div>
     <!-- </div> -->
     <!-- <div class="">
@@ -276,9 +276,9 @@
                                 <div style="width:40%">
                                     <?= $this->Html->link('Validar comprobante de pago','#', array('escape'=>false, 'style'=>'margin-left: 5px;', 'id'=>'btn_show_status', 'data-toggle'=>'modal', 'data-target'=>'#myModal'))?>
                                 </div>
-                                <div style="width:10%">
+                                <!-- <div style="width:10%">
                                     24 hrs.
-                                </div>
+                                </div> -->
                                 <div style="width:10%">
                                     Gerente
                                 </div>
