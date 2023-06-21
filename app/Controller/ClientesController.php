@@ -494,7 +494,7 @@ class ClientesController extends AppController {
             'Lead.inmueble_id != '=> ""
           ),
           'order' => array('Lead.id' => 'DESC'),
-          'group' => 'Lead.inmueble_id'
+          // 'group' => 'Lead.inmueble_id'
         )
       );
     
