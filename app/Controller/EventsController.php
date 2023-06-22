@@ -3093,7 +3093,7 @@ class EventsController extends AppController {
                 )
             );
         }
-        echo json_encode( $response, true );
+        echo json_encode( $cancelacion, true );
         exit();
         $this->autoRender = false;
     }
