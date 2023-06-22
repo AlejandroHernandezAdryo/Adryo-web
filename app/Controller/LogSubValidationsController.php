@@ -5,7 +5,7 @@ App::uses('HttpSocket', 'Network/Http');
 /**
  * Clientes Controller log_validation
  *
- * @property Validation $Validation
+ * @property LogSubValidations $LogSubValidations
  * @property PaginatorComponent $Paginator
  */
 class LogSubValidationsController extends AppController {

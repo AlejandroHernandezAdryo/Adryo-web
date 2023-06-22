@@ -2085,7 +2085,23 @@
 <script>
 
     'use strict';
-
+    
+    $(document).ready(function () {
+        let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
+        let cliente = "<?=$param_return?>";
+        console.log(cliente);
+        $.ajax({
+            
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Validations", "action" => "verificar")); ?>",
+            data: {cuenta_id: cuenta_id, cliente:cliente },
+            dataType: "Json",
+            success: function (response) {
+                console.log(response);
+                
+            }
+        });
+    });
     // Función para la seleccion de opciones del seguimiento rápido.
     function seleccion_opcion( id, mensaje ) {
         
@@ -2575,23 +2591,6 @@
         $("#modal_success").modal('show');
         $("#m_success").html( message );
     }
-
-    $(document).ready(function () {
-        let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
-        let cliente = "<?=$param_return?>";
-        console.log(cliente);
-        $.ajax({
-            
-            type: "POST",
-            url: "<?= Router::url(array("controller" => "Validations", "action" => "verificar")); ?>",
-            data: {cuenta_id: cuenta_id, cliente:cliente },
-            dataType: "Json",
-            success: function (response) {
-                console.log(response);
-                
-            }
-        });
-    });
 
     
 

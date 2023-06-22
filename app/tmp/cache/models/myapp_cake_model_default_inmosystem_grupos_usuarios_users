@@ -1,6 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 1687301125
 =======
 1772919643
 >>>>>>> b7760fc2acb8070565551b2f43bd5bb9214fc794
+=======
+1771357320
+>>>>>>> 86b0afcc2a4c20aa2f3ccad224a43b03741392a2
 a:3:{s:2:"id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;s:3:"key";s:7:"primary";}s:7:"user_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}s:17:"grupos_usuario_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}}
