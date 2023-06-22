@@ -8046,38 +8046,6 @@ class ClientesController extends AppController {
         'AND' => $and,
         'OR'  => $or
       );
-      //
-      // $clientes_inactivos = $this->Cliente->find('count',
-      //   array(
-      //     'conditions' => array(
-      //       'AND' => array(
-      //         'Cliente.status'      => 'Inactivo',
-      //         $condiciones
-      //       )
-      //     ),
-      //     'fields' => array(
-      //       'Cliente.id',
-      //     ),
-      //     'order'=>'Cliente.id DESC',
-      //     'contain' => false 
-      //   )
-      // );
-      // $ajendas_motivo=$this->Agenda->find('count',array(
-      //   'conditions'=>array(     
-      //     'Agenda.mensaje LIKE' => '%pasa a estatus inactivo definitivo por motivo:%',
-      //     //'Agenda.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-      //   ),
-      //   'fields' => array(
-      //     'Agenda.cliente_id',
-      //   ),
-      //   'group' => 'Agenda.cliente_id',
-      //   'order'=>'Agenda.cliente_id DESC',
-      //   'contain' => false 
-      //   )
-      // );
-      // if ($clientes_inactivos != $ajendas_motivo) {
-      //   $this->id_no_encontrado_inactivo_definitivo($condiciones);
-      // }
       $clientes_inactivos = $this->Cliente->find('all',
           array(
             'conditions' => array(
@@ -8209,35 +8177,6 @@ class ClientesController extends AppController {
         'AND' => $and,
         'OR'  => $or
       );
-      // $clientes_inactivos_temporales = $this->Cliente->find('count',
-      //   array(
-      //     'conditions' => array(
-      //       'AND' => array(
-      //         'Cliente.status'      => 'Inactivo temporal',
-      //         $condiciones
-      //       )
-      //     ),
-      //     'fields' => array(
-      //       'Cliente.id',
-      //     ),
-      //     'contain' => false 
-      //   )
-      // );
-      // $ajendas_motivo=$this->Agenda->find('count',array(
-      //   'conditions'=>array(     
-      //     'Agenda.mensaje LIKE' => '%pasa a estatus inactivo temporal por motivo:%',
-      //     //'Agenda.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-      //   ),
-      //   'fields' => array(
-      //     'Agenda.cliente_id',
-      //   ),
-      //   'group' => 'Agenda.cliente_id',
-      //   'contain' => false 
-      //   )
-      // );
-      // if($clientes_inactivos_temporales != $ajendas_motivo){
-      //   $this->id_no_encontrado_inactivo_temporal($condiciones);
-      // }
       $clientes_inactivos_temporales = $this->Cliente->find('all',
         array(
           'conditions' => array(
@@ -8302,112 +8241,6 @@ class ClientesController extends AppController {
       $inactivos_temporales[$i]['cantidad']=100;
     }
     echo json_encode( $inactivos_temporales , true );
-    $this->autoRender = false; 
-  }
-  
-  /**
-  * esta funcion se crea para tener msj para acomplatar los clientes
-  * que estan inactivos definitivos ya que no se les agrego un msj
-  *de inactivacion 
-  * AKA RogueOne
-  */
-  public function id_no_encontrado_inactivo_definitivo( $condiciones = null ){
-    $this->Cliente->Behaviors->load('Containable');
-    $this->Agenda->Behaviors->load('Containable');
-    $response = true;
-
-    $clientes_inactivosR = $this->Cliente->find('list',
-      array(
-        'conditions' => array(             
-          'Cliente.status'      => 'Inactivo',
-          $condiciones
-        ),
-        'fields' => array(
-          'Cliente.id',
-          ),
-        'order'=>'Cliente.id DESC',
-        'contain' => false 
-      )
-    );
-
-    $ajendas_motivo=$this->Agenda->find('list',
-        array(
-          'conditions'=>array(     
-            'Agenda.mensaje LIKE' => '%pasa a estatus inactivo definitivo por motivo:%',
-            //'Agenda.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-          ),
-          'fields' => array(
-            'Agenda.cliente_id',
-          ),
-          'group' => 'Agenda.cliente_id',
-          'order'=>'Agenda.cliente_id DESC',
-          'contain' => false 
-        )
-    );
-
-    foreach ( $clientes_inactivosR as $valueC ) {
-
-      if( array_search($valueC , $ajendas_motivo) == false ){
-        
-        $this->Agenda->create();
-        $this->request->data['Agenda']['user_id']    = $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
-        $this->request->data['Agenda']['fecha']      = date('Y-m-d H:i:s');
-        $this->request->data['Agenda']['mensaje']    = 'pasa a estatus inactivo definitivo por motivo: No le interesa ninguna de las propiedades';
-        $this->request->data['Agenda']['cliente_id'] = $valueC;
-        
-        if( !$this->Agenda->save($this->request->data) ){
-          $response = false; 
-        }
-
-      }
-
-    }
-
-    return $response;
-    $this->autoRender = false; 
-  }
-  /**
-  * esta funcion crea msj para los clientes que no tengan 
-  * msj de inactivacion temporal 
-  * AKA RogueOne
-  */
-  public function id_no_encontrado_inactivo_temporal($condiciones){
-    $clientes_temporalesR = $this->Cliente->find('list',
-      array(
-        'conditions' => array(             
-          'Cliente.status'      => 'Inactivo temporal',
-          $condiciones
-        ),
-        'fields' => array(
-          'Cliente.id',
-          ),
-        'order'=>'Cliente.id DESC',
-        'contain' => false 
-      )
-    );
-    $ajendas_motivo=$this->Agenda->find('list',array(
-      'conditions'=>array(     
-        'Agenda.mensaje LIKE' => '%pasa a estatus inactivo temporal por motivo:%',
-       // 'Agenda.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-      ),
-      'fields' => array(
-        'Agenda.cliente_id',
-      ),
-      'group' => 'Agenda.cliente_id',
-      'order'=>'Agenda.cliente_id DESC',
-      'contain' => false  
-      )
-    );
-    foreach ($clientes_temporalesR as $valueC) {
-      if(array_search($valueC,$ajendas_motivo)==false){
-        $this->Agenda->create();
-        $this->request->data['Agenda']['mensaje']='pasa a estatus inactivo temporal por motivo:Solicitó contactarlo tiempo después y pide reconectaco el 06/09/2022';
-        $this->request->data['Agenda']['cliente_id']=$valueC;
-        $this->request->data['Agenda']['fecha']=date('Y-m-d H:i:s');
-        $this->request->data['Agenda']['user_id']=1;
-        $this->Agenda->save($this->request->data['Agenda']);
-      }
-    }
     $this->autoRender = false; 
   }
 
@@ -11845,6 +11678,210 @@ class ClientesController extends AppController {
     exit();
     $this->autoRender = false;
 
+  }
+  /**
+   * no se 
+   * 
+   * 
+  */
+  function clientes_status_grupo(){
+    header('Content-type: application/json; charset=utf-8');
+    $this->loadModel('User');
+    $this->User->Behaviors->load('Containable');
+    $condiciones = [];
+    $fecha_ini   = '';
+    $fecha_fin   = '';
+    $and         = [];
+    $logand      = [];
+    $or          = [];
+    $response    = [];
+    $i    = 0;
+    if ($this->request->is('post')) {
+      
+      if( !empty($this->request->data['rango_fechas']) ){
+        $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+        $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+        $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+        $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));
+        if ($fi == $ff){
+            $cond_rangos = array("Cliente.fecha_cambio_etapa LIKE '".$fi."%'");
+        }else{
+            $cond_rangos = array("Cliente.fecha_cambio_etapa BETWEEN ? AND ?" => array($fi, $ff));
+        }
+      }
+      foreach ($this->request->data['user_id'] as $user) {
+        $search_user=$this->User->find('first',array(
+          'conditions'=>array(
+            'User.id'=>$user, 
+          ),  
+          'fields'=>array(
+            'User.nombre_completo',
+          ),
+          'contain' => false 
+        ));
+        $clientes_activos[$i]['activos'] = $this->Cliente->find('count',
+          array(
+            'conditions' => array(
+              'AND' => array(
+                'Cliente.status'      => 'Activo',
+                'Cliente.user_id'     => $user,
+                $cond_rangos
+              )
+            )
+          )
+        );
+        $clientes_inactivos[$i]['Inactivo'] = $this->Cliente->find('count',
+            array(
+              'conditions' => array(
+                'AND' => array(
+                  'Cliente.status'      => 'Inactivo',
+                  'Cliente.user_id'     => $user,
+                  $cond_rangos
+                )
+              )
+            )
+        );
+         $clientes_inactivos_temporales[$i]['temporal'] = $this->Cliente->find('count',
+            array(
+              'conditions' => array(
+                'AND' => array(
+                  'Cliente.status'      => 'Inactivo temporal',
+                  'Cliente.user_id'     => $user,
+                  $cond_rangos
+                )
+              )
+            )
+        );
+        $response[$i]['user_name'] = $search_user['User']['nombre_completo'];
+        $response[$i]['activos']   = $clientes_activos[$i]['activos'];
+        $response[$i]['Inactivo']  = $clientes_inactivos[$i]['Inactivo'];
+        $response[$i]['temporal']  = $clientes_inactivos_temporales[$i]['temporal'];
+
+        $i++;
+      }
+
+    }
+    if (empty($response)) {
+      $response[$i]['user_name']  = 'sin datos';
+      $response[$i]['activos']  = 0;
+      $response[$i]['Inactivo'] = 0;
+      $response[$i]['temporal'] = 0;
+    }
+    echo json_encode ( $response );
+    exit();
+    $this->autoRender = false;
+    
+  }
+  /**
+   * 
+   * no se 
+   * 
+  */
+  function clientes_atencion_grupo(){
+    header('Content-type: application/json; charset=utf-8');
+    $this->Cliente->Behaviors->load('Containable');
+    $this->User->Behaviors->load('Containable');
+    $clientes_oportunos         = 0;
+    $clientes_tardia            = 0;
+    $clientes_atrasados         = 0;
+    $clientes_reasignar         = 0;
+    $clientes_sin_seguimiento   = 0;
+    $condiciones                = [];
+    $fecha_ini                  = '';
+    $fecha_fin                  = '';
+    $and                        = [];
+    $or                         = [];
+    $cond_atencion_tardia       = 0;
+    $cond_atencion_no_atendidos = 0;
+    $cond_atencion_reasignar    = 0;
+    $cond_atencion              = 0;
+    $i              = 0;
+    if ($this->request->is('post')) {
+      // Condicion para el rango de fechas
+      if( !empty($this->request->data['rango_fechas']) ){
+        $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+        $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+        $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+        $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));
+        if ($fi == $ff){
+            $cond_rangos = array("Cliente.fecha_cambio_etapa LIKE '".$fi."%'");
+        }else{
+            $cond_rangos = array("Cliente.fecha_cambio_etapa BETWEEN ? AND ?" => array($fi, $ff));
+        }
+      }
+      $cond_atencion_aportuna = array("Cliente.last_edit >= DATE_SUB(CURDATE(),INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_oportuna')." DAY)");
+      $cond_atencion_tardia = array("Cliente.last_edit >= DATE_SUB(CURDATE(),INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_atrasados')." DAY)","last_edit < DATE_SUB(CURDATE(),INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_oportuna')." DAY)");
+      $cond_atencion_no_atendidos = array("Cliente.last_edit >= DATE_SUB(CURDATE(),INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos')." DAY)","Cliente.last_edit < DATE_SUB(CURDATE(),INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_atrasados')." DAY)");
+      $cond_atencion_reasignar = array("Cliente.last_edit < DATE_SUB(CURDATE(),INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos')." DAY)"); 
+      foreach ($this->request->data['user_id'] as $user) {
+        $search_user=$this->User->find('first',array(
+          'conditions'=>array(
+            'User.id'=>$user, 
+          ),  
+          'fields'=>array(
+            'User.nombre_completo',
+          ),
+          'contain' => false 
+        ));
+        $clientes_oportunos = $this->Cliente->find('count',
+          array(
+            'conditions' => array(
+              'Cliente.status'        => 'Activo',
+              'Cliente.user_id'     => $user,
+              $cond_atencion_aportuna,
+              $cond_rangos
+            )
+          )
+        );
+        $clientes_tardia= $this->Cliente->find('count',
+          array(
+            'conditions' => array(
+              'Cliente.status'        => 'Activo',
+              'Cliente.user_id'     => $user,
+              $cond_atencion_tardia,
+              $cond_rangos
+            )
+          )
+        );
+        $clientes_atrasados=  $this->Cliente->find('count',
+          array(
+            'conditions' => array(
+              'Cliente.status'        => 'Activo',
+              'Cliente.user_id'     => $user,
+              $cond_atencion_no_atendidos,
+              $cond_rangos
+            )
+          )
+        );
+        $clientes_reasignar= $this->Cliente->find('count',
+          array(
+            'conditions' => array(
+              'Cliente.status'        => 'Activo',
+              'Cliente.user_id'     => $user,
+              $cond_atencion_reasignar,
+              $cond_rangos
+            )
+          )
+        );
+        $response[$i]['user_name']   = $search_user['User']['nombre_completo'];
+        $response[$i]['oportunos']   = $clientes_oportunos;
+        $response[$i]['tardios']     = $clientes_tardia;
+        $response[$i]['no_atendido'] = $clientes_atrasados;
+        $response[$i]['reasignar']   = $clientes_reasignar;
+        $i++;
+      }
+    }
+    if (empty($response)) {
+      $response[$i]['user_name']   = 'sin infomacion';
+      $response[$i]['oportunos']   = 0;
+      $response[$i]['tardios']     = 0;
+      $response[$i]['no_atendido'] = 0;
+      $response[$i]['reasignar']   = 0;
+
+    }
+    echo json_encode ( $response );
+    exit();
+    $this->autoRender = false;
   }
   
 

@@ -2139,29 +2139,6 @@ class EventsController extends AppController {
                     'contain' => false 
                 )
             );
-            // if ($cancelacion == 0) {
-            //     $cancelacion= $this->Event->find('all',array(
-            //         'conditions'=>array(   
-            //                 'Event.desarrollo_id' =>$desarrollo_id,
-            //                 $cond_rangos,
-            //             ),
-            //             'fields' => array(
-            //                 'Event.motivo_cancelacion',
-            //                 'Event.id',
-    
-            //             ),
-            //             'contain' => false 
-            //         )
-            //     );
-            //     foreach ($cancelacion as $value) {
-            //         if ($value['Event']['motivo_cancelacion']==null) {
-            //             $this->request->data['Event']['id'] = $value['Event']['id'];
-            //             $this->request->data['Event']['motivo_cancelacion']  = 'Cancelación del sistema';
-            //             $this->Event->save($this->request->data);
-            //         }
-                    
-            //     }
-            // }
             $cancelaciones_raw = $this->Desarrollo->query(
                 "SELECT motivo_cancelacion, COUNT(*) AS sumatoria 
                 FROM events
@@ -2180,59 +2157,6 @@ class EventsController extends AppController {
                 $i++;
             }
         }
-        // $fi='2016-10-01 00:00:00';
-        // $ff='2022-06-21 23:59:59';
-        // $desarrollo_id =68;
-        // $condiciones=[
-        //     //'Event.cuenta_id' => $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'),
-        //     //'Event.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-        //     "Event.fecha_inicio BETWEEN ? AND ?" => array($fi, $ff),
-        //     'Event.desarrollo_id' =>68,
-
-        // ];
-        // $cancelacion= $this->Event->find('count',array(
-        //     'conditions'=>array(   
-        //             'Event.motivo_cancelacion <>' => '',
-        //             $condiciones
-        //         ),
-        //         'fields' => array(
-        //             'Event.motivo_cancelacion',
-        //         ),
-        //         'contain' => false 
-        //     )
-        // );
-        // if ($cancelacion == 0) {
-        //     $cancelacion= $this->Event->find('all',array(
-        //         'conditions'=>array(   
-        //                 $condiciones
-        //             ),
-        //             'fields' => array(
-        //                 'Event.motivo_cancelacion',
-        //                 'Event.id',
-
-        //             ),
-        //             'contain' => false 
-        //         )
-        //     );
-        //     foreach ($cancelacion as $value) {
-        //         if ($value['Event']['motivo_cancelacion']==null) {
-        //             $this->request->data['Event']['id'] = $value['Event']['id'];
-        //             $this->request->data['Event']['motivo_cancelacion']  = 'cancelacion del sistema';
-        //             $this->Event->save($this->request->data);
-        //         }
-                
-        //     }
-        // }
-        // $cancelaciones_raw = $this->Desarrollo->query(
-        //     "SELECT motivo_cancelacion, COUNT(*) AS sumatoria 
-        //     FROM events WHERE  desarrollo_id IN ($desarrollo_id ) AND motivo_cancelacion IS NOT NULL  
-        //     AND fecha_inicio >= '$fi' AND fecha_inicio <= '$ff'  GROUP BY motivo_cancelacion"
-        // );
-        // foreach ($cancelaciones_raw as  $value) {
-        //     $motivo_cancelacion[$i]['motivo']=$value['events']['motivo_cancelacion'];
-        //     $motivo_cancelacion[$i]['cantidad']=$value[0]['sumatoria'];
-        //     $i++;
-        // }
         if (empty($motivo_cancelacion)) {
             $motivo_cancelacion[$i]['motivo']='sin informacion';
             $motivo_cancelacion[$i]['cantidad']=100;
@@ -3126,6 +3050,50 @@ class EventsController extends AppController {
             $response[$i]['cantidad']= 0; 
         }
         echo json_encode( $response, true );
+        exit();
+        $this->autoRender = false;
+    }
+    /**
+     * 
+     * 
+     * 
+    */
+    function citas_cancelacion_grupo(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->Event->Behaviors->load('Containable');
+        $fecha_ini         = '';
+        $fecha_fin         = '';
+        $and               = [];
+        $or                = [];
+        $cancelaciones_raw = [];
+        $motivo_cancelacion=[];
+        $condiciones =[];
+        $desarrollo_id=0;
+        $i=0;
+        if ($this->request->is('post')) {
+            $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+            $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+            $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+            $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));    
+            if ($fi == $ff){
+                $cond_rangos = array("Event.fecha_inicio LIKE '".$fi."%'");
+                }else{
+                $cond_rangos = array("Event.fecha_inicio BETWEEN ? AND ?" => array($fi, $ff));
+            }
+            $cancelacion= $this->Event->find('count',array(
+                'conditions'=>array(   
+                        'Event.motivo_cancelacion <>' => '',
+                        'Event.user_id' =>663,
+                        $cond_rangos,
+                    ),
+                    'fields' => array(
+                        'Event.motivo_cancelacion',
+                    ),
+                    'contain' => false 
+                )
+            );
+        }
+        echo json_encode( $cancelacion, true );
         exit();
         $this->autoRender = false;
     }
