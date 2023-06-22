@@ -682,6 +682,7 @@
                                     <i class="fa fa-angle-left pull-right menu_hide"></i>
                                 </a>
                                 <ul class="treeview-menu">
+                                    <!-- se elimina el reporte por cliente -->
                                     <li>
                                         <?= $this->Html->link('<span>Reporte de clientes</span>', array('controller'=>'clientes', 'action'=>'reporte_c1'), array('escape'=>false))?>
                                     </li>

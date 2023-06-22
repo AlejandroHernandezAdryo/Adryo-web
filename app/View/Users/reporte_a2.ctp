@@ -339,20 +339,39 @@
                   
                 </div>
               </div>
-              <!-- elementos -->
+              <!-- ESTATUS GENERAL DE CLIENTES POR ASESOR -->
               <div class="row mt-1 salto">
                 <div class="col-sm-12">
                   <?= $this->Element('Clientes/clientes_status_user_by_ajax') ?>
                 </div>
               </div>
-              <!-- elementos -->
-              <!-- elementos -->
+
+              <!-- ESTATUS DE ATENCIÓN A CLIENTES ACTIVOS -->
               <div class="row mt-1 salto">
                 <div class="col-sm-12">
                   <?= $this->Element('Clientes/clientes_atencion_grupo_by_ajax') ?>
                 </div>
               </div>
-              <!-- elementos -->
+
+              <!-- RAZONES DE CITAS CANCELADAS DEL PERIODO -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Events/razon_citas_canceladas_grupo_by_ajax') ?>
+                </div>
+              </div>
+
+               <!-- ETAPAS DE CLIENTES ACTIVOS A LA FECHA -->
+               <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_etapa_grupo_by_ajax') ?>
+                </div>
+              </div>
+              <!-- TOTAL DE CLIENTES VS VENTAS Y VISITAS -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_ventas_visitas_grupo_by_ajax') ?>
+                </div>
+              </div>
               
             </div>
           </div>
@@ -557,25 +576,25 @@
 
     // Calendario
     '/vendors/jquery.uniform/js/jquery.uniform',
-	'/vendors/inputlimiter/js/jquery.inputlimiter',
-	'/vendors/bootstrap-colorpicker/js/bootstrap-colorpicker.min',
-	'/vendors/jquery-tagsinput/js/jquery.tagsinput',
-	'/vendors/validval/js/jquery.validVal.min',
-	'/vendors/inputmask/js/jquery.inputmask.bundle',
-	'/vendors/moment/js/moment.min',
-	'/vendors/daterangepicker/js/daterangepicker',
-	'/vendors/datepicker/js/bootstrap-datepicker.min',
-	'/vendors/bootstrap-timepicker/js/bootstrap-timepicker.min',
-	'/vendors/bootstrap-switch/js/bootstrap-switch.min',
-	'/vendors/autosize/js/jquery.autosize.min',
-	'/vendors/jasny-bootstrap/js/jasny-bootstrap.min',
-	'/vendors/jasny-bootstrap/js/inputmask',
-	'/vendors/datetimepicker/js/DateTimePicker.min',
-	'/vendors/j_timepicker/js/jquery.timepicker.min',
-	'/vendors/clockpicker/js/jquery-clockpicker.min',
+    '/vendors/inputlimiter/js/jquery.inputlimiter',
+    '/vendors/bootstrap-colorpicker/js/bootstrap-colorpicker.min',
+    '/vendors/jquery-tagsinput/js/jquery.tagsinput',
+    '/vendors/validval/js/jquery.validVal.min',
+    '/vendors/inputmask/js/jquery.inputmask.bundle',
+    '/vendors/moment/js/moment.min',
+    '/vendors/daterangepicker/js/daterangepicker',
+    '/vendors/datepicker/js/bootstrap-datepicker.min',
+    '/vendors/bootstrap-timepicker/js/bootstrap-timepicker.min',
+    '/vendors/bootstrap-switch/js/bootstrap-switch.min',
+    '/vendors/autosize/js/jquery.autosize.min',
+    '/vendors/jasny-bootstrap/js/jasny-bootstrap.min',
+    '/vendors/jasny-bootstrap/js/inputmask',
+    '/vendors/datetimepicker/js/DateTimePicker.min',
+    '/vendors/j_timepicker/js/jquery.timepicker.min',
+    '/vendors/clockpicker/js/jquery-clockpicker.min',
 
-	'form',
-  'pages/form_elements',
+    'form',
+    'pages/form_elements',
 
   ], array('inline'=>false));
 ?>
@@ -583,9 +602,12 @@
   function reporteGrupoAsesor(){
     console.log( $("#date_range").val() );
     console.log( $("#users").val() );
-    // get_asesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
     clientesStatusClientes( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
     clientesAtencionClientes( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    graficaMotivoCancelacionCitaGrupo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    tablaEtapaGrupoAsesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    ClienteVentasVisitasGrupoAsesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    
   }
 
   $(document).ready(function () {

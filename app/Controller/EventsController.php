@@ -2896,8 +2896,6 @@ class EventsController extends AppController {
         $this->autoRender = false;
     }
 
-
-
     /* -------------------------------------------------------------------------- */
     /*                  Metodo para correccion de desarrollos_id                  */
     /* -------------------------------------------------------------------------- */
@@ -3060,15 +3058,18 @@ class EventsController extends AppController {
     */
     function citas_cancelacion_grupo(){
         header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('User');
         $this->Event->Behaviors->load('Containable');
+        $this->User->Behaviors->load('Containable');
         $fecha_ini         = '';
         $fecha_fin         = '';
+        $response               = [];
         $and               = [];
         $or                = [];
         $cancelaciones_raw = [];
         $motivo_cancelacion=[];
         $condiciones =[];
-        $desarrollo_id=0;
+        $user_id=0;
         $i=0;
         if ($this->request->is('post')) {
             $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
@@ -3080,20 +3081,33 @@ class EventsController extends AppController {
                 }else{
                 $cond_rangos = array("Event.fecha_inicio BETWEEN ? AND ?" => array($fi, $ff));
             }
-            $cancelacion= $this->Event->find('count',array(
+            foreach ($this->request->data['user_id'] as $user){
+                $user_id = $user_id.$user.",";
+            }
+            $user_id = substr($user_id,0,-1);
+            $cancelaciones_raw= $this->Event->find('all',array(
                 'conditions'=>array(   
                         'Event.motivo_cancelacion <>' => '',
-                        'Event.user_id' =>663,
+                        'Event.status' =>  2,
+                        'Event.tipo_tarea' => 0,
+                        'Event.user_id IN ('.$user_id.')',
                         $cond_rangos,
                     ),
                     'fields' => array(
                         'Event.motivo_cancelacion',
+                        'COUNT(Event.motivo_cancelacion) as motivo',
                     ),
+                    'group' =>'Event.motivo_cancelacion',
                     'contain' => false 
                 )
             );
+            foreach ($cancelaciones_raw as $value) {
+                $response[$i]['cantidad']=$value[0]['motivo'];
+                $response[$i]['motivo']=$value['Event']['motivo_cancelacion'];
+                $i++;
+            }
         }
-        echo json_encode( $cancelacion, true );
+        echo json_encode( $response, true );
         exit();
         $this->autoRender = false;
     }

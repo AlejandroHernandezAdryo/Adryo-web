@@ -7,7 +7,7 @@
 
 <div class="card">
     <div class="card-header bg-blue-is cursor">
-        ESTATUS GENERAL DE CLIENTES POR ASESOR
+		ESTATUS GENERAL DE CLIENTES POR ASESOR
         <span style="float:right">
             Total: <span id=""></span>
         </span>
