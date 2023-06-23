@@ -9120,11 +9120,11 @@ class ClientesController extends AppController {
         $user_id=$this->request->data['user_id'] ;
       }
       $clientes_asignados = $this->Cliente->query(
-        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.created,'%m-%Y') As fecha
+        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.fecha_cambio_etapa,'%m-%Y') As fecha
         FROM clientes 
         WHERE user_id = $user_id 
-        AND created >= '$fi' 
-        AND created <= '$ff' 
+        AND fecha_cambio_etapa >= '$fi' 
+        AND fecha_cambio_etapa <= '$ff' 
         GROUP BY fecha;"
       );
       foreach ($clientes_asignados as $value) {
@@ -9165,8 +9165,8 @@ class ClientesController extends AppController {
         FROM clientes,desarrollos 
         WHERE desarrollos.id = clientes.desarrollo_id 
         AND clientes.user_id = $user_id 
-        AND clientes.created >= '$fi' 
-        AND clientes.created <= '$ff' 
+        AND clientes.fecha_cambio_etapa >= '$fi' 
+        AND clientes.fecha_cambio_etapa <= '$ff' 
         GROUP BY clientes.desarrollo_id 
         ORDER BY clientes DESC;"
       );
@@ -9225,11 +9225,11 @@ class ClientesController extends AppController {
       $periodos = $this->getPeriodosArreglo($fi,$ff);
 
       $clientes_asignados = $this->Cliente->query(
-        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.created,'%m-%Y') As fecha
+        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.fecha_cambio_etapa,'%m-%Y') As fecha
         FROM clientes 
         WHERE user_id = $user_id 
-        AND created >= '$fi' 
-        AND created <= '$ff' 
+        AND fecha_cambio_etapa >= '$fi' 
+        AND fecha_cambio_etapa <= '$ff' 
         GROUP BY fecha;"
       );
       $asignados_tedieron = $this->Cliente->query(

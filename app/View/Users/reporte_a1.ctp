@@ -374,14 +374,14 @@
               </div>
 
               <!--cards  -->
-              <div class="row mt-1  salto">
+              <!-- <div class="row mt-1  salto">
                 <div class="col-sm-6  mt-1">
                   <?= $this->element('Events/eventas_cards_by_ajax'); ?>
                 </div>
                 <div class="col-sm-6  mt-1">
                   <?= $this->element('Events/eventas_cards_by__historico_ajax'); ?>
                 </div>
-              </div>
+              </div> -->
 
               <!-- CLIENTES ASIGNADOS POR MES -->
               <div class="row mt-1 salto">
@@ -499,8 +499,7 @@
 ?>
 <script>
   function reporteAsesor(){
-    console.log( $("#date_range").val() );
-    console.log( $("#asesor_id").val() );
+
 
     get_asesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
 
@@ -519,8 +518,8 @@
     graficaVentasVisitasDesarrollo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
     graficaClientesVisitas( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
     tablaVentasDesarrollo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
-    cardsPeriodo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
-    cardHistorico( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    // cardsPeriodo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    // cardHistorico( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
     console.log( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
     window.setInterval(function(){
       $('#myModal').modal('hide');
