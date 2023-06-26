@@ -372,6 +372,13 @@
                   <?= $this->Element('Clientes/clientes_ventas_visitas_grupo_by_ajax') ?>
                 </div>
               </div>
+
+              <!-- TOTAL DE CLIENTES VS VENTAS Y CITAS-->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_ventas_citas_grupo_by_ajax') ?>
+                </div>
+              </div>
               
             </div>
           </div>
@@ -607,6 +614,7 @@
     graficaMotivoCancelacionCitaGrupo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
     tablaEtapaGrupoAsesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
     ClienteVentasVisitasGrupoAsesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    ClienteVentasCitasGrupoAsesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
     
   }
 

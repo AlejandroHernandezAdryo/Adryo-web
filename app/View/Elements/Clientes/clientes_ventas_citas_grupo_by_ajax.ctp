@@ -1,5 +1,5 @@
 <style>
-    #clientes_ventas_visitas_grupo{
+    #clientes_ventas_citas_grupo{
         width: 100%;
         height: 500px;
     }
@@ -8,16 +8,16 @@
 
 <div class="card">
     <div class="card-header bg-blue-is cursor">
-        TOTAL DE CLIENTES VS  VISITAS Y VENTAS 
+        TOTAL DE CLIENTES VS CITAS Y VENTAS
     </div>
 
     <div class="card-block" style="width: 100%;">
         <div class="row">
             <div class="col-sm-12" >
-                <div id="clientes_ventas_visitas_grupo" ></div>
+                <div id="clientes_ventas_citas_grupo" ></div>
             </div>
                 <div class="col-sm-12 m-t-35">
-                    <small id="clientes_ventas_visitas_grupo_periodo_tiempo"></small>
+                    <small id="clientes_ventas_citas_grupo_periodo_tiempo"></small>
                 </div>
         </div>
     </div>
@@ -28,11 +28,11 @@
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
 <script>
   // Se mandan a llamar los datos para la grafica
-    function ClienteVentasVisitasGrupoAsesor( rangoFechas, cuentaId, desarrolloId ,asesorId ){
+    function ClienteVentasCitasGrupoAsesor( rangoFechas, cuentaId, desarrolloId ,asesorId ){
         
         $.ajax({
             type: "POST",
-            url: '<?php echo Router::url(array("controller" => "Clientes", "action" => "clientes_ventas_visitas_grupo_asesores")); ?>',
+            url: '<?php echo Router::url(array("controller" => "Clientes", "action" => "clientes_citas_ventas_grupo")); ?>',
             cache: false,
             data: { rango_fechas: rangoFechas, cuenta_id: cuentaId,  desarrollo_id: desarrolloId, user_id: asesorId },
             dataType: 'json',
@@ -40,31 +40,35 @@
             //     $("#overlay").fadeIn();
             // },
             success: function ( response ) {
+				let Total_Clientes=0;
 				let Total_ventas=0;
-				let Total_visitas=0; 
-				let maxVisitas=0;
-				let maxVentas=0;
+				let Total_citas=0; 
+				let maxCitas=0;
+				let maxClientes=0;
 				let max=0;
 				for (let i in response){
-					response[i].venta  = parseInt(response[i].venta);
-					response[i].visitas  = parseInt(response[i].visitas);
-					Total_ventas += response[i].venta;
-					Total_visitas += response[i].visitas;
+					response[i].clientes  = parseInt(response[i].clientes);
+					response[i].citas  = parseInt(response[i].citas);
+					response[i].ventas  = parseInt(response[i].ventas);
+					Total_Clientes += response[i].clientes;
+					Total_ventas += response[i].ventas;
+					Total_citas += response[i].citas;
 					
-					if(maxVisitas < response[i].visitas){
-						maxVisitas = response[i].visitas;
+					if(maxCitas < response[i].citas){
+						maxCitas = response[i].citas;
 					}
-					if(maxVentas < response[i].venta){
-						maxVentas = response[i].venta;
+					if(maxClientes < response[i].clientes){
+						maxClientes = response[i].clientes;
 					}
         		}
-				if (maxVisitas  < maxVentas ) {
-					max = maxVentas ;
+				if (maxCitas  < maxClientes ) {
+					max = maxClientes ;
 				}else{
-					max = maxVisitas ;
+					max = maxCitas ;
 				}
-				
-            	drawClientesVisitasVentasGruposAsesores( response, max, Total_visitas,Total_ventas);
+				console.log( response );
+               	drawClientesCitasVentasGruposAsesores( response, max, Total_citas,Total_ventas, Total_Clientes);
+
         },
             error: function ( err ){
             console.log( err.responseText );
@@ -74,9 +78,9 @@
 
     }
    // Es el metodo de la grafica.  0: {venta_q: '1', asesor: 'Diego Murillo Barro', venta_v: '2410737'}
-    function  drawClientesVisitasVentasGruposAsesores( response, max, Total_visitas,Total_ventas) {
+    function drawClientesCitasVentasGruposAsesores( response, max, Total_citas,Total_ventas, Total_Clientes) {
 		am5.ready(function() {
-			var root = am5.Root.new("clientes_ventas_visitas_grupo");
+			var root = am5.Root.new("clientes_ventas_citas_grupo");
 			root.setThemes([
 				am5themes_Animated.new(root)
 			]);
@@ -99,7 +103,7 @@
 
 			var yAxis = chart.yAxes.push(
 				am5xy.CategoryAxis.new(root, {
-					categoryField: "asesor",
+					categoryField: "user_name",
 					renderer: yRenderer,
 				})
 			);
@@ -116,14 +120,14 @@
 			);
 			var series = chart.series.push(
 				am5xy.ColumnSeries.new(root, {
-					name : `Ventas Unidades:${Total_ventas}`,
+					name : `Clientes :${Total_Clientes}`,
 					xAxis: xAxis,
 					yAxis: yAxis,
-					valueXField: "venta",
-					categoryYField: "asesor",
+					valueXField: "clientes",
+					categoryYField: "user_name",
 					tooltip: am5.Tooltip.new(root, {
 						pointerOrientation: "vertical",
-						labelText: "{valueX} unidad(es)"
+						labelText: "{valueX}"
 					})
 				})
 			);
@@ -131,7 +135,7 @@
 				cornerRadiusTL: 5,
 				cornerRadiusTR: 5
 			});
-			series.set("fill", am5.color("<?= $this->Session->read('colores.Ventas.unidad')?>")); 
+			series.set("fill", am5.color("<?= $this->Session->read('colores.Cliente')?>")); 
 			
 			series.bullets.push(function () {
 				return am5.Bullet.new(root, {
@@ -148,14 +152,14 @@
 			})
 			var series1 = chart.series.push(
 				am5xy.ColumnSeries.new(root, {
-					name : `Visitas :${Total_visitas} `,
+					name : `Citas :${Total_citas} `,
 					xAxis: xAxis,
 					yAxis: yAxis,
-					valueXField: "visitas",
+					valueXField: "citas",
 					categoryYField: "asesor",
 					tooltip: am5.Tooltip.new(root, {
 						pointerOrientation: "vertical",
-						labelText: "Monto:{valueXWorking.formatNumber('#.# a')}"
+						labelText: "citas:{valueXWorking.formatNumber('#.# a')}"
 					})
 				})
 			);
@@ -164,7 +168,7 @@
 				cornerRadiusTL: 5,
 				cornerRadiusTR: 5
 			});
-			series1.set("fill", am5.color("<?= $this->Session->read('colores.Visita')?>")); 
+			series1.set("fill", am5.color("<?= $this->Session->read('colores.Cita')?>")); 
 			
 			series1.bullets.push(function () {
 				return am5.Bullet.new(root, {
@@ -179,6 +183,43 @@
 					})
 				});
 			})
+
+            var series2 = chart.series.push(
+				am5xy.ColumnSeries.new(root, {
+					name : `Ventas :${Total_ventas} `,
+					xAxis: xAxis,
+					yAxis: yAxis,
+					valueXField: "ventas",
+					categoryYField: "asesor",
+					tooltip: am5.Tooltip.new(root, {
+						pointerOrientation: "vertical",
+						labelText: "{valueXWorking.formatNumber('#.# a')}"
+					})
+				})
+			);
+			
+			series1.columns.template.setAll({
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
+			});
+			series1.set("fill", am5.color("<?= $this->Session->read('colores.Ventas.unidad')?>")); 
+			
+			series1.bullets.push(function () {
+				return am5.Bullet.new(root, {
+					locationX: 1,
+      				locationY: 1,
+					sprite	 : am5.Label.new(root, {
+						text        : "{ventas.formatNumber('#.# a')} ",
+						fill        : am5.color(0x000000),
+						centerX: 0,
+        				centerY: am5.p100,
+						populateText: true
+					})
+				});
+			})
+
+
+
 			var legend = chart.children.unshift(am5.Legend.new(root, {
 				centerX: am5.p200,
 				x: am5.p50,
@@ -194,9 +235,11 @@
 			cursor.lineY.set("visible", false);
 			series.appear();	
 			series1.appear();
+			series2.appear();
 			xAxis.data.setAll(data);
 			series.data.setAll(data);
 			series1.data.setAll(data);
+			series2.data.setAll(data);
 		}); // end am5.ready()
 	}
 </script>
