@@ -97,8 +97,8 @@
 
 			var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 				maxDeviation: 0,
-        min: 0,
-        max: (Total)*1.1,
+       	 		min: 0,
+        		max: (Total)*1.1,
 				renderer    : am5xy.AxisRendererY.new(root, {})
 			}));
      
@@ -140,7 +140,7 @@
 						text        : "{cantidad}",
 						fill        : am5.color(0x000000),
 						centerX: am5.p50,
-            centerY: am5.p100,
+            			centerY: am5.p100,
 						populateText: true
 					})
 				});

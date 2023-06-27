@@ -12078,7 +12078,7 @@ class ClientesController extends AppController {
           WHERE  fecha >= '$fi' 
           AND fecha <= '$ff'
           AND tipo_operacion=3
-          AND cotizacion_id is not null
+          -- AND cotizacion_id is not null
           AND user_id = $user 
           GROUP BY user_id;"
         );
@@ -12099,7 +12099,99 @@ class ClientesController extends AppController {
         $reponse[$i]['venta']=  ( empty($ventas[0][0]['ventas']) ? 0 :$ventas[0][0]['ventas']);
         $i++;
       }
+      if (empty($response)) {
+        $reponse[$i]['asesor']='sin informacion';
+        $reponse[$i]['visitas']=  0;
+        $reponse[$i]['venta']= 0;
+      }
     }
+    echo json_encode ( $reponse );
+    exit();
+    $this->autoRender = false;
+  }
+  /**
+   * 
+   * 
+   * 
+  */
+  function clientes_citas_ventas_grupo(){
+    header('Content-type: application/json; charset=utf-8');
+    $this->loadModel('User');
+    $this->loadModel('OperacionesInmueble');
+    $this->loadModel('Event');
+    $this->Event->Behaviors->load('Containable');
+    $this->OperacionesInmueble->Behaviors->load('Containable');
+    $this->User->Behaviors->load('Containable');
+    $i=0;
+    $reponse=array();
+    if ($this->request->is('post')) {
+      $cuenta_id=$this->request->data['cuenta_id'];
+      if( !empty($this->request->data['rango_fechas']) ){ 
+          $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+          $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+          $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+          $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));    
+          if ($fi == $ff){
+            $cond_rangos_eventas = array("Event.fecha_inicio LIKE '".$fi."%'");
+            $cond_rangos = array("Cliente.fecha_cambio_etapa LIKE '".$fi."%'");
+          }else{
+            $cond_rangos_eventas = array("Event.fecha_inicio BETWEEN ? AND ?" => array($fi, $ff));
+            $cond_rangos = array("Cliente.fecha_cambio_etapa BETWEEN ? AND ?"        => array($fi, $ff));
+
+          }
+          foreach ($this->request->data['user_id'] as $user) {
+            $search_user=$this->User->find('first',array(
+              'conditions'=>array(
+                'User.id'=>$user, 
+              ),  
+              'fields'=>array(
+                'User.nombre_completo',
+              ),
+              'contain' => false 
+            ));
+            $citas=$this->Event->find('count',array(
+              'conditions'=>array(   
+                'Event.tipo_tarea'=>0,
+                'Event.user_id'=>$user,
+                // 'Event.cuenta_id'=>$cuenta_id,
+                $cond_rangos_eventas
+              ),
+              'contain' => false
+            ));
+            $clientes= $this->Cliente->find('count',array(
+              'conditions' => array(
+                // 'Cliente.status'=> 'Activo',
+                // 'Cliente.etapa'=>1,
+                'Cliente.user_id'=>$user,
+                'Cliente.cuenta_id'=>$cuenta_id,
+                $cond_rangos
+              )
+            ));
+            $ventas=$this->OperacionesInmueble->query(
+              "SELECT count(*) as ventas FROM operaciones_inmuebles 
+              WHERE  fecha >= '$fi' 
+              AND fecha <= '$ff'
+              AND tipo_operacion=3
+              -- AND cotizacion_id is not null
+              AND user_id = $user 
+              GROUP BY user_id;"
+            );
+            $reponse[$i]['user_name']=$search_user['User']['nombre_completo'];
+            $reponse[$i]['clientes']=  ( empty($clientes) ? 0 :$clientes);
+            $reponse[$i]['citas']= ( empty($citas) ? 0 :$citas) ;
+            $reponse[$i]['ventas']=( empty($ventas[0][0]['ventas']) ? 0 :$ventas[0][0]['ventas']);
+            $i++;
+          }
+      }
+      
+    }
+    if (empty($response)) {
+      $reponse[$i]['user_name']='sin informacion';
+      $reponse[$i]['clientes']= 0;
+      $reponse[$i]['citas']=  0 ;
+      $reponse[$i]['ventas']=0;
+    }
+      
     echo json_encode ( $reponse );
     exit();
     $this->autoRender = false;

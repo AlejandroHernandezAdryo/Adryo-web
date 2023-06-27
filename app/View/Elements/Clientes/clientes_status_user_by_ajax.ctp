@@ -9,7 +9,8 @@
     <div class="card-header bg-blue-is cursor">
 		ESTATUS GENERAL DE CLIENTES POR ASESOR
         <span style="float:right">
-            Total: <span id=""></span>
+            Total Activos: <span id="totalClientesActivos"></span>
+            Total: <span id="totalClientes"></span>
         </span>
     </div>
 
@@ -54,11 +55,36 @@
 			dataType: 'json',
 
 			success: function ( response ) {
+				let Total=0;
+				let totalClientesActivos=0;
+				let maxiActivos=0;
+				let maxiTemporal=0;
+				let maxiInactivo=0;
+				let max=0;
+				for (let i in response){
+					response[i].activos  = parseInt(response[i].activos);
+					response[i].temporal  = parseInt(response[i].temporal);
+					response[i].Inactivo  = parseInt(response[i].Inactivo);
+					Total += response[i].activos + response[i].temporal +  response[i].Inactivo;
+					totalClientesActivos += response[i].activos ;
+					if(maxiActivos < response[i].activos){
+						maxiActivos = response[i].activos;
+					}
+					if(maxiTemporal < response[i].temporal){
+						maxiTemporal = response[i].temporal;
+					}
+					if(maxiInactivo < response[i].Inactivo){
+						maxiInactivo = response[i].Inactivo;
+					}
+        		}
+				if (maxiActivos < maxiInactivo ) {
+					max = maxiInactivo ;
+				}
+				document.getElementById("graficas_clientes_status_asesoresperiodo_tiempo").innerHTML =rangoFechas;
+				document.getElementById("totalClientes").innerHTML =Total;
+				document.getElementById("totalClientesActivos").innerHTML =totalClientesActivos;
 				
-				
-				// drawClienteEtapa( response, Total );
-				console.log(response);
-
+				drawClienteGrupoStatus( response, Total, max );
 			},
 			error: function ( err ){
 			console.log( err.responseText );
@@ -66,164 +92,118 @@
 		});
 	}
    // Es el metodo de la grafica.
-	function drawClienteEtapa( response, Total ) {
+	function drawClienteGrupoStatus( response, Total, max ) {
     	am5.ready(function() {
-			//maybeDisposeRoot("grafica_etapa_clientes");
-			var root = am5.Root.new("grafica_etapa_clientes");
+		
+			var root = am5.Root.new("graficas_clientes_status_asesores");
+
 			root.setThemes([
 				am5themes_Animated.new(root)
 			]);
-			root.interfaceColors.set("grid", am5.color('#bababa'));
-			var data = response
-			var chart = root.container.children.push(
-				am5xy.XYChart.new(root, {
-					panX: false,
-					panY: false,
-					wheelX: "none",
-					wheelY: "none",
-					
+
+			var chart = root.container.children.push(am5xy.XYChart.new(root, {
+				panX: false,
+				panY: false,
+				wheelX: "panX",
+				wheelY: "zoomX",
+				layout: root.verticalLayout
+			}));
+
+			var legend = chart.children.push(am5.Legend.new(root, {
+				centerX: am5.p50,
+				x: am5.p50
+			}))
+
+			var data = response;
+
+			var yAxis = chart.yAxes.push(am5xy.CategoryAxis.new(root, {
+				categoryField: "user_name",
+				renderer: am5xy.AxisRendererY.new(root, {
+					inversed: true,
+					cellStartLocation: 0.1,
+					cellEndLocation: 0.9
 				})
-			);
+			}));
 
-			// Create axes
-			// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-
-			var yRenderer = am5xy.AxisRendererY.new(root, {});
-			yRenderer.grid.template.set("visible", false);
-
-			var yAxis = chart.yAxes.push(
-				am5xy.CategoryAxis.new(root, {
-					categoryField: "estado",
-					renderer: yRenderer,
-					//paddingRight:40
-				})
-			);
-
-			var xRenderer = am5xy.AxisRendererX.new(root, {});
-			xRenderer.grid.template.set("strokeDasharray", [3]);
-			xRenderer.grid.template.setAll({
-				location: 1
-			});
-			var xAxis = chart.xAxes.push(
-			am5xy.ValueAxis.new(root, {
-				min: 0,
-				max: (Total)*1.1,
-				renderer: xRenderer
-			})
-			);
-
-			var series = chart.series.push(
-				am5xy.ColumnSeries.new(root, {
-					xAxis: xAxis,
-					yAxis: yAxis,
-					clustered: false,
-					valueXField: "cantidad",
-					categoryYField: "estado",
-					tooltip: am5.Tooltip.new(root, {
-						pointerOrientation: "vertical",
-						labelText: "{categoryY}: Cantidad {valueX}"
-					})
-				})
-			);
-			series.columns.template.setAll({
-				width: am5.percent(20),
-				tooltipY: 0,
-				strokeOpacity: 0,
-				cornerRadiusTL: 5,
-				cornerRadiusTR: 5
-			});
-			
-			chart.get("colors").set("colors", [
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa7')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa6')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa5')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa4')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa3')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa2')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa1')?>"),
-			]);
-			series.columns.template.adapters.add("fill", function (fill, target) {
-				return chart.get("colors").getIndex(series.columns.indexOf(target));
-			});
-
-			series.columns.template.adapters.add("stroke", function (stroke, target) {
-				return chart.get("colors").getIndex(series.columns.indexOf(target));
-			});
-			
-			series.bullets.push(function () {
-				return am5.Bullet.new(root, {
-					locationX: 1,
-      				locationY: 1,
-					sprite       : am5.Label.new(root, {
-						text        : "{cantidad} ",
-						fill        : am5.color(0x000000),
-						centerY: am5.p100,
-						populateText: true
-					})
-				});
-			})
-			//
-			var series1 = chart.series.push(
-				am5xy.ColumnSeries.new(root, {
-					xAxis: xAxis,
-					yAxis: yAxis,
-					clustered: false,
-					valueXField: "cantidad7",
-					categoryYField: "estado",
-					tooltip: am5.Tooltip.new(root, {
-						pointerOrientation: "vertical",
-						labelText: "{categoryY}: Cantidad {valueX} de otro desarrollo"
-					})
-				})
-			);
-
-
-			// series1.columns.template.setAll({
-			// 	cornerRadiusTL: 5,
-			// 	cornerRadiusTR: 5,
-			// });
-			series1.columns.template.setAll({
-				width: am5.percent(50),
-				tooltipY: 0,
-				strokeOpacity: 0
-			});
-			// chart.get("colors").set("colors", [
-			// 	am5.color("<?= $this->Session->read('colores.Embudo.etapa7')?>"),
-			// ]);
-			series1.set("fill", am5.color(0xff0000)); 
-			// series1.columns.template.adapters.add("fill", function (fill, target) {
-			// 	return chart.get("colors").getIndex(series.columns.indexOf(target));
-			// });
-
-			// series1.columns.template.adapters.add("stroke", function (stroke, target) {
-			// 	return chart.get("colors").getIndex(series.columns.indexOf(target));
-			// });
-			
-			series1.bullets.push(function () {
-				return am5.Bullet.new(root, {
-					locationX: 1,
-      				locationY: 0,
-					sprite       : am5.Label.new(root, {
-						// text        : "{cantidad} ",
-						fill        : am5.color(0x000000),
-						centerY: am5.p100,
-						populateText: true
-					})
-				});
-			})
-			
-			//
-			var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
-
-			series.data.setAll(data);
-			series1.data.setAll(data);
 			yAxis.data.setAll(data);
 
-			var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
-			cursor.lineX.set("visible", false);
-			cursor.lineY.set("visible", false);
+			var xAxis = chart.xAxes.push(am5xy.ValueAxis.new(root, {
+				renderer: am5xy.AxisRendererX.new(root, {
+					strokeOpacity: 0.1
+				}),
+				min: 0
+			}));
+
+
+			function createSeries(field, name) {
+				var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+					name: name,
+					xAxis: xAxis,
+					yAxis: yAxis,
+					valueXField: field,
+					categoryYField: "user_name",
+					sequencedInterpolation: true,
+					tooltip: am5.Tooltip.new(root, {
+						pointerOrientation: "horizontal",
+						labelText: "[bold]{name}[/]\n{categoryY}: {valueX}"
+					})
+			}));
+
+			series.columns.template.setAll({
+				height: am5.p100,
+				strokeOpacity: 0
+			});
+
+			
+			series.bullets.push(function() {
+				return am5.Bullet.new(root, {
+				locationX: 1,
+				locationY: 0.5,
+				sprite: am5.Label.new(root, {
+					centerY: am5.p50,
+					text: "{valueX}",
+					populateText: true
+				})
+				});
+			});
+
+			series.bullets.push(function() {
+				return am5.Bullet.new(root, {
+				locationX: 1,
+				locationY: 1,
+				sprite: am5.Label.new(root, {
+					centerX: am5.p100,
+					centerY: am5.p50,
+					// text: "{name}",
+					// fill: am5.color(0xffffff),
+					populateText: true
+				})
+				});
+			});
+
+			series.data.setAll(data);
 			series.appear();
-			series1.appear();
+
+			return series;
+			}
+
+			createSeries("activos", "Activos");
+			createSeries("temporal", "Temporales");
+			createSeries("Inactivo", "Inactivos");
+
+			var legend = chart.children.push(am5.Legend.new(root, {
+			centerX: am5.p50,
+			x: am5.p50
+			}));
+
+			legend.data.setAll(chart.series.values);
+
+			var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+			behavior: "zoomY"
+			}));
+			cursor.lineY.set("forceHidden", true);
+			cursor.lineX.set("forceHidden", true);
+
 			chart.appear(1000, 100);
 
 		}); // end am5.ready()
