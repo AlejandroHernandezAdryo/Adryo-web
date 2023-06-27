@@ -520,7 +520,6 @@
     tablaVentasDesarrollo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
     // cardsPeriodo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
     // cardHistorico( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
-    console.log( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
     window.setInterval(function(){
       $('#myModal').modal('hide');
       $("#overlay").fadeOut();

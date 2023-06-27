@@ -114,38 +114,7 @@
 				renderer: xRenderer
 			})
 			);
-			var series = chart.series.push(
-				am5xy.ColumnSeries.new(root, {
-					name : `Ventas Unidades:${Total_ventas}`,
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueXField: "venta",
-					categoryYField: "asesor",
-					tooltip: am5.Tooltip.new(root, {
-						pointerOrientation: "vertical",
-						labelText: "{valueX} unidad(es)"
-					})
-				})
-			);
-			series.columns.template.setAll({
-				cornerRadiusTL: 5,
-				cornerRadiusTR: 5
-			});
-			series.set("fill", am5.color("<?= $this->Session->read('colores.Ventas.unidad')?>")); 
 			
-			series.bullets.push(function () {
-				return am5.Bullet.new(root, {
-					locationX: 1,
-      				locationY: 1,
-					sprite       : am5.Label.new(root, {
-						text        : "{venta} ",
-						fill        : am5.color(0x000000),
-						centerX: 0,
-            			centerY: am5.p100,
-						populateText: true
-					})
-				});
-			})
 			var series1 = chart.series.push(
 				am5xy.ColumnSeries.new(root, {
 					name : `Visitas :${Total_visitas} `,
@@ -179,6 +148,38 @@
 					})
 				});
 			})
+			var series = chart.series.push(
+				am5xy.ColumnSeries.new(root, {
+					name : `Ventas Unidades:${Total_ventas}`,
+					xAxis: xAxis,
+					yAxis: yAxis,
+					valueXField: "venta",
+					categoryYField: "asesor",
+					tooltip: am5.Tooltip.new(root, {
+						pointerOrientation: "vertical",
+						labelText: "{valueX} unidad(es)"
+					})
+				})
+			);
+			series.columns.template.setAll({
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
+			});
+			series.set("fill", am5.color("<?= $this->Session->read('colores.Ventas.unidad')?>")); 
+			
+			series.bullets.push(function () {
+				return am5.Bullet.new(root, {
+					locationX: 1,
+      				locationY: 1,
+					sprite       : am5.Label.new(root, {
+						text        : "{venta} ",
+						fill        : am5.color(0x000000),
+						centerX: 0,
+            			centerY: am5.p100,
+						populateText: true
+					})
+				});
+			})
 			var legend = chart.children.unshift(am5.Legend.new(root, {
 				centerX: am5.p200,
 				x: am5.p50,
@@ -192,11 +193,11 @@
 			var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
 			cursor.lineX.set("visible", false);
 			cursor.lineY.set("visible", false);
-			series.appear();	
 			series1.appear();
+			series.appear();	
 			xAxis.data.setAll(data);
-			series.data.setAll(data);
 			series1.data.setAll(data);
+			series.data.setAll(data);
 		}); // end am5.ready()
 	}
 </script>

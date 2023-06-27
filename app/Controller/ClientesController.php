@@ -12099,11 +12099,12 @@ class ClientesController extends AppController {
         $reponse[$i]['venta']=  ( empty($ventas[0][0]['ventas']) ? 0 :$ventas[0][0]['ventas']);
         $i++;
       }
-      if (empty($response)) {
-        $reponse[$i]['asesor']='sin informacion';
-        $reponse[$i]['visitas']=  0;
-        $reponse[$i]['venta']= 0;
-      }
+      
+    }
+    if (empty($reponse)) {
+      $reponse[$i]['asesor']='sin informacion';
+      $reponse[$i]['visitas']=  0;
+      $reponse[$i]['venta']= 0;
     }
     echo json_encode ( $reponse );
     exit();

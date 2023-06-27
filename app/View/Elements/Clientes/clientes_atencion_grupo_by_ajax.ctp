@@ -204,6 +204,6 @@
 
 			chart.appear(1000, 100);
 
-			}); // end am5.ready()
+		}); // end am5.ready()
   	}
 </script>

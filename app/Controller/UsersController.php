@@ -5626,6 +5626,61 @@ class UsersController extends AppController {
     exit();
     $this->autoRender = false;
   }
+  /***
+   * 
+   * 
+   * 
+  */
+  function reporte_grupo_asesores_info ( ) {
+    header('Content-type: application/json; charset=utf-8');
+    $this->CuentasUser->Behaviors->load('Containable');
+    $this->Desarrollo->Behaviors->load('Containable');
+    $response=array();
+    $i=0;
+    $j=0;
+    if ($this->request->is('post')) {
+
+      // Condicion para el rango de fechas
+      if( !empty($this->request->data['rango_fechas']) ){
+        $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+        $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+        $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+        $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));
+        if ($fi == $ff){
+            $cond_rangos = array("Cliente.fecha_cambio_etapa LIKE '".$fi."%'");
+        }else{
+          $cond_rangos = array("Cliente.fecha_cambio_etapa BETWEEN ? AND ?"        => array($fi, $ff));
+        }
+      }
+      $arreglo="";
+      $cuenta_id=$this->request->data['cuenta_id'];
+      foreach ($this->request->data['user_id'] as $user) {
+        $search_user=$this->User->find('first',array(
+          'conditions'=>array(
+            'User.id'=>$user, 
+          ),  
+          'fields'=>array(
+            'User.nombre_completo',
+          ),
+          'contain' => false 
+        ));
+        $arreglo .="". $search_user['User']['nombre_completo'].", ";
+        // $reponse[$i]['asesor']=$search_user['User']['nombre_completo'];
+      }
+      $arreglo = substr($arreglo,0,-1);
+      $periodo_tiempo         = 'INFORMACIÓN DE LOS CLIENTES DEL '.date('d-m-Y', strtotime($fecha_ini)).' AL '.date('d-m-Y', strtotime($fecha_fin));
+      $response=array(
+        '0' => array(
+            'periodo'   => $periodo_tiempo,
+            'asesores' =>"<b>".$arreglo."<b>",
+          ),
+    );
+      // $reponse[$i]['periodo']=$periodo_tiempo;
+    }
+    echo json_encode( $response , true );
+    exit();
+    $this->autoRender = false;
+  }
 
 
 }
