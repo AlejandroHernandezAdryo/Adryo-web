@@ -12094,7 +12094,15 @@ class ClientesController extends AppController {
           AND  events.fecha_inicio >= '$fi' 
           AND  events.fecha_inicio <= '$ff'"
         );
+        $clientes= $this->Cliente->find('count',array(
+          'conditions' => array(
+            'Cliente.user_id'=>$user,
+            'Cliente.cuenta_id'=>$cuenta_id,
+            $cond_rangos
+          )
+        ));
         $reponse[$i]['asesor']=$search_user['User']['nombre_completo'];
+        $reponse[$i]['clientes']=  ( empty($clientes) ? 0 :$clientes);
         $reponse[$i]['visitas']=  ( empty($events[0][0]['visita']) ? 0 :$events[0][0]['visita']);
         $reponse[$i]['venta']=  ( empty($ventas[0][0]['ventas']) ? 0 :$ventas[0][0]['ventas']);
         $i++;
@@ -12177,7 +12185,7 @@ class ClientesController extends AppController {
               AND user_id = $user 
               GROUP BY user_id;"
             );
-            $reponse[$i]['user_name']=$search_user['User']['nombre_completo'];
+            $reponse[$i]['asesor']=$search_user['User']['nombre_completo'];
             $reponse[$i]['clientes']=  ( empty($clientes) ? 0 :$clientes);
             $reponse[$i]['citas']= ( empty($citas) ? 0 :$citas) ;
             $reponse[$i]['ventas']=( empty($ventas[0][0]['ventas']) ? 0 :$ventas[0][0]['ventas']);
@@ -12187,7 +12195,7 @@ class ClientesController extends AppController {
       
     }
     if (empty($response)) {
-      $reponse[$i]['user_name']='sin informacion';
+      $reponse[$i]['asesor']='sin informacion';
       $reponse[$i]['clientes']= 0;
       $reponse[$i]['citas']=  0 ;
       $reponse[$i]['ventas']=0;

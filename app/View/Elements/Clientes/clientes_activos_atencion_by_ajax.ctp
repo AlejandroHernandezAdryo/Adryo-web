@@ -63,14 +63,14 @@
   }
   
    // Es el metodo de la grafica.
-  function drawClienteAtencion( response,  Total) {
-    am5.ready(function () {
+  	function drawClienteAtencion( response,  Total) {
+    	am5.ready(function () {
      
 			var root = am5.Root.new("statusClientesActibos");
 			root.setThemes([
 				am5themes_Animated.new(root)
 			]);
-      root.interfaceColors.set("grid", am5.color('#bababa'));
+      		root.interfaceColors.set("grid", am5.color('#bababa'));
 			var chart = root.container.children.push(am5xy.XYChart.new(root, {
 				panX      : true,
 				panY      : true,
@@ -119,13 +119,13 @@
 				cornerRadiusTR: 5,
 			});
   
-      chart.get("colors").set("colors", [
-        am5.color("<?= $this->Session->read('colores.Oportuno')?>"),
-        am5.color("<?= $this->Session->read('colores.Tardio')?>"),
-        am5.color("<?= $this->Session->read('colores.Noatendido')?>"),
-        am5.color("<?= $this->Session->read('colores.PorReasignar')?>"),
-        // am5.color(0x7f7f7f)
-      ]);
+			chart.get("colors").set("colors", [
+				am5.color("<?= $this->Session->read('colores.Oportuno')?>"),
+				am5.color("<?= $this->Session->read('colores.Tardio')?>"),
+				am5.color("<?= $this->Session->read('colores.Noatendido')?>"),
+				am5.color("<?= $this->Session->read('colores.PorReasignar')?>"),
+				// am5.color(0x7f7f7f)
+			]);
 			series.columns.template.adapters.add("fill", function (fill, target) {
 				return chart.get("colors").getIndex(series.columns.indexOf(target));
 			});
@@ -151,5 +151,5 @@
 			series.appear(1000);
 			chart.appear(1000, 100);
 		});
-  }
+  	}
 </script>

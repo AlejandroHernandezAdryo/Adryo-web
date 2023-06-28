@@ -53,6 +53,10 @@
 			success: function ( response ) {
 				
 				let Total=0;
+				let TotalOportunos=0;
+				let TotalTardios=0;
+				let TotalNo_atendido=0;
+				let TotalReasignar=0;
 				let maxioportunos=0;
 				let maxitardios=0;
 				let maxino_atendido=0;
@@ -65,7 +69,11 @@
 					response[i].tardios  = parseInt(response[i].tardios);
 					response[i].no_atendido  = parseInt(response[i].no_atendido);
 					response[i].reasignar  = parseInt(response[i].reasignar);
-					Total += response[i].oportunos + response[i].tardios +  response[i].no_atendido + response[i].reasignar ;
+					Total            += response[i].oportunos + response[i].tardios +  response[i].no_atendido + response[i].reasignar ;
+					TotalOportunos   += response[i].oportunos ;
+					TotalTardios     += response[i].tardios;
+					TotalNo_atendido += response[i].no_atendido ;
+					TotalReasignar   += response[i].reasignar ;
 					if(maxioportunos < response[i].oportunos){
 						maxioportunos = response[i].oportunos;
 					}
@@ -97,7 +105,7 @@
 				// console.log(response,  Total, max );
 				// console.log('caca');
 				
-				drawClientesAtencionGrupoAsesores(response,  Total, maximo );
+				drawClientesAtencionGrupoAsesores(response,  Total, maximo, TotalOportunos, TotalTardios ,TotalNo_atendido, TotalReasignar);
 			},
 			error: function ( err ){
 			console.log( err.responseText );
@@ -105,105 +113,208 @@
 		});
 	}
    // Es el metodo de la grafica.
-	function drawClientesAtencionGrupoAsesores( response, Total, maximo ) {
-    	am5.ready(function() {
+	function drawClientesAtencionGrupoAsesores(response,  Total, maximo, TotalOportunos, TotalTardios ,TotalNo_atendido, TotalReasignar) {
+    	am5.ready(function () {
 			var root = am5.Root.new("graficas_clientes_atencion_asesores");
-
 			root.setThemes([
-			am5themes_Animated.new(root)
+				am5themes_Animated.new(root)
 			]);
-
+			root.interfaceColors.set("grid", am5.color('#bababa'));
 			var chart = root.container.children.push(am5xy.XYChart.new(root, {
-			panX: false,
-			panY: false,
-			wheelX: "panX",
-			wheelY: "zoomX",
-			layout: root.verticalLayout
+				panX      : true,
+				panY      : true,
+				wheelY    : "zoomX",
+				wheelX    : "panX",
+				pinchZoomX:  true
 			}));
-
-			var legend = chart.children.push(
-			am5.Legend.new(root, {
-				centerX: am5.p50,
-				x: am5.p50
-			})
-			);
-
-			var data = response;
-
-			var xRenderer = am5xy.AxisRendererX.new(root, {
-				cellStartLocation: 0.1,
-				cellEndLocation: 0.9
-			})
+			var cursor      = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+			cursor.lineY.set("visible", false);
+			var xRenderer   = am5xy.AxisRendererX.new(root, {
+				minGridDistance: 30
+			});
+			xRenderer.labels.template.setAll({
+				rotation    : -90,
+				centerY     : am5.p50,
+				centerX     : am5.p100,
+				paddingRight: 15
+			});
 
 			var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+				maxDeviation: 0.3,
 				categoryField: "user_name",
 				renderer: xRenderer,
 				tooltip: am5.Tooltip.new(root, {})
 			}));
-
-			xRenderer.grid.template.setAll({
-				location: 1
-			})
-			
-			xAxis.data.setAll(data);
-
 			var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 				maxDeviation: 0.3,
-				min:0,
-				max         : (maximo)*1.1,
+				min   		: 0,
+				max         : (maximo)*1.3,
 				renderer    : am5xy.AxisRendererY.new(root, {})
 			}));
-			// var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-			// 	renderer: am5xy.AxisRendererY.new(root, {
-			// 		strokeOpacity: 0.1,
-				
-			// 	})
-			// }));
-
-			function makeSeries(name, fieldName) {
-				var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-					name: name,
-					xAxis: xAxis,
-					yAxis: yAxis,
-					valueYField: fieldName,
-					categoryXField: "user_name",
-					tooltip : am5.Tooltip.new(root, {
-						labelText: "{categoryX}: Cantidad {valueY}"
+			yAxis.children.unshift(
+				am5.Label.new(root, {
+					rotation: -90,
+					text: "Activos e Inactivos Temporales",
+					y: am5.p50,
+					centerX: am5.p50
+				})
+			);
+			var data               = response;
+			var paretoAxisRenderer = am5xy.AxisRendererY.new(root, {opposite:true});
+			var paretoAxis         = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+				renderer    : paretoAxisRenderer,
+				min         : 0,
+				max         : (maximo)*1.2,
+				strictMinMax: true
+			}));
+			paretoAxisRenderer.grid.template.set("forceHidden", true);
+			paretoAxis.set("numberFormat", "#");
+			paretoAxis.children.push(
+				am5.Label.new(root, {
+					rotation: -90,
+					text: "Inactivos Defenitivos",
+					y: am5.p50,
+					centerX: am5.p50
+				})
+			);
+			
+			var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+				name                  : `Clientes oportunos : ${TotalOportunos}`,
+				xAxis                 : xAxis,
+				yAxis                 : yAxis,
+				valueYField           : "oportunos",
+				categoryXField        : "user_name",
+				sequencedInterpolation: true,
+				tooltip               : am5.Tooltip.new(root, {
+					labelText: "[bold]{name}[/]: {valueY}"
 				})
 			}));
 
 			series.columns.template.setAll({
-				tooltipText: "{name}, {categoryX}:{valueY}",
-				width: am5.percent(90),
-				tooltipY: 0,
-				strokeOpacity: 0
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
 			});
-
-			series.data.setAll(data);
-			series.appear();
-			series.bullets.push(function() {
+			series.set("fill", am5.color("<?= $this->Session->read('colores.Oportuno')?>")); 
+			series.bullets.push(function () {
 				return am5.Bullet.new(root, {
 					locationY    : 1,
 					sprite       : am5.Label.new(root, {
-						text        : "{valueYWorking.formatNumber('#.# a')}",
+						text        : "{valueYWorking.formatNumber('#.')}",
 						fill        : am5.color(0x000000),
 						centerX: am5.p50,
-            			centerY: am5.p100,
+						centerY: am5.p100,
 						populateText: true
+					})
+				});
+			})
+			
+			//
+			var series1 = chart.series.push(am5xy.ColumnSeries.new(root, {
+				name: `Clientes Tardios:  ${TotalTardios}`,
+				xAxis: xAxis,
+				yAxis: paretoAxis,
+				valueYField: "tardios",
+					categoryXField: "user_name",
+					sequencedInterpolation: true,
+				tooltip: am5.Tooltip.new(root, {
+					labelText: "[bold]{name}[/]:{valueY}"
 				})
+			}));
+			series1.columns.template.setAll({
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
+			});
+			series1.set("fill", am5.color("<?= $this->Session->read('colores.Tardio')?>")); 
+			series1.bullets.push(function () {
+				return am5.Bullet.new(root, {
+					locationY: 1,
+					sprite: am5.Label.new(root, {
+						text: "{valueYWorking.formatNumber('#,###')}",
+						fill        : am5.color(0x000000),
+						centerX: am5.p50,
+						centerY: am5.p100,
+						populateText: true
+					})
+				});
+			});
+			//
+
+			var series2 = chart.series.push(am5xy.ColumnSeries.new(root, {
+				name: ` Cliente No Atendido: ${TotalNo_atendido}`,
+				xAxis: xAxis,
+				yAxis: yAxis,
+				valueYField: "no_atendido",
+				categoryXField: "user_name",
+				sequencedInterpolation: true,
+				tooltip: am5.Tooltip.new(root, {
+					labelText: "[bold]{name}[/]:{valueY}"
+				})
+			}));
+			series2.columns.template.setAll({
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
+			});
+			series2.set("fill", am5.color("<?= $this->Session->read('colores.Noatendido')?>")); 
+			series2.bullets.push(function () {
+				return am5.Bullet.new(root, {
+					locationY: 1,
+					sprite: am5.Label.new(root, {
+						text: "{valueYWorking.formatNumber('#,###')}",
+						fill        : am5.color(0x000000),
+						centerX: am5.p50,
+						centerY: am5.p100,
+						populateText: true
+					})
 				});
 			});
 
-			legend.data.push(series);
-			}
-
-			makeSeries("Oportunos", "oportunos");
-			makeSeries("Tardios", "tardios");
-			makeSeries("No Atendido", "no_atendido");
-			makeSeries("Reasignar", "reasignar");
-
+			var series3 = chart.series.push(am5xy.ColumnSeries.new(root, {
+				name: ` Cliente Reasignar: ${TotalReasignar}`,
+				xAxis: xAxis,
+				yAxis: yAxis,
+				valueYField: "reasignar",
+				categoryXField: "user_name",
+				sequencedInterpolation: true,
+				tooltip: am5.Tooltip.new(root, {
+					labelText: "[bold]{name}[/]:{valueY}"
+				})
+			}));
+			series3.columns.template.setAll({
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
+			});
+			series3.set("fill", am5.color("<?= $this->Session->read('colores.PorReasignar')?>")); 
+			series3.bullets.push(function () {
+				return am5.Bullet.new(root, {
+					locationY: 1,
+					sprite: am5.Label.new(root, {
+						text: "{valueYWorking.formatNumber('#,###')}",
+						fill        : am5.color(0x000000),
+						centerX: am5.p50,
+						centerY: am5.p100,
+						populateText: true
+					})
+				});
+			});
+			
+			chart.set("cursor", am5xy.XYCursor.new(root, {}));
+			var legend = chart.children.push(
+				am5.Legend.new(root, {
+					centerX: am5.p50,
+					x      : am5.p50
+				})
+			);
+			legend.data.setAll(chart.series.values);
 			chart.appear(1000, 100);
-
-		}); // end am5.ready()
+			series.appear();	
+			series1.appear();
+			series2.appear();
+			series3.appear();
+			xAxis.data.setAll(data);
+			series.data.setAll(data);
+			series1.data.setAll(data);
+			series2.data.setAll(data);
+			series3.data.setAll(data);
+		});
   	}
 </script>
