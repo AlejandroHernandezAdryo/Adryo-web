@@ -73,7 +73,7 @@ class AgendasController extends AppController {
 			$this->Agenda->create();
                         $timestamp = date('Y-m-d H:i:s');
                         $this->request->data['Agenda']['fecha']=$timestamp ;
-			if ($this->Agenda->save($this->request->data)) {
+						if ($this->Agenda->save($this->request->data)) {
                             
                             $this->Agenda->query("UPDATE clientes SET last_edit = '$timestamp' WHERE id = ".$this->request->data['Agenda']['cliente_id']);
                                 
@@ -92,7 +92,7 @@ class AgendasController extends AppController {
                                     )
                                 );
 								$this->Email->emailFormat('html');
-								$this->Email->template('asesoria','bosemail');
+								$this->Email->template('asesoria','layoutinmomail');
                                 //$this->Email->template('emailaasesor','layoutinmomail');
                                 $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
 								$this->Email->to($cliente['User']['correo_electronico']);

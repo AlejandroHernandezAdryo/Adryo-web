@@ -89,9 +89,13 @@
         		}
 				if ( maxioportunos < maxitardios ) {
 					max1 = maxitardios ;
+				}else {
+					max1 = maxioportunos ;
 				}
 				if ( maxino_atendido < maxino_reasignar ) {
 					max2 = maxino_reasignar ;
+				}else {
+					max2 = maxino_atendido ;
 				}
 				if ( max1 < max2 ) {
 					maximo = max2 ;
