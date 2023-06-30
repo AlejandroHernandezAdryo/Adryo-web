@@ -1,6 +1,4 @@
 <?php 
-  $ra_tot_monto_venta = 0;
-  $ra_tot_unidades_venta = 0;
   echo $this->Html->css(
     array(
         // Calendario
@@ -331,7 +329,7 @@
                       <?= $this->Session->read('CuentaUsuario.Cuenta.razon_social')?></h2>
                   </p>
                   <h1 class="text-sm-center text-black">
-                    Reporte Grupo de Asesores: <span id=""></span>
+                    Reporte Grupo de Asesores: <span id="grupoAsesoresReporte"></span>
                   </h1>
                   <p class="text-lg-center" style="font-size: 1rem;">
                     <b style="font-size:14px">Periodo del: <span id="periodoReporte"> "Sin periodo" </span> </b>
@@ -339,20 +337,59 @@
                   
                 </div>
               </div>
-              <!-- elementos -->
+              <!-- ESTATUS GENERAL DE CLIENTES POR ASESOR -->
               <div class="row mt-1 salto">
                 <div class="col-sm-12">
                   <?= $this->Element('Clientes/clientes_status_user_by_ajax') ?>
                 </div>
               </div>
-              <!-- elementos -->
-              <!-- elementos -->
+
+              <!-- ESTATUS DE ATENCIÓN A CLIENTES ACTIVOS -->
               <div class="row mt-1 salto">
                 <div class="col-sm-12">
                   <?= $this->Element('Clientes/clientes_atencion_grupo_by_ajax') ?>
                 </div>
               </div>
-              <!-- elementos -->
+
+              <!-- RAZONES DE CITAS CANCELADAS DEL PERIODO -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Events/razon_citas_canceladas_grupo_by_ajax') ?>
+                </div>
+              </div>
+
+               <!-- ETAPAS DE CLIENTES ACTIVOS A LA FECHA -->
+               <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_etapa_grupo_by_ajax') ?>
+                </div>
+              </div>
+              <!-- TOTAL DE CLIENTES VS VISITAS Y VENTAS -->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_ventas_visitas_grupo_by_ajax') ?>
+                </div>
+              </div>
+
+              <!-- TOTAL DE CLIENTES VS CITAS Y VENTAS-->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('Clientes/clientes_ventas_citas_grupo_by_ajax') ?>
+                </div>
+              </div>
+
+              <!-- META VS. VENTAS (UNIDADES)-->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('OperacionesInmuebles/ventas_metas_grupo_asesores_by_ajax') ?>
+                </div>
+              </div>
+              <!--  META VS. VENTAS (MONTO)-->
+              <div class="row mt-1 salto">
+                <div class="col-sm-12">
+                  <?= $this->Element('OperacionesInmuebles/ventas_metas_monto_grupo_asesores_by_ajax') ?>
+                </div>
+              </div>
               
             </div>
           </div>
@@ -363,191 +400,7 @@
   
 </div>
 
-<?php if(isset($asesor)){?>
-<div id="content" class="bg-container">
-  <div class="outer">
-      <div class="inner bg-light lter bg-container">
-      <div class="row mt-3">
-        <div class="col-sm-12">
-          <div class="card">
-            <div class="card-header no-imprimir" style="background-color: #2e3c54; color:white;">
-              <div class="row">
-                <div class="col-sm-12 col-lg-6">
-                  <h3 class="text-white">Reporte por Grupo de Asesores</h3>
-                </div>
-                <div class="col-sm-12 col-lg-6 text-lg-right">
-                  <?= $this->Html->link('<i class="fa fa-cogs fa-2x"></i> Cambiar Rango de Fechas y Asesor', '#myModal', array('data-toggle'=>'modal', 'escape'=>false,'class'=>'no-imprimir','style'=>"color:white")) ?>	
-                  <?= $this->Html->link('<i class="fa  fa-print fa-2x"></i>Imprimir Reporte',"javascript:window.print()",array('escape'=>false, 'style'=>'color:white'))?>
-                </div>
-              </div>
-            </div>
-            <div class="card-block" style="padding-top: 10px;">
-              <div class="row">
-                <div class="col-sm-12 col-lg-3 mt-1">
-                  <img src="<?= Router::url($this->Session->read('CuentaUsuario.Cuenta.logo'),true) ?>" alt="Logo cuenta" class="img-fluid logo-printer">
-                                                                  
-                </div>
-                <div class="col-sm-12 col-lg-6 mt-1">
-                  <h1 class="text-sm-center text-black">Reporte de Asesores:</h1>
-                  <?php 
-                    $roles = array(
-                      1 => 'Superadministrador',
-                      2 => 'Gerente',
-                      3 => 'Asesor'
-                    );
-                  ?>                                           
-                  <div class="text-lg-center" style="font-size: 1rem; text-align:center">
-                    <p><?php
-                        $asesores_arreglo = explode(",",$asesores);
-                        foreach($asesores_arreglo as $asesor){
-                            echo $users[$asesor].", ";
-                        }
-                        ?></p>
-                    <p><b style="font-size:14px">Periodo del: <?= $periodo_reporte ?></b></p>
-                  </div>
 
-                </div>
-                <div class="col-sm-12 col-lg-3 mt-1">
-                </div>
-              </div>
-              <!-- ./row hader  -->
-              <!-- <div class="row">
-                <div class="col-lg-12">
-                  <div class="card mt-2">
-                      <div class="card-header" style="background-color: #2e3c54; color:white;">
-                              <i class="fa fa-users"></i> Indicadores de Desempeño
-                      </div>
-                      <?php
-                          $ventas_unidades = 0;
-                          $ventas_mdp = 0;
-                          foreach ($ventas_grafica as $venta):
-                              $ventas_unidades ++;
-                              $ventas_mdp += $venta[0]['sum(precio_cerrado)'];
-                          endforeach;
-                      ?>
-                      <div class="card-block">
-                          <div class="row">
-                            <div class="col-sm-12">
-                              <table style="width:100%; text-align:center;">
-                                  <tr>
-                                      <th class="row-25">Clientes Asignados</th>
-                                      <th class="row-25">Ventas Unidades</th>
-                                      <th class="row-25">Ventas $ (MDP)</th>
-                                      <th class="row-25">% Efectividad</th>
-                                  </tr>
-                                  <tr>
-                                      <td class="row-25 padding-10 clientes"><?= $data_clientes_temp['frios']+$data_clientes_temp['tibios']+$data_clientes_temp['calientes'] ?></td>
-                                      <td class="row-25 padding-10 ventas"><?= $ventas_unidades?></td>
-                                      <td class="row-25 padding-10 mdp"><?= number_format($ventas_mdp/1000000,2)?></td>
-                                      <td class="row-25 padding-10 efectividad"><?= number_format(($ventas_unidades/($data_clientes_temp['frios']+$data_clientes_temp['tibios']+$data_clientes_temp['calientes'])*100),2) ?>%</td>
-                                  </tr>
-                              </table>
-                            </div>
-                          </div>
-                      </div>
-                  </div>
-                </div>
-              </div> -->
-
-
-
-              <div class="row mt-1" id="estatus_temperatura_clientes"> 
-                <div class="col-sm-12 mt-1">
-                  <?= $this->Element('Clientes/Grupo/clientes_estatus') ?>
-                </div>
-
-                <div class="col-sm-12 mt-1">
-                  <?= $this->Element('Clientes/Grupo/clientes_atencion') ?>
-                </div>
-
-                  <div class="col-sm-12 col-lg-12 mt-1">
-                      <?= $this->Element('Events/cancelaciones') ?>
-                  </div>
-                
-              </div>
-              
-              
-              
-
-              <div class="row mt-1 salto">
-                <div class="col-sm-12 col-lg-12">
-                    <?= $this->Element('Clientes/Grupo/clientes_temperatura') ?>
-                  </div>
-              </div>
-
-
-              <div class="row mt-1 ">
-                  <div class="col-sm-12">
-                    <?= $this->Element('Clientes/Grupo/leads_ventas_visitas') ?>
-                  </div>
-              </div>
-
-
-
-              <div class="row mt-1 ">
-                  <div class="col-sm-12">
-                    <?= $this->Element('Clientes/Grupo/ventas_metas_q') ?>
-                  </div>
-                </div>
-
-                  <div class="row mt-1 salto">
-                      <div class="col-sm-12">
-                          <?= $this->Element('Clientes/Grupo/ventas_metas') ?>
-                      </div>
-                  </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer -->
-                  <div class="footer">
-        <div class="row mt-3">
-          <div class="col-sm-12" style="background-color: #555555;">
-            <p class="text-lg-center" style="color: white;">
-              <br>
-              POWERED BY <br>
-              <img src="<?= Router::url('/img/logo_inmosystem.png',true) ?>" style="border: 0px; width: 80px; margin: 0px; height: 42px; width: auto;"><br>
-                <span style="color:#FFFFFF"><small>Todos los derechos reservados <?= date('Y')?></small></span>
-            </p>
-          </div>
-        </div>
-      </div>
-      </div>
-  </div>
-</div>
-<?php }else{ ?>
-  <div id="content" class="bg-container">
-    <div class="outer">
-      <div class="inner bg-light lter bg-container">
-          <div class="row mt-3">
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-header no-imprimir" style="background-color: #2e3c54; color:white;">
-                  <div class="row">
-                    <div class="col-sm-12 col-lg-6">
-                      <h3 class="text-white">Reporte por grupo de Asesores</h3>
-                    </div>
-                    <div class="col-sm-12 col-lg-6 text-lg-right">
-                      <?= $this->Html->link('<i class="fa fa-cogs fa-2x"></i> Cambiar Rango de Fechas y Asesor', '#myModal', array('data-toggle'=>'modal', 'escape'=>false,'class'=>'no-imprimir','style'=>"color:white")) ?>	
-                    </div>
-                  </div>
-                </div>
-                <div class="card-block" style="padding-top: 10px;">
-                  <div class="row">
-                    <div class="col-sm-12 col-lg-12 mt-1">
-                      Introduce los parámetros de búsqueda
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php }?>
 <?php 
   echo $this->Html->script([
     'components',
@@ -557,35 +410,45 @@
 
     // Calendario
     '/vendors/jquery.uniform/js/jquery.uniform',
-	'/vendors/inputlimiter/js/jquery.inputlimiter',
-	'/vendors/bootstrap-colorpicker/js/bootstrap-colorpicker.min',
-	'/vendors/jquery-tagsinput/js/jquery.tagsinput',
-	'/vendors/validval/js/jquery.validVal.min',
-	'/vendors/inputmask/js/jquery.inputmask.bundle',
-	'/vendors/moment/js/moment.min',
-	'/vendors/daterangepicker/js/daterangepicker',
-	'/vendors/datepicker/js/bootstrap-datepicker.min',
-	'/vendors/bootstrap-timepicker/js/bootstrap-timepicker.min',
-	'/vendors/bootstrap-switch/js/bootstrap-switch.min',
-	'/vendors/autosize/js/jquery.autosize.min',
-	'/vendors/jasny-bootstrap/js/jasny-bootstrap.min',
-	'/vendors/jasny-bootstrap/js/inputmask',
-	'/vendors/datetimepicker/js/DateTimePicker.min',
-	'/vendors/j_timepicker/js/jquery.timepicker.min',
-	'/vendors/clockpicker/js/jquery-clockpicker.min',
+    '/vendors/inputlimiter/js/jquery.inputlimiter',
+    '/vendors/bootstrap-colorpicker/js/bootstrap-colorpicker.min',
+    '/vendors/jquery-tagsinput/js/jquery.tagsinput',
+    '/vendors/validval/js/jquery.validVal.min',
+    '/vendors/inputmask/js/jquery.inputmask.bundle',
+    '/vendors/moment/js/moment.min',
+    '/vendors/daterangepicker/js/daterangepicker',
+    '/vendors/datepicker/js/bootstrap-datepicker.min',
+    '/vendors/bootstrap-timepicker/js/bootstrap-timepicker.min',
+    '/vendors/bootstrap-switch/js/bootstrap-switch.min',
+    '/vendors/autosize/js/jquery.autosize.min',
+    '/vendors/jasny-bootstrap/js/jasny-bootstrap.min',
+    '/vendors/jasny-bootstrap/js/inputmask',
+    '/vendors/datetimepicker/js/DateTimePicker.min',
+    '/vendors/j_timepicker/js/jquery.timepicker.min',
+    '/vendors/clockpicker/js/jquery-clockpicker.min',
 
-	'form',
-  'pages/form_elements',
+    'form',
+    'pages/form_elements',
 
   ], array('inline'=>false));
 ?>
 <script>
   function reporteGrupoAsesor(){
-    console.log( $("#date_range").val() );
-    console.log( $("#users").val() );
-    // get_asesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#asesor_id").val() );
+    
     clientesStatusClientes( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
     clientesAtencionClientes( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    graficaMotivoCancelacionCitaGrupo( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    tablaEtapaGrupoAsesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    ClienteVentasVisitasGrupoAsesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    ClienteVentasCitasGrupoAsesor( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    graficaVentasMetasGrupoAsesoresUnidades( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    graficaVentasMetasMontoGrupoAsesores( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    getGrupoAsesores( $("#date_range").val(), <?= $this->Session->read('CuentaUsuario.Cuenta.id') ?>, 0, $("#users").val()  );
+    window.setInterval(function(){
+      $('#myModal').modal('hide');
+      $("#overlay").fadeOut();
+    },9000);
+    
   }
 
   $(document).ready(function () {
@@ -608,9 +471,7 @@
     });
 
       $('.seleccionar_todos').each(function(index) {
-          console.log(index);
           $(this).on('click', function() {
-              console.log($(this).parent().find('option').text());
               $(this).parent().find('option').prop('selected', $(this).hasClass('select')).parent().trigger('chosen:updated');
           });
       });
@@ -620,9 +481,30 @@
     $(".dataTables_wrapper .dt-buttons .btn").addClass('btn-secondary').removeClass('btn-default');
 
   });
-
-
-
+  function getGrupoAsesores ( rangoFechas, cuentaId, desarrolloId, asesorId ) {
+    $.ajax({
+      type: "POST",
+      url: '<?php echo Router::url(array("controller" => "users", "action" => "reporte_grupo_asesores_info")); ?>',
+      data: {
+				rango_fechas: rangoFechas,
+				cuenta_id: cuentaId,
+				desarrollo_id: desarrolloId,
+				user_id: asesorId
+			},
+      cache: false,
+      dataType: 'json',
+      beforeSend: function () {
+        $("#overlay").fadeIn();
+      },
+      success: function ( response ) {
+        document.getElementById("periodoReporte").innerHTML =response[0].periodo;
+        document.getElementById("grupoAsesoresReporte").innerHTML =response[0].asesores;
+      },
+      error: function ( err ){
+        console.log( err.responseText );
+      }
+    });
+  }
   var TableAdvanced = function() {
       // ===============table 1====================
       var initTable1 = function() {
@@ -665,5 +547,4 @@
       };
   }();
 
-  document.getElementById("ra_tot_monto_venta").innerHTML = '<?= number_format($ra_tot_monto_venta); ?>';
 </script>

@@ -250,6 +250,7 @@
         $("#modalShared").addClass('hidden'); 
 
         // Abrimso en una página nueva wa
+        // window.open('https://api.whatsapp.com/send?phone'+$("#send_iframe_telefono").val()+'?text='+$("#mensaje").val());
         window.open('https://wa.me/521'+$("#send_iframe_telefono").val()+'?text='+$("#mensaje").val());
     });
 

@@ -108,31 +108,31 @@ class EventsController extends AppController {
 
         $this->autoRender = false;
 	}
+    
+    public function enviar(){
         
-        public function enviar(){
-            
-            $eventos = $this->Event->find('all', array('conditions'=>array('recordatorio_1 LIKE "'.date('Y-m-d H:i').'%"')));
-            //$eventos = $this->Event->find('all', array('conditions'=>array('Event.id'=>95)));
-            foreach ($eventos as $evento):
-                $this->Email = new CakeEmail();
-                $this->Email->config(array(
-                                'host'      => 'ssl://lpmail01.lunariffic.com',
-                                'port'      => 465,
-                                'username'  => 'sistemabos@bosinmobiliaria.mx',
-                                'password'  => 'Sistema.2016',
-                                'transport' => 'Smtp'
-                            )
-                    );
-                $this->Email->emailFormat('html');
-                $this->Email->template('recordatorio','bosemail');
-                $this->Email->from(array('sistema@bosinmobiliaria.com.mx'=>'Agenda Sistema BOS'));
-                $this->Email->to($evento['User']['correo_electronico']);
-                $this->Email->subject('Recordatorio de Evento');
-                $this->Email->viewVars(array('evento'=>$evento));
-                $this->Email->send();
-            endforeach;
-            
-        }
+        $eventos = $this->Event->find('all', array('conditions'=>array('recordatorio_1 LIKE "'.date('Y-m-d H:i').'%"')));
+        //$eventos = $this->Event->find('all', array('conditions'=>array('Event.id'=>95)));
+        foreach ($eventos as $evento):
+            $this->Email = new CakeEmail();
+            $this->Email->config(array(
+                            'host'      => 'ssl://lpmail01.lunariffic.com',
+                            'port'      => 465,
+                            'username'  => 'sistemabos@bosinmobiliaria.mx',
+                            'password'  => 'Sistema.2016',
+                            'transport' => 'Smtp'
+                        )
+                );
+            $this->Email->emailFormat('html');
+            $this->Email->template('recordatorio','bosemail');
+            $this->Email->from(array('sistema@bosinmobiliaria.com.mx'=>'Agenda Sistema BOS'));
+            $this->Email->to($evento['User']['correo_electronico']);
+            $this->Email->subject('Recordatorio de Evento');
+            $this->Email->viewVars(array('evento'=>$evento));
+            $this->Email->send();
+        endforeach;
+        
+    }
 
 /**
  * view method
@@ -1595,6 +1595,8 @@ class EventsController extends AppController {
     public function add_evento( $data_event = null ){
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('DesarrolloInmueble');
+        $this->Cliente->Behaviors->load('Containable');
+        $this->loadModel('Cliente');
         $this->DesarrolloInmueble->Behaviors->load('Containable');
         // Paso 1.- vamos a setear el recordatorio 1, si es que esta inicializado.
         $timestamp  = date('Y-m-d h:i:s');
@@ -1703,7 +1705,40 @@ class EventsController extends AppController {
 
             if ( $this->Event->save($this->request->data) ) {
                 $event_id = $this->Event->getInsertID();
-
+                $meses_esp = array( '01'=> 'Enero', '02'=> 'Febrero', '03'=> 'Marzo', '04'=> 'Abril', '05'=> 'Marzo', '06'=> 'Junio', '07'=> 'Julio', '08'=> 'Agosto', '09'=> 'Septiembre', '10' => 'Octubre', '11' => 'Noviembre', '12' => 'Diciembre');
+                $evento_=$this->Event->find('first',array(
+                    'conditions'=>array(
+                      'Event.id'=>$event_id
+                    ),
+                    'contain' => false 
+                    )
+                  );
+           
+                if (  $data_event['tipo_evento'] == 0)  {
+                    $cliente = $this->Cliente->read(null,$data_event['cliente_id']);
+                     $this->loadModel('Mailconfig');
+                    $mailconfig  = $this->Mailconfig->read(null,$this->Session->read('CuentaUsuario.Cuenta.mailconfig_id'));
+                    //$cliente = $this->Cliente->read(null,$this->request->data['Agenda']['cliente_id']);
+                    $usuario = $this->User->read(null, $data_event['user_id']);
+                    $this->Email = new CakeEmail();
+                    $this->Email->config(array(
+                        'host'      => $mailconfig['Mailconfig']['smtp'],
+                        'port'      => $mailconfig['Mailconfig']['puerto'],
+                        'username'  => $mailconfig['Mailconfig']['usuario'],
+                        'password'  => $mailconfig['Mailconfig']['password'],
+                        'transport' => 'Smtp'
+                        )
+                    );
+                    $this->Email->emailFormat('html');
+                    $this->Email->template('asesoria','layoutinmomail');
+                    //$this->Email->template('emailaasesor','layoutinmomail');
+                    $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                    $this->Email->to($cliente['Cliente']['correo_electronico']);
+                    $this->Email->subject('Notificación para seguimiento de cliente');
+                    $this->Email->viewVars(array('asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'fecha'=>date("d/M/Y H:i:s")));
+                    $this->Email->send();
+                }
+                
                 if( $data_event['inmueble_id'] != 0 ){
                     $interes = $this->Inmueble->find('first', array('conditions'=>array('Inmueble.id' => $data_event['inmueble_id']), 'fields' => array('Inmueble.titulo')));
                     $interes_nombre = $interes['Inmueble']['titulo'];
@@ -2896,8 +2931,6 @@ class EventsController extends AppController {
         $this->autoRender = false;
     }
 
-
-
     /* -------------------------------------------------------------------------- */
     /*                  Metodo para correccion de desarrollos_id                  */
     /* -------------------------------------------------------------------------- */
@@ -3060,15 +3093,18 @@ class EventsController extends AppController {
     */
     function citas_cancelacion_grupo(){
         header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('User');
         $this->Event->Behaviors->load('Containable');
+        $this->User->Behaviors->load('Containable');
         $fecha_ini         = '';
         $fecha_fin         = '';
+        $response               = [];
         $and               = [];
         $or                = [];
         $cancelaciones_raw = [];
         $motivo_cancelacion=[];
         $condiciones =[];
-        $desarrollo_id=0;
+        $user_id=0;
         $i=0;
         if ($this->request->is('post')) {
             $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
@@ -3080,20 +3116,33 @@ class EventsController extends AppController {
                 }else{
                 $cond_rangos = array("Event.fecha_inicio BETWEEN ? AND ?" => array($fi, $ff));
             }
-            $cancelacion= $this->Event->find('count',array(
+            foreach ($this->request->data['user_id'] as $user){
+                $user_id = $user_id.$user.",";
+            }
+            $user_id = substr($user_id,0,-1);
+            $cancelaciones_raw= $this->Event->find('all',array(
                 'conditions'=>array(   
                         'Event.motivo_cancelacion <>' => '',
-                        'Event.user_id' =>663,
+                        'Event.status' =>  2,
+                        'Event.tipo_tarea' => 0,
+                        'Event.user_id IN ('.$user_id.')',
                         $cond_rangos,
                     ),
                     'fields' => array(
                         'Event.motivo_cancelacion',
+                        'COUNT(Event.motivo_cancelacion) as motivo',
                     ),
+                    'group' =>'Event.motivo_cancelacion',
                     'contain' => false 
                 )
             );
+            foreach ($cancelaciones_raw as $value) {
+                $response[$i]['cantidad']=$value[0]['motivo'];
+                $response[$i]['motivo']=$value['Event']['motivo_cancelacion'];
+                $i++;
+            }
         }
-        echo json_encode( $cancelacion, true );
+        echo json_encode( $response, true );
         exit();
         $this->autoRender = false;
     }

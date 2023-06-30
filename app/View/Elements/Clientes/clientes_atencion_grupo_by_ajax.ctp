@@ -1,5 +1,5 @@
 <style>
-		#graficas_clientes_status_asesores{
+		#graficas_clientes_atencion_asesores{
   		width: 100%;
   		height: 500px;
 		}
@@ -7,19 +7,19 @@
 
 <div class="card">
     <div class="card-header bg-blue-is cursor">
-        ESTATUS GENERAL DE CLIENTES POR ASESOR
+		ESTATUS DE ATENCIÓN A CLIENTES ACTIVOS
         <span style="float:right">
-            Total: <span id=""></span>
+            Total: <span id="atenciontaltaclientes"></span>
         </span>
     </div>
 
     <div class="card-block" style="width: 100%;">
     	<div class="row">
         	<div class="col-sm-12" >
-        		<div id="graficas_clientes_status_asesores" ></div>
+        		<div id="graficas_clientes_atencion_asesores" ></div>
         	</div>
         	<div class="col-sm-12 m-t-35">
-        		<small id="graficas_clientes_status_asesoresperiodo_tiempo"></small>
+        		<small id="graficas_clientes_atencion_asesores_periodo_tiempo"></small>
         	</div>
     	</div>
     </div>
@@ -30,12 +30,9 @@
   echo $this->Html->script([
     'components',
     'custom',
-    
-    // Graficas de Google
-    'https://www.gstatic.com/charts/loader.js',
-    'https://maps.googleapis.com/maps/api/js?key=AIzaSyAbQezSnigCkcxQ1zaoucUWwsGGc3Ar4g0',
 
-], array('inline'=>false));
+
+	], array('inline'=>false));
 ?>
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
@@ -55,10 +52,64 @@
 
 			success: function ( response ) {
 				
+				let Total=0;
+				let TotalOportunos=0;
+				let TotalTardios=0;
+				let TotalNo_atendido=0;
+				let TotalReasignar=0;
+				let maxioportunos=0;
+				let maxitardios=0;
+				let maxino_atendido=0;
+				let maxino_reasignar=0;
+				let max1=0;
+				let max2=0;
+				let maximo=0;
+				for (let i in response){
+					response[i].oportunos  = parseInt(response[i].oportunos);
+					response[i].tardios  = parseInt(response[i].tardios);
+					response[i].no_atendido  = parseInt(response[i].no_atendido);
+					response[i].reasignar  = parseInt(response[i].reasignar);
+					Total            += response[i].oportunos + response[i].tardios +  response[i].no_atendido + response[i].reasignar ;
+					TotalOportunos   += response[i].oportunos ;
+					TotalTardios     += response[i].tardios;
+					TotalNo_atendido += response[i].no_atendido ;
+					TotalReasignar   += response[i].reasignar ;
+					if(maxioportunos < response[i].oportunos){
+						maxioportunos = response[i].oportunos;
+					}
+					if(maxitardios < response[i].tardios){
+						maxitardios = response[i].tardios;
+					}
+					if(maxino_atendido < response[i].no_atendido){
+						maxino_atendido = response[i].no_atendido;
+					}
+					if(maxino_reasignar < response[i].reasignar){
+						maxino_reasignar = response[i].reasignar;
+					}
+        		}
+				if ( maxioportunos < maxitardios ) {
+					max1 = maxitardios ;
+				}else {
+					max1 = maxioportunos ;
+				}
+				if ( maxino_atendido < maxino_reasignar ) {
+					max2 = maxino_reasignar ;
+				}else {
+					max2 = maxino_atendido ;
+				}
+				if ( max1 < max2 ) {
+					maximo = max2 ;
+				}else{
+					maximo=max1
+				}
+				document.getElementById("graficas_clientes_atencion_asesores_periodo_tiempo").innerHTML =rangoFechas;
+				document.getElementById("atenciontaltaclientes").innerHTML =Total;
 				
-				// draw( response, Total );
-				console.log(response);
-
+				// console.log('caca');
+				// console.log(response,  Total, max );
+				// console.log('caca');
+				
+				drawClientesAtencionGrupoAsesores(response,  Total, maximo, TotalOportunos, TotalTardios ,TotalNo_atendido, TotalReasignar);
 			},
 			error: function ( err ){
 			console.log( err.responseText );
@@ -66,166 +117,208 @@
 		});
 	}
    // Es el metodo de la grafica.
-	function draw( response, Total ) {
-    	am5.ready(function() {
-			//maybeDisposeRoot("grafica_etapa_clientes");
-			var root = am5.Root.new("grafica_etapa_clientes");
+	function drawClientesAtencionGrupoAsesores(response,  Total, maximo, TotalOportunos, TotalTardios ,TotalNo_atendido, TotalReasignar) {
+    	am5.ready(function () {
+			var root = am5.Root.new("graficas_clientes_atencion_asesores");
 			root.setThemes([
 				am5themes_Animated.new(root)
 			]);
 			root.interfaceColors.set("grid", am5.color('#bababa'));
-			var data = response
-			var chart = root.container.children.push(
-				am5xy.XYChart.new(root, {
-					panX: false,
-					panY: false,
-					wheelX: "none",
-					wheelY: "none",
-					
-				})
-			);
-
-			// Create axes
-			// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-
-			var yRenderer = am5xy.AxisRendererY.new(root, {});
-			yRenderer.grid.template.set("visible", false);
-
-			var yAxis = chart.yAxes.push(
-				am5xy.CategoryAxis.new(root, {
-					categoryField: "estado",
-					renderer: yRenderer,
-					//paddingRight:40
-				})
-			);
-
-			var xRenderer = am5xy.AxisRendererX.new(root, {});
-			xRenderer.grid.template.set("strokeDasharray", [3]);
-			xRenderer.grid.template.setAll({
-				location: 1
+			var chart = root.container.children.push(am5xy.XYChart.new(root, {
+				panX      : true,
+				panY      : true,
+				wheelY    : "zoomX",
+				wheelX    : "panX",
+				pinchZoomX:  true
+			}));
+			var cursor      = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+			cursor.lineY.set("visible", false);
+			var xRenderer   = am5xy.AxisRendererX.new(root, {
+				minGridDistance: 30
 			});
-			var xAxis = chart.xAxes.push(
-			am5xy.ValueAxis.new(root, {
-				min: 0,
-				max: (Total)*1.1,
-				renderer: xRenderer
-			})
-			);
+			xRenderer.labels.template.setAll({
+				rotation    : -90,
+				centerY     : am5.p50,
+				centerX     : am5.p100,
+				paddingRight: 15
+			});
 
-			var series = chart.series.push(
-				am5xy.ColumnSeries.new(root, {
-					xAxis: xAxis,
-					yAxis: yAxis,
-					clustered: false,
-					valueXField: "cantidad",
-					categoryYField: "estado",
-					tooltip: am5.Tooltip.new(root, {
-						pointerOrientation: "vertical",
-						labelText: "{categoryY}: Cantidad {valueX}"
-					})
+			var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+				maxDeviation: 0.3,
+				categoryField: "user_name",
+				renderer: xRenderer,
+				tooltip: am5.Tooltip.new(root, {})
+			}));
+			var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+				maxDeviation: 0.3,
+				min   		: 0,
+				max         : (maximo)*1.3,
+				renderer    : am5xy.AxisRendererY.new(root, {})
+			}));
+			yAxis.children.unshift(
+				am5.Label.new(root, {
+					rotation: -90,
+					text: "Activos e Inactivos Temporales",
+					y: am5.p50,
+					centerX: am5.p50
 				})
 			);
+			var data               = response;
+			var paretoAxisRenderer = am5xy.AxisRendererY.new(root, {opposite:true});
+			var paretoAxis         = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+				renderer    : paretoAxisRenderer,
+				min         : 0,
+				max         : (maximo)*1.2,
+				strictMinMax: true
+			}));
+			paretoAxisRenderer.grid.template.set("forceHidden", true);
+			paretoAxis.set("numberFormat", "#");
+			paretoAxis.children.push(
+				am5.Label.new(root, {
+					rotation: -90,
+					text: "Inactivos Defenitivos",
+					y: am5.p50,
+					centerX: am5.p50
+				})
+			);
+			
+			var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+				name                  : `Clientes oportunos : ${TotalOportunos}`,
+				xAxis                 : xAxis,
+				yAxis                 : yAxis,
+				valueYField           : "oportunos",
+				categoryXField        : "user_name",
+				sequencedInterpolation: true,
+				tooltip               : am5.Tooltip.new(root, {
+					labelText: "[bold]{name}[/]: {valueY}"
+				})
+			}));
+
 			series.columns.template.setAll({
-				width: am5.percent(20),
-				tooltipY: 0,
-				strokeOpacity: 0,
 				cornerRadiusTL: 5,
 				cornerRadiusTR: 5
 			});
-			
-			chart.get("colors").set("colors", [
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa7')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa6')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa5')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa4')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa3')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa2')?>"),
-				am5.color("<?= $this->Session->read('colores.Embudo.etapa1')?>"),
-			]);
-			series.columns.template.adapters.add("fill", function (fill, target) {
-				return chart.get("colors").getIndex(series.columns.indexOf(target));
-			});
-
-			series.columns.template.adapters.add("stroke", function (stroke, target) {
-				return chart.get("colors").getIndex(series.columns.indexOf(target));
-			});
-			
+			series.set("fill", am5.color("<?= $this->Session->read('colores.Oportuno')?>")); 
 			series.bullets.push(function () {
 				return am5.Bullet.new(root, {
-					locationX: 1,
-      				locationY: 1,
+					locationY    : 1,
 					sprite       : am5.Label.new(root, {
-						text        : "{cantidad} ",
+						text        : "{valueYWorking.formatNumber('#.')}",
 						fill        : am5.color(0x000000),
+						centerX: am5.p50,
 						centerY: am5.p100,
 						populateText: true
 					})
 				});
 			})
-			//
-			var series1 = chart.series.push(
-				am5xy.ColumnSeries.new(root, {
-					xAxis: xAxis,
-					yAxis: yAxis,
-					clustered: false,
-					valueXField: "cantidad7",
-					categoryYField: "estado",
-					tooltip: am5.Tooltip.new(root, {
-						pointerOrientation: "vertical",
-						labelText: "{categoryY}: Cantidad {valueX} de otro desarrollo"
-					})
-				})
-			);
-
-
-			// series1.columns.template.setAll({
-			// 	cornerRadiusTL: 5,
-			// 	cornerRadiusTR: 5,
-			// });
-			series1.columns.template.setAll({
-				width: am5.percent(50),
-				tooltipY: 0,
-				strokeOpacity: 0
-			});
-			// chart.get("colors").set("colors", [
-			// 	am5.color("<?= $this->Session->read('colores.Embudo.etapa7')?>"),
-			// ]);
-			series1.set("fill", am5.color(0xff0000)); 
-			// series1.columns.template.adapters.add("fill", function (fill, target) {
-			// 	return chart.get("colors").getIndex(series.columns.indexOf(target));
-			// });
-
-			// series1.columns.template.adapters.add("stroke", function (stroke, target) {
-			// 	return chart.get("colors").getIndex(series.columns.indexOf(target));
-			// });
 			
+			//
+			var series1 = chart.series.push(am5xy.ColumnSeries.new(root, {
+				name: `Clientes Tardios:  ${TotalTardios}`,
+				xAxis: xAxis,
+				yAxis: paretoAxis,
+				valueYField: "tardios",
+					categoryXField: "user_name",
+					sequencedInterpolation: true,
+				tooltip: am5.Tooltip.new(root, {
+					labelText: "[bold]{name}[/]:{valueY}"
+				})
+			}));
+			series1.columns.template.setAll({
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
+			});
+			series1.set("fill", am5.color("<?= $this->Session->read('colores.Tardio')?>")); 
 			series1.bullets.push(function () {
 				return am5.Bullet.new(root, {
-					locationX: 1,
-      				locationY: 0,
-					sprite       : am5.Label.new(root, {
-						// text        : "{cantidad} ",
+					locationY: 1,
+					sprite: am5.Label.new(root, {
+						text: "{valueYWorking.formatNumber('#,###')}",
 						fill        : am5.color(0x000000),
+						centerX: am5.p50,
 						centerY: am5.p100,
 						populateText: true
 					})
 				});
-			})
-			
+			});
 			//
-			var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
+			var series2 = chart.series.push(am5xy.ColumnSeries.new(root, {
+				name: ` Cliente No Atendido: ${TotalNo_atendido}`,
+				xAxis: xAxis,
+				yAxis: yAxis,
+				valueYField: "no_atendido",
+				categoryXField: "user_name",
+				sequencedInterpolation: true,
+				tooltip: am5.Tooltip.new(root, {
+					labelText: "[bold]{name}[/]:{valueY}"
+				})
+			}));
+			series2.columns.template.setAll({
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
+			});
+			series2.set("fill", am5.color("<?= $this->Session->read('colores.Noatendido')?>")); 
+			series2.bullets.push(function () {
+				return am5.Bullet.new(root, {
+					locationY: 1,
+					sprite: am5.Label.new(root, {
+						text: "{valueYWorking.formatNumber('#,###')}",
+						fill        : am5.color(0x000000),
+						centerX: am5.p50,
+						centerY: am5.p100,
+						populateText: true
+					})
+				});
+			});
+
+			var series3 = chart.series.push(am5xy.ColumnSeries.new(root, {
+				name: ` Cliente Reasignar: ${TotalReasignar}`,
+				xAxis: xAxis,
+				yAxis: yAxis,
+				valueYField: "reasignar",
+				categoryXField: "user_name",
+				sequencedInterpolation: true,
+				tooltip: am5.Tooltip.new(root, {
+					labelText: "[bold]{name}[/]:{valueY}"
+				})
+			}));
+			series3.columns.template.setAll({
+				cornerRadiusTL: 5,
+				cornerRadiusTR: 5
+			});
+			series3.set("fill", am5.color("<?= $this->Session->read('colores.PorReasignar')?>")); 
+			series3.bullets.push(function () {
+				return am5.Bullet.new(root, {
+					locationY: 1,
+					sprite: am5.Label.new(root, {
+						text: "{valueYWorking.formatNumber('#,###')}",
+						fill        : am5.color(0x000000),
+						centerX: am5.p50,
+						centerY: am5.p100,
+						populateText: true
+					})
+				});
+			});
+			
+			chart.set("cursor", am5xy.XYCursor.new(root, {}));
+			var legend = chart.children.push(
+				am5.Legend.new(root, {
+					centerX: am5.p50,
+					x      : am5.p50
+				})
+			);
+			legend.data.setAll(chart.series.values);
+			chart.appear(1000, 100);
+			series.appear();	
+			series1.appear();
+			series2.appear();
+			series3.appear();
+			xAxis.data.setAll(data);
 			series.data.setAll(data);
 			series1.data.setAll(data);
-			yAxis.data.setAll(data);
-
-			var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
-			cursor.lineX.set("visible", false);
-			cursor.lineY.set("visible", false);
-			series.appear();
-			series1.appear();
-			chart.appear(1000, 100);
-
-		}); // end am5.ready()
+			series2.data.setAll(data);
+			series3.data.setAll(data);
+		});
   	}
 </script>
