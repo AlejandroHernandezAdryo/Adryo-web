@@ -1105,5 +1105,5 @@
     });
 </script>
 <script src="https://kit.fontawesome.com/b0d8aefb17.js" crossorigin="anonymous"></script>
-
+<?= $this->Html->script('/js/blocksend')?>
 <?php //echo $this->element('sql_dump');?>
