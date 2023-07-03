@@ -339,13 +339,20 @@
     });
 
     $("#btn-opccion-error-send-iframe").on('click', function (){
-
+        var error = null;
+        if ($("#send_iframe_inmueble_referencia").val() == 0) {
+            error = 'Error en el teléfono'
+        }else if ($("#send_iframe_inmueble_referencia").val() == 1) {
+            error = 'Se perdió la conexión'
+        } else {
+            error = 'Número inválido'
+        }
         // Traer el listado de los errores.
         $.ajax({
             url: '<?php echo Router::url(array("controller" => "clientes", "action" => "error_send_whatsapp")); ?>',
             cache: false,
             type : "POST",
-            data: { mensaje: `Ocurrió un problema al intentar envíar ${ $("#send_iframe_inmueble_referencia").val() } vía whatsApp al cliente, por motivo: ${ $("#error_message_send_iframe").val() }`, accion: 11, cliente_id: $("#send_iframe_cliente_id").val() },
+            data: { mensaje: `Ocurrió un problema al intentar envíar ${ $("#send_iframe_inmueble_referencia").val() } vía whatsApp al cliente, por motivo: `+error, accion: 11, cliente_id: $("#send_iframe_cliente_id").val() },
             beforeSend: function () {
                 $("#modalIframe").modal("hide");
             },

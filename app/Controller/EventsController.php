@@ -3180,23 +3180,27 @@ class EventsController extends AppController {
      * 
      * 
     */
-    function find_events() {
+   function findEvents() {
 
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('DesarrolloInmueble');
         $this->Cliente->Behaviors->load('Containable');
         $this->loadModel('Cliente');
         $this->DesarrolloInmueble->Behaviors->load('Containable');
+        $evetos=[];
         $response               = [];
+
+        $fecha= date("d/M/Y H:i:s");
+
+        
 
         
             $this->loadModel('Mailconfig');
             $this->loadModel('User');
             $this->Mailconfig->Behaviors->load('Containable');
             $this->User->Behaviors->load('Containable');
-            $cliente = $this->Cliente->read(null,62635);
-            $mailconfig  = $this->Mailconfig->read(null,$this->Session->read('CuentaUsuario.Cuenta.mailconfig_id'));
-            //$cliente = $this->Cliente->read(null,$this->request->data['Agenda']['cliente_id']);
+            $cliente = $this->Cliente->read(null, 64104);
+            $mailconfig  = $this->Mailconfig->read(null, 41);
             $usuario = $this->User->read(null, 659);
             $this->Email = new CakeEmail();
             $this->Email->config(array(
@@ -3209,12 +3213,11 @@ class EventsController extends AppController {
             );
             $this->Email->emailFormat('html');
             $this->Email->template('emailclientecita','layoutinmomail');
-            //$this->Email->template('emailaasesor','layoutinmomail');
             $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
             $this->Email->to($cliente['Cliente']['correo_electronico']);
             $this->Email->subject('Notificación de proximo evento');
             $this->Email->viewVars(array('asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'fecha'=>date("d/M/Y H:i:s")));
-           
+
             if ( $this->Email->send()) {
                 $response = array(
                     'Ok' => true,
@@ -3222,10 +3225,6 @@ class EventsController extends AppController {
                 );
                 
             }
-       
-
-
-        
 
         echo json_encode($response, true);
         $this->autoRender = false;
