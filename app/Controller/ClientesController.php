@@ -151,7 +151,8 @@ class ClientesController extends AppController {
   *                   en la vista - AKA "SaaK";
   ******************************************************************************/
   public function index($tipo = null) {
-           
+          $this->loadModel('User');
+          $this->User->Behaviors->load('Containable');
           $tipos_cliente            = [];
           $linea_contactos          = [];
           $users                    = [];
@@ -165,9 +166,12 @@ class ClientesController extends AppController {
           $tipos_cliente            = $this->DicTipoCliente->find('list',array('order'=>'DicTipoCliente.tipo_cliente ASC','conditions'=>array('DicTipoCliente.cuenta_id'=>$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'))));
           
           $linea_contactos          = $this->DicLineaContacto->find('list',array('order'=>'DicLineaContacto.linea_contacto ASC','conditions'=>array('DicLineaContacto.cuenta_id'=>$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'))));
-          
-          $users                    = $this->Cliente->User->find('list',array('order'=>'User.nombre_completo ASC','conditions'=>array('User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')')));
-          
+
+          $condiciones_asesores    = array('User.status' => 1, 'User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')');
+          $users  =      $this->User->find('list', array(
+            'conditions' => $condiciones_asesores,
+            'order' => 'User.nombre_completo ASC'
+          ));
           $etapa_clientes           = $this->DicEtapa->find('list',array('conditions' => array('cuenta_id' => $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id')),'order' => array('etapa' => 'ASC')));
 
           // list_des_prop es un listado de propiedades, se manda el id de grupo de permisos y el id de la cuenta
@@ -899,15 +903,21 @@ class ClientesController extends AppController {
     $inmuebles   = [];
     $conditions  = [];
     $restrigidos = 0;
+    $condiciones_asesores    = array('User.status' => 1, 'User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')');
 
-    $list_users = $this->CuentasUser->find('list',
-      array(
-        'fields'     => array( 'User.id', 'User.nombre_completo' ),
-        'conditions' => array( 'CuentasUser.cuenta_id' => $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id') ),
-        'contain'    => array( 'User' ),
-        'order'      => array('User.nombre_completo' => 'ASC')
-      )
-    );
+    $list_users = $this->User->find('list', array(
+      'conditions' => $condiciones_asesores,
+      'order' => 'User.nombre_completo ASC'
+    ));
+
+    // $list_users = $this->CuentasUser->find('list',
+    //   array(
+    //     'fields'     => array( 'User.id', 'User.nombre_completo' ),
+    //     'conditions' => array( 'CuentasUser.cuenta_id' => $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id') ),
+    //     'contain'    => array( 'User' ),
+    //     'order'      => array('User.nombre_completo' => 'ASC')
+    //   )
+    // );
 
     $restrigidos = $this->Desarrollo->find('count',array('conditions' => array('Desarrollo.id IN (SELECT desarrollo_id FROM desarrollos_users WHERE user_id = '.$this->Session->read('Auth.User.id').')')));
 
@@ -7139,7 +7149,7 @@ class ClientesController extends AppController {
     $this->Session->setFlash('', 'default', array(), 'success');
     $this->Session->setFlash('Se ha guardado correctamente en seguimiento el motivo de error.', 'default', array(), 'm_success');
 
-    echo json_encode( $response, true );
+    echo json_encode(  $this->request->data, true );
 
     $this->autoRender = false;
 

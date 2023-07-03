@@ -4036,276 +4036,273 @@ class UsersController extends AppController {
 
       }
       $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
-      $this->set('users', $this->User->find('list',
-          array('order' => 'nombre_completo ASC',
-              'conditions' =>
-                  array(
-                      "User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = $cuenta_id)"
-                  )
-          )
+      
+      $condiciones_asesores    = array('User.status' => 1, 'User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')');
+      $users  =      $this->User->find('list', array(
+        'conditions' => $condiciones_asesores,
+        'order' => 'User.nombre_completo ASC'
       ));
+      $this->set(compact('users'));
+      // $this->set('users');
       // Variables globales
 
 
   }
 
   public function reporte_a2(){
-      $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
-      $users = $this->User->find('list',
-          array('order' => 'nombre_completo ASC',
-              'conditions' =>
-                  array(
-                      "User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = $cuenta_id)"
-                  )
-          )
-      );
-      $this->set('users', $users);
-      if ( $this->request->is(array('post', 'put')) ) {
-          date_default_timezone_set('America/Mexico_City');
+    $this->loadModel('User');
+    $this->User->Behaviors->load('Containable');
+    $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
+    $condiciones_asesores    = array('User.status' => 1, 'User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')');
+    $users  =      $this->User->find('list', array(
+      'conditions' => $condiciones_asesores,
+      'order' => 'User.nombre_completo ASC'
+    ));
+    $this->set('users', $users);
+    if ( $this->request->is(array('post', 'put')) ) {
+        date_default_timezone_set('America/Mexico_City');
 
-          $desarrollos_asignados  = [];
-          $interesados            = 0;
-          $citas                  = 0;
-          $visitas                = 0;
-          $mails                  = 0;
-          $interesados_acumulados = 0;
-          $citas_acumuladas       = 0;
-          $visitas_acumuladas     = 0;
-          $mails_acumuladas       = 0;
-          $clientes_asignados     = 0;
-          $cuenta_id              = $this->Session->read('CuentaUsuario.Cuenta.id');
-          $date_current           = date('Y-m-d');
-          $lista_ventas           = [];
-          $asesor                 = 0;
-          $fecha_inicio           = date('Y-01-01');
-          $fecha_final            = date('Y-m-d');
-          $periodo_reporte        = utf8_encode(strftime("%A %d %B de %Y", strtotime(date("d-m-Y", strtotime($fecha_inicio)))).' al '.strftime("%A %d %B de %Y", strtotime(date("d-m-Y", strtotime($fecha_final)))));
-          $periodo_reporte        = ucwords(strftime("%d %B de %Y", strtotime(date("d-m-Y", strtotime($fecha_inicio)))).' al '.strftime("%d %B de %Y", strtotime(date("d-m-Y", strtotime($fecha_final)))));
-          $periodo_tiempo         = 'INFORMACIÓN DE LOS CLIENTES DEL '.date('d-m-Y', strtotime($fecha_inicio)).' AL '.date('d-m-Y', strtotime($fecha_final));
-          $fecha_ini              = $fecha_inicio;
-          $fecha_fin              = $fecha_final;
-          $user_id                = $this->Session->read('Auth.User.id');
+        $desarrollos_asignados  = [];
+        $interesados            = 0;
+        $citas                  = 0;
+        $visitas                = 0;
+        $mails                  = 0;
+        $interesados_acumulados = 0;
+        $citas_acumuladas       = 0;
+        $visitas_acumuladas     = 0;
+        $mails_acumuladas       = 0;
+        $clientes_asignados     = 0;
+        $cuenta_id              = $this->Session->read('CuentaUsuario.Cuenta.id');
+        $date_current           = date('Y-m-d');
+        $lista_ventas           = [];
+        $asesor                 = 0;
+        $fecha_inicio           = date('Y-01-01');
+        $fecha_final            = date('Y-m-d');
+        $periodo_reporte        = utf8_encode(strftime("%A %d %B de %Y", strtotime(date("d-m-Y", strtotime($fecha_inicio)))).' al '.strftime("%A %d %B de %Y", strtotime(date("d-m-Y", strtotime($fecha_final)))));
+        $periodo_reporte        = ucwords(strftime("%d %B de %Y", strtotime(date("d-m-Y", strtotime($fecha_inicio)))).' al '.strftime("%d %B de %Y", strtotime(date("d-m-Y", strtotime($fecha_final)))));
+        $periodo_tiempo         = 'INFORMACIÓN DE LOS CLIENTES DEL '.date('d-m-Y', strtotime($fecha_inicio)).' AL '.date('d-m-Y', strtotime($fecha_final));
+        $fecha_ini              = $fecha_inicio;
+        $fecha_fin              = $fecha_final;
+        $user_id                = $this->Session->read('Auth.User.id');
 
-          $rango     = $this->request->data['User']['rango_fechas'];
-          $user_id   = "";
-          foreach ($this->request->data['User']['user_id'] as $user){
-              $user_id = $user_id.$user.",";
-          }
-          $user_id = substr($user_id,0,-1);
-          $this->set('asesores',$user_id);
-          $asesores_buscados = explode(",",$user_id);
-          $fecha_ini = substr($rango, 0,10).' 00:00:00';
-          $fecha_fin = substr($rango, -10).' 23:59:59';
-          $fi        = date('Y-m-d',  strtotime($fecha_ini));
-          $ff        = date('Y-m-d',  strtotime($fecha_fin));
+        $rango     = $this->request->data['User']['rango_fechas'];
+        $user_id   = "";
+        foreach ($this->request->data['User']['user_id'] as $user){
+            $user_id = $user_id.$user.",";
+        }
+        $user_id = substr($user_id,0,-1);
+        $this->set('asesores',$user_id);
+        $asesores_buscados = explode(",",$user_id);
+        $fecha_ini = substr($rango, 0,10).' 00:00:00';
+        $fecha_fin = substr($rango, -10).' 23:59:59';
+        $fi        = date('Y-m-d',  strtotime($fecha_ini));
+        $ff        = date('Y-m-d',  strtotime($fecha_fin));
 
-          $this->set('fi',$fi);
-          $this->set('ff',$ff);
+        $this->set('fi',$fi);
+        $this->set('ff',$ff);
 
-          $periodo_tiempo = 'INFORMACIÓN DE LOS CLIENTES DEL '.date('d-m-Y', strtotime($fi)).' AL '.date('d-m-Y', strtotime($ff));
-          $periodo_reporte     = utf8_encode(strftime("%d %B de %Y", strtotime(date("d-m-Y", strtotime($fi)))).' al '.strftime("%d %B de %Y", strtotime(date("d-m-Y", strtotime($ff)))));
-          $fecha_final = $ff;
-
-
-          // Total de clientes
-          $total_clientes_anuales = $this->User->query("SELECT COUNT(*) as total_clientes_anuales FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = $cuenta_id AND created >= '$fi' AND created <= '$ff'");
-          // Clientes separados por estatus
-          $clientes_anuales = $this->User->query("SELECT COUNT(*) as total_clientes, clientes.`status`, clientes.user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = $cuenta_id AND created >= '$fi' AND created <= '$ff' GROUP BY status, user_id");
-          $clientes_anuales_reporte = array();
-          $i=0;
-          foreach($asesores_buscados as $asesor){
-              $clientes_anuales_reporte[$i]['asesor'] = $users[$asesor];
-              $clientes_anuales_reporte[$i]['status'] = array(
-                  'Activo' => 0,
-                  'Inactivo' => 0,
-                  'Inactivo temporal' => 0,
-              );
-              foreach($clientes_anuales as $registro){
-                  if($registro['clientes']['user_id'] == $asesor){
-                      $clientes_anuales_reporte[$i]['status'][$registro['clientes']['status']] = $registro[0]['total_clientes'];
-                      //$total += $registro[0]['total_clientes'];
-                  }
-              }
-              $i++;
-          }
-          //$clientes_anuales_reporte['total'] = $total;
-          $this->set(compact('clientes_anuales_reporte'));
+        $periodo_tiempo = 'INFORMACIÓN DE LOS CLIENTES DEL '.date('d-m-Y', strtotime($fi)).' AL '.date('d-m-Y', strtotime($ff));
+        $periodo_reporte     = utf8_encode(strftime("%d %B de %Y", strtotime(date("d-m-Y", strtotime($fi)))).' al '.strftime("%d %B de %Y", strtotime(date("d-m-Y", strtotime($ff)))));
+        $fecha_final = $ff;
 
 
-          /************************************************* Grafica de temperatura de clientes ********************************************************************/
-          $temperatura_clientes = $this->User->query("SELECT count(*)as sumatorio ,etapa, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND created >= '".$fi."' AND created <= '".$ff."' AND status = 'Activo' GROUP BY user_id ,etapa;");
-          $temperatura_clientes_reporte = array();
-          foreach($asesores_buscados as $asesor){
-              $temperatura_clientes_reporte[$asesor]['nombre'] = $users[$asesor];
-              $temperatura_clientes_reporte[$asesor]['1'] = 0;
-              $temperatura_clientes_reporte[$asesor]['2'] = 0;
-              $temperatura_clientes_reporte[$asesor]['3'] = 0;
-              $temperatura_clientes_reporte[$asesor]['4'] = 0;
-              $temperatura_clientes_reporte[$asesor]['5'] = 0;
-              $temperatura_clientes_reporte[$asesor]['6'] = 0;
-              $temperatura_clientes_reporte[$asesor]['7'] = 0;
-              $temperatura_clientes_reporte[$asesor]['8'] = 0;
-
-              foreach($temperatura_clientes as $registro){
-                  if($registro['clientes']['user_id'] == $asesor){
-                      $temperatura_clientes_reporte[$asesor][$registro['clientes']['etapa']] = $registro[0]['sumatorio'];
-                      //$total += $registro[0]['total_clientes'];
-                  }
-              }
-              $i++;
-          }
-          //$clientes_anuales_reporte['total'] = $total;
-          $this->set(compact('temperatura_clientes_reporte'));
-
-          /************************************************* Grafica de Relación de Cancelación de Citas ********************************************************************/
-
-          $cancelaciones_raw = $this->Cliente->query("SELECT motivo_cancelacion, COUNT(*) AS sumatoria FROM events WHERE  cliente_id IN (SELECT id FROM clientes WHERE user_id IN ($user_id) ) AND motivo_cancelacion IS NOT NULL  AND fecha_inicio >= '$fi' AND fecha_inicio <= '$ff'  GROUP BY motivo_cancelacion");
-
-          $this->set(compact('cancelaciones_raw'));
-
-          /************************************************* Grafica de atencion de clientes ********************************************************************/
-
-          //Indicador de clientes con estatus Oportunos
-          $clientes_oportunos = $this->User->query("SELECT count(*) as sumatorio,'Oportuna (De 1 a ".$this->Session->read('Parametros.Paramconfig.sla_oportuna').")' as status, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND last_edit >= DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_oportuna')." DAY) AND status = 'Activo' AND created >= '$fi' AND created <= '$ff' GROUP BY user_id");
-
-          //Indicador de clientes con estatus Oportunos tardíos
-          $clientes_tardia = $this->User->query("SELECT count(*) as sumatorio,'Tardía (De ".($this->Session->read('Parametros.Paramconfig.sla_oportuna') + 1)." a ".$this->Session->read('Parametros.Paramconfig.sla_atrasados').")' as status, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND last_edit >= DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_atrasados')." DAY) AND last_edit < DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_oportuna')." DAY) AND status = 'Activo' AND created >= '$fi' AND created <= '$ff' GROUP BY user_id");
-
-          //Indicador de clientes con estatus Seguimiento Atrasado
-          $clientes_atrasados = $this->User->query("SELECT count(*) as sumatorio,'No Atendidos (De ".($this->Session->read('Parametros.Paramconfig.sla_atrasados') + 1)." a ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos').")' as status, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND last_edit >= DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos')." DAY) AND last_edit < DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_atrasados')." DAY) AND status = 'Activo' AND created >= '$fi' AND created <= '$ff' GROUP BY user_id");
-
-          //Indicador de clientes con estatus Por Reasignar
-          $clientes_reasignar = $this->User->query("SELECT count(*) as sumatorio,'Por Reasignar (+".($this->Session->read('Parametros.Paramconfig.sla_no_atendidos') + 1)." sin atención)' as status, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND last_edit < DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos')." DAY) AND status = 'Activo' AND created >= '$fi' AND created <= '$ff' GROUP BY user_id");
-
-          //Indicador de clientes con estatus Sin Seguimiento
-          $clientes_sin_seguimiento = $this->User->query("SELECT count(*) as sumatorio,'Sin Asginar' as status FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND status = 'Activo' AND last_edit IS NULL AND created >= '$fi' AND created <= '$ff'");
-
-          $clientes_atencion_reporte = array();
-          $i=0;
-          foreach($asesores_buscados as $asesor){
-              $clientes_atencion_reporte[$i]['asesor'] = $users[$asesor];
-
-              $clientes_atencion_reporte[$i]['oportunos']['label']="Oportuna (De 1 a ".$this->Session->read('Parametros.Paramconfig.sla_oportuna').")";
-              $clientes_atencion_reporte[$i]['oportunos']['cantidad']=0;
-
-              $clientes_atencion_reporte[$i]['tardia']['label']="Tardía (De ".($this->Session->read('Parametros.Paramconfig.sla_oportuna') + 1)." a ".$this->Session->read('Parametros.Paramconfig.sla_atrasados').")";
-              $clientes_atencion_reporte[$i]['tardia']['cantidad']=0;
-
-              $clientes_atencion_reporte[$i]['no_atendidos']['label']="No Atendidos (De ".($this->Session->read('Parametros.Paramconfig.sla_atrasados') + 1)." a ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos').")";
-              $clientes_atencion_reporte[$i]['no_atendidos']['cantidad']=0;
-
-              $clientes_atencion_reporte[$i]['por_reasignar']['label']="Por Reasignar (+".($this->Session->read('Parametros.Paramconfig.sla_no_atendidos') + 1)." sin atención)";
-              $clientes_atencion_reporte[$i]['por_reasignar']['cantidad']=0;
-
-              foreach($clientes_oportunos as $cliente){
-                  if($cliente['clientes']['user_id']==$asesor){
-                      $clientes_atencion_reporte[$i]['oportunos']['cantidad'] = $cliente[0]['sumatorio'];
-                  }
-              }
-              foreach($clientes_tardia as $cliente){
-                  if($cliente['clientes']['user_id']==$asesor){
-                      $clientes_atencion_reporte[$i]['tardia']['cantidad'] = $cliente[0]['sumatorio'];
-                  }
-              }
-              foreach($clientes_atrasados as $cliente){
-                  if($cliente['clientes']['user_id']==$asesor){
-                      $clientes_atencion_reporte[$i]['no_atendidos']['cantidad'] = $cliente[0]['sumatorio'];
-                  }
-              }
-              foreach($clientes_reasignar as $cliente){
-                  if($cliente['clientes']['user_id']==$asesor){
-                      $clientes_atencion_reporte[$i]['por_reasignar']['cantidad'] = $cliente[0]['sumatorio'];
-                  }
-              }
-              $i++;
-          }
-          //$clientes_anuales_reporte['total'] = $total;
-          $this->set(compact('clientes_atencion_reporte'));
+        // Total de clientes
+        $total_clientes_anuales = $this->User->query("SELECT COUNT(*) as total_clientes_anuales FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = $cuenta_id AND created >= '$fi' AND created <= '$ff'");
+        // Clientes separados por estatus
+        $clientes_anuales = $this->User->query("SELECT COUNT(*) as total_clientes, clientes.`status`, clientes.user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = $cuenta_id AND created >= '$fi' AND created <= '$ff' GROUP BY status, user_id");
+        $clientes_anuales_reporte = array();
+        $i=0;
+        foreach($asesores_buscados as $asesor){
+            $clientes_anuales_reporte[$i]['asesor'] = $users[$asesor];
+            $clientes_anuales_reporte[$i]['status'] = array(
+                'Activo' => 0,
+                'Inactivo' => 0,
+                'Inactivo temporal' => 0,
+            );
+            foreach($clientes_anuales as $registro){
+                if($registro['clientes']['user_id'] == $asesor){
+                    $clientes_anuales_reporte[$i]['status'][$registro['clientes']['status']] = $registro[0]['total_clientes'];
+                    //$total += $registro[0]['total_clientes'];
+                }
+            }
+            $i++;
+        }
+        //$clientes_anuales_reporte['total'] = $total;
+        $this->set(compact('clientes_anuales_reporte'));
 
 
-          // Suma de los clientes de atencion
-          //$sum_clientes_atencion = $clientes_oportunos[0][0]['sumatorio'] + $clientes_tardia[0][0]['sumatorio'] + $clientes_atrasados[0][0]['sumatorio'] + $clientes_reasignar[0][0]['sumatorio'] + $clientes_sin_seguimiento[0][0]['sumatorio'];
+        /************************************************* Grafica de temperatura de clientes ********************************************************************/
+        $temperatura_clientes = $this->User->query("SELECT count(*)as sumatorio ,etapa, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND created >= '".$fi."' AND created <= '".$ff."' AND status = 'Activo' GROUP BY user_id ,etapa;");
+        $temperatura_clientes_reporte = array();
+        foreach($asesores_buscados as $asesor){
+            $temperatura_clientes_reporte[$asesor]['nombre'] = $users[$asesor];
+            $temperatura_clientes_reporte[$asesor]['1'] = 0;
+            $temperatura_clientes_reporte[$asesor]['2'] = 0;
+            $temperatura_clientes_reporte[$asesor]['3'] = 0;
+            $temperatura_clientes_reporte[$asesor]['4'] = 0;
+            $temperatura_clientes_reporte[$asesor]['5'] = 0;
+            $temperatura_clientes_reporte[$asesor]['6'] = 0;
+            $temperatura_clientes_reporte[$asesor]['7'] = 0;
+            $temperatura_clientes_reporte[$asesor]['8'] = 0;
+
+            foreach($temperatura_clientes as $registro){
+                if($registro['clientes']['user_id'] == $asesor){
+                    $temperatura_clientes_reporte[$asesor][$registro['clientes']['etapa']] = $registro[0]['sumatorio'];
+                    //$total += $registro[0]['total_clientes'];
+                }
+            }
+            $i++;
+        }
+        //$clientes_anuales_reporte['total'] = $total;
+        $this->set(compact('temperatura_clientes_reporte'));
+
+        /************************************************* Grafica de Relación de Cancelación de Citas ********************************************************************/
+
+        $cancelaciones_raw = $this->Cliente->query("SELECT motivo_cancelacion, COUNT(*) AS sumatoria FROM events WHERE  cliente_id IN (SELECT id FROM clientes WHERE user_id IN ($user_id) ) AND motivo_cancelacion IS NOT NULL  AND fecha_inicio >= '$fi' AND fecha_inicio <= '$ff'  GROUP BY motivo_cancelacion");
+
+        $this->set(compact('cancelaciones_raw'));
+
+        /************************************************* Grafica de atencion de clientes ********************************************************************/
+
+        //Indicador de clientes con estatus Oportunos
+        $clientes_oportunos = $this->User->query("SELECT count(*) as sumatorio,'Oportuna (De 1 a ".$this->Session->read('Parametros.Paramconfig.sla_oportuna').")' as status, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND last_edit >= DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_oportuna')." DAY) AND status = 'Activo' AND created >= '$fi' AND created <= '$ff' GROUP BY user_id");
+
+        //Indicador de clientes con estatus Oportunos tardíos
+        $clientes_tardia = $this->User->query("SELECT count(*) as sumatorio,'Tardía (De ".($this->Session->read('Parametros.Paramconfig.sla_oportuna') + 1)." a ".$this->Session->read('Parametros.Paramconfig.sla_atrasados').")' as status, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND last_edit >= DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_atrasados')." DAY) AND last_edit < DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_oportuna')." DAY) AND status = 'Activo' AND created >= '$fi' AND created <= '$ff' GROUP BY user_id");
+
+        //Indicador de clientes con estatus Seguimiento Atrasado
+        $clientes_atrasados = $this->User->query("SELECT count(*) as sumatorio,'No Atendidos (De ".($this->Session->read('Parametros.Paramconfig.sla_atrasados') + 1)." a ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos').")' as status, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND last_edit >= DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos')." DAY) AND last_edit < DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_atrasados')." DAY) AND status = 'Activo' AND created >= '$fi' AND created <= '$ff' GROUP BY user_id");
+
+        //Indicador de clientes con estatus Por Reasignar
+        $clientes_reasignar = $this->User->query("SELECT count(*) as sumatorio,'Por Reasignar (+".($this->Session->read('Parametros.Paramconfig.sla_no_atendidos') + 1)." sin atención)' as status, user_id FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND last_edit < DATE_SUB('".$fecha_final."',INTERVAL ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos')." DAY) AND status = 'Activo' AND created >= '$fi' AND created <= '$ff' GROUP BY user_id");
+
+        //Indicador de clientes con estatus Sin Seguimiento
+        $clientes_sin_seguimiento = $this->User->query("SELECT count(*) as sumatorio,'Sin Asginar' as status FROM clientes WHERE user_id IN ($user_id) AND cuenta_id = ".$cuenta_id." AND status = 'Activo' AND last_edit IS NULL AND created >= '$fi' AND created <= '$ff'");
+
+        $clientes_atencion_reporte = array();
+        $i=0;
+        foreach($asesores_buscados as $asesor){
+            $clientes_atencion_reporte[$i]['asesor'] = $users[$asesor];
+
+            $clientes_atencion_reporte[$i]['oportunos']['label']="Oportuna (De 1 a ".$this->Session->read('Parametros.Paramconfig.sla_oportuna').")";
+            $clientes_atencion_reporte[$i]['oportunos']['cantidad']=0;
+
+            $clientes_atencion_reporte[$i]['tardia']['label']="Tardía (De ".($this->Session->read('Parametros.Paramconfig.sla_oportuna') + 1)." a ".$this->Session->read('Parametros.Paramconfig.sla_atrasados').")";
+            $clientes_atencion_reporte[$i]['tardia']['cantidad']=0;
+
+            $clientes_atencion_reporte[$i]['no_atendidos']['label']="No Atendidos (De ".($this->Session->read('Parametros.Paramconfig.sla_atrasados') + 1)." a ".$this->Session->read('Parametros.Paramconfig.sla_no_atendidos').")";
+            $clientes_atencion_reporte[$i]['no_atendidos']['cantidad']=0;
+
+            $clientes_atencion_reporte[$i]['por_reasignar']['label']="Por Reasignar (+".($this->Session->read('Parametros.Paramconfig.sla_no_atendidos') + 1)." sin atención)";
+            $clientes_atencion_reporte[$i]['por_reasignar']['cantidad']=0;
+
+            foreach($clientes_oportunos as $cliente){
+                if($cliente['clientes']['user_id']==$asesor){
+                    $clientes_atencion_reporte[$i]['oportunos']['cantidad'] = $cliente[0]['sumatorio'];
+                }
+            }
+            foreach($clientes_tardia as $cliente){
+                if($cliente['clientes']['user_id']==$asesor){
+                    $clientes_atencion_reporte[$i]['tardia']['cantidad'] = $cliente[0]['sumatorio'];
+                }
+            }
+            foreach($clientes_atrasados as $cliente){
+                if($cliente['clientes']['user_id']==$asesor){
+                    $clientes_atencion_reporte[$i]['no_atendidos']['cantidad'] = $cliente[0]['sumatorio'];
+                }
+            }
+            foreach($clientes_reasignar as $cliente){
+                if($cliente['clientes']['user_id']==$asesor){
+                    $clientes_atencion_reporte[$i]['por_reasignar']['cantidad'] = $cliente[0]['sumatorio'];
+                }
+            }
+            $i++;
+        }
+        //$clientes_anuales_reporte['total'] = $total;
+        $this->set(compact('clientes_atencion_reporte'));
 
 
-          /************************************************* Grafica de asignaciones por mes ********************************************************************/
-
-          $clientes_asignados = $this->Cliente->query("SELECT COUNT(*) AS asignados, user_id, desarrollo_id FROM clientes WHERE user_id IN ($user_id) AND created >= '$fi' AND created <= '$ff' GROUP BY user_id,desarrollo_id;");
-          $clientes_ventas = $this->Cliente->query("SELECT COUNT(*) AS ventas, user_id FROM ventas WHERE user_id IN ($user_id) AND fecha >= '$fi' AND fecha <= '$ff' GROUP BY user_id");
-          $visitas = $this->Cliente->query("SELECT COUNT(*) AS visitas, user_id FROM events WHERE user_id IN ($user_id) AND tipo_tarea = 1 AND DATE(fecha_inicio) >= '$fi' AND DATE(fecha_inicio) <= '$ff' GROUP BY user_id");
-          //$visitas = $this->set('visitas',$this->Event->find('count',array('conditions'=>array("Event.user_id" =>$user_id,'Event.tipo_tarea'=> 1, 'DATE(Event.fecha_inicio) >=' => $fi, 'DATE(Event.fecha_inicio) <=' => $ff))));
+        // Suma de los clientes de atencion
+        //$sum_clientes_atencion = $clientes_oportunos[0][0]['sumatorio'] + $clientes_tardia[0][0]['sumatorio'] + $clientes_atrasados[0][0]['sumatorio'] + $clientes_reasignar[0][0]['sumatorio'] + $clientes_sin_seguimiento[0][0]['sumatorio'];
 
 
-          $ventas_leads_reporte = array();
-          $i=0;
-          foreach($asesores_buscados as $asesor){
-              $ventas_leads_reporte[$i]['asesor'] = $users[$asesor];
-              $ventas_leads_reporte[$i]['leads'] = 0;
-              $ventas_leads_reporte[$i]['ventas'] = 0;
-              $ventas_leads_reporte[$i]['visitas'] = 0;
-              foreach($clientes_asignados as $registro){
-                  if($registro['clientes']['user_id'] == $asesor){
-                      $ventas_leads_reporte[$i]['leads'] = $registro[0]['asignados'];
-                  }
-              }
-              foreach($clientes_ventas as $registro){
-                  if($registro['ventas']['user_id'] == $asesor){
-                      $ventas_leads_reporte[$i]['ventas'] = $registro[0]['ventas'];
-                  }
-              }
-              foreach($visitas as $registro){
-                  if($registro['events']['user_id'] == $asesor){
-                      $ventas_leads_reporte[$i]['visitas'] = $registro[0]['visitas'];
-                  }
-              }
-              $i++;
-          }
+        /************************************************* Grafica de asignaciones por mes ********************************************************************/
 
-          $this->set(compact('ventas_leads_reporte'));
+        $clientes_asignados = $this->Cliente->query("SELECT COUNT(*) AS asignados, user_id, desarrollo_id FROM clientes WHERE user_id IN ($user_id) AND created >= '$fi' AND created <= '$ff' GROUP BY user_id,desarrollo_id;");
+        $clientes_ventas = $this->Cliente->query("SELECT COUNT(*) AS ventas, user_id FROM ventas WHERE user_id IN ($user_id) AND fecha >= '$fi' AND fecha <= '$ff' GROUP BY user_id");
+        $visitas = $this->Cliente->query("SELECT COUNT(*) AS visitas, user_id FROM events WHERE user_id IN ($user_id) AND tipo_tarea = 1 AND DATE(fecha_inicio) >= '$fi' AND DATE(fecha_inicio) <= '$ff' GROUP BY user_id");
+        //$visitas = $this->set('visitas',$this->Event->find('count',array('conditions'=>array("Event.user_id" =>$user_id,'Event.tipo_tarea'=> 1, 'DATE(Event.fecha_inicio) >=' => $fi, 'DATE(Event.fecha_inicio) <=' => $ff))));
 
 
-          /************************************************* Grafica de ventas vs metas mensuales *****************************************************************************/
-          $periodos = $this->getPeriodosArreglo($fi,$ff);
-          $kpi_arreglo = array();
-          $objetivos = $this->User->query("SELECT ventas_mensuales,ventas_mensuales_q, user_id FROM cuentas_users WHERE user_id IN ($user_id) AND cuenta_id = $cuenta_id GROUP BY user_id");
-          $ventas = $this->User->query("SELECT COUNT(*),SUM(precio_cerrado), user_id FROM ventas WHERE fecha >= '".$fi."' AND fecha <= '".$ff."' AND user_id IN ($user_id) GROUP BY user_id");
-          $i=0;
-          foreach($asesores_buscados as $asesor){
-              $kpi_arreglo[$i]['asesor'] = $users[$asesor];
-              $kpi_arreglo[$i]['objetivo_q'] = 0;
-              $kpi_arreglo[$i]['objetivo_monto'] = 0;
-              $kpi_arreglo[$i]['ventas_q'] = 0;
-              $kpi_arreglo[$i]['ventas_monto'] = 0;
-              foreach($objetivos as $objetivo){
-                  if($objetivo['cuentas_users']['user_id'] == $asesor){
-                      $kpi_arreglo[$i]['objetivo_q'] = $objetivo['cuentas_users']['ventas_mensuales_q']*sizeof($periodos);
-                      $kpi_arreglo[$i]['objetivo_monto'] = $objetivo['cuentas_users']['ventas_mensuales']*sizeof($periodos);
-                  }
-              }
-              foreach($ventas as $venta){
-                  if($venta['ventas']['user_id'] == $asesor){
-                      $kpi_arreglo[$i]['ventas_q'] = $venta[0]['COUNT(*)'];
-                      $kpi_arreglo[$i]['ventas_monto'] = $venta[0]['SUM(precio_cerrado)'];
-                  }
-              }
-              $i++;
-          }
+        $ventas_leads_reporte = array();
+        $i=0;
+        foreach($asesores_buscados as $asesor){
+            $ventas_leads_reporte[$i]['asesor'] = $users[$asesor];
+            $ventas_leads_reporte[$i]['leads'] = 0;
+            $ventas_leads_reporte[$i]['ventas'] = 0;
+            $ventas_leads_reporte[$i]['visitas'] = 0;
+            foreach($clientes_asignados as $registro){
+                if($registro['clientes']['user_id'] == $asesor){
+                    $ventas_leads_reporte[$i]['leads'] = $registro[0]['asignados'];
+                }
+            }
+            foreach($clientes_ventas as $registro){
+                if($registro['ventas']['user_id'] == $asesor){
+                    $ventas_leads_reporte[$i]['ventas'] = $registro[0]['ventas'];
+                }
+            }
+            foreach($visitas as $registro){
+                if($registro['events']['user_id'] == $asesor){
+                    $ventas_leads_reporte[$i]['visitas'] = $registro[0]['visitas'];
+                }
+            }
+            $i++;
+        }
 
-          $this->set('kpi_arreglo',$kpi_arreglo);
+        $this->set(compact('ventas_leads_reporte'));
 
 
+        /************************************************* Grafica de ventas vs metas mensuales *****************************************************************************/
+        $periodos = $this->getPeriodosArreglo($fi,$ff);
+        $kpi_arreglo = array();
+        $objetivos = $this->User->query("SELECT ventas_mensuales,ventas_mensuales_q, user_id FROM cuentas_users WHERE user_id IN ($user_id) AND cuenta_id = $cuenta_id GROUP BY user_id");
+        $ventas = $this->User->query("SELECT COUNT(*),SUM(precio_cerrado), user_id FROM ventas WHERE fecha >= '".$fi."' AND fecha <= '".$ff."' AND user_id IN ($user_id) GROUP BY user_id");
+        $i=0;
+        foreach($asesores_buscados as $asesor){
+            $kpi_arreglo[$i]['asesor'] = $users[$asesor];
+            $kpi_arreglo[$i]['objetivo_q'] = 0;
+            $kpi_arreglo[$i]['objetivo_monto'] = 0;
+            $kpi_arreglo[$i]['ventas_q'] = 0;
+            $kpi_arreglo[$i]['ventas_monto'] = 0;
+            foreach($objetivos as $objetivo){
+                if($objetivo['cuentas_users']['user_id'] == $asesor){
+                    $kpi_arreglo[$i]['objetivo_q'] = $objetivo['cuentas_users']['ventas_mensuales_q']*sizeof($periodos);
+                    $kpi_arreglo[$i]['objetivo_monto'] = $objetivo['cuentas_users']['ventas_mensuales']*sizeof($periodos);
+                }
+            }
+            foreach($ventas as $venta){
+                if($venta['ventas']['user_id'] == $asesor){
+                    $kpi_arreglo[$i]['ventas_q'] = $venta[0]['COUNT(*)'];
+                    $kpi_arreglo[$i]['ventas_monto'] = $venta[0]['SUM(precio_cerrado)'];
+                }
+            }
+            $i++;
+        }
 
-          $this->set(compact('periodo_tiempo'));
-          $this->set(compact('periodo_reporte'));
+        $this->set('kpi_arreglo',$kpi_arreglo);
 
 
 
-          $this->set(compact('asesor'));
+        $this->set(compact('periodo_tiempo'));
+        $this->set(compact('periodo_reporte'));
 
 
-      }
-      // Variables globales
+
+        $this->set(compact('asesor'));
 
 
+    }
+    // Variables globales
   }
 
   public function print_a1($fi=null,$ff=null,$asesor_id=null){
