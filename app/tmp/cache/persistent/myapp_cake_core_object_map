@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-1773708199
-=======
-1772572210
->>>>>>> 86b0afcc2a4c20aa2f3ccad224a43b03741392a2
+1774231902
 a:2:{i:0;b:0;s:3:"app";a:1:{s:7:"plugins";a:4:{i:0;s:7:"CakePdf";i:1;s:8:"DebugKit";i:2;s:6:"Dompdf";i:3;s:10:"TCPDF-main";}}}

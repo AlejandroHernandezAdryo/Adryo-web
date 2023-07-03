@@ -62,7 +62,7 @@ class CuentasController extends AppController {
             $this->request->data['Paramconfig']['vencimiento_propiedades']  = 30;
             $this->request->data['Paramconfig']['sla_oportuna']             = 5;
             $this->request->data['Paramconfig']['bmessage_new_client']      = "Gracias por su preferencia, en atención a su petición, le envío la información del desarrollo de su interés. Estoy a sus órdenes para cualquier duda o comentario.";
-            $this->request->data['Paramconfig']['message_default_whatsapp'] = "Estimado(a) $nombre_cliente agradecemos su interés en nuestro proyecto, soy $nombre_asesor su asesor designado y me permito enviarle información del desarrollo. $URL Le reitero que estoy a sus órdenes para cualquier duda o comentario, gracias.";
+            $this->request->data['Paramconfig']['message_default_whatsapp'] = "Estimado(a) $nombre_cliente agradecemos su interés en nuestro proyecto, soy $nombre_asesor su asesor designado y me permito enviarle información del desarrollo. $URL . Le reitero que estoy a sus órdenes para cualquier duda o comentario, gracias.";
 
             $this->Paramconfig->create();
             $this->Paramconfig->save($this->request->data);

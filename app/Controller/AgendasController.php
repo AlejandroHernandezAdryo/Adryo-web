@@ -73,36 +73,36 @@ class AgendasController extends AppController {
 			$this->Agenda->create();
                         $timestamp = date('Y-m-d H:i:s');
                         $this->request->data['Agenda']['fecha']=$timestamp ;
-			if ($this->Agenda->save($this->request->data)) {
+						if ($this->Agenda->save($this->request->data)) {
                             
-                            $this->Agenda->query("UPDATE clientes SET last_edit = '$timestamp' WHERE id = ".$this->request->data['Agenda']['cliente_id']);
-                                
-                            if ($this->request->data['Agenda']['asesoria']==1){
-								$this->loadModel('Mailconfig');
-                                $mailconfig  = $this->Mailconfig->read(null,$this->Session->read('CuentaUsuario.Cuenta.mailconfig_id'));
-                                $cliente = $this->Cliente->read(null,$this->request->data['Agenda']['cliente_id']);
-                                $usuario = $this->User->read(null, $this->request->data['Agenda']['user_id']);
-								$this->Email = new CakeEmail();
-                                $this->Email->config(array(
-                                    'host'      => $mailconfig['Mailconfig']['smtp'],
-                                    'port'      => $mailconfig['Mailconfig']['puerto'],
-                                    'username'  => $mailconfig['Mailconfig']['usuario'],
-                                    'password'  => $mailconfig['Mailconfig']['password'],
-                                    'transport' => 'Smtp'
-                                    )
-                                );
-								$this->Email->emailFormat('html');
-								$this->Email->template('asesoria','bosemail');
-                                //$this->Email->template('emailaasesor','layoutinmomail');
-                                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
-								$this->Email->to($cliente['User']['correo_electronico']);
-								$this->Email->subject('Notificación para seguimiento de cliente');
-								$this->Email->viewVars(array('asesor'=>$usuario,'comentarios'=>$this->request->data['Agenda']['mensaje'],'cliente' => $cliente,'fecha'=>date("d/M/Y H:i:s")));
-                                $this->Email->send();
-								
-                            }
-								$this->Session->setFlash('', 'default', array(), 'success');
-								$this->Session->setFlash('El seguimiento rápido se ha guardado exitosamente.', 'default', array(), 'm_success');
+				$this->Agenda->query("UPDATE clientes SET last_edit = '$timestamp' WHERE id = ".$this->request->data['Agenda']['cliente_id']);
+					
+				if ($this->request->data['Agenda']['asesoria'] != 0){
+					$this->loadModel('Mailconfig');
+					$mailconfig  = $this->Mailconfig->read(null,$this->Session->read('CuentaUsuario.Cuenta.mailconfig_id'));
+					$cliente = $this->Cliente->read(null,$this->request->data['Agenda']['cliente_id']);
+					$usuario = $this->User->read(null, $this->request->data['Agenda']['user_id']);
+					$this->Email = new CakeEmail();
+					$this->Email->config(array(
+						'host'      => $mailconfig['Mailconfig']['smtp'],
+						'port'      => $mailconfig['Mailconfig']['puerto'],
+						'username'  => $mailconfig['Mailconfig']['usuario'],
+						'password'  => $mailconfig['Mailconfig']['password'],
+						'transport' => 'Smtp'
+						)
+					);
+					$this->Email->emailFormat('html');
+					$this->Email->template('asesoria','layoutinmomail');
+					//$this->Email->template('emailaasesor','layoutinmomail');
+					$this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+					$this->Email->to($cliente['User']['correo_electronico']);
+					$this->Email->subject('Notificación para seguimiento de cliente');
+					$this->Email->viewVars(array('asesor'=>$usuario,'comentarios'=>$this->request->data['Agenda']['mensaje'],'cliente' => $cliente,'fecha'=>date("d/M/Y H:i:s")));
+					$this->Email->send();
+					
+				}
+					$this->Session->setFlash('', 'default', array(), 'success');
+					$this->Session->setFlash('El seguimiento rápido se ha guardado exitosamente.', 'default', array(), 'm_success');
 				return $this->redirect(array('action' => 'view','controller'=>'clientes',$this->request->data['Agenda']['cliente_id']));
 			} else {
 				// $this->Session->setFlash(__('The agenda could not be saved. Please, try again.'));

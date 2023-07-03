@@ -9120,11 +9120,11 @@ class ClientesController extends AppController {
         $user_id=$this->request->data['user_id'] ;
       }
       $clientes_asignados = $this->Cliente->query(
-        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.created,'%m-%Y') As fecha
+        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.fecha_cambio_etapa,'%m-%Y') As fecha
         FROM clientes 
         WHERE user_id = $user_id 
-        AND created >= '$fi' 
-        AND created <= '$ff' 
+        AND fecha_cambio_etapa >= '$fi' 
+        AND fecha_cambio_etapa <= '$ff' 
         GROUP BY fecha;"
       );
       foreach ($clientes_asignados as $value) {
@@ -9165,8 +9165,8 @@ class ClientesController extends AppController {
         FROM clientes,desarrollos 
         WHERE desarrollos.id = clientes.desarrollo_id 
         AND clientes.user_id = $user_id 
-        AND clientes.created >= '$fi' 
-        AND clientes.created <= '$ff' 
+        AND clientes.fecha_cambio_etapa >= '$fi' 
+        AND clientes.fecha_cambio_etapa <= '$ff' 
         GROUP BY clientes.desarrollo_id 
         ORDER BY clientes DESC;"
       );
@@ -9225,11 +9225,11 @@ class ClientesController extends AppController {
       $periodos = $this->getPeriodosArreglo($fi,$ff);
 
       $clientes_asignados = $this->Cliente->query(
-        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.created,'%m-%Y') As fecha
+        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.fecha_cambio_etapa,'%m-%Y') As fecha
         FROM clientes 
         WHERE user_id = $user_id 
-        AND created >= '$fi' 
-        AND created <= '$ff' 
+        AND fecha_cambio_etapa >= '$fi' 
+        AND fecha_cambio_etapa <= '$ff' 
         GROUP BY fecha;"
       );
       $asignados_tedieron = $this->Cliente->query(
@@ -12094,16 +12094,25 @@ class ClientesController extends AppController {
           AND  events.fecha_inicio >= '$fi' 
           AND  events.fecha_inicio <= '$ff'"
         );
+        $clientes= $this->Cliente->find('count',array(
+          'conditions' => array(
+            'Cliente.user_id'=>$user,
+            'Cliente.cuenta_id'=>$cuenta_id,
+            $cond_rangos
+          )
+        ));
         $reponse[$i]['asesor']=$search_user['User']['nombre_completo'];
+        $reponse[$i]['clientes']=  ( empty($clientes) ? 0 :$clientes);
         $reponse[$i]['visitas']=  ( empty($events[0][0]['visita']) ? 0 :$events[0][0]['visita']);
         $reponse[$i]['venta']=  ( empty($ventas[0][0]['ventas']) ? 0 :$ventas[0][0]['ventas']);
         $i++;
       }
-      if (empty($response)) {
-        $reponse[$i]['asesor']='sin informacion';
-        $reponse[$i]['visitas']=  0;
-        $reponse[$i]['venta']= 0;
-      }
+      
+    }
+    if (empty($reponse)) {
+      $reponse[$i]['asesor']='sin informacion';
+      $reponse[$i]['visitas']=  0;
+      $reponse[$i]['venta']= 0;
     }
     echo json_encode ( $reponse );
     exit();
@@ -12176,7 +12185,7 @@ class ClientesController extends AppController {
               AND user_id = $user 
               GROUP BY user_id;"
             );
-            $reponse[$i]['user_name']=$search_user['User']['nombre_completo'];
+            $reponse[$i]['asesor']=$search_user['User']['nombre_completo'];
             $reponse[$i]['clientes']=  ( empty($clientes) ? 0 :$clientes);
             $reponse[$i]['citas']= ( empty($citas) ? 0 :$citas) ;
             $reponse[$i]['ventas']=( empty($ventas[0][0]['ventas']) ? 0 :$ventas[0][0]['ventas']);
@@ -12186,7 +12195,7 @@ class ClientesController extends AppController {
       
     }
     if (empty($response)) {
-      $reponse[$i]['user_name']='sin informacion';
+      $reponse[$i]['asesor']='sin informacion';
       $reponse[$i]['clientes']= 0;
       $reponse[$i]['citas']=  0 ;
       $reponse[$i]['ventas']=0;

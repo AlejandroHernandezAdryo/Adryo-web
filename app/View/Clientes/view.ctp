@@ -1508,6 +1508,7 @@
                                     <div class="user-block">
                                         <?= $this->Form->create('Agenda',array('url'=>array('controller'=>'Agendas','action'=>'add')))?>
                                         <?php 
+                                        
                                             if ($this->Session->read('Permisos.Group.id')==3){
 
                                                 if( $this->Session->read('Permisos.Group.id') == 5 ){
