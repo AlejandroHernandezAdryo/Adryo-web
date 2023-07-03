@@ -115,6 +115,12 @@
 		.mcnDividerBlock{
 			table-layout:fixed !important;
 		}
+		td a{
+			color:#fff !important;
+		}
+		a:link {
+			text-decoration: none;
+		}
 	/*
 	@tab Page
 	@section Background Style
@@ -395,6 +401,7 @@
 		position: absolute;
 		text-align: center;
 		padding-left: 17%;
+		background-size: contain !important;
 	}
 
 	#icons-asesor{
@@ -683,99 +690,107 @@
 									</table>
 									<!-- Tabla de propiedades -->
 									<?php if (isset($propiedades)): ?>
-										<?php foreach ($propiedades as $propiedad):?>
-											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
-												<tbody class="mcnTextBlockOuter">
-													<tr>
-														<td valign="top" class="mcnTextBlockInner">
-															<div class="mcnTextContent" style="">
-																<div style="border: 1px solid #ADB5BD; height: 100%; border-radius: 8px;margin: 0 auto;" id="card-center">
-																	<p style="text-align: center">
-																		<img data-file-id="2730789" height="261" src="<?= Router::url($propiedad['FotoInmueble'][0]['ruta'], true) ?>" style="border: 0px  ; width: 180px; height: 180px; margin: 0px;" width="180">
-																	</p>
-																	<p style="text-align: center">
-																		<?php echo $propiedad['Inmueble']['referencia']?>
-																	</p>
-																	<p style="text-align: center">
-																		<a href="<?= Router::url('/inmuebles/detalle/'.$propiedad['Inmueble']['id'].'/'.$usuario['User']['id'], true) ?>" style="
-																			width: 154px;
-																			display: inline-block;
-																			background: #212529;
-																			border: 1px solid #212529;
-																			border-radius: 8px;
-																			text-decoration: none;
-																			color: #FFFFFF;
-																			padding-top: 5px;
-																			padding-bottom: 5px;
-																			text-align:center;
-																			">
-																			Ver propiedad
-																		</a>
-																	</p>
-																</div>
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										<?php endforeach; ?>
-									<?php endif ?>
-									<!-- Tabla de desarrollos -->
-									<?php if (isset($desarrollos)): ?>
-										<?php foreach ($desarrollos as $desarrollo):?>
-											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
-												<tbody class="mcnTextBlockOuter">
-													<tr>
-														<td valign="top" class="mcnTextBlockInner">
-															<div class="mcnTextContent" style="">
-																<div style="border: 1px solid #ADB5BD; height: 100%; border-radius: 8px;margin: 0 auto;" id="card-center">
-																	<p style="text-align: center">
-																		<img data-file-id="2730789" height="261" src="<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true) ?>" style="border: 0px  ; width: 180px; height: 180px; margin: 0px;" width="180">
-																	</p>
-																	<p style="text-align: center">
-																		<?php echo $desarrollo['Desarrollo']['nombre']?>
-																	</p>
-																	<p style="text-align: center">
-																		<a href="<?= Router::url('/desarrollos/detalle/'.$desarrollo['Desarrollo']['id'].'/'.$usuario['User']['id'], true) ?>" style="
-																			width: 154px;
-																			display: inline-block;
-																			background: #212529;
-																			border: 1px solid #212529;
-																			border-radius: 8px;
-																			text-decoration: none;
-																			color: #FFFFFF;
-																			padding-top: 5px;
-																			padding-bottom: 5px;
-																			text-align:center;
-																			">
-																			Ver desarrollo
-																		</a>
-																	</p>
-																</div>
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										<?php endforeach; ?>
-									<?php endif; ?>
-									<!-- firma del asesor -->
+									<?php foreach ($propiedades as $propiedad):?>
 									<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
 										<tbody class="mcnTextBlockOuter">
 											<tr>
-												<td valign="top" class="">
+												<td valign="top" class="mcnTextBlockInner">
+													<div class="mcnTextContent" style="">
+														<div style="border: 1px solid #E2E2E2; height: 100%;width:350px; border-radius: 8px;margin: 0 auto;margin-bottom: 32px; "
+															id="card-center">
+															<p style="text-align: center">
+																<img data-file-id="2730789" height="261"
+																	src="<?= Router::url($propiedad['FotoInmueble'][0]['ruta'], true) ?>"
+																	style="border: 0px  ; width: 180px; height: 180px; margin: 0px;"
+																	width="180">
+															</p>
+															<p style="text-align: center">
+																<?php echo $propiedad['Inmueble']['referencia']?>
+															</p>
+															<p style="text-align: center">
+																<a href="<?= Router::url('/inmuebles/detalle/'.$propiedad['Inmueble']['id'].'/'.$usuario['User']['id'], true) ?>"
+																	style="
+																					width: 154px;
+																					display: inline-block;
+																					background: #376D6C;
+																					border: 1px solid #376D6C;
+																					border-radius: 8px;
+																					text-decoration: none;
+																					color: #FFFFFF;
+																					padding-top: 5px;
+																					padding-bottom: 5px;
+																					text-align:center;
+																					">
+																	Ver propiedad
+																</a>
+															</p>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<?php endforeach; ?>
+									<?php endif ?>
+									<!-- Tabla de desarrollos -->
+									<?php if (isset($desarrollos)): ?>
+									<?php foreach ($desarrollos as $desarrollo):?>
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
+										<tbody class="mcnTextBlockOuter">
+											<tr>
+												<td valign="top" class="mcnTextBlockInner">
+													<div class="mcnTextContent" style="">
+														<div style="border: 1px solid #E2E2E2; height: 100%; border-radius: 8px;margin: 0 auto;margin-bottom: 32px;"
+															id="card-center">
+															<p style="text-align: center">
+																<img data-file-id="2730789" height="261"
+																	src="<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true) ?>"
+																	style="border: 0px  ; width: 180px; height: 180px; margin: 0px;"
+																	width="180">
+															</p>
+															<p style="text-align: center">
+																<?php echo $desarrollo['Desarrollo']['nombre']?>
+															</p>
+															<p style="text-align: center">
+																<a href="<?= Router::url('/desarrollos/detalle/'.$desarrollo['Desarrollo']['id'].'/'.$usuario['User']['id'], true) ?>"
+																	style="
+																					width: 154px;
+																					display: inline-block;
+																					background: #376D6C;
+																					border: 1px solid #376D6C;
+																					border-radius: 8px;
+																					text-decoration: none;
+																					color: #FFFFFF;
+																					padding-top: 5px;
+																					padding-bottom: 5px;
+																					text-align:center;
+																					">
+																	Ver desarrollo
+																</a>
+															</p>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<?php endforeach; ?>
+									<?php endif; ?>
+									<!-- firma del asesor -->
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock" style="margin-top:20px;margin:0 auto;">
+										<tbody class="mcnTextBlockOuter">
+											<tr>
+												<td valign="top" class="" style="background-color: #444;">
 													<div class="mcnTextContent">
-														<table style="height 200px; background-color: #495057; width: 100%; margin-top: 33px">
+														<table style="height 200px; background-color: #495057; margin-top: 33px;">
 															<tbody>
-																<tr class="firma">
+																<tr class="firma" style="background-color: #444;">
 																	<td class="firma1">
 																		<table class="firma1-1" style="height: 80%">
 																			<tbody>
 																				<tr>
-																					<td>
-																					</td>
 																					<td id="photo-asesor">
-																						<div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: 100% auto;">&nbsp;</div>
+																						<div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: contain;">&nbsp;</div>
 																					</td>
 																					<td id="icons-asesor">
 																						<table style="height: 100%;width: 30px;background: #ADB5BD ;border-radius: 4px;">
@@ -793,25 +808,25 @@
 																						<table style="height: 100%; width: 100%;">
 																							<tbody>
 																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;color: #fff !important;">
 																										<?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
 																									</td>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;color: #fff !important;">
 																										Asesor
 																									</td>
 																								</tr>
 																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color: #fff !important;">
 																										<?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
 																									</td>
 																								</tr>
 																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color: #fff !important;">
 																										<?= ($this->Session->read('CuentaUsuario.Cuenta.pagina_web') != '' ? $this->Session->read('CuentaUsuario.Cuenta.pagina_web') : 'N/A' ) ?>
 																									</td>
 																								</tr>
 																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color: #fff !important;">
 																										<?= (empty( $usuario['User']['correo_electronico'])? 'URL no disponible': $usuario['User']['correo_electronico'])?>
 																									</td>
 																								</tr>
@@ -822,7 +837,7 @@
 																			</tbody>
 																		</table>
 																	</td>
-																	<td class="firma2" style="width: 50px; height: 200px;background: white; border: 1px solid #495057; border-radius: 0px 8px 8px 0px;">
+																	<!-- <td class="firma2" style="width: 50px; height: 200px;background: white; border: 1px solid #495057; border-radius: 0px 8px 8px 0px;">
 																		<table style="width: 100%;height: 100%;text-align: center;">
 																			<tbody>
 																				<tr class="firma2-1" style="padding-top: 7px; gap: 4px;">
@@ -851,7 +866,7 @@
 																				</tr>
 																			</tbody>
 																		</table>
-																	</td>
+																	</td> -->
 																</tr>
 															</tbody>
 														</table>

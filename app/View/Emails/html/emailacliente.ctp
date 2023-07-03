@@ -774,7 +774,7 @@
 																					<td>
 																					</td>
 																					<td id="photo-asesor">
-																						<div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: 100% auto;">&nbsp;</div>
+																						<div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;">&nbsp;</div>
 																					</td>
 																					<td id="icons-asesor">
 																						<table style="height: 100%;width: 30px;background: #ADB5BD;border-radius: 4px;">
@@ -792,25 +792,25 @@
 																						<table style="height: 100%;width:100%;">
 																							<tbody>
 																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;color:#fff !important;">
 																										<?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
 																									</td>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;color:#fff !important;">
 																										Asesor
 																									</td>
 																								</tr>
 																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
 																										<?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
 																									</td>
 																								</tr>
 																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
 																										<?= ($this->Session->read('CuentaUsuario.Cuenta.pagina_web') != '' ? $this->Session->read('CuentaUsuario.Cuenta.pagina_web') : 'N/A' ) ?>
 																									</td>
 																								</tr>
 																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
+																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
 																										<?= (empty( $usuario['User']['correo_electronico'])? 'Sin correo eléctronico': $usuario['User']['correo_electronico'])?>
 																									</td>
 																								</tr>

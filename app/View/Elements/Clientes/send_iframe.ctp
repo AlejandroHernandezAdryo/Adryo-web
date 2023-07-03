@@ -62,15 +62,15 @@
                         <a href="#" id="mailShare">
                             <?= $this->Html->image('mailblue.png', array('class' => 'img-social-share w-75 mt-4 mb-4', 'style' => 'width:40px;', 'onClick' => 'resend_email_desarrollo()')); ?>
                             
-                            <?= $this->Form->hidden('desarrollo_id_modal_shared'); ?>
-                            <?= $this->Form->hidden('cliente_id_modal_shared'); ?>
-                            <?= $this->Form->hidden('asesor_id_modal_shared'); ?>
-                            <?= $this->Form->hidden('send_iframe_telefono'); ?>
-                            <?= $this->Form->hidden('mensaje'); ?>
                         </a>
                     </div>
                 </div>
 
+                <?= $this->Form->hidden('desarrollo_id_modal_shared'); ?>
+                            <?= $this->Form->hidden('cliente_id_modal_shared'); ?>
+                            <?= $this->Form->hidden('asesor_id_modal_shared'); ?>
+                            <?= $this->Form->hidden('send_iframe_telefono'); ?>
+                            <?= $this->Form->hidden('mensaje'); ?>
                 <div class="row hidden" id ="error_message_send_row">
                     <?= $this->Form->input('error_message_send_iframe',
                         array(
@@ -250,6 +250,7 @@
         $("#modalShared").addClass('hidden'); 
 
         // Abrimso en una página nueva wa
+        // window.open('https://api.whatsapp.com/send?phone'+$("#send_iframe_telefono").val()+'?text='+$("#mensaje").val());
         window.open('https://wa.me/521'+$("#send_iframe_telefono").val()+'?text='+$("#mensaje").val());
     });
 

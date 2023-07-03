@@ -61,6 +61,7 @@
 				var visitasTotal=0;
 				var Clientes=0;
 				var maxVisitas=0;
+				var ventaTotal=0;
 				var max=0;
 				for (let i in response){
 					response[i].clientes  = parseInt(response[i].clientes);
@@ -74,13 +75,11 @@
 						max=response[i].clientes;
 					}
 				}
-				if (maxVisitas==0) {
-					maxVisitas=ventaTotal;
-				}
+				
 				if (maxVisitas<max) {
 					maxVisitas=max;
 				}
-				// console.log(response, visitasTotal ,Clientes, maxVisitas );
+				console.log(response);
                 drawGraficaClientesVisitas(response, visitasTotal ,Clientes, maxVisitas );
 			},
 			error: function ( err ){

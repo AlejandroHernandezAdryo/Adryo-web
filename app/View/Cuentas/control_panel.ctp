@@ -210,7 +210,6 @@
                 for (let x in respon['mensaje']['Grupo']){
                     $("#permisos-Grupo").append(`
                     <div style="display:flex;align-items:baseline;">
-                        
                         <label for="dashboard" style="margin-left:16px;">
                             <input type="checkbox" value="1" name="data[Group][`+respon['mensaje']['Grupo'][x]['key']+`]" >
                             `+respon['mensaje']['Grupo'][x]['label']+`

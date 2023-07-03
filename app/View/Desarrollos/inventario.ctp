@@ -22,10 +22,10 @@
             'custom'
             //'pages/form_elements'
         ),
-        array('inline'=>false)),
+        array('inline'=>false));
         
         $bg_propiedades = array(
-            0 => 'bg-bloqueado',
+            0 => 'bg-libre',
             1 => 'bg-libre',
             2 => 'bg-apartado',
             3 => 'bg-vendido',
@@ -33,6 +33,10 @@
             5 => 'bg-baja',
         );
 ?>
+<!-- Modal para la edicion y eliminar el seguimiento rapido. -->
+<div class="fade side-bar" id="myModal">
+</div>
+
 
 <div id="content" class="bg-container">
     <header class="head">
@@ -46,256 +50,501 @@
     </header>
     <div class="outer">
         <div class="inner bg-light lter bg-container">
-            <div class="card mt-1">
-                <div class="card-header <?= $bg_propiedades[$desarrollo['Desarrollo']['visible']] ?>">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-8">
-                            <p class="m-0">
-                                <?= $desarrollo['Desarrollo']['nombre'] ?>
-                            </p>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 text-sm-right">
-                            <p class="m-0">
-                                <?php 
-                                    switch ($desarrollo['Desarrollo']['visible']):
-                                        case(0):
-                                            echo "Libre";
-                                        break;
-                                        case(1):
-                                            echo "En venta";
-                                        break;
-                                        case(2):
-                                            echo "No liberado";
-                                        break;
-                                    endswitch;
-                                ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-block">
-                    <!-- Información superior -->
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-2">
-                            <div class="pointer" style="background-image: url('<?= Router::url('/',true).$desarrollo['FotoDesarrollo'][0]['ruta']; ?>'); border-radius: 8px; height: 220px; background-repeat: no-repeat; background-size: cover; background-position: top center;" onclick="location.href='<?php echo Router::url('/',true)."Desarrollos/view/".$desarrollo['Desarrollo']['id'] ?>';"></div>
-                        </div>
-                        <div class="col-sm-12 col-lg-2">
-                            <div>
-                                <b class="m-0">Tipo de desarrollo</b>
-                                <p><?= $desarrollo['Desarrollo']['tipo_desarrollo']?></p>
-                            </div>
-                            <div>
-                                <b class="m-0">Torres</b>
-                                <p><?= $desarrollo['Desarrollo']['torres']?></p>
-                            </div>
-                            <div>
-                                <b class="m-0">Unidades totales</b>
-                                <p><?= $desarrollo['Desarrollo']['unidades_totales']?></p>
-                            </div>
-                            <div>
-                                <b class="m-0">Entrega</b>
-                                <p><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></p>
-                            </div>
-                            <div>
-                                <b class="m-0">Colonia</b>
-                                <p><?= $desarrollo['Desarrollo']['colonia']?></p>
-                            </div>
-                            <!-- <table class="table table-sm">
-                                <tbody>
-                                    <tr>
-                                        <td>Tipo de desarrollo</td>
-                                        <td><?= $desarrollo['Desarrollo']['tipo_desarrollo']?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Torres</td>
-                                        <td><?= $desarrollo['Desarrollo']['torres']?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Unidades totales</td>
-                                        <td><?= $desarrollo['Desarrollo']['unidades_totales']?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Entrega</td>
-                                        <td><?= ($desarrollo['Desarrollo']['entrega']=="Inmediata" ? $desarrollo['Desarrollo']['entrega'] : date('d - M - Y',  strtotime($desarrollo['Desarrollo']['fecha_entrega'])))?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Colonia</td>
-                                        <td><?= $desarrollo['Desarrollo']['colonia']?></td>
-                                    </tr>
-                                </tbody>
-                            </table> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-2">
-                            <div style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-                                <div>
-                                    <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    <br>
-                                    <span>
-                                        <?= $desarrollo['Desarrollo']['m2_low']?> - <?= $desarrollo['Desarrollo']['m2_top']?> 
-                                        <!-- m<sup>2</sup> -->
-                                    </span>
-                                </div>
-                                <br>
-                                <div>
-                                    <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    <br>
-                                    <span>
-                                        <?= $desarrollo['Desarrollo']['rec_low']?>-<?= $desarrollo['Desarrollo']['rec_top']?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div style="display:flex;justify-content:space-evenly;flex-wrap:wrap;">
-                                <div>
-                                    <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    <br>
-                                    <span>
-                                        <?= $desarrollo['Desarrollo']['banio_low']?>-<?= $desarrollo['Desarrollo']['banio_top']?>
-                                    </span>
-                                </div>
-                                <br>
-                                <div>
-                                    <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    <br>
-                                    <span>
-                                        <?= $desarrollo['Desarrollo']['est_low']?>-<?= $desarrollo['Desarrollo']['est_top']?>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-4">
-                            <div>
-                                <p class="m-0">
-                                    Equipo
-                                </p>
-                                <p class="m-0"> <?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "Sin equipo asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </p>
-                                <br>
-                                <p class="m-0">
-                                    Privado 
-                                </p>
-                                <p class="m-0"> <?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-lg-2">
-                            <div class="text-sm-right">
-                                <p style="font-size: 15px; font-weight: 700;">
-                                    Disponibilidad total
-                                    <p style="font-size: 19px; font-weight: 400;" class="text-sm-center"> <?= sizeof($desarrollo['Disponibles'])?> / <?= sizeof($desarrollo['Propiedades'])?></p>
-                                </p>
-                            </div>
-                            <!-- <div>
-                                Equipo <span class="text-sm-right"> <?= ($desarrollo['EquipoTrabajo']['nombre_grupo']==null ? "Sin equipo asignado" : $desarrollo['EquipoTrabajo']['nombre_grupo'])?> </span>
-                                <br>
-                                Privado <span class="text-sm-right"> <?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?> </span>
-                            </div> -->
-                            <div class="text-sm-right">
-                                Compartir
-                                <br>
-                                <span>
-                                    <a href="https://www.facebook.com/share.php?u=<?=Router::url('', true)?>&title=Desarrollo" target="_blank" id="shareFbDesarrollo">
-                                        <?= $this->Html->image('icons_desarrollo/fb-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                    </a>
-                                </span>
-                                <span>
-                                    <?= $this->Html->image('icons_desarrollo/tw-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                </span>
-                                <span>
-                                    <?= $this->Html->image('icons_desarrollo/li-rounded.svg', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
-                                </span>
-                            </div>
-                            <div class="mt-1 text-sm-right" style="position:absolute;right:16px;">
-                                <button class="btn btn-primary float-right ml-1">Vendido</button>
-                                <button class="btn btn-secondary-o float-right">Liberado</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- separador -->
-                    <div>
-                        <hr>
-                    </div>
-                    <!-- Inventario -->
-                    <div class="row mt-3">
-                        <div class="col-sm-12" style="display:flex;justify-content:space-between;">
-                            <div class="text-center ">
-                                Total de desarrollos 
-                                <div class="number chips bg-status-desarrollo-total">
-                                    <?= count($desarrollos); ?>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                Baja
-                                <div class="number chips bg-baja" style="padding: 2px 5px 2px 5px;">
-                                    <span id="baja"> <?= isset($contadores[5])? $contadores[5] : 0 ?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                Bloqueados
-                                <div class="number chips bg-bloqueado" style="padding: 2px 5px 2px 5px;">
-                                    <span id="bloqueado"> <?= isset($contadores[0])? $contadores[0] : 0 ?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                En venta
-                                <div class="number chips bg-status-desarrollo-venta">
-                                    <span id="libre"> 0 </span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                Apartados
-                                <div class="number chips bg-status-desarrollo-bloqueado">
-                                    <span id="no_liberado"> 0 </span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                Vendidos
-                                <div class="number chips bg-status-desarrollo-vendido">
-                                    <span id="vendido"> 0 </span>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                Escriturados
-                                <div class="number chips bg-escriturado" style="padding: 2px 5px 2px 5px;">
-                                    <span id="escrituracion"> <?= isset($contadores[4])? $contadores[4] : 0 ?>
-                                    </span>
-                                </div>
-                            </div>
-                            <div>
-                                Venta
-                                <div style="vertical-align: top;"><b><?= (!isset($desarrollo['ObjetivoAplicable'][0]['monto'])?"No definido":"$".number_format($desarrollo['ObjetivoAplicable'][0]['monto'],0))?></b></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Cuadricula de pisos -->
-                    <!-- <//?= $p = 1; ?> -->
-                    <div class="row">
-                        <div class="col-sm-12 mt-1">
-                            <div style="display:flex; gap:8px; align-items:center;">
-                                <div class="level" style="background-color:purple; border-radius:100%;color:white;width:20px;height:20px;">
-                                    <p class="text-sm-center">
-                                        1
-                                    </p>
-                                    <!-- <//?= $p++; ?> -->
-                                </div>
-                                <div style="display:flex; gap:8px;">
-                                    <div>S-101</div>
-                                    <div>S-102</div>
-                                    <div>S-103</div>
-                                    <div>S-104</div>
-                                    <div>S-105</div>
-                                    <div>S-106</div>
-                                    <div>S-107</div>
-                                    <div>S-108</div>
-                                    <div>S-109</div>
-                                    <div>S-110</div>
-                                    <div>S-111</div>
-                                    <div>S-112</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card mt-1" id="inventory-detail">
+                <img src="app/webroot/img/adryo_iconos/icons-profile/aspect_ratio.png" alt="">
             </div>
         </div>
     </div>
 </div>
+<!-- Contador de baja -->
+<!-- <div>
+    <b>Baja</b>
+    <div class="text-center bg-status-desarrollo-baja">
+        `+response[0].Contadores['unidades_totales']+`
+    </div>
+</div> -->
+
+<script>
+
+    let urlapi = `https://adryo.com.mx/inmuebles/inmueble_view_info`;
+
+    $(document).ready(function () {
+        let cuenta = '<?= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'); ?>';
+        let desarrollo = '<?= $id ?>';
+        $.ajax({
+            type: "POST",
+            url: urlapi,
+            data: {api_key: 'adryo', cuenta_id: cuenta, desarrollo_id: desarrollo},
+            dataType: "Json",
+            success: function (response) {
+                console.log(response);
+
+                $('#inventory-detail').append(`
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-8">
+                                <p class="m-0">
+                                    `+response[0].Desarrollo['desarrollo']+`
+                                </p>
+                            </div>
+                            <div class="col-sm-12 col-lg-4 text-sm-right">
+                                <p class="m-0">
+                                `+response[0].Inmuebles['liberada']+`
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-2">
+                            
+                            </div>
+                            <div class="col-sm-12 col-lg-2">
+                                <div>
+                                    <b class="m-0">Tipo de desarrollo</b>
+                                    <p class="m-0">`+response[0].Desarrollo['tipo_desarrollo']+`</p>
+                                </div>
+                                <div>
+                                    <b class="m-0">Torres</b>
+                                    <p class="m-0">`+response[0].Desarrollo['torres']+`</p>
+                                </div>
+                                <div>
+                                    <b class="m-0">Unidades totales</b>
+                                    <p class="m-0">`+response[0].Desarrollo['unidades_totales']+`</p>
+                                </div>
+                                <div>
+                                    <b class="m-0">Entrega</b>
+                                    <p class="m-0">`+response[0].Desarrollo['fecha_entrega']+`</p>
+                                </div>
+                                <div>
+                                    <b class="m-0">Colonia</b>
+                                    <p class="m-0">`+response[0].Desarrollo['colonia']+`</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-2">
+                                <div style="display: flex;flex-direction: column;justify-content: space-evenly;gap: 16px;">
+                                    <div style="display: flex;align-items: center;">
+                                        <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                        <span style="margin-left: 16px;">
+                                            `+response[0].Desarrollo['m2']+` m <sup>2</sup>
+                                        </span>
+                                    </div>
+                                    <div style="display: flex;align-items: center;">
+                                        <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                        <span style="margin-left: 16px;">
+                                            `+response[0].Desarrollo['est']+`
+                                        </span>
+                                    </div>
+                                    <div style="display: flex;align-items: center;">
+                                        <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                        <span style="margin-left: 16px;">
+                                            `+response[0].Desarrollo['rec']+`
+                                        </span>
+                                    </div>
+                                    <div style="display: flex;align-items: center;">
+                                        <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:27px;')); ?>
+                                        <span style="margin-left: 16px;">
+                                            `+response[0].Desarrollo['banio']+`
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-2">
+                                <div>
+                                    <b class="m-0">Equipo</b>
+                                    <p class="m-0">`+response[0].Desarrollo['equipo']+`</p>
+                                </div>
+                                <div>
+                                    <b class="m-0">Privado</b>
+                                    <p class="m-0"><?= ($desarrollo['Desarrollo']['is_private']==1 ? "Si" : "No")?></p>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-4" style="display: flex;flex-direction: column;align-items: flex-end;">
+                                <div class="float-right">
+                                    <b class="m-0">Disponibilidad total</b>
+                                    <p class="m-0" style="text-align:center;">`+response[0].Contadores['disponible_libres']+`</p>
+                                </div>
+                                <div class="float-right mt-1">
+                                    <a>
+                                        <span><i class="fa fa-share-alt"></i>  Compartir</span>
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <button class="btn btn-primary-o">Liberado</button>
+                                    <button class="btn btn-primary">Vendido</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <hr>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+                            <div>
+                                <b>Total Unidades</b>
+                                <div class="text-center bg-status-desarrollo-total">
+                                    `+response[0].Desarrollo['unidades_totales']+`
+                                </div>
+                            </div>
+                            <div>
+                                <b>Bloqueados</b>
+                                <div class="text-center bg-status-desarrollo-bloqueado">
+                                    `+response[0].Contadores['bloquedos']+`
+                                </div>
+                            </div>
+                            <div>
+                                <b>En venta</b>
+                                <div class="text-center bg-status-desarrollo-venta">
+                                    `+response[0].Contadores['libres']+`
+                                </div>
+                            </div>
+                            <div>
+                                <b>Apartados</b>
+                                <div class="text-center bg-status-desarrollo-reservado">
+                                    `+response[0].Contadores['apartados']+`
+                                </div>
+                            </div>
+                            <div>
+                                <b>Vendidos</b>
+                                <div class="text-center bg-status-desarrollo-vendido">
+                                    `+response[0].Contadores['ventas']+`
+                                </div>
+                            </div>
+                            <div>
+                                <b>Escriturados</b>
+                                <div class="text-center bg-status-desarrollo-escriturado">
+                                    `+response[0].Contadores['escriturados']+`
+                                </div>
+                            </div>
+                            <div>
+                                <b>Venta</b>
+                                <div class="text-center">
+                                    `+response[0].Contadores['dinero']+`
+                                </div>
+                            </div>
+                        </div>
+                        <div id="rootwizard_no_val" class="mt-1">
+                            <ul class="nav nav-tabs" id="desarrollo_tabs">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    `);
+                        let torres = parseInt(response[0].Desarrollo.torres);
+                        let y = 1; y <= torres; y++;
+                        function tab_(y = null){
+                            let towers = getElementsByClassName("tower_");
+                            $("#"+y).addClass("active");
+                            console.log(y);
+                            y = 1; y = torres; y++;
+                        }
+                        for (let torre = 1; torre <= torres; torre++){
+                            console.log(torres);
+                            $("#desarrollo_tabs").append(`
+                                <li class="nav-item `+torre+`">
+                                    <a class="nav-link tower_"  id="`+y+`" href="#info_emp" data-toggle="tab" onclick="tab_(`+torre+`)">Torre `+torre+`</a>
+                                </li>
+                                <div class="mt-1" style="display:flex;gap:16px;">
+                                    <div id="niveles`+torre+`">
+                                        
+                                    </div>
+                                </div>
+                            `)
+                        }
+                        for (let i = 0; i < response[0].Pisos.length; i++){
+                            let piso = response[0].Pisos[i].piso;
+                            $("#niveles"+torre).append(`
+                                <div style="display:flex;align-items:baseline;gap:16px;" id="nivel_`+piso+torre+`">
+                                    <div class="level text-center mt-1" id="pisos_`+piso+torre+`">
+                                        `+piso+torre+`
+                                    </div>
+                                    <div class="apt-tower" id="deptos_`+piso+torre+`"></div>
+                                </div>`
+                            );
+                        }
+                        for (let i = 0; i < response[0].Inmuebles.length; i++){
+                            let arr = [
+                                {
+                                    estatus : 'liberada',
+                                    clase   : 'bg-libre'},
+                                {
+                                    estatus : 'en_venta',
+                                    clase   : 'bg-status-desarrollo-venta'},
+                                {
+                                    estatus : 'bloqueada',
+                                    clase   : 'bg-status-desarrollo-bloqueado'},
+                                {
+                                    estatus : 'reservada',
+                                    clase   : 'bg-status-desarrollo-reservado'},
+                                {
+                                    estatus : 'contrato',
+                                    clase   : 'bg-status-desarrollo-vendido'},
+                                {
+                                    estatus : 'escrituradas',
+                                    clase   : 'bg-status-desarrollo-escriturado'},
+                            ];
+                            
+                            let piso = response[0].Inmuebles[i].nivel_propiedad;
+                            let estatus = response[0].Inmuebles[i].liberada;
+                            jQuery.each( arr, function( index, value ) {
+                                if (value.estatus == estatus) {
+                                    $('.bg_'+estatus).addClass(value.clase);
+                                }
+                            });
+                            $("#deptos_"+piso+torre).append(`
+                                <div onclick="view_detail(`+response[0].Inmuebles[i].id+`)" class="pointer bg_`+estatus+` " data-toggle="modal" data-target="#myModal" >
+                                    `+response[0].Inmuebles[i].id+`
+                                </div>
+                                `
+                            );
+                        }
+                        
+                    },
+                    error: function ( response ) {
+                        console.log(reponse);
+                    }
+                });
+            });
+
+    function view_detail(id = null){
+        $('#myModal').html('');
+        $.ajax({
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Inmuebles", "action" => "view_info_inmueble_inventario")); ?>",
+            // url: "http://localhost/Adryo-web/Inmuebles/view_info_inmueble_inventario",
+            data: {api_key: 'adryo', inmueble_id: id},
+            dataType: "Json",
+            success: function (response) {
+                console.log(response);
+                $('#myModal').append(`
+                    <div class="card-block" style="background-color:#376D6C;">
+                        <span style="color:white;">
+                            `+response[0].inmueble.titulo+`
+                        </span> 
+                        <div class="float-right pointer">
+                            <i class='fa fa-times' style="color:white;" data-dismiss="modal"></i>
+                        </div>
+                    </div>
+                    <div class="" style="background-color:gray;width:40%;padding: 0 12px;">
+                        <p style="color:white;margin:0;">
+                            `+response[0].inmueble.liberada+`
+                        </p>
+                    </div>
+                    <div class="card-block">
+                        <div>
+                            `+response[0].inmueble.plano+`
+                        </div>
+                        <div class="mt-1" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 8px 0;">
+                            <div style="width:49%;">
+                                <?= $this->Html->image('adryo_iconos/icons-profile/aspect_ratio.png', array('class' => 'img-icon', 'style' => 'width:24px;')); ?>
+                                <span>
+                                    - `+response[0].inmueble.terrano+` m<sup>2</sup> 
+                                </span>
+                            </div>
+                            <br>
+                            <div style="width:49%;">
+                                <?= $this->Html->image('adryo_iconos/icons-profile/car-sport.png', array('class' => 'img-icon', 'style' => 'width:24px;')); ?>
+                                <span>
+                                    - `+response[0].inmueble.estacionamiento_techado+`
+                                </span>
+                            </div>
+                        </div>
+                        <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 8px 0;">
+                            <div style="width:49%;">
+                                <?= $this->Html->image('adryo_iconos/icons-profile/king_bed.png',array('class' => 'img-icon', 'style' => 'width:24px;')); ?>
+                                <span>
+                                    - `+response[0].inmueble.recamaras+` 
+                                </span>
+                            </div>
+                            <br>
+                            <div style="width:49%;">
+                                <?= $this->Html->image('adryo_iconos/icons-profile/bathtub.png', array('class' => 'img-icon', 'style' => 'width:24px;')); ?>
+                                <span>
+                                    - `+response[0].inmueble.banos+`
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mt-1">
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        Precio de lista
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        $ `+response[0].inmueble.precio+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        Piso
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.nivel_propiedad+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        M2 habitables
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.avitable+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        M2 no habitables
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.noavitable+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        M2 totales
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.terrano+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        Entrega
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.entrega+`
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-1" id="forward">
+                        </div>
+                        <div class="mt-1">
+                            <div class="text-sm-right">
+                                <small>
+                                    <a href="http://localhost:8080/Adryo-web/inmuebles/view_tipo/`+response[0].inmueble.id+`/`+response[0].inmueble.desarrollo_id+`">Ir a propiedad</a>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                );
+                if(response[0].inmueble.liberada > 1){
+                    $('#forward').append(`
+                        <div class="mt-1">
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        ID operación
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.user+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        Cliente
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.cliente+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        Asesor
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.user+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        Fecha apartado
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.noavitable+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        Vigencia apartado
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.terrano+`
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="" style="display:flex;justify-content:space-evenly;flex-wrap:wrap;padding: 2px 0;">
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        Monto apartado
+                                    </small>
+                                </div>
+                                <br>
+                                <div style="width:49%;background-color:#CCDADA;padding:0 8px;">
+                                    <small>
+                                        `+response[0].inmueble.entrega+`
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    `)
+                }
+            },
+            error: function ( response ) {
+                // console.log(reponse);
+            }
+        });
+    }
+
+
+</script>

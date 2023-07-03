@@ -152,12 +152,12 @@
                   <?= $this->Form->input('telefono',array('class'=>'form-control','placeholder'=>'Teléfono','div'=>'col-lg-8','label'=>false,)); ?>
               </div>
 
-              <!-- <div class="row mt-1">
+              <div class="row mt-1">
                   <div class="col-xl-4">
                       <?= $this->Form->label('rango_fechas','Fecha de creación', array('class' => 'form-control-label')); ?>
                   </div>
                   <?= $this->Form->input('rango_fechas',array('name'=>'date_created','class'=>'form-control date_range','div'=>'col-lg-8','label'=>false, 'placeholder'=>'dd/mm/YYYY - dd/mm/YYYY', 'autocomplete'=>'off')); ?>
-              </div> -->
+              </div>
 
               <div class="row mt-1">
                   <div class="col-xl-4">
@@ -241,7 +241,7 @@
                 <div class="col-xl-4">
                     <?= $this->Form->label('status_atencion','Estatus de atención', array('class' => 'form-control-label')); ?>
                 </div>
-                <?= $this->Form->input('status_atencion',array('type'=>'select','options'=>$status_atencion_clientes,'empty'=>'Todos los estatus de atención','class'=>'form-control chzn-select','div'=>'col-lg-8','label'=>false )); ?>
+                <?= $this->Form->input('status_atencion',array('type'=>'select','options'=>$status_atencion_clientes,'empty'=>'Todos los estatus de atención','class'=>'form-control chzn-select','id'=>'roberto','div'=>'col-lg-8','label'=>false )); ?>
             </div>
 
           </div>
@@ -274,9 +274,7 @@
                 </h4>
             </div>
             <div class="col-sm-12 col-lg-6">
-                <?php if ($this->Session->read('Permisos.Group.cc') == 1 ):?>
-                    <?= $this->Html->link('Agregar cliente', array('controller' => 'clientes', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-success btn-sm float-xs-right mt-1')); ?>
-                <?php endif; ?>
+                <?= $this->Html->link('Agregar cliente', array('controller' => 'clientes', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-success btn-sm float-xs-right mt-1')); ?>
             </div>
             
         </div>
@@ -299,7 +297,7 @@
 
                                 <div class="col-sm-12 mt-5">
                                     <!-- Tabla de clientes -->
-                                    <table class="table table-striped table-no-bordered table-hover table-sm" id="list_clientes_all"> </table>
+                                    <table class="table table-striped table-no-bordered table-hover table-sm" id="sample_1"> </table>
                                 </div>
 
                             </div>
@@ -349,75 +347,15 @@
 <script>
 
     'use strict';
-    var table = $('#sample_1');
-    // Datos para la tabla
-    $.ajax({
-        url: '<?php echo Router::url(array("controller" => "clientes", "action" => "listado_clientes_json")); ?>',
-        cache: false,
-        dataType: 'json',
-        beforeSend: function () {
-            $("#overlay").fadeIn();
-        },
-        success: function ( response ) {
-            
-            $('#list_clientes_all').dataTable().fnClearTable();
-            $('#list_clientes_all').dataTable().fnDestroy();
 
-            $('#list_clientes_all').dataTable( {
-                destroy: true,
-                data : response,
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                dom: 'Bflr<"table-responsive"t>ip',
-                columnDefs: [
-                    {
-                        targets: [ 3 ],
-                        visible: false,
-                        searchable: false
-                    },
-                ],
-                language: {
-                        sSearch: "Buscador",
-                        lengthMenu: '_MENU_ registros por página',
-                        info: 'Mostrando _TOTAL_ registro(s)',
-                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
-                        emptyTable: "Sin información",
-                        paginate: {
-                            previous: 'Anterior',
-                            next: 'Siguiente'
-                        },
-                    },
-                buttons: [
-                    {
-                        extend: 'excel',
-                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
-                        filename: 'ClientList',
-                        class : 'excel',
-                        charset: 'utf-8',
-                        bom: true,
+    // Datos para la tabla
     
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="fa  fa-print"></i> Imprimir',
-                        filename: 'ClientList',
-                    },
-                ]
-                
-            });
-            $("#overlay").fadeOut();
-        },
-        error: function ( response ){
-            
-            $("#overlay").fadeOut();
-            console.log( response.responseText );
-        }
-    });
     
     // Metodo para la tabla de clientes.
     var TableAdvanced = function() {
         // ===============table 1====================
         var initTable1 = function() {
-            var table = $('#list_clientes_all');
+            var table = $('#sample_1');
             table.DataTable({
                 lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
                 columnDefs: [
@@ -483,7 +421,6 @@
                     },
                 ]
             });
-            table.destroy();
             table = $('#sample_1').DataTable({
                 'destroy': true,
                 'paging': false,
@@ -543,13 +480,14 @@
             cache: false,
             beforeSend: function () {
                 $("#overlay").fadeIn();
+                console.log($('#roberto').val());
             },
             success: function ( response ) {
 
-                $('#list_clientes_all').dataTable().fnClearTable();
-                $('#list_clientes_all').dataTable().fnDestroy();
+                $('#sample_1').dataTable().fnClearTable();
+                $('#sample_1').dataTable().fnDestroy();
 
-                $('#list_clientes_all').dataTable( {
+                $('#sample_1').dataTable( {
                     destroy: true,
                     data : response,
                     lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
@@ -683,6 +621,68 @@
             $(this).val('');
             return false;
         });
+        // 
+        $.ajax({
+            url: '<?php echo Router::url(array("controller" => "clientes", "action" => "listado_clientes_json")); ?>',
+            cache: false,
+            dataType: 'json',
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function ( response ) {
+            
+                $('#sample_1').dataTable().fnClearTable();
+                $('#sample_1').dataTable().fnDestroy();
+
+                $('#sample_1').dataTable( {
+                    destroy: true,
+                    data : response,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                    dom: 'Bflr<"table-responsive"t>ip',
+                    columnDefs: [
+                        {
+                            targets: [ 3 ],
+                            visible: false,
+                            searchable: false
+                        },
+                    ],
+                    language: {
+                        sSearch: "Buscador",
+                        lengthMenu: '_MENU_ registros por página',
+                        info: 'Mostrando _TOTAL_ registro(s)',
+                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                        emptyTable: "Sin información",
+                        paginate: {
+                            previous: 'Anterior',
+                            next: 'Siguiente'
+                        },
+                    },
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                            filename: 'ClientList',
+                            class : 'excel',
+                            charset: 'utf-8',
+                            bom: true,
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="fa  fa-print"></i> Imprimir',
+                            filename: 'ClientList',
+                        },
+                    ]
+                
+                });
+                $("#overlay").fadeOut();
+            },
+            error: function ( response ){
+                
+                $("#overlay").fadeOut();
+                console.log( response.responseText );
+            }
+        });
+        // 
 
     });
 

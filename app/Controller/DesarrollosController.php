@@ -4977,76 +4977,7 @@ class DesarrollosController extends AppController {
             
         }
 
-        //
-        // $fi='2021-09-01 00:00:00';
-        // $ff='2022-10-24 23:59:59';
-        // $periodos = $this->getPeriodosArreglo($fi,$ff);
-        // foreach($periodos as $key=>$periodo){
-        //     $monto = $this->User->query(
-        //         "SELECT SUM(monto) as montos,SUM(unidades) as unidades
-        //         FROM objetivos_ventas_desarrollos 
-        //         WHERE fecha <= '".$key."-01' 
-        //         AND fin >= '".$key."-31' 
-        //         AND cuenta_id =  $cuenta_id");
-          
-        //     if ( $monto[0][0]['montos)']>0 || $monto[0][0]['unidades']>0) {
-        //         $kpi_arreglo[$i]['periodo'] = $periodo;
-        //         $kpi_arreglo[$i]['objetivo_monto'] = $monto[0][0]['montos']==NULL ? 0 : $monto[0][0]['montos'];
-        //         $kpi_arreglo[$i]['objetivo_q'] = $monto[0][0]['unidades']==NULL ? 0 : $monto[0][0]['unidades'];
-               
-        //     }else{
-        //         if($kpi_arreglo[$i-1]['objetivo_monto'] !=0 ){
-        //             $kpi_arreglo[$i]['periodo'] = $periodo;
-        //             $kpi_arreglo[$i]['objetivo_monto'] = $kpi_arreglo[$i-1]['objetivo_monto'];
-        //             $kpi_arreglo[$i]['objetivo_q'] = $kpi_arreglo[$i-1]['objetivo_q'];
-        //         }
-        //     }
-            
-        //     $i++;
-        // }
-        // $ventas = $this->User->query(
-        //     "SELECT COUNT(*) as unidades,SUM(precio_cerrado) as monto , DATE_FORMAT(ventas.fecha,'%m-%Y') As fecha
-        //     FROM ventas 
-        //     WHERE fecha >= '$fi' 
-        //     AND fecha <=  '$ff'
-        //     AND cuenta_id = $cuenta_id
-        //     GROUP BY DATE_FORMAT(ventas.fecha,'%m-%Y');
-        //     "
-        // );        
-        // $i=0;
-        // foreach ($kpi_arreglo as $arreglo) {
-        //     $arreglo_completo[$i]['periodo']        = $arreglo['periodo'] ;
-        //     $arreglo_completo[$i]['objetivo_monto'] = $arreglo['objetivo_monto'] ;
-        //     $arreglo_completo[$i]['objetivo_q']     = $arreglo['objetivo_q'] ;
-        //     foreach ($ventas as $value) {
-        //         if ($value[0]['fecha'] == $arreglo['periodo']) {
-        //             if ($arreglo_completo[$i]['objetivo_monto']==0) {
-        //                 $arreglo_completo[$i]['objetivo_monto']=0;
-        //             }
-        //             if ($arreglo_completo[$i]['objetivo_q']==0) {
-        //                 $arreglo_completo[$i]['objetivo_q']=0;
-        //             }
-        //             $arreglo_completo[$i]['ventas_q'] =  $value[0]['unidades'];
-        //             $arreglo_completo[$i]['ventas_monto']   = $value[0]['monto']; 
-        //         }
-        //     }
-        //     $i++;
-        // }
-        // $i=0;
-        // foreach ($arreglo_completo as $periodo){
-        //     if($periodo['objetivo_q']==0){
-        //         $porciento_grafica = 0;
-        //     } else{
-        //         $porciento_grafica=(($periodo['ventas_q']/$periodo['objetivo_q'])*100);
-        //     }
-        //     $arreglo_meta[$i]['periodo']        = $periodo['periodo'] ;
-        //     $arreglo_meta[$i]['objetivo_monto'] = $periodo['objetivo_monto'] ;
-        //     $arreglo_meta[$i]['objetivo_q']     = $periodo['objetivo_q'] ;
-        //     $arreglo_meta[$i]['ventas_q']       = ( empty($periodo['ventas_q'] ) ? 0  : $periodo['ventas_q']  );
-        //     $arreglo_meta[$i]['ventas_monto']   = ( empty( $periodo['ventas_monto']) ? 0  :  $periodo['ventas_monto']);
-        //     $arreglo_meta[$i]['cumplido']       = $porciento_grafica;
-        //     $i++;
-        // }
+      
         if (empty($arreglo_meta)) {
             $arreglo_meta[$i]['periodo']        = 0;
             $arreglo_meta[$i]['objetivo_monto'] = 0;
@@ -5062,6 +4993,79 @@ class DesarrollosController extends AppController {
     }
     
     public function inventario($id=null){
+        $this->set(compact('id'));
+        // $id_desarrollo = $id;
+        // $this->set;
+    }
+
+    public function control_table(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('Validation');
+        $this->Validation->Behaviors->load('Containable');
+
+        $cuenta = $this->Session->read('CuentaUsuario.Cuenta.id' );
+        $validation=$this->Validation->find('count',array(
+            'conditions' => array(
+                'Validation.cuenta_id' => $cuenta,
+            ),
+            'contain' => false
+        ));
+
+
+        $this->set(compact('validation'));
+    }
+
+    public function validation($id=null){
+
+    }
+
+    public function add_tarea($id=null){
+        $this->set(compact('id'));
+        $this->loadModel('Validation');
+        $this->loadModel('Group');
+        $this->Group->Behaviors->load('Containable');
+        $this->Validation->Behaviors->load('Containable');
+        $i=0;
+        $cuenta_id = $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
+        $validacion=array();
+        $permisos_nombre=array();
+        $permisos_id=array();
+        $validation=$this->Validation->find('first',array(
+            'conditions' => array(
+                'Validation.id' => $id,
+            ),
+            'contain' => false
+        ));
+        $roles = $this->Group->find('list', array(
+            'conditions'=> array(
+                'OR' => array(
+                    'Group.cuenta_id'=> $cuenta_id,
+                    'Group.id' => array(1,2,3)
+                )
+            ),
+
+            'contain' => false,
+            'order' => array(
+                'Group.nombre'=> 'ASC',
+            )
+        ));
+
+
+        $this->set(compact('validation'));
+        $this->set(compact('roles'));
+
+    }
+
+
+    public function proceso_tabla($id=null){
+
+    }
+
+    public function inicio_proceso($id=null){
+
+    }
+
+    public function edit_proceso($id=null){
 
     }
 

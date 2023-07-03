@@ -843,9 +843,7 @@
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:300px;" width="100%" class="mcnTextContentContainer">
                     <tbody>
 						<tr>
-                        
 							<td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #FFF;line-height: 100%;">
-							
 								<div style="text-align: left;">
 									<span style="display: inline-block;
 									padding-top: 5px;
@@ -868,15 +866,14 @@
 				<td valign="top" width="300" style="width:300px;">
 				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:300px;" width="100%" class="mcnTextContentContainer">
-                    <tbody><tr>
-                        
-                        <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #FFF;line-height: 100%;">
-                        
-                            <div style="text-align: right;">Todos los derechos reservados 2022 ©</div>
-
-                        </td>
-                    </tr>
-                </tbody></table>
+                    <tbody>
+						<tr>
+                        	<td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: #FFF;line-height: 100%;">
+                        	    <div style="text-align: right;">Todos los derechos reservados 2022 ©</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 				<!--[if mso]>
 				</td>
 				<![endif]-->
