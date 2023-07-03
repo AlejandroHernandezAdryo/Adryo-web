@@ -348,7 +348,8 @@
 
     'use strict';
 
-   
+    // Datos para la tabla
+    
     
     // Metodo para la tabla de clientes.
     var TableAdvanced = function() {
@@ -620,7 +621,7 @@
             $(this).val('');
             return false;
         });
-        // Datos para la tabla
+        // 
         $.ajax({
             url: '<?php echo Router::url(array("controller" => "clientes", "action" => "listado_clientes_json")); ?>',
             cache: false,
@@ -629,7 +630,7 @@
                 $("#overlay").fadeIn();
             },
             success: function ( response ) {
-                
+            
                 $('#sample_1').dataTable().fnClearTable();
                 $('#sample_1').dataTable().fnDestroy();
 
@@ -646,16 +647,16 @@
                         },
                     ],
                     language: {
-                            sSearch: "Buscador",
-                            lengthMenu: '_MENU_ registros por página',
-                            info: 'Mostrando _TOTAL_ registro(s)',
-                            infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
-                            emptyTable: "Sin información",
-                            paginate: {
-                                previous: 'Anterior',
-                                next: 'Siguiente'
-                            },
+                        sSearch: "Buscador",
+                        lengthMenu: '_MENU_ registros por página',
+                        info: 'Mostrando _TOTAL_ registro(s)',
+                        infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
+                        emptyTable: "Sin información",
+                        paginate: {
+                            previous: 'Anterior',
+                            next: 'Siguiente'
                         },
+                    },
                     buttons: [
                         {
                             extend: 'excel',
@@ -664,7 +665,6 @@
                             class : 'excel',
                             charset: 'utf-8',
                             bom: true,
-        
                         },
                         {
                             extend: 'print',
@@ -672,7 +672,7 @@
                             filename: 'ClientList',
                         },
                     ]
-                    
+                
                 });
                 $("#overlay").fadeOut();
             },
@@ -682,6 +682,7 @@
                 console.log( response.responseText );
             }
         });
+        // 
 
     });
 
