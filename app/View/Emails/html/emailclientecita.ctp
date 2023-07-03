@@ -647,8 +647,8 @@
                                       Hola <?php echo $cliente['Cliente']['nombre']?>
                                     </strong>&nbsp;
                                     <br><br>
-                                    <?= $contenido?>
-                                    Por medio del presente te recordamos que tienes una cita programada el día de {{Fecha}}, a las {{Hora}}, con tu asesor {{Asesor}} en {{Ubicación}}, agradecemos tu preferencia.
+                                    
+                                    Por medio del presente te recordamos que tienes una cita programada el día de , con tu asesor  <?= $asesor['User']['nombre_completo']?> en , agradecemos tu preferencia.
                                   </span>
                                 </td>
                               </tr>
@@ -685,13 +685,13 @@
                                     <tbody>
                                       <tr>
                                         <td valign="top" class="mcnTextContent" style="padding-left: 18px;padding-top: 18px;padding-bottom: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 13px;font-style: normal;font-weight: normal;line-height: 150%;text-align: left;">
-                                          <div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: contain;">&nbsp;</div>
-                                            <!-- Asesor: <?= $usuario['User']['nombre_completo']?><br>
-                                            Email: <?= $usuario['User']['correo_electronico']?><br>
-                                            Teléfono:<?= $usuario['User']['telefono1']?><br>
-                                            <?php if ($usuario['User']['telefono2'] != ''): ?>
-                                              Teléfono 2: <?= $usuario['User']['telefono2']?>
-                                            <?php endif ?> -->
+                                          <div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($asesor['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: contain;">&nbsp;</div>
+                                            <!-- Asesor: <?= $asesor['User']['nombre_completo']?><br>
+                                            Email: <?= $asesor['User']['correo_electronico']?><br>
+                                            Teléfono:<?= $asesor['User']['telefono1']?><br>
+                                            <?php if ($asesor['User']['telefono2'] != ''): ?>
+                                              Teléfono 2: <?= $asesor['User']['telefono2']?>
+                                            <?php endif ?> --> 
                                         </td>
                                         <td>
                                           <table style="height: 100%;width: 30px;background: #ADB5BD;border-radius: 4px;">
@@ -710,7 +710,7 @@
                                             <tbody>
                                               <tr>
                                                 <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;color:#fff !important;">
-                                                  <?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
+                                                  <?= ( empty( $asesor['User']['nombre_completo'] ) ? 'Sin nombre' : $asesor['User']['nombre_completo'] ) ?>
                                                 </td>
                                                 <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;color:#fff !important;">
                                                   Asesor
@@ -718,7 +718,7 @@
                                               </tr>
                                               <tr>
                                                 <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
-                                                  <?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
+                                                  <?= ( empty( $asesor['User']['telefono1'] ) ? 'Sin teléfono' : $asesor['User']['telefono1'] ) ?>
                                                 </td>
                                               </tr>
                                               <tr>
@@ -728,7 +728,7 @@
                                               </tr>
                                               <tr>
                                                 <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
-                                                  <?= (empty( $usuario['User']['correo_electronico'])? 'Sin correo eléctronico': $usuario['User']['correo_electronico'])?>
+                                                  <?= (empty( $asesor['User']['correo_electronico'])? 'Sin correo eléctronico': $asesor['User']['correo_electronico'])?>
                                                 </td>
                                               </tr>
                                             </tbody>

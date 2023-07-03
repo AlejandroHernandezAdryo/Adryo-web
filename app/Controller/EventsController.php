@@ -192,7 +192,7 @@ class EventsController extends AppController {
 
             $fecha_inicio = date('Y-m-d', strtotime ( $this->request->data['FormCreateEvent']['fechaInicial'] )).' '.$this->request->data['FormCreateEvent']['horaInicial'].':'.$this->request->data['FormCreateEvent']['minutoInicial'].':00';
 
-            $data_event1 = array(
+            $data_event = array(
                 "cliente_id"        => $this->request->data['FormCreateEvent']['cliente_id'],
                 "user_id"           => $this->request->data['FormCreateEvent']['user_id'],
                 "fecha_inicio"      => $fecha_inicio,
@@ -205,7 +205,7 @@ class EventsController extends AppController {
                 "status_evento"     => 1,
                 "cuenta_id"         => $this->Session->read('CuentaUsuario.Cuenta.id'),
             );
-            $save_event = $this->add_evento( $data_event1 );
+            $save_event = $this->add_evento( $data_event );
 
             if( $save_event['bandera'] == 1 ) {
                 $this->Session->setFlash('', 'default', array(), 'success');
@@ -2126,7 +2126,33 @@ class EventsController extends AppController {
                 );
             }
         }
-
+        if (  $data_event['tipo_tarea'] == 0)  {
+            $this->loadModel('Mailconfig');
+            $this->loadModel('User');
+            $this->Mailconfig->Behaviors->load('Containable');
+            $this->User->Behaviors->load('Containable');
+            $cliente = $this->Cliente->read(null,$data_event['cliente_id']);
+            $mailconfig  = $this->Mailconfig->read(null,$this->Session->read('CuentaUsuario.Cuenta.mailconfig_id'));
+            //$cliente = $this->Cliente->read(null,$this->request->data['Agenda']['cliente_id']);
+            $usuario = $this->User->read(null, $data_event['user_id']);
+            $this->Email = new CakeEmail();
+            $this->Email->config(array(
+                'host'      => $mailconfig['Mailconfig']['smtp'],
+                'port'      => $mailconfig['Mailconfig']['puerto'],
+                'username'  => $mailconfig['Mailconfig']['usuario'],
+                'password'  => $mailconfig['Mailconfig']['password'],
+                'transport' => 'Smtp'
+                )
+            );
+            $this->Email->emailFormat('html');
+            $this->Email->template('emailclientecita','layoutinmomail');
+            //$this->Email->template('emailaasesor','layoutinmomail');
+            $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+            $this->Email->to($cliente['Cliente']['correo_electronico']);
+            $this->Email->subject('Confirmación de Cita');
+            $this->Email->viewVars(array('asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'fecha'=>date("d/M/Y H:i:s")));
+            $this->Email->send();
+        }
         return $respuesta;
     }
 
