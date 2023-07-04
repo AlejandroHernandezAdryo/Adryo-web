@@ -43,7 +43,7 @@ class EventsController extends AppController {
                   )
                 );
               }
-            $this->Auth->allow('find_events','index', 'get_add', 'get_events_user', 'cron_reactivacion_automatica_clientes','get_events_user_ios', 'correcion_inmuebles_events');
+            $this->Auth->allow('test_cron','find_events','index', 'get_add', 'get_events_user', 'cron_reactivacion_automatica_clientes','get_events_user_ios', 'correcion_inmuebles_events');
         }
 
 /**
@@ -3180,52 +3180,862 @@ class EventsController extends AppController {
      * 
      * 
     */
-    function find_events() {
+
+    function findEvents() {
 
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('DesarrolloInmueble');
-        $this->Cliente->Behaviors->load('Containable');
-        $this->loadModel('Cliente');
         $this->DesarrolloInmueble->Behaviors->load('Containable');
+        $this->loadModel('Cliente');
+        $this->Cliente->Behaviors->load('Containable');        
+        $this->loadModel('Event');
+        $this->Event->Behaviors->load('Containable');
+        
         $response               = [];
-            $this->loadModel('Mailconfig');
-            $this->loadModel('User');
-            $this->Mailconfig->Behaviors->load('Containable');
-            $this->User->Behaviors->load('Containable');
-            $cliente = $this->Cliente->read(null,62635);
-            $mailconfig  = $this->Mailconfig->read(null,$this->Session->read('CuentaUsuario.Cuenta.mailconfig_id'));
-            //$cliente = $this->Cliente->read(null,$this->request->data['Agenda']['cliente_id']);
-            $usuario = $this->User->read(null, 659);
-            $this->Email = new CakeEmail();
-            $this->Email->config(array(
-                'host'      => $mailconfig['Mailconfig']['smtp'],
-                'port'      => $mailconfig['Mailconfig']['puerto'],
-                'username'  => $mailconfig['Mailconfig']['usuario'],
-                'password'  => $mailconfig['Mailconfig']['password'],
-                'transport' => 'Smtp'
-                )
-            );
-            $this->Email->emailFormat('html');
-            $this->Email->template('emailclientecita','layoutinmomail');
-            //$this->Email->template('emailaasesor','layoutinmomail');
-            $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
-            $this->Email->to($cliente['Cliente']['correo_electronico']);
-            $this->Email->subject('Notificación de proximo evento');
-            $this->Email->viewVars(array('asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'fecha'=>date("d/M/Y H:i:s")));
-           
-            if ( $this->Email->send()) {
-                $response = array(
-                    'Ok' => true,
-                    'mensaje' => 'Correo enviado'
-                );
+        
+        $fecha= date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s')."- 1 hours"));
+        
+        $treeday = date('Y-m-d H:i', strtotime($fecha."+ 3 days"));
+        $twoday = date('Y-m-d H:i', strtotime($fecha."+ 2 days"));
+        $oneday = date('Y-m-d H:i', strtotime($fecha."+ 1 days"));
+        
+        $treeh = date('Y-m-d H:i', strtotime($fecha."+ 3 hours"));
+        $twoh = date('Y-m-d H:i', strtotime($fecha."+ 2 hours"));
+        $oneh = date('Y-m-d H:i', strtotime($fecha."+ 1 hours"));
+        
+        $trescuartosh = date('Y-m-d H:i', strtotime($fecha."+ 45 minute"));
+        $mediah = date('Y-m-d H:i', strtotime($fecha."+ 30 minute"));
+        $cuartoh = date('Y-m-d H:i', strtotime($fecha."+ 15 minute"));
+        
+        $trescuartosh_ = date('Y-m-d H:i', strtotime($fecha."+ 44 minute"));
+        $mediah_ = date('Y-m-d H:i', strtotime($fecha."+ 29 minute"));
+        $cuartoh_ = date('Y-m-d H:i', strtotime($fecha."+ 14 minute"));
+        
+        
+        /* ------------------ Avisos a asesor de llamadas y correos ----------------- */
+        
+        $eventstwoday = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => array("2","3"),
+                        'Event.fecha_inicio >' => $treeday,
+                        'Event.fecha_inicio <' => $twoday,
+                    )
+                ),
+                'contain' => array(
+                            'User' => array(
+                                'fields' => array(
+                                    'User.id',
+                                    'User.nombre_completo',
+                                    'User.correo_electronico',
+                                )
+                            ),
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'Inmueble.id',
+                                    'Inmueble.titulo'
+                                )
+                            ),
+                            'Desarrollo' => array(
+                                'fields' => array(
+                                    'Desarrollo.id',
+                                    'Desarrollo.nombre'
+                                )
+                            ),   
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'Cliente.id',
+                                    'Cliente.nombre',                            
+                                    'Cliente.correo_electronico',
+                                )
+                            ), 
+                        )
                 
-            }
+            )
+        );
+        if(!empty($eventstwoday)){ 
+            
+            foreach($eventstwoday as $evento):
+            
+                $desarollo =  $evento['Desarrollo']['nombre'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailasesoravisos','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($evento['User']['correo_electronico']);
+                $this->Email->subject('Notificación de proximo evento');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Correo enviado'
+                    );
+            
+                }
+              
+            endforeach;
+        
+        }
+        $eventsoneday = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => array("2","3"),
+                        'Event.fecha_inicio >' => $twoday,
+                        'Event.fecha_inicio <' => $oneday,
+                    )
+                ),
+                'contain' => array(
+                            'User' => array(
+                                'fields' => array(
+                                    'User.id',
+                                    'User.nombre_completo',
+                                    'User.correo_electronico',
+                                )
+                            ),
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'Inmueble.id',
+                                    'Inmueble.titulo'
+                                )
+                            ),
+                            'Desarrollo' => array(
+                                'fields' => array(
+                                    'Desarrollo.id',
+                                    'Desarrollo.nombre'
+                                )
+                            ),   
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'Cliente.id',
+                                    'Cliente.nombre',                            
+                                    'Cliente.correo_electronico',
+                                )
+                            ), 
+                        )
+                
+            )
+        );
+        if(!empty($eventsoneday)){ 
+            
+            foreach($eventsoneday as $evento):
+            
+                 $desarollo =  $evento['Desarrollo']['nombre'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailasesoravisos','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($evento['User']['correo_electronico']);
+                $this->Email->subject('Notificación de proximo evento');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Correo enviado'
+                    );
+            
+                }
+               
+            endforeach;
+        
+        }
+        
+        /* -------------------------------------------------------------------------- */
+        
+        $eventstwoh = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => array("2","3"),
+                        'Event.fecha_inicio >' => $treeh,
+                        'Event.fecha_inicio <' => $twoh,
+                    )
+                ),
+                'contain' => array(
+                            'User' => array(
+                                'fields' => array(
+                                    'User.id',
+                                    'User.nombre_completo',
+                                    'User.correo_electronico',
+                                )
+                            ),
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'Inmueble.id',
+                                    'Inmueble.titulo'
+                                )
+                            ),
+                            'Desarrollo' => array(
+                                'fields' => array(
+                                    'Desarrollo.id',
+                                    'Desarrollo.nombre'
+                                )
+                            ),   
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'Cliente.id',
+                                    'Cliente.nombre',                            
+                                    'Cliente.correo_electronico',
+                                )
+                            ), 
+                        )
+                
+            )
+        );
+        if(!empty($eventstwoh)){ 
+            
+            foreach($eventstwoh as $evento):
+            
+                $desarollo =  $evento['Desarrollo']['nombre'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailasesoravisos','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($evento['User']['correo_electronico']);
+                $this->Email->subject('Notificación de proximo evento');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Correo enviado'
+                    );
+            
+                }
+              
+            endforeach;
+        
+        }
+        $eventsoneh = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => array("2","3"),
+                        'Event.fecha_inicio >' => $oneh,
+                        'Event.fecha_inicio <' => $oneh,
+                    )
+                ),
+                'contain' => array(
+                            'User' => array(
+                                'fields' => array(
+                                    'User.id',
+                                    'User.nombre_completo',
+                                    'User.correo_electronico',
+                                )
+                            ),
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'Inmueble.id',
+                                    'Inmueble.titulo'
+                                )
+                            ),
+                            'Desarrollo' => array(
+                                'fields' => array(
+                                    'Desarrollo.id',
+                                    'Desarrollo.nombre'
+                                )
+                            ),   
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'Cliente.id',
+                                    'Cliente.nombre',                            
+                                    'Cliente.correo_electronico',
+                                )
+                            ), 
+                        )
+                
+            )
+        );
+        if(!empty($eventsoneh)){ 
+            
+            foreach($eventsoneh as $evento):
+            
+                $desarollo =  $evento['Desarrollo']['nombre'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailasesoravisos','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($evento['User']['correo_electronico']);
+                $this->Email->subject('Notificación de proximo evento');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Correo enviado'
+                    );
+            
+                }
+               
+            endforeach;
+        
+        }
+        
+        /* -------------------------------------------------------------------------- */
+        
+        $eventstrescuartosh = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => array("2","3"),
+                        'Event.fecha_inicio >' => $trescuartosh_,
+                        'Event.fecha_inicio <' => $trescuartosh,
+                    )
+                ),
+                'contain' => array(
+                            'User' => array(
+                                'fields' => array(
+                                    'User.id',
+                                    'User.nombre_completo',
+                                    'User.correo_electronico',
+                                )
+                            ),
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'Inmueble.id',
+                                    'Inmueble.titulo'
+                                )
+                            ),
+                            'Desarrollo' => array(
+                                'fields' => array(
+                                    'Desarrollo.id',
+                                    'Desarrollo.nombre'
+                                )
+                            ),  
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'Cliente.id',
+                                    'Cliente.nombre',                            
+                                    'Cliente.correo_electronico',
+                                )
+                            ),  
+                        )
+                
+            )
+        );
+        if(!empty($eventstrescuartosh)){ 
+            
+            foreach($eventstrescuartosh as $evento):
+            
+                $desarollo =  $evento['Desarrollo']['nombre'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailasesoravisos','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($evento['User']['correo_electronico']);
+                $this->Email->subject('Notificación de proximo evento');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Correo enviado'
+                    );
+            
+                }
+            endforeach;
+        
+        }
+        $eventsmediah = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => array("2","3"),
+                        'Event.fecha_inicio >' => $mediah_,
+                        'Event.fecha_inicio <' => $mediah,
+                    )
+                ),
+                'contain' => array(
+                            'User' => array(
+                                'fields' => array(
+                                    'User.id',
+                                    'User.nombre_completo',
+                                    'User.correo_electronico',
+                                )
+                            ),
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'Inmueble.id',
+                                    'Inmueble.titulo'
+                                )
+                            ),
+                            'Desarrollo' => array(
+                                'fields' => array(
+                                    'Desarrollo.id',
+                                    'Desarrollo.nombre'
+                                )
+                            ), 
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'Cliente.id',
+                                    'Cliente.nombre',                            
+                                    'Cliente.correo_electronico',
+                                )
+                            ),  
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'Cliente.id',
+                                    'Cliente.nombre',                            
+                                    'Cliente.correo_electronico',
+                                )
+                            ),  
+                        )
+                
+            )
+        );
+        if(!empty($eventsmediah)){ 
+            
+            foreach($eventsmediah as $evento):
+            
+                $desarollo =  $evento['Desarrollo']['nombre'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailasesoravisos','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($evento['User']['correo_electronico']);
+                $this->Email->subject('Notificación de proximo evento');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Correo enviado'
+                    );
+            
+                }
+            endforeach;
+        
+        }
+        $eventscuartoh = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => array("2","3"),
+                        'Event.fecha_inicio >' => $cuartoh_,
+                        'Event.fecha_inicio <' => $cuartoh,
+                    )
+                ),
+                'contain' => array(
+                            'User' => array(
+                                'fields' => array(
+                                    'User.id',
+                                    'User.nombre_completo',
+                                    'User.correo_electronico',
+                                )
+                            ),
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'Inmueble.id',
+                                    'Inmueble.titulo'
+                                )
+                            ),
+                            'Desarrollo' => array(
+                                'fields' => array(
+                                    'Desarrollo.id',
+                                    'Desarrollo.nombre'
+                                )
+                            ),   
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'Cliente.id',
+                                    'Cliente.nombre',                            
+                                    'Cliente.correo_electronico',
+                                )
+                            ), 
+                        )
+                
+            )
+        );
+        if(!empty($eventscuartoh)){ 
+            
+            foreach($eventscuartoh as $evento):
+            
+                $desarollo =  $evento['Desarrollo']['nombre'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailasesoravisos','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($evento['User']['correo_electronico']);
+                $this->Email->subject('Notificación de proximo evento');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Correo enviado'
+                    );
+            
+                }
+            endforeach;
+        
+        }
+        
+        /* -------------------------------------------------------------------------- */
+
+
+        
+        /* ----------------- Correo a cliente y Asesor Aviso de Cita ---------------- */
+
+        $citascliente = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => "0",
+                        'Event.fecha_inicio >=' => $oneday,
+                        'Event.fecha_inicio <=' => $twoday,
+                    )
+                ),
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.id',
+                            'User.nombre_completo',
+                            'User.correo_electronico',
+                        )
+                    ),
+                    'Inmueble' => array(
+                        'fields' => array(
+                            'Inmueble.id',
+                            'Inmueble.titulo'
+                        )
+                    ),
+                    'Desarrollo' => array(
+                        'fields' => array(
+                            'Desarrollo.id',
+                            'Desarrollo.nombre'
+                        )
+                    ),  
+                    'Cliente' => array(
+                        'fields' => array(
+                            'Cliente.id',
+                            'Cliente.nombre',                            
+                            'Cliente.correo_electronico',
+                        )
+                    ), 
+                )
+                
+            )
+        );
+        if(!empty($citascliente)){ 
+        
+            foreach($citascliente as $evento):
+            
+                $desarollo =  $evento['Desarrollo']['nombre'];
+                $user = $evento['User']['id'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailclientecita','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($cliente['Cliente']['correo_electronico']);
+                $this->Email->subject('Notificación de proxima Cita a cliente');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $this->loadModel('Mailconfig');
+                    $this->loadModel('User');
+                    $this->Mailconfig->Behaviors->load('Containable');
+                    $this->User->Behaviors->load('Containable');
+                    $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                    $mailconfig  = $this->Mailconfig->read(null, 42);
+                    $usuario = $this->User->read(null, $evento['User']['id']);
+    
+                    $this->Email = new CakeEmail();
+                    $this->Email->config(array(
+                        'host'      => $mailconfig['Mailconfig']['smtp'],
+                        'port'      => $mailconfig['Mailconfig']['puerto'],
+                        'username'  => $mailconfig['Mailconfig']['usuario'],
+                        'password'  => $mailconfig['Mailconfig']['password'],
+                        'transport' => 'Smtp'
+                        )
+                    );
+                    $this->Email->emailFormat('html');
+                    $this->Email->template('emailclientecita','layoutinmomail');
+                    $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                    $this->Email->to($evento['User']['correo_electronico']);
+                    $this->Email->subject('Notificación de proxima Cita a asesor');
+                    $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+                    $this->Email->send();
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Email de citas enviados'
+                    );
+            
+                }
+        
+            endforeach;
+
+        
+        }
+        
+        /* -------------------------------------------------------------------------- */
+        
+        echo json_encode($response, true);
+        $this->autoRender = false;
+        
+    }
+        
+    
+    /* -------------------------------------------------------------------------- */
+
+
+    function test_cron() {
+
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('DesarrolloInmueble');
+        $this->DesarrolloInmueble->Behaviors->load('Containable');
+        $this->loadModel('Cliente');
+        $this->Cliente->Behaviors->load('Containable');        
+        $this->loadModel('Event');
+        $this->Event->Behaviors->load('Containable');
+
+        $response               = [];
+
+        $fecha= date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s')."- 1 hours"));
+
+        $treeday = date('Y-m-d H:i', strtotime($fecha."- 12 days"));
+        
+        $twoday = date('Y-m-d H:i', strtotime($fecha."+ 2 days"));
+        $oneday = date('Y-m-d H:i:s', strtotime($fecha."+ 18 hours"));
+        
+        $citascliente = $this->Event->find('all',
+            array(
+                'conditions'=>array(
+                    'and' => array(
+                        'Event.tipo_tarea' => "0",
+                        'Event.fecha_inicio >=' => $fecha,  
+                        'Event.fecha_inicio <=' => $oneday,                 
+                        'User.id =' => 659
+                    )
+                ),
+                'contain' => array(
+                    'User' => array(
+                        'fields' => array(
+                            'User.id',
+                            'User.nombre_completo',
+                            'User.correo_electronico',
+                        )
+                    ),
+                    'Inmueble' => array(
+                        'fields' => array(
+                            'Inmueble.id',
+                            'Inmueble.titulo'
+                        )
+                    ),
+                    'Desarrollo' => array(
+                        'fields' => array(
+                            'Desarrollo.id',
+                            'Desarrollo.nombre'
+                        )
+                    ),  
+                    'Cliente' => array(
+                        'fields' => array(
+                            'Cliente.id',
+                            'Cliente.nombre',                            
+                            'Cliente.correo_electronico',
+                        )
+                    ), 
+                )
+                
+            )
+        );
+        if(!empty($citascliente)){ 
+        
+            foreach($citascliente as $evento):
+            
+                $desarollo =  $evento['Desarrollo']['nombre'];
+                $user = $evento['User']['id'];
+                $this->loadModel('Mailconfig');
+                $this->loadModel('User');
+                $this->Mailconfig->Behaviors->load('Containable');
+                $this->User->Behaviors->load('Containable');
+                $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                $mailconfig  = $this->Mailconfig->read(null, 42);
+                $usuario = $this->User->read(null, $evento['User']['id']);
+
+                $this->Email = new CakeEmail();
+                $this->Email->config(array(
+                    'host'      => $mailconfig['Mailconfig']['smtp'],
+                    'port'      => $mailconfig['Mailconfig']['puerto'],
+                    'username'  => $mailconfig['Mailconfig']['usuario'],
+                    'password'  => $mailconfig['Mailconfig']['password'],
+                    'transport' => 'Smtp'
+                    )
+                );
+                $this->Email->emailFormat('html');
+                $this->Email->template('emailclientecita','layoutinmomail');
+                $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                $this->Email->to($cliente['Cliente']['correo_electronico']);
+                $this->Email->subject('Notificación de proxima Cita a cliente');
+                $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+        
+                if ( $this->Email->send()) {
+                    $this->loadModel('Mailconfig');
+                    $this->loadModel('User');
+                    $this->Mailconfig->Behaviors->load('Containable');
+                    $this->User->Behaviors->load('Containable');
+                    $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+                    $mailconfig  = $this->Mailconfig->read(null, 42);
+                    $usuario = $this->User->read(null, $evento['User']['id']);
+    
+                    $this->Email = new CakeEmail();
+                    $this->Email->config(array(
+                        'host'      => $mailconfig['Mailconfig']['smtp'],
+                        'port'      => $mailconfig['Mailconfig']['puerto'],
+                        'username'  => $mailconfig['Mailconfig']['usuario'],
+                        'password'  => $mailconfig['Mailconfig']['password'],
+                        'transport' => 'Smtp'
+                        )
+                    );
+                    $this->Email->emailFormat('html');
+                    $this->Email->template('emailclientecita','layoutinmomail');
+                    $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                    $this->Email->to($evento['User']['correo_electronico']);
+                    $this->Email->subject('Notificación de proxima Cita a asesor');
+                    $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $evento,'fecha'=>$evento['Event']['fecha_inicio']));
+                    $this->Email->send();
+                    $response = array(
+                        'Ok' => true,
+                        'mensaje' => 'Email de citas enviados'
+                    );
+            
+                }
+        
+            endforeach;
+
+        
+        }
+    
+
+        /* -------------------------------------------------------------------------- */
+
         echo json_encode($response, true);
         $this->autoRender = false;
 
     }
-
-    /* -------------------------------------------------------------------------- */
 
 }
 ?>

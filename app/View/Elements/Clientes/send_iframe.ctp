@@ -342,21 +342,34 @@
 
     $("#btn-opccion-error-send-iframe").on('click', function (){
         var error = null;
+<<<<<<< HEAD
         if ($("#error_message_send_iframe").val() == 0) {
             error = 'Error en el teléfono'
         }else if ($("#error_message_send_iframe").val() == 1) {
+=======
+        if ($("#send_iframe_inmueble_referencia").val() == 0) {
+            error = 'Error en el teléfono'
+        }else if ($("#send_iframe_inmueble_referencia").val() == 1) {
+>>>>>>> bf4955bd91d6b1d82e87a2cdb91ca1bf1a451577
             error = 'Se perdió la conexión'
         } else {
             error = 'Número inválido'
         }
+<<<<<<< HEAD
         let cliente = "<?=$param_return?>";
         console.log(cliente);
+=======
+>>>>>>> bf4955bd91d6b1d82e87a2cdb91ca1bf1a451577
         // Traer el listado de los errores.
         $.ajax({
             url: '<?php echo Router::url(array("controller" => "clientes", "action" => "error_send_whatsapp")); ?>',
             cache: false,
             type : "POST",
+<<<<<<< HEAD
             data: { mensaje: `Ocurrió un problema al intentar envíar mensaje vía whatsApp al cliente, por motivo:` +error, accion: 11, cliente_id: cliente},
+=======
+            data: { mensaje: `Ocurrió un problema al intentar envíar ${ $("#send_iframe_inmueble_referencia").val() } vía whatsApp al cliente, por motivo: `+error, accion: 11, cliente_id: $("#send_iframe_cliente_id").val() },
+>>>>>>> bf4955bd91d6b1d82e87a2cdb91ca1bf1a451577
             beforeSend: function () {
                 $("#modalIframe").modal("hide");
             },

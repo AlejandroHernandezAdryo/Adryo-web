@@ -1,2 +1,6 @@
+<<<<<<< HEAD
+1773598299
+=======
 1774227705
+>>>>>>> 9182a91f5741fd7de7a411892651b0b170da946d
 a:7:{s:2:"id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;s:3:"key";s:7:"primary";}s:9:"cuenta_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}s:13:"desarrollo_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}s:5:"monto";a:5:{s:4:"type";s:5:"float";s:4:"null";b:1;s:7:"default";N;s:6:"length";N;s:8:"unsigned";b:0;}s:5:"fecha";a:4:{s:4:"type";s:4:"date";s:4:"null";b:1;s:7:"default";N;s:6:"length";N;}s:3:"fin";a:4:{s:4:"type";s:4:"date";s:4:"null";b:1;s:7:"default";N;s:6:"length";N;}s:8:"unidades";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}}
