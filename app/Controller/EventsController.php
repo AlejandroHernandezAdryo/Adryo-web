@@ -3188,8 +3188,6 @@ class EventsController extends AppController {
         $this->loadModel('Cliente');
         $this->DesarrolloInmueble->Behaviors->load('Containable');
         $response               = [];
-
-        
             $this->loadModel('Mailconfig');
             $this->loadModel('User');
             $this->Mailconfig->Behaviors->load('Containable');
@@ -3222,11 +3220,6 @@ class EventsController extends AppController {
                 );
                 
             }
-       
-
-
-        
-
         echo json_encode($response, true);
         $this->autoRender = false;
 
