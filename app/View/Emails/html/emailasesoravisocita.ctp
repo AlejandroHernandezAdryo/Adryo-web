@@ -648,7 +648,7 @@
                                     </strong>&nbsp;
                                     <br><br>
                                     <?= $contenido?>
-                                    Este es un recordatorio de cita el día de mañana con el {{cliente}}, a las {{Hora}}, en {{Desarrollo}}, recuerda ser puntual.
+                                    Este es un recordatorio de cita el día de mañana con el  <?php echo $cliente['Cliente']['nombre']?>, a las <?php echo $fecha?, en  <?= $desarrollo?> , recuerda ser puntual.
                                   </span>
                                 </td>
                               </tr>

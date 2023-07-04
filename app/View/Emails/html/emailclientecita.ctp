@@ -644,11 +644,11 @@
                                 <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 100%;">
                                   <span style="font-size:13px">
                                     <strong>
-                                      Hola <?php echo $cliente['Cliente']['nombre']?>
+                                      Hola <?php echo $cliente['Cliente']['nombre']?> 
                                     </strong>&nbsp;
                                     <br><br>
                                     
-                                    Por medio del presente te recordamos que tienes una cita programada el día de , con tu asesor  <?= $asesor['User']['nombre_completo']?> en , agradecemos tu preferencia.
+                                    Por medio del presente te recordamos que tienes una cita programada el día de <?= $fecha?>, con tu asesor  <?= $asesor['User']['nombre_completo']?> en <?= $desarrollo?> , agradecemos tu preferencia.
                                   </span>
                                 </td>
                               </tr>

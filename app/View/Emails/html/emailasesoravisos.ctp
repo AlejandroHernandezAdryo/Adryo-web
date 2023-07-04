@@ -644,11 +644,11 @@
                                 <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 100%;">
                                   <span style="font-size:13px">
                                     <strong>
-                                      Hola <?php echo $cliente['Cliente']['asesor']?>
+                                      Hola <?php echo $cliente['User']['nombre_completo']?>
                                     </strong>&nbsp;
                                     <br><br>
                                     <?= $contenido?>
-                                    Mensaje automático de recordatorio de {{Evento}} en {{Tiempo}} con el {{Cliente}}, es importante que revises la información que presentarás al cliente.
+                                    Mensaje automático de recordatorio de <?php echo $cliente['Event']['nombre_evento']?> en  <?php echo $fecha?> con el  <?php echo $cliente['Cliente']['nombre']?>, es importante que revises la información que presentarás al cliente.
                                   </span>
                                 </td>
                               </tr>
@@ -710,7 +710,7 @@
                                             <tbody>
                                               <tr>
                                                 <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;color:#fff !important;">
-                                                  <?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
+                                                  <?= ( empty( $asesor['User']['nombre_completo'] ) ? 'Sin nombre' : $asesor['User']['nombre_completo'] ) ?>
                                                 </td>
                                                 <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;color:#fff !important;">
                                                   Asesor
@@ -718,7 +718,7 @@
                                               </tr>
                                               <tr>
                                                 <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
-                                                  <?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
+                                                  <?= ( empty( $asesor['User']['telefono1'] ) ? 'Sin teléfono' : $asesor['User']['telefono1'] ) ?>
                                                 </td>
                                               </tr>
                                               <tr>
@@ -728,7 +728,7 @@
                                               </tr>
                                               <tr>
                                                 <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
-                                                  <?= (empty( $usuario['User']['correo_electronico'])? 'Sin correo eléctronico': $usuario['User']['correo_electronico'])?>
+                                                  <?= (empty( $asesor['User']['correo_electronico'])? 'Sin correo eléctronico': $asesor['User']['correo_electronico'])?>
                                                 </td>
                                               </tr>
                                             </tbody>
