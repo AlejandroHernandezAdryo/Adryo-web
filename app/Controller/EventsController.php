@@ -1,5 +1,6 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Agendas Controller
  *
@@ -3231,9 +3232,11 @@ class EventsController extends AppController {
                 $this->loadModel('User');
                 $this->Mailconfig->Behaviors->load('Containable');
                 $this->User->Behaviors->load('Containable');
+
                 $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
                 $mailconfig  = $this->Mailconfig->read(null, 42);
                 $usuario = $this->User->read(null, $evento['User']['id']);
+                
                 $this->Email = new CakeEmail();
                 $this->Email->config(array(
                     'host'      => $mailconfig['Mailconfig']['smtp'],
@@ -3638,6 +3641,72 @@ class EventsController extends AppController {
     }
 
     /* -------------------------------------------------------------------------- */
+
+    function test_cron() {
+
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('DesarrolloInmueble');
+        $this->DesarrolloInmueble->Behaviors->load('Containable');
+        $this->loadModel('Cliente');
+        $this->Cliente->Behaviors->load('Containable');        
+        $this->loadModel('Event');
+        $this->Event->Behaviors->load('Containable');
+
+        $response               = [];
+
+        $fecha= date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s')."- 1 hours"));
+                    
+        $desarollo =  'test desarrollo';
+        $user = 659;
+        $this->loadModel('Mailconfig');
+        $this->loadModel('User');
+        $this->Mailconfig->Behaviors->load('Containable');
+        $this->User->Behaviors->load('Containable');
+        $cliente = $this->Cliente->read(null,  62637);
+        $mailconfig  = $this->Mailconfig->read(null, 42);
+        $usuario = $this->User->read(null, $user);
+
+        $this->Email = new CakeEmail();
+        $this->Email->config(array(
+            'transport' => 'Smtp',
+            'host' => 'smtp.sendgrid.net',
+            'port' => 587,
+            'username' => 'apikey',
+            'password' => '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',
+            )
+        );
+        $this->Email->emailFormat('html');
+        $this->Email->template('emailclientecita','layoutinmomail');
+        $this->Email->from(array('c.hernandez@adryo.com.mx'=>'Notificaciones Adryo'));
+        $this->Email->to($cliente['Cliente']['correo_electronico']);
+        $this->Email->subject('Notificación de proxima Cita a cliente');
+        $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'fecha'=>$fecha));
+
+        if ( $this->Email->send()) {
+            
+            $response = array(
+                'Ok' => true,
+                'mensaje' => 'Email de citas enviados'
+            );
+    
+        }
+
+        // $this->Email = new CakeEmail('smtp');
+        // $this->Email->from(array('c.hernandez@adryo.com.mx' => 'Notificaciones Adryo'))
+        //             ->to('gotef73273@fulwark.com')
+        //             ->subject('Notificación de proxima Cita a cliente')                    
+        //             ->emailFormat('html')
+        //             ->template('emailclientecita')->send();
+        // $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'fecha'=>$fecha));
+
+    
+
+        /* -------------------------------------------------------------------------- */
+
+        echo json_encode($response, true);
+        $this->autoRender = false;
+
+    }
 
 }
 ?>
