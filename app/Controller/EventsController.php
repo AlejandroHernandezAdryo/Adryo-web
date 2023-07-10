@@ -178,6 +178,7 @@ class EventsController extends AppController {
     ---------------------------------------------------------------------------------------------*/
 
     public function add() {
+        date_default_timezone_set('America/Chihuahua');
         if ($this->request->is('post')) {
             $desarrollo_id  = 0;
             $inmueble_id    = 0;

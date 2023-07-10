@@ -5062,6 +5062,38 @@ class DesarrollosController extends AppController {
     }
 
     public function inicio_proceso($id=null){
+        // $id=63939;
+        $this->loadModel('Cliente');
+        $this->loadModel('Validation');
+        $this->loadModel('DicEmbudoVenta');
+        $this->DicEmbudoVenta->Behaviors->load('Containable');
+        $this->Validation->Behaviors->load('Containable');
+        $this->Cliente->Behaviors->load('Containable');
+        $cuenta_id= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
+
+        $search_cliente= $this->Cliente->find('first', array( 
+            'conditions'=>array(
+                'Cliente.id'=>63939,
+            ),
+            'fields' => array(
+                'Cliente.user_id',
+                'Cliente.nombre',
+                'Cliente.id',
+                'Cliente.etapa',
+            ),
+            'contain' => false
+        ));
+        $search_validation=$this->Validation->find('first',array(
+            'conditions'=>array(
+                'Validation.cuenta_id' => $cuenta_id,
+                'Validation.etapa_id' => $search_cliente['Cliente']['etapa'],
+            ),
+            'contain' => false
+        ));
+        $etapa = $this->DicEmbudoVenta->find('first',array( 'conditions'=>array( 'DicEmbudoVenta.cuenta_id'  => $cuenta_id, 'orden' => $search_cliente['Cliente']['etapa'] ), 'contain' => false, 'fields' => array('nombre') ));
+        $this->set(compact('search_cliente'));
+        $this->set(compact('search_validation'));
+        $this->set(compact('etapa'));
 
     }
 

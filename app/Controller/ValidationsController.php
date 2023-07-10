@@ -10,7 +10,7 @@ App::uses('HttpSocket', 'Network/Http');
  */
 class ValidationsController extends AppController {
 
-
+    // date_default_timezone_set('America/Chihuahua');
     public $components = array('Paginator' );
 
 
@@ -369,13 +369,14 @@ class ValidationsController extends AppController {
     function verificar(){
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('Validation');
+        $this->loadModel('ClienteValidation');
+        $this->ClienteValidation->Behaviors->load('Containable');
         $this->Validation->Behaviors->load('Containable');
         $this->loadModel('Cliente');
         $this->Cliente->Behaviors->load('Containable');
         $i=0;
-        // $response=();
+        // $response= arra();
         if ( $this->request->is('post') ){
-
             $search_cliente= $this->Cliente->find('first', array( 
                 'conditions'=>array(
                     'Cliente.id'=>$this->request->data['cliente'],
@@ -391,41 +392,55 @@ class ValidationsController extends AppController {
                         'Validation.cuenta_id' =>  $this->request->data['cuenta_id'],
                         'Validation.etapa_id' =>  5,
                         'Validation.status' =>  1,
+                        'Validation.orden' =>  1,
                     ),
                     'contain' => false
                 ));
-
             }
-            // if ($search_cliente['Cliente']['etapa']==6) {
-            //     $search_validation=$this->Validation->find('all',array(
-            //         'conditions'=>array(
-            //             'Validation.cuenta_id' =>  $this->request->data['cuenta_id'],
-            //             'Validation.etapa_id' =>  6,
-            //         ),
-            //         'contain' => false
-            //     ));
-            // }
-            // if ($search_cliente['Cliente']['etapa']==7) {
-            //     $search_validation=$this->Validation->find('all',array(
-            //         'conditions'=>array(
-            //             'Validation.cuenta_id' =>  $this->request->data['cuenta_id'],
-            //             'Validation.etapa_id' =>  7,
-            //         ),
-            //         'contain' => false
-            //     ));
-            // }
-            // foreach ($search_validation as  $value) {
-            //     $reponse[$i]['cliente']=$search_cliente['Cliente']['etapa'];
-            //     $reponse[$i]['valiacion_etapa']=$value['Validation']['etapa_id'];
-            //     $reponse[$i]['cliente']=$search_cliente['Cliente']['etapa'];
-            //     $reponse[$i]['cliente']=$search_cliente['Cliente']['etapa'];
-            //     $reponse[$i]['cliente']=$search_cliente['Cliente']['etapa'];
-            // }
+            if ($search_cliente['Cliente']['etapa']==6) {
+                $search_validation=$this->Validation->find('all',array(
+                    'conditions'=>array(
+                        'Validation.cuenta_id' =>  $this->request->data['cuenta_id'],
+                        'Validation.etapa_id' =>  6,
+                        'Validation.status' =>  1,
+                        'Validation.orden' =>  1,
+                    ),
+                    'contain' => false
+                ));
+            }
+            if ($search_cliente['Cliente']['etapa']==7) {
+                $search_validation=$this->Validation->find('all',array(
+                    'conditions'=>array(
+                        'Validation.cuenta_id' =>  $this->request->data['cuenta_id'],
+                        'Validation.etapa_id' =>  7,
+                    ),
+                    'contain' => false
+                ));
+            }
+           
+            foreach ($search_validation as  $value) {
+                $cliente_validacion=$this->ClienteValidation->find('first',array(
+                    'conditions'=>array(
+                        'ClienteValidation.cliente_id' =>  $this->request->data['cliente'],
+                        'ClienteValidation.validacion_id' => $value['Validation']['id'],
+                      
+                    ),
+                    'contain' => false
+                ));
+                // if ( $value['Validation']['id'] !=  $cliente_validacion['ClienteValidation']['validacion_id'] &&  $value['Validation']['id'] >  $cliente_validacion['ClienteValidation']['validacion_id']) {
+                    $reponse[$i]['valiacion_id']=$value['Validation']['id'];
+                    $reponse[$i]['valiacion_etapa']=$value['Validation']['etapa_id'];
+                    $reponse[$i]['cliente']=$search_cliente['Cliente']['etapa'];
+                    $reponse[$i]['nombre']=$value['Validation']['validacion_name'];
+                    $i++;
+                // }
+            }
         
         }
-        echo json_encode( $search_validation , true );          
+        echo json_encode( $reponse , true );          
 		exit();
 		$this->autoRender = false;
     }
+    
 
 }

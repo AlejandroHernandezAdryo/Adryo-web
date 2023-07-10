@@ -230,6 +230,16 @@
         -ms-flex-item-align: auto;
         align-self: auto;
     }
+    .WindowLoad{
+        position:fixed;
+        top:0px;
+        left:0px;
+        z-index:3200;
+        filter:alpha(opacity=65);
+        -moz-opacity:65;
+        opacity:0.65;
+        background:#999;
+    }   
 
     /*
         Legacy Firefox implementation treats all flex containers
@@ -343,7 +353,37 @@
     
 </style>
 
-<!-- Modal compartir por redes sociales -->
+<!-- Modal rogue -->
+<div class="modal fade" id="modal_cliente_validacion" >
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <!-- id="ValidacionClienteViewForm" -->
+        <?= $this->Form->create('ValidacionCliente', array('type'=>'file'))?>
+            <div class="modal-header">
+                Edicion de la Tarea
+            </div>
+            <div class="modal-body">
+                <div class="row mt-1">
+                    
+                <?= $this->Form->label('etapa_id','En la Etapa <span id="etapa_validacion"></span>  puedes  hacer que el cliente entre a validacion <span id="nombre_validacion"></span>', array('class' => 'form-control-label','div' =>'col-sm-12 col-lg-6 mt-1',)); ?>
+                </div>
+                    <?php echo $this->Form->hidden('cuenta_id',array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id')))?>
+                    <?php echo $this->Form->hidden('cliente_id',array('value'=>$param_return))?>
+                    <?php echo $this->Form->hidden('validacion_id', array('id'=>'validacion_id', 'value'=>'validacion_id')); ?>
+                    <?php echo $this->Form->hidden('etapa', array('id'=>'etapa', 'value'=>'etapa')); ?>
+                    <div class="row mt-1">
+                    <div class="col-sm-12">
+
+                        <button type="submit" class="btn btn-primary float-right "  style="margin-left:8px;">Aceptar</button>
+                        <!-- <button type="button" class="btn btn-primary-o float-right" data-dismiss="modal">Cancelar</button> -->
+                    </div>
+                </div>
+            </div>
+            </div>
+        <?= $this->Form->end(); ?>
+    </div>
+</div>
+<!-- Modal rogue -->
 
 <!-- Modal para la edicion y eliminar el seguimiento rapido. -->
 <div class="modal fade" id="modalSeguimeinto">
@@ -2091,6 +2131,7 @@
         let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
         let cliente = "<?=$param_return?>";
         console.log(cliente);
+        console.log(cuenta_id);
         $.ajax({
             
             type: "POST",
@@ -2098,9 +2139,47 @@
             data: {cuenta_id: cuenta_id, cliente:cliente },
             dataType: "Json",
             success: function (response) {
-                console.log(response);
-                
+                console.log( response );
+               
+                show_modal_validacion( response )
             }
+        });
+    });
+    function show_modal_validacion( response ){
+        if ( response !== " ") {
+            $("#modal_cliente_validacion").modal("show");
+            $("#nombre_validacion").text( response[0].nombre );
+            $("#etapa_validacion").text( response[0].cliente );
+            $("#validacion_id").val( response[0].valiacion_id );
+            $("#etapa").val( response[0].cliente );
+            
+        }
+    }
+    /**
+     * 
+     */
+    $(document).on("submit", "#ValidacionClienteViewForm", function (event) {
+        event.preventDefault();
+        
+        $.ajax({
+            url        : '<?php echo Router::url(array("controller" => "ClienteValidations", "action" => "cliente_entra_validacion")); ?>',
+            type       : "POST",
+            dataType   : "json",
+            data       : new FormData(this),
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function (response) {
+                // window.location.reload();
+                // console.log(response);
+            },
+            error: function ( response ) {
+
+                document.getElementById("m_success").innerHTML = 'Ocurrio un problema al intentar guardar el apartado, favor de comunicarlo al administrador con el código ERC-001';
+                location.reload();
+            },
         });
     });
     // Función para la seleccion de opciones del seguimiento rápido.

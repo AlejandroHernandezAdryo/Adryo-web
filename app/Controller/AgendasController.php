@@ -69,6 +69,7 @@ class AgendasController extends AppController {
  * @return void
  */
 	public function add() {
+		date_default_timezone_set('America/Chihuahua');
 		if ($this->request->is('post')) {
 			$this->Agenda->create();
                         $timestamp = date('Y-m-d H:i:s');

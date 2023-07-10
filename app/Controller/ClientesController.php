@@ -1321,7 +1321,7 @@ class ClientesController extends AppController {
   }
 
   public function edit($id = null) {
-        
+    date_default_timezone_set('America/Chihuahua');
     $cliente = $this->Cliente->read(null, $id);
     if ($this->request->is(array('post', 'put'))) {
       
@@ -4168,7 +4168,7 @@ class ClientesController extends AppController {
    * 
   */
   function add_cliente( $params_cliente = null, $params_user = null ){
-    date_default_timezone_set('America/Mexico_City');
+    date_default_timezone_set('America/Chihuahua');
 
     $this->Inmueble->Behaviors->load('Containable');
     $this->Desarrollo->Behaviors->load('Containable');
@@ -12215,7 +12215,16 @@ class ClientesController extends AppController {
     exit();
     $this->autoRender = false;
   }
-  
-
+  /**
+   * 
+   * 
+  */
+  function configuracion_fecha(){
+    date_default_timezone_set('America/Chihuahua');
+    $fecha= date('Y-m-d H:i:s');
+    echo json_encode ( $fecha );
+    exit();
+    $this->autoRender = false;
+  }
 
 }
