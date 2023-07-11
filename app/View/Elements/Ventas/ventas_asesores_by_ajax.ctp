@@ -78,132 +78,186 @@
 
   }
    // Es el metodo de la grafica.  0: {venta_q: '1', asesor: 'Diego Murillo Barro', venta_v: '2410737'}
-  function drawGraficaVentasAsesor( response, ventaunidades, ventaMonto, maxima) {; 
+  	function drawGraficaVentasAsesor( response, ventaunidades, ventaMonto, maxima) {
 		am5.ready(function () {
-			var root = am5.Root.new("grafica_ventas_asesor");
-			root.setThemes([
-				am5themes_Animated.new(root)
-			]);
-			root.interfaceColors.set("grid", am5.color('#bababa'));
-			var chart = root.container.children.push(am5xy.XYChart.new(root, {
-				panX      : true,
-				panY      : true,
-				wheelY    : "zoomX",
-				wheelX    : "panX",
-				pinchZoomX:  true
-			}));
-			var cursor      = chart.set("cursor", am5xy.XYCursor.new(root, {}));
-			cursor.lineY.set("visible", false);
-			var xRenderer   = am5xy.AxisRendererX.new(root, {
-				minGridDistance: 30
-			});
-			xRenderer.labels.template.setAll({
-				rotation    : -90,
-				centerY     : am5.p50,
-				centerX     : am5.p100,
-				paddingRight: 15
-			});
-			var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-				maxDeviation: 0.3,
-				categoryField: "asesor",
-				renderer: xRenderer,
-				tooltip: am5.Tooltip.new(root, {})
-			}));
-			var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-				maxDeviation: 0.3,
-				min         : 0,
-				max			: (maxima)*1.1,
-				renderer    : am5xy.AxisRendererY.new(root, {})
-			}));
-			yAxis.children.unshift(
-				am5.Label.new(root, {
-					rotation: -90,
-					text: "Ventas Monto y Unidades",
-					y: am5.p50,
-					centerX: am5.p50
+				var root = am5.Root.new("grafica_ventas_asesor");
+				root.setThemes([
+					am5themes_Animated.new(root)
+				]);
+				root.interfaceColors.set("grid", am5.color('#bababa'));
+				var chart = root.container.children.push(am5xy.XYChart.new(root, {
+					panX      : true,
+					panY      : true,
+					wheelY    : "zoomX",
+					wheelX    : "panX",
+					pinchZoomX:  true
+				}));
+				var cursor      = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+				cursor.lineY.set("visible", false);
+				var xRenderer   = am5xy.AxisRendererX.new(root, {
+					minGridDistance: 30
+				});
+				xRenderer.labels.template.setAll({
+					rotation    : -90,
+					centerY     : am5.p50,
+					centerX     : am5.p100,
+					paddingRight: 15
+				});
+				var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+					maxDeviation: 0.3,
+					categoryField: "asesor",
+					renderer: xRenderer,
+					tooltip: am5.Tooltip.new(root, {})
+				}));
+				var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+					maxDeviation: 0.3,
+					min         : 0,
+					max			: (maxima)*1.1,
+					renderer    : am5xy.AxisRendererY.new(root, {})
+				}));
+				yAxis.children.unshift(
+					am5.Label.new(root, {
+						rotation: -90,
+						text: "Clientes y Visitas",
+						y: am5.p50,
+						centerX: am5.p50
+					})
+				);
+				var data               = response;
+				var paretoAxisRenderer = am5xy.AxisRendererY.new(root, {opposite:true});
+				var paretoAxis         = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+					renderer    : paretoAxisRenderer,
+					min         : 0,
+					max         : (maximaInversion)*1.4,
+					strictMinMax: true
+				}));
+				paretoAxisRenderer.grid.template.set("forceHidden", true);
+				paretoAxis.set("numberFormat", "#");
+				paretoAxis.children.push(
+					am5.Label.new(root, {
+						rotation: -90,
+						text: "Inversión",
+						y: am5.p50,
+						centerX: am5.p50
+					})
+				);
+				var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+					name                  : `Clientes : ${cantidadTotal}`,
+					xAxis                 : xAxis,
+					yAxis                 : yAxis,
+					valueYField           : "leads",
+					categoryXField        : "medio",
+					sequencedInterpolation: true,
+					tooltip               : am5.Tooltip.new(root, {
+						labelText: "[bold]{name}[/]: {valueY}"
+					})
+				}));
+
+				series.columns.template.setAll({
+					cornerRadiusTL: 5,
+					cornerRadiusTR: 5
+				});
+				series.set("fill", am5.color("<?= $this->Session->read('colores.Lead')?>")); 
+				series.bullets.push(function () {
+					return am5.Bullet.new(root, {
+						locationY    : 1,
+						sprite       : am5.Label.new(root, {
+							text        : "{valueYWorking.formatNumber('#.')}",
+							fill        : am5.color(0x000000),
+							centerX: am5.p50,
+							centerY: am5.p100,
+							populateText: true
+						})
+					});
 				})
-			);
-			var data               = response;
-			var paretoAxisRenderer = am5xy.AxisRendererY.new(root, {opposite:true});
-			var paretoAxis         = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-                renderer    : paretoAxisRenderer,
-                min         : 0,
-                max         : (maxima)*1.4,
-                strictMinMax: true
-			}));
+				var series1 = chart.series.push(am5xy.ColumnSeries.new(root, {
+					name: `Visitas: ${visitasTotal}`,
+					xAxis: xAxis,
+					yAxis: yAxis,
+					valueYField: "visitas",
+					categoryXField: "medio",
+					sequencedInterpolation: true,
+					tooltip: am5.Tooltip.new(root, {
+						labelText: "[bold]{name}[/]: {valueY}"
+					})
+				}));
+				series1.columns.template.setAll({
+					cornerRadiusTL: 5,
+					cornerRadiusTR: 5
+				});
+				series1.set("fill", am5.color("<?= $this->Session->read('colores.Visita')?>")); 
+				series1.bullets.push(function () {
+					return am5.Bullet.new(root, {
+						locationY: 1,
+						sprite: am5.Label.new(root, {
+							text: "{valueYWorking.formatNumber('#.')}",
+							fill        : am5.color(0x000000),
+							centerX: am5.p50,
+							centerY: am5.p100,
+							populateText: true
+						})
+					});
+				});
+				var series2 = chart.series.push(
+					am5xy.LineSeries.new(root, {
+						name               : `Inversión: $ ${InversionTotal}`,
+						xAxis              : xAxis,
+						yAxis              : paretoAxis,
+						valueYField        : "inversion",
+						categoryXField     : "medio",
+						stroke			   : am5.color("<?= $this->Session->read('colores.Inversion')?>"),
+						tooltip            : am5.Tooltip.new(root, {
+							pointerOrientation: "horizontal",
+							labelText         : "[bold]{name}[/]:$ {valueY}"
+						})
+					})
+				);
+
+				series2.strokes.template.setAll({
+					strokeWidth  : 3,
+					templateField: "strokeSettings"
+				});
+				
+				series2.set("fill", am5.color("<?= $this->Session->read('colores.Inversion')?>"));
+				series2.data.setAll(data);
+				series2.bullets.push(function () {
+					return am5.Bullet.new(root, {
+						sprite      : am5.Circle.new(root, {
+							strokeWidth: 3,
+							stroke     : series2.get("stroke"),
+							radius     : 5,
+							fill       : root.interfaceColors.get("background")
+						})
+					});
+				});
+				chart.set("cursor", am5xy.XYCursor.new(root, {}));
+				series2.bullets.push(function () {
+					return am5.Bullet.new(root, {
+						locationY: 1,
+						sprite   : am5.Label.new(root, {
+							text: "{valueYWorking.formatNumber('#,###')}",
+							fill        : am5.color(0x000000),
+							centerX: am5.p50,
+							centerY: am5.p100,
+							populateText: true
+						})
+					});
+				})
+				var legend = chart.children.push(
+					am5.Legend.new(root, {
+						centerX: am5.p50,
+						x      : am5.p50
+					})
+				);
+				legend.data.setAll(chart.series.values);
+				chart.appear(1000, 100);
+				series.appear();	
+				series1.appear();
+				xAxis.data.setAll(data);
+				series.data.setAll(data);
+				series1.data.setAll(data);
+			});
 			
-			var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-				name                  : `Venta : ${ventaunidades} (unidades)`,
-				xAxis                 : xAxis,
-				yAxis                 : yAxis,
-				valueYField           : "venta_q",
-				categoryXField        : "asesor",
-				sequencedInterpolation: true,
-				tooltip               : am5.Tooltip.new(root, {
-					labelText: "[bold]{name}[/]: {valueY}"
-				})
-			}));
-
-			series.columns.template.setAll({
-				cornerRadiusTL: 5,
-				cornerRadiusTR: 5
-			});
-			series.set("fill", am5.color("<?= $this->Session->read('colores.Ventas.monto')?>")); 
-			// series.set("fill", am5.color("<?= $this->Session->read('colores.Lead')?>")); 
-			series.bullets.push(function () {
-				return am5.Bullet.new(root, {
-					locationY    : 1,
-					sprite       : am5.Label.new(root, {
-						text        : "{valueYWorking.formatNumber('#.')}",
-						fill        : am5.color(0x000000),
-						centerX: am5.p50,
-            			centerY: am5.p100,
-						populateText: true
-					})
-				});
-			})
-			var series1 = chart.series.push(am5xy.ColumnSeries.new(root, {
-  				name: `ventas : ${ventaMonto} MDP`,
-  				xAxis: xAxis,
-  				yAxis: yAxis,
-  				valueYField: "venta_v",
-  				categoryXField: "asesor",
-				sequencedInterpolation: true,
-  				tooltip: am5.Tooltip.new(root, {
-    				labelText: "[bold]{name}[/]: {valueY}"
-  				})
-			}));
-			series1.columns.template.setAll({
-				cornerRadiusTL: 5,
-				cornerRadiusTR: 5
-			});
-			series1.bullets.push(function () {
-				return am5.Bullet.new(root, {
-					locationY: 1,
-					sprite: am5.Label.new(root, {
-						text: "{valueYWorking.formatNumber('#.')}",
-						fill        : am5.color(0x000000),
-						centerX: am5.p50,
-            			centerY: am5.p100,
-						populateText: true
-					})
-				});
-			});
-			series1.set("fill", am5.color("<?= $this->Session->read('colores.Ventas.unidad')?>")); 
-
-			var legend = chart.children.push(
-				am5.Legend.new(root, {
-					centerX: am5.p50,
-					x      : am5.p50
-				})
-			);
-			legend.data.setAll(chart.series.values);
-			chart.appear(1000, 100);
-			series.appear();	
-			series1.appear();
-			xAxis.data.setAll(data);
-			series.data.setAll(data);
-			series1.data.setAll(data);
-		});
 	}
+	
 </script>

@@ -648,20 +648,7 @@
                                     </strong>&nbsp;
                                     <br><br>
                                     <?= $contenido?>
-                                      Tienes una cita programada el día <?= date('d', strtotime($evento['Event']['fecha_inicio'])).'/'.$meses_esp[date('m', strtotime($evento['Event']['fecha_inicio']))].'/'.date('Y', strtotime($evento['Event']['fecha_inicio'])).' a las '.date('H', strtotime($evento['Event']['fecha_inicio'])).':'.date('m', strtotime($evento['Event']['fecha_inicio'])) ?>, por favor revisa la información del mismo:
-                                        <br><br>
-                                      <p>
-                                        Tipo de evento: <b>Cita</b>
-                                      </p>
-                                      <p>
-                                        Nombre del cliente: <b><?php echo $cliente['Cliente']['nombre']?></b>
-                                      </p>
-                                      <p>
-                                        Fecha y hora: <b><?= date('d', strtotime($evento['Event']['fecha_inicio'])).'/'.$meses_esp[date('m', strtotime($evento['Event']['fecha_inicio']))].'/'.date('Y', strtotime($evento['Event']['fecha_inicio'])).' a las '.date('H', strtotime($evento['Event']['fecha_inicio'])).':'.date('m', strtotime($evento['Event']['fecha_inicio'])) ?></b>
-                                      </p>
-                                      <p>
-                                        Dirección del evento: <b><?= $evento['Event']['direccion'] ?></b>
-                                      </p>
+                                    Este es un recordatorio de cita el día de mañana con el  <?php echo $cliente['Cliente']['nombre']?>, a las <?php echo $fecha?>, en  <?= $desarrollo?> , recuerda ser puntual.
                                   </span>
                                 </td>
                               </tr>

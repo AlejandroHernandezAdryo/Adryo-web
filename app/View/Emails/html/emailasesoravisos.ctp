@@ -644,21 +644,11 @@
                                 <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 100%;">
                                   <span style="font-size:13px">
                                     <strong>
-                                      Hola <?php echo $cliente['Cliente']['asesor']?>
+                                      Hola <?php echo $cliente['User']['nombre_completo']?>
                                     </strong>&nbsp;
                                     <br><br>
                                     <?= $contenido?>
-                                      Tienes un evento programado el día <?= date('d', strtotime($evento['Event']['fecha_inicio'])).'/'.$meses_esp[date('m', strtotime($evento['Event']['fecha_inicio']))].'/'.date('Y', strtotime($evento['Event']['fecha_inicio'])).' a las '.date('H', strtotime($evento['Event']['fecha_inicio'])).':'.date('m', strtotime($evento['Event']['fecha_inicio'])) ?>, por favor revisa  la información del mismo:
-                                      <br><br>
-                                      <p>
-                                        Tipo de evento: <b><?= $evento['Event']['nombre_evento'] ?></b>
-                                      </p>
-                                      <p>
-                                        Nombre del cliente: <b><?php echo $cliente['Cliente']['nombre']?></b>
-                                      </p>
-                                      <p>
-                                        Fecha y hora: <b><?= date('d', strtotime($evento['Event']['fecha_inicio'])).'/'.$meses_esp[date('m', strtotime($evento['Event']['fecha_inicio']))].'/'.date('Y', strtotime($evento['Event']['fecha_inicio'])).' a las '.date('H', strtotime($evento['Event']['fecha_inicio'])).':'.date('m', strtotime($evento['Event']['fecha_inicio'])) ?></b>
-                                      </p>
+                                    Mensaje automático de recordatorio de <?php echo $cliente['Event']['nombre_evento']?> en  <?php echo $fecha?> con el  <?php echo $cliente['Cliente']['nombre']?>, es importante que revises la información que presentarás al cliente.
                                   </span>
                                 </td>
                               </tr>
@@ -683,73 +673,66 @@
                       </tr>
                     </tbody>
                   </table>
-                  <table style="height: 200px; border: 0; width: 100%; margin-top: 33px;background-color:#444; ">
-                    <tbody>
-                      <tr class="firma">
-                        <td style="padding: 16px;">
-                          <table style="height: 80%">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnImageCardBlock">
+                    <tbody class="mcnImageCardBlockOuter">
+                      <tr>
+                        <td class="mcnImageCardBlockInner" valign="top" style="padding-top:9px; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+                          <table border="0" cellpadding="0" cellspacing="0" class="mcnImageCardLeftContentOuter" width="100%">
                             <tbody>
-                              <!-- Datos de contacto -->
                               <tr>
-                                <!-- Logo -->
-                                <td id="photo-asesor">
-                                  <div
-                                    style="width: 120px;height: 120px;border-radius:100%; background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position:center; background-repeat:no-repeat; background-size:100% auto;">
-                                    &nbsp;</div>
-                                </td>
-                                <td id="datos-asesor">
-                                  <table style="height: 100%;width:100%;">
+                                <td align="center" valign="top" class="mcnImageCardLeftContentInner" style="padding: 0px;background-color: #444;">
+                                  <table class="mcnImageCardLeftTextContentContainer" align="left" border="0" cellpadding="0" cellspacing="0" width="346">
                                     <tbody>
                                       <tr>
-                                        <td style="padding-right: 16px;"><img
-                                            alt="Asesor"
-                                            src="https://adryo.com.mx/img/email/person_pin.svg"
-                                            style="width: 24px; height: auto; margin-top: 8px;">
+                                        <td valign="top" class="mcnTextContent" style="padding-left: 18px;padding-top: 18px;padding-bottom: 18px;color: #F2F2F2;font-family: Helvetica;font-size: 13px;font-style: normal;font-weight: normal;line-height: 150%;text-align: left;">
+                                          <div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: contain;">&nbsp;</div>
+                                            <!-- Asesor: <?= $usuario['User']['nombre_completo']?><br>
+                                            Email: <?= $usuario['User']['correo_electronico']?><br>
+                                            Teléfono:<?= $usuario['User']['telefono1']?><br>
+                                            <?php if ($usuario['User']['telefono2'] != ''): ?>
+                                              Teléfono 2: <?= $usuario['User']['telefono2']?>
+                                            <?php endif ?> -->
                                         </td>
                                         <td>
-                                          <div
-                                            style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 600; line-height: auto;  font-size: 16px; color:#fff;">
-                                            <?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
-                                          </div>
-                                          <div
-                                            style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 400; line-height: auto; font-size: 14px;color:#fff;">
-                                            Asesor
-                                          </div>
+                                          <table style="height: 100%;width: 30px;background: #ADB5BD;border-radius: 4px;">
+                                            <tbody>
+                                              <tr style="padding-top: 3px;">
+                                                <td style="padding-bottom: 47px; display: inline-block;"><img alt="facebook" src="https://adryo.com.mx/img/person.png" style="width: 13px; height: auto; margin-left: 5px; margin-top: 7px;"></td>
+                                                <td style="display: inline-block;"><img alt="facebook" src="https://adryo.com.mx/img/phone.png" style="width: 13px; height: auto; margin-left: 5px; margin-top: 7px;"></td>
+                                                <td style="display: inline-block;"><img alt="facebook" src="https://adryo.com.mx/img/website.png" style="width: 13px; height: auto; margin-left: 5px; margin-top: 7px;"></td>
+                                                <td style="display: inline-block;"><img alt="facebook" src="https://adryo.com.mx/img/mail.png" style="width: 13px; height: auto; margin-left: 5px; margin-top: 7px;"></td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
                                         </td>
-                                      </tr>
-
-                                      <tr>
-                                        <td><img alt="Teléfono"
-                                            src="https://adryo.com.mx/img/email/call.svg"
-                                            style="width: 24px; height: auto; margin-top: 8px;">
-                                        </td>
-
-                                        <td
-                                          style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 400; line-height: 24px;  font-size: 12px;color:#fff;">
-                                          <?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td><img alt="Sitio web"
-                                            src="https://adryo.com.mx/img/email/captive_portal.svg"
-                                            style="width: 24px; height: auto; margin-top: 8px;">
-                                        </td>
-
-                                        <td class="link"
-                                          style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 400; line-height: 24px;  font-size: 12px;color:#fff;">
-                                          <?= ($this->Session->read('CuentaUsuario.Cuenta.pagina_web') != '' ? $this->Session->read('CuentaUsuario.Cuenta.pagina_web') : 'N/A' ) ?>
-                                        </td>
-                                      </tr>
-
-                                      <tr>
-                                        <td><img alt="E-mail"
-                                            src="https://adryo.com.mx/img/email/mail.svg"
-                                            style="width: 24px; height: auto; margin-top: 8px;">
-                                        </td>
-
-                                        <td class="link"
-                                          style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 400; line-height: 24px;  font-size: 12px;color:#fff;">
-                                          <?= (empty( $usuario['User']['correo_electronico'])? 'Sin correo eléctronico': $usuario['User']['correo_electronico'])?>
+                                        <td id="datos-asesor">
+                                          <table style="height: 100%;width:100%;margin-left:12px;">
+                                            <tbody>
+                                              <tr>
+                                                <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;color:#fff !important;">
+                                                  <?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
+                                                </td>
+                                                <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;color:#fff !important;">
+                                                  Asesor
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
+                                                  <?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
+                                                  <?= ($this->Session->read('CuentaUsuario.Cuenta.pagina_web') != '' ? $this->Session->read('CuentaUsuario.Cuenta.pagina_web') : 'N/A' ) ?>
+                                                </td>
+                                              </tr>
+                                              <tr>
+                                                <td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;color:#fff !important;">
+                                                  <?= (empty( $usuario['User']['correo_electronico'])? 'Sin correo eléctronico': $usuario['User']['correo_electronico'])?>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
                                         </td>
                                       </tr>
                                     </tbody>

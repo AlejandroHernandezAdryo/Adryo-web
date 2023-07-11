@@ -832,7 +832,7 @@ class UsersController extends AppController {
         }
 	
 	public function login() {
-    date_default_timezone_set('America/Mexico_City');
+    date_default_timezone_set('America/Chihuahua');
     $this->Desarrollo->Behaviors->load('Containable');
     $this->loadModel('CuentasUser');
     $this->loadModel('Paramconfig');

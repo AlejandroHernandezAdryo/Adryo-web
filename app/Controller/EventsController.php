@@ -3256,7 +3256,7 @@ class EventsController extends AppController {
         $this->Cliente->Behaviors->load('Containable');        
         $this->loadModel('Event');
         $this->Event->Behaviors->load('Containable');
-
+        
         $response               = [];
 
         $fecha= date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s')));
@@ -3266,7 +3266,7 @@ class EventsController extends AppController {
         $cond_rangos = array("Event.recordatorio_1 BETWEEN ? AND ?" => array($oneminus, $onemore));
 
         
-        /* ------------------ Logica Envio de recordatorios 2  ------------------ */
+        /* ------------------ Logica Envio de recordatorios 1  ------------------ */
   
             $recordatorio1 = $this->Event->find('all',
                 array(

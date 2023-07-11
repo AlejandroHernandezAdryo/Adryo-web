@@ -23,16 +23,7 @@
         'components_adryo'
         //'pages/form_elements'
     ),
-    array('inline'=>false)),
-    
-    $bg_propiedades = array(
-        0 => 'bg-bloqueado',
-        1 => 'bg-libre',
-        2 => 'bg-apartado',
-        3 => 'bg-vendido',
-        4 => 'bg-escriturado',
-        5 => 'bg-baja',
-    );
+    array('inline'=>false));
 ?>
 <!-- Modal para la edicion y eliminar el seguimiento rapido. -->
 <div class="fade side-bar" id="myModal">
