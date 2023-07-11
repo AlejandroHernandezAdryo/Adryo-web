@@ -12216,16 +12216,7 @@ class ClientesController extends AppController {
     exit();
     $this->autoRender = false;
   }
-  /**
-   * 
-   * 
-  */
-  function configuracion_fecha(){
-    date_default_timezone_set('America/Chihuahua');
-    $fecha= date('Y-m-d H:i:s');
-    echo json_encode ( $fecha );
-    exit();
-    $this->autoRender = false;
-  }
+  
+
 
 }
