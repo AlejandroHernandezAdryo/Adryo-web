@@ -1201,11 +1201,11 @@ class OperacionesInmueblesController extends AppController {
 
 
         $response['data']    = [];
-                  $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
-                  $clientes  = $this->Cliente->find('list', array('conditions' => array('Cliente.cuenta_id' => $cuenta_id )));
-                  $agentes   = $this->User->find('list',array('order'=>array('User.status DESC', 'User.nombre_completo ASC'),'conditions'=>array('User.id IN (SELECT user_id FROM cuentas_users WHERE  cuenta_id = '.$cuenta_id.')')));
-                  $inmuebles = $this->Inmueble->find('list', array('conditions' => array('Inmueble.cuenta_id' => $cuenta_id)));
-        
+        $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
+        $clientes  = $this->Cliente->find('list', array('conditions' => array('Cliente.cuenta_id' => $cuenta_id )));
+        $agentes   = $this->User->find('list',array('order'=>array('User.status DESC', 'User.nombre_completo ASC'),'conditions'=>array('User.id IN (SELECT user_id FROM cuentas_users WHERE  cuenta_id = '.$cuenta_id.')')));
+        $inmuebles = $this->Inmueble->find('list', array('conditions' => array('Inmueble.cuenta_id' => $cuenta_id)));
+
         $this->set(compact('clientes', 'agentes', 'inmuebles'));
         
 
@@ -1468,6 +1468,5 @@ class OperacionesInmueblesController extends AppController {
         exit();
         $this->autoRender = false;
     }
-    
 }
 

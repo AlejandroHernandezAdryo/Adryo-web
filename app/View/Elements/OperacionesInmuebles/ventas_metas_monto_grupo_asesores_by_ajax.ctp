@@ -142,7 +142,7 @@
 			var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
 				maxDeviation: 0.3,
 				min         : 0,
-				max         : (maxObjetivo)*1.3,
+				max         : (maxObjetivo)*1.2,
 				renderer    : am5xy.AxisRendererY.new(root, {})
 			}));
 			yAxis.children.unshift(
@@ -159,7 +159,7 @@
 			var paretoAxis         = chart.yAxes.push(am5xy.ValueAxis.new(root, {
   				renderer    : paretoAxisRenderer,
   				min         : 0,
-  				max         : maxCumplido * 1.5,
+  				max         : maxCumplido * 1.2,
   				strictMinMax: true
 			}));
 			paretoAxisRenderer.grid.template.set("forceHidden", true);

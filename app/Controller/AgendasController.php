@@ -74,7 +74,7 @@ class AgendasController extends AppController {
 			$this->Agenda->create();
                         $timestamp = date('Y-m-d H:i:s');
                         $this->request->data['Agenda']['fecha']=$timestamp ;
-			if ($this->Agenda->save($this->request->data)) {
+						if ($this->Agenda->save($this->request->data)) {
                             
 				$this->Agenda->query("UPDATE clientes SET last_edit = '$timestamp' WHERE id = ".$this->request->data['Agenda']['cliente_id']);
 					

@@ -364,7 +364,7 @@
                   <?= $this->Element('Clientes/clientes_etapa_grupo_by_ajax') ?>
                 </div>
               </div>
-              <!-- TOTAL DE CLIENTES VS VENTAS Y VISITAS -->
+              <!-- TOTAL DE CLIENTES VS VISITAS Y VENTAS -->
               <div class="row mt-1 salto">
                 <div class="col-sm-12">
                   <?= $this->Element('Clientes/clientes_ventas_visitas_grupo_by_ajax') ?>
@@ -506,6 +506,11 @@
     });
   }
 
+      $('.seleccionar_todos').each(function(index) {
+          $(this).on('click', function() {
+              $(this).parent().find('option').prop('selected', $(this).hasClass('select')).parent().trigger('chosen:updated');
+          });
+      });
 
   var TableAdvanced = function() {
       // ===============table 1====================

@@ -684,7 +684,7 @@ class CotizacionsController extends AppController {
 
         echo json_encode( $response, true );
         $this->autoRender = false;
-}
+    }
 
     function data_operacions(){
         header('Content-type: application/json; charset=utf-8');

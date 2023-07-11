@@ -497,7 +497,7 @@ class ClientesController extends AppController {
             'Lead.inmueble_id != '=> ""
           ),
           'order' => array('Lead.id' => 'DESC'),
-          'group' => 'Lead.inmueble_id'
+          // 'group' => 'Lead.inmueble_id'
         )
       );
     
@@ -1347,13 +1347,13 @@ class ClientesController extends AppController {
         $mailconfig = $this->Mailconfig->read(null,$this->Session->read('CuentaUsuario.Cuenta.mailconfig_id'));
         $this->Email = new CakeEmail();
         $this->Email->config(array(
-                    'host' => $mailconfig['Mailconfig']['smtp'],
-                    'port' => $mailconfig['Mailconfig']['puerto'],
-                    'username' => $mailconfig['Mailconfig']['usuario'],
-                    'password' => $mailconfig['Mailconfig']['password'],
-                    'transport' => 'Smtp'
-                    )
-            );
+            'host' => $mailconfig['Mailconfig']['smtp'],
+            'port' => $mailconfig['Mailconfig']['puerto'],
+            'username' => $mailconfig['Mailconfig']['usuario'],
+            'password' => $mailconfig['Mailconfig']['password'],
+            'transport' => 'Smtp'
+          )
+        );
         $this->Email->emailFormat('html');
         $this->Email->template('notificacioncliente','layoutinmomail');
         $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
@@ -6748,7 +6748,7 @@ class ClientesController extends AppController {
         rtrim(str_replace($limpieza, "", $cliente['DicLineaContacto']['linea_contacto'])),
 
         rtrim(str_replace($limpieza, "", $cliente['Cliente']['correo_electronico'])),
-        ( $cliente['Cliente']['telefono1'] != 'Sin telÃ©fono' ) ? $cliente['Cliente']['telefono1'] : mb_strtoupper(str_replace($limpieza, "", substr($cliente['Cliente']['telefono1'], -10))),
+        ( $cliente['Cliente']['telefono1'] != 'Sin telÃ©fono' ) ? $cliente['Cliente']['telefono1'] : ( $cliente['Cliente']['telefono1'] != 'Sin telÃ©fono' ) ? $cliente['Cliente']['telefono1'] : mb_strtoupper(str_replace($limpieza, "", substr($cliente['Cliente']['telefono1'], -10))),
 
         date('Y-m-d', strtotime($cliente['Cliente']['created'])),
         date('Y-m-d', strtotime($cliente['Cliente']['last_edit'])),
@@ -8047,38 +8047,6 @@ class ClientesController extends AppController {
         'AND' => $and,
         'OR'  => $or
       );
-      //
-      // $clientes_inactivos = $this->Cliente->find('count',
-      //   array(
-      //     'conditions' => array(
-      //       'AND' => array(
-      //         'Cliente.status'      => 'Inactivo',
-      //         $condiciones
-      //       )
-      //     ),
-      //     'fields' => array(
-      //       'Cliente.id',
-      //     ),
-      //     'order'=>'Cliente.id DESC',
-      //     'contain' => false 
-      //   )
-      // );
-      // $ajendas_motivo=$this->Agenda->find('count',array(
-      //   'conditions'=>array(     
-      //     'Agenda.mensaje LIKE' => '%pasa a estatus inactivo definitivo por motivo:%',
-      //     //'Agenda.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-      //   ),
-      //   'fields' => array(
-      //     'Agenda.cliente_id',
-      //   ),
-      //   'group' => 'Agenda.cliente_id',
-      //   'order'=>'Agenda.cliente_id DESC',
-      //   'contain' => false 
-      //   )
-      // );
-      // if ($clientes_inactivos != $ajendas_motivo) {
-      //   $this->id_no_encontrado_inactivo_definitivo($condiciones);
-      // }
       $clientes_inactivos = $this->Cliente->find('all',
           array(
             'conditions' => array(
@@ -8210,35 +8178,6 @@ class ClientesController extends AppController {
         'AND' => $and,
         'OR'  => $or
       );
-      // $clientes_inactivos_temporales = $this->Cliente->find('count',
-      //   array(
-      //     'conditions' => array(
-      //       'AND' => array(
-      //         'Cliente.status'      => 'Inactivo temporal',
-      //         $condiciones
-      //       )
-      //     ),
-      //     'fields' => array(
-      //       'Cliente.id',
-      //     ),
-      //     'contain' => false 
-      //   )
-      // );
-      // $ajendas_motivo=$this->Agenda->find('count',array(
-      //   'conditions'=>array(     
-      //     'Agenda.mensaje LIKE' => '%pasa a estatus inactivo temporal por motivo:%',
-      //     //'Agenda.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-      //   ),
-      //   'fields' => array(
-      //     'Agenda.cliente_id',
-      //   ),
-      //   'group' => 'Agenda.cliente_id',
-      //   'contain' => false 
-      //   )
-      // );
-      // if($clientes_inactivos_temporales != $ajendas_motivo){
-      //   $this->id_no_encontrado_inactivo_temporal($condiciones);
-      // }
       $clientes_inactivos_temporales = $this->Cliente->find('all',
         array(
           'conditions' => array(
@@ -8303,112 +8242,6 @@ class ClientesController extends AppController {
       $inactivos_temporales[$i]['cantidad']=100;
     }
     echo json_encode( $inactivos_temporales , true );
-    $this->autoRender = false; 
-  }
-  
-  /**
-  * esta funcion se crea para tener msj para acomplatar los clientes
-  * que estan inactivos definitivos ya que no se les agrego un msj
-  *de inactivacion 
-  * AKA RogueOne
-  */
-  public function id_no_encontrado_inactivo_definitivo( $condiciones = null ){
-    $this->Cliente->Behaviors->load('Containable');
-    $this->Agenda->Behaviors->load('Containable');
-    $response = true;
-
-    $clientes_inactivosR = $this->Cliente->find('list',
-      array(
-        'conditions' => array(             
-          'Cliente.status'      => 'Inactivo',
-          $condiciones
-        ),
-        'fields' => array(
-          'Cliente.id',
-          ),
-        'order'=>'Cliente.id DESC',
-        'contain' => false 
-      )
-    );
-
-    $ajendas_motivo=$this->Agenda->find('list',
-        array(
-          'conditions'=>array(     
-            'Agenda.mensaje LIKE' => '%pasa a estatus inactivo definitivo por motivo:%',
-            //'Agenda.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-          ),
-          'fields' => array(
-            'Agenda.cliente_id',
-          ),
-          'group' => 'Agenda.cliente_id',
-          'order'=>'Agenda.cliente_id DESC',
-          'contain' => false 
-        )
-    );
-
-    foreach ( $clientes_inactivosR as $valueC ) {
-
-      if( array_search($valueC , $ajendas_motivo) == false ){
-        
-        $this->Agenda->create();
-        $this->request->data['Agenda']['user_id']    = $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
-        $this->request->data['Agenda']['fecha']      = date('Y-m-d H:i:s');
-        $this->request->data['Agenda']['mensaje']    = 'pasa a estatus inactivo definitivo por motivo: No le interesa ninguna de las propiedades';
-        $this->request->data['Agenda']['cliente_id'] = $valueC;
-        
-        if( !$this->Agenda->save($this->request->data) ){
-          $response = false; 
-        }
-
-      }
-
-    }
-
-    return $response;
-    $this->autoRender = false; 
-  }
-  /**
-  * esta funcion crea msj para los clientes que no tengan 
-  * msj de inactivacion temporal 
-  * AKA RogueOne
-  */
-  public function id_no_encontrado_inactivo_temporal($condiciones){
-    $clientes_temporalesR = $this->Cliente->find('list',
-      array(
-        'conditions' => array(             
-          'Cliente.status'      => 'Inactivo temporal',
-          $condiciones
-        ),
-        'fields' => array(
-          'Cliente.id',
-          ),
-        'order'=>'Cliente.id DESC',
-        'contain' => false 
-      )
-    );
-    $ajendas_motivo=$this->Agenda->find('list',array(
-      'conditions'=>array(     
-        'Agenda.mensaje LIKE' => '%pasa a estatus inactivo temporal por motivo:%',
-       // 'Agenda.user_id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')',
-      ),
-      'fields' => array(
-        'Agenda.cliente_id',
-      ),
-      'group' => 'Agenda.cliente_id',
-      'order'=>'Agenda.cliente_id DESC',
-      'contain' => false  
-      )
-    );
-    foreach ($clientes_temporalesR as $valueC) {
-      if(array_search($valueC,$ajendas_motivo)==false){
-        $this->Agenda->create();
-        $this->request->data['Agenda']['mensaje']='pasa a estatus inactivo temporal por motivo:Solicitó contactarlo tiempo después y pide reconectaco el 06/09/2022';
-        $this->request->data['Agenda']['cliente_id']=$valueC;
-        $this->request->data['Agenda']['fecha']=date('Y-m-d H:i:s');
-        $this->request->data['Agenda']['user_id']=1;
-        $this->Agenda->save($this->request->data['Agenda']);
-      }
-    }
     $this->autoRender = false; 
   }
 
@@ -8758,7 +8591,7 @@ class ClientesController extends AppController {
     $response       = [];
     $user_id        = '';
 		$telefono_			= '';
-    if ($this->request->is('post')) {
+    if ($this->request->is('post') && $this->request->data['api_key'] != null) {
 
       // Buscamos el id del asesor por medio del email
       if( !empty($this->request->data['email_user']) ){
@@ -8772,6 +8605,12 @@ class ClientesController extends AppController {
 
 			// Obtener los �ltimos 10 caracteres
 			$phone = substr($cadenaSinEspacios, -10);
+      
+      if( !empty($this->request->data['comentario']) ){
+        $comentarios = $this->request->data['comentario'];
+      }else {
+        $comentarios = 'agregado por api - '.$this->request->data['api_key'];
+      }
 
       $params_cliente = array(
         'nombre'              => $this->request->data['nombre'],
@@ -8782,7 +8621,7 @@ class ClientesController extends AppController {
         'tipo_cliente'        => $this->request->data['dic_tipo_cliente_id'],
         'propiedades_interes' => 'D'.$this->request->data['propiedad_id'],
         'forma_contacto'      => $this->request->data['dic_linea_contacto_id'],
-        'comentario'          => '',
+        'comentario'          => $comentarios,
         'asesor_id'           => $user_id,
         'created'             => null,
       );
@@ -9266,6 +9105,108 @@ class ClientesController extends AppController {
    * 
    * 
   */
+  function asignacion_clientes_asesor(){
+    header('Content-type: application/json; charset=utf-8');
+    $this->Cliente->Behaviors->load('Containable');
+    $response=array();
+    $i=0;
+    if ($this->request->is('post')) {
+      if( !empty($this->request->data['rango_fechas']) ){
+        $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+        $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+        $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+        $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));
+      }
+      if( !empty( $this->request->data['user_id'] ) ){
+        $user_id=$this->request->data['user_id'] ;
+      }
+      $clientes_asignados = $this->Cliente->query(
+        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.fecha_cambio_etapa,'%m-%Y') As fecha
+        FROM clientes 
+        WHERE user_id = $user_id 
+        AND fecha_cambio_etapa >= '$fi' 
+        AND fecha_cambio_etapa <= '$ff' 
+        GROUP BY fecha;"
+      );
+      foreach ($clientes_asignados as $value) {
+        $response[$i]['asignados']=$value[0]['asignados'];
+        $response[$i]['fecha']=$value[0]['fecha'];
+        $i++;
+      }
+      // [{"asignados":"1","fecha":"2022-03"}]
+    }
+  
+    echo json_encode( $response , true );
+    exit();
+    $this->autoRender = false;
+  }
+
+  /**
+   * 
+   * 
+   * 
+  */
+  function asignacion_clientes_asesor_desarrollo(){
+    header('Content-type: application/json; charset=utf-8');
+    $this->Cliente->Behaviors->load('Containable');
+    $response=array();
+    $i=0;
+    if ($this->request->is('post')) {
+      if( !empty($this->request->data['rango_fechas']) ){
+        $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+        $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+        $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+        $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));
+      }
+      if( !empty( $this->request->data['user_id'] ) ){
+        $user_id=$this->request->data['user_id'] ;
+      }
+      $clientes_asignados_desarrollos = $this->Cliente->query(
+        "SELECT COUNT(*) AS clientes, desarrollos.nombre 
+        FROM clientes,desarrollos 
+        WHERE desarrollos.id = clientes.desarrollo_id 
+        AND clientes.user_id = $user_id 
+        AND clientes.fecha_cambio_etapa >= '$fi' 
+        AND clientes.fecha_cambio_etapa <= '$ff' 
+        GROUP BY clientes.desarrollo_id 
+        ORDER BY clientes DESC;"
+      );
+      foreach ($clientes_asignados_desarrollos as $value) {
+        $response[$i]['asignados']=$value[0]['clientes'];
+        $response[$i]['desarrollos']=$value['desarrollos']['nombre'];
+        $i++;
+      }
+      // [{"0":{"clientes":"65"},"desarrollos":{"nombre":"NOVA SAN ANGEL"}}]
+    }
+    // $fi='2021-10-01 00:00:00';
+    // $ff='2022-10-21 23:59:59';
+    // $cond_rangos = array("Cliente.created BETWEEN ? AND ?" => array($fi, $ff));
+    // $user_id=630;
+    // $clientes_asignados_desarrollos = $this->Cliente->query(
+    //   "SELECT COUNT(*) AS clientes, desarrollos.nombre 
+    //   FROM clientes,desarrollos 
+    //   WHERE desarrollos.id = clientes.desarrollo_id 
+    //   AND clientes.user_id = $user_id 
+    //   AND clientes.created >= '$fi' 
+    //   AND clientes.created <= '$ff' 
+    //   GROUP BY clientes.desarrollo_id 
+    //   ORDER BY clientes DESC;"
+    // );
+    if (empty($response)) {
+      $response[$i]['asignados']=0;
+      $response[$i]['desarrollos']='sin informacion';
+    }
+    
+    echo json_encode( $response , true );
+    exit();
+    $this->autoRender = false;
+  }
+
+  /**
+   * 
+   * 
+   * 
+  */
   function asiganacion_reasignacion(){
     header('Content-type: application/json; charset=utf-8');
     $this->Cliente->Behaviors->load('Containable');
@@ -9579,27 +9520,7 @@ class ClientesController extends AppController {
         $i++;
       }
     }
-    // $response=array();
-    // $i=0;
-    // $fi='2021-10-01 00:00:00';
-    // $ff='2022-10-21 23:59:59';
-    // $user_id=630;
-    // $motivos_reasignaciones = $this->User->query(
-    //   "SELECT COUNT(*) AS reasignaciones, motivo_cambio 
-    //   FROM reasignacions 
-    //   WHERE (asesor_original = $user_id OR asesor_nuevo = $user_id) 
-    //   AND motivo_cambio IS NOT NULL 
-    //   AND fecha >= '$fi' 
-    //   AND fecha <= '$ff' 
-    //   GROUP BY motivo_cambio;"
-    // );
-    // foreach ($motivos_reasignaciones as  $value) {
-    //   $response[$i]['cantidad']=$value[0]['reasignaciones'];
-    //   $response[$i]['motivo']=$value['reasignacions']['motivo_cambio'];
-    //   // $response[$i]['']=$value[0][''];
-    //   // $response[$i]['']=$value[0][''];
-    //   $i++;
-    // }
+  
     if (empty($response)) {
       $response[$i]['cantidad']    = 100;
       $response[$i]['motivo']   = 'sin informacion';
@@ -11861,7 +11782,7 @@ class ClientesController extends AppController {
     $this->autoRender = false;
 
   }
-   /**
+  /**
    * 
    * 
    * 

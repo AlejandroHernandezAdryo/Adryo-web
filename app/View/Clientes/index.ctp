@@ -237,6 +237,12 @@
                 <?= $this->Form->input('desarrollo_id',array('type'=>'select','options'=>$list_desarrollos,'empty'=>'Todos los desarrollos','class'=>'form-control chzn-select','div'=>'col-lg-8','label'=>false )); ?>
             </div>
 
+            <div class="row mt-1">
+                <div class="col-xl-4">
+                    <?= $this->Form->label('status_atencion','Estatus de atención', array('class' => 'form-control-label')); ?>
+                </div>
+                <?= $this->Form->input('status_atencion',array('type'=>'select','options'=>$status_atencion_clientes,'empty'=>'Todos los estatus de atención','class'=>'form-control chzn-select','id'=>'roberto','div'=>'col-lg-8','label'=>false )); ?>
+            </div>
 
           </div>
 
@@ -342,7 +348,8 @@
 
     'use strict';
 
-   
+    // Datos para la tabla
+    
     
     // Metodo para la tabla de clientes.
     var TableAdvanced = function() {
@@ -614,32 +621,32 @@
             $(this).val('');
             return false;
         });
-         // Datos para la tabla
-    $.ajax({
-        url: '<?php echo Router::url(array("controller" => "clientes", "action" => "listado_clientes_json")); ?>',
-        cache: false,
-        dataType: 'json',
-        beforeSend: function () {
-            $("#overlay").fadeIn();
-        },
-        success: function ( response ) {
+        // 
+        $.ajax({
+            url: '<?php echo Router::url(array("controller" => "clientes", "action" => "listado_clientes_json")); ?>',
+            cache: false,
+            dataType: 'json',
+            beforeSend: function () {
+                $("#overlay").fadeIn();
+            },
+            success: function ( response ) {
             
-            $('#sample_1').dataTable().fnClearTable();
-            $('#sample_1').dataTable().fnDestroy();
+                $('#sample_1').dataTable().fnClearTable();
+                $('#sample_1').dataTable().fnDestroy();
 
-            $('#sample_1').dataTable( {
-                destroy: true,
-                data : response,
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-                dom: 'Bflr<"table-responsive"t>ip',
-                columnDefs: [
-                    {
-                        targets: [ 3 ],
-                        visible: false,
-                        searchable: false
-                    },
-                ],
-                language: {
+                $('#sample_1').dataTable( {
+                    destroy: true,
+                    data : response,
+                    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+                    dom: 'Bflr<"table-responsive"t>ip',
+                    columnDefs: [
+                        {
+                            targets: [ 3 ],
+                            visible: false,
+                            searchable: false
+                        },
+                    ],
+                    language: {
                         sSearch: "Buscador",
                         lengthMenu: '_MENU_ registros por página',
                         info: 'Mostrando _TOTAL_ registro(s)',
@@ -650,32 +657,32 @@
                             next: 'Siguiente'
                         },
                     },
-                buttons: [
-                    {
-                        extend: 'excel',
-                        text: '<i class="fa  fa-file-excel-o"></i> Exportar',
-                        filename: 'ClientList',
-                        class : 'excel',
-                        charset: 'utf-8',
-                        bom: true,
-    
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="fa  fa-print"></i> Imprimir',
-                        filename: 'ClientList',
-                    },
-                ]
+                    buttons: [
+                        {
+                            extend: 'excel',
+                            text: '<i class="fa  fa-file-excel-o"></i> Exportar',
+                            filename: 'ClientList',
+                            class : 'excel',
+                            charset: 'utf-8',
+                            bom: true,
+                        },
+                        {
+                            extend: 'print',
+                            text: '<i class="fa  fa-print"></i> Imprimir',
+                            filename: 'ClientList',
+                        },
+                    ]
                 
-            });
-            $("#overlay").fadeOut();
-        },
-        error: function ( response ){
-            
-            $("#overlay").fadeOut();
-            console.log( response.responseText );
-        }
-    });
+                });
+                $("#overlay").fadeOut();
+            },
+            error: function ( response ){
+                
+                $("#overlay").fadeOut();
+                console.log( response.responseText );
+            }
+        });
+        // 
 
     });
 

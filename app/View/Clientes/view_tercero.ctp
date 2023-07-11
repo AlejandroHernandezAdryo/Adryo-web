@@ -52,11 +52,9 @@
             'pages/wizards',
             '/vendors/bootstrap-switch/css/bootstrap-switch.min',
             '/vendors/radio_css/css/radiobox.min',
-            
-            
-           
-            
-            
+            'custom',
+            'style_operaciones',
+            'componentsadryo',
         ),
         array('inline'=>false)); 
 ?>

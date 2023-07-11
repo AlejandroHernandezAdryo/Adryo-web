@@ -1508,6 +1508,7 @@
                                     <div class="user-block">
                                         <?= $this->Form->create('Agenda',array('url'=>array('controller'=>'Agendas','action'=>'add')))?>
                                         <?php 
+                                        
                                             if ($this->Session->read('Permisos.Group.id')==3){
 
                                              
@@ -1796,8 +1797,12 @@
 
                                                             <!-- Botones -->
                                                             <div class="row">
-                                                                <div class="col-sm-12 col-lg-6 mt-1">
-                                                                    <button type="button" class="btn btn-secondary-o btn-block" onclick="modalShared( 
+                                                                <div class="col-sm-12 col-lg-2 mt-1">
+                                                                    <?= $this->Html->link($this->Html->image('clientes_icons/overview.svg'),'#', array('escape'=>false, 'class' => 'btn btn-secondary-o', 'style'=>'margin-left: 5px;',))?>
+                                                                    <!-- <?= $this->Html->link($this->Html->image('clientes_icons/share.svg'),'#', array('escape'=>false, 'class' => 'btn btn-primary-o', 'style'=>'margin-left: 5px;',))?> -->
+                                                                </div>
+                                                                <div class="col-sm-12 col-lg-2 mt-1">
+                                                                    <button type="button" class="btn btn-secondary-o" onclick="modalShared( 
                                                                             <?= $inmueble['Inmueble']['id']?> , 
                                                                             <?= $this->Session->read('Auth.User.id') ?>, 
                                                                             <?= $cliente['Cliente']['id'] ?>, 
@@ -1808,15 +1813,15 @@
                                                                             '<?= $cliente['Cliente']['correo_electronico']?>',
                                                                             '<?= $inmueble['Inmueble']['referencia']?>',
                                                                         )">
-                                                                        Compartir
+                                                                        <?= $this->Html->image('clientes_icons/share.svg')?>
                                                                     </button>
                                                                 </div>
-                                                                <div class="col-sm-12 col-lg-6 mt-1">
+                                                                <div class="col-sm-12 col-lg-2 mt-1">
                                                                 <?=
                                                                     ( ($inmueble['Inmueble']['liberada'] == 1) ? 
-                                                                        $this->Html->link('Crear cotización', 'javascript:addCotizacion('.$inmueble['Inmueble']['id'].',"'.$inmueble['Inmueble']['referencia'].'",'.$inmueble['Inmueble']['precio'].', '.$cliente['Cliente']['id'].')',array( 'class' => 'btn btn-secondary-o btn-block', 'escape' => false )) 
+                                                                        $this->Html->link( $this->Html->image('clientes_icons/request_quote.svg'), 'javascript:addCotizacion('.$inmueble['Inmueble']['id'].',"'.$inmueble['Inmueble']['referencia'].'",'.$inmueble['Inmueble']['precio'].', '.$cliente['Cliente']['id'].')',array( 'class' => 'btn btn-secondary-o', 'escape' => false )) 
                                                                             :
-                                                                        $this->Html->link('Crear cotización', '#' ,array( 'class' => 'btn btn-secondary-o btn-block disabled', 'escape' => false, 'disabled' => true ))
+                                                                        $this->Html->link($this->Html->image('clientes_icons/request_quote.svg'), '#' ,array( 'class' => 'btn btn-secondary-o  disabled', 'escape' => false, 'disabled' => true ))
                                                                     );
                                                                 ?>
                                                                 </div>
@@ -2075,7 +2080,23 @@
 <script>
 
     'use strict';
-
+    
+    $(document).ready(function () {
+        let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
+        let cliente = "<?=$param_return?>";
+        console.log(cliente);
+        $.ajax({
+            
+            type: "POST",
+            url: "<?= Router::url(array("controller" => "Validations", "action" => "verificar")); ?>",
+            data: {cuenta_id: cuenta_id, cliente:cliente },
+            dataType: "Json",
+            success: function (response) {
+                console.log(response);
+                
+            }
+        });
+    });
     // Función para la seleccion de opciones del seguimiento rápido.
     function seleccion_opcion( id, mensaje ) {
         

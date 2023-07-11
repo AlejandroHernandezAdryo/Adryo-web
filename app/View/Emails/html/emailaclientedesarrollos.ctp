@@ -22,9 +22,9 @@
 			/* position: relative;
 			left: 125px; */
 		}
-		/* #photo-asesor{
+		#photo-asesor{
 			padding-left: 10px;
-		} */
+		}
 		#icons-asesor{
 			padding-left: 10px;
 		}
