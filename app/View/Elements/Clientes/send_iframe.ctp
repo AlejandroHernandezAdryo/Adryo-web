@@ -62,15 +62,15 @@
                         <a href="#" id="mailShare">
                             <?= $this->Html->image('mailblue.png', array('class' => 'img-social-share w-75 mt-4 mb-4', 'style' => 'width:40px;', 'onClick' => 'resend_email_desarrollo()')); ?>
                             
-                        </a>
-                    </div>
-                </div>
-
-                <?= $this->Form->hidden('desarrollo_id_modal_shared'); ?>
+                            <?= $this->Form->hidden('desarrollo_id_modal_shared'); ?>
                             <?= $this->Form->hidden('cliente_id_modal_shared'); ?>
                             <?= $this->Form->hidden('asesor_id_modal_shared'); ?>
                             <?= $this->Form->hidden('send_iframe_telefono'); ?>
                             <?= $this->Form->hidden('mensaje'); ?>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="row hidden" id ="error_message_send_row">
                     <?= $this->Form->input('error_message_send_iframe',
                         array(
@@ -104,7 +104,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <div class="input-group mb-1" style="width:88% !important;">
-                    <input type             = "text"
+                    <input type              = "text"
                             class            = "form-control"
                             aria-label       = "Recipient's username"
                             aria-describedby = "button-copyshare"
@@ -114,7 +114,7 @@
                             type    = "button"
                             onclick = "btnCopyClipboard()"
                             id      = "button-copyshare"
-                            style="position:absolute;">
+                            style   = "position:absolute;">
                                 Copiar
                     </button>
                 </div>
@@ -253,7 +253,6 @@
         $("#modalShared").addClass('hidden'); 
 
         // Abrimso en una página nueva wa
-        // window.open('https://api.whatsapp.com/send?phone'+$("#send_iframe_telefono").val()+'?text='+$("#mensaje").val());
         window.open('https://wa.me/521'+$("#send_iframe_telefono").val()+'?text='+$("#mensaje").val());
     });
 
@@ -376,4 +375,6 @@
 
     });
 
-</script>
+
+
+</script>   
