@@ -590,6 +590,9 @@
             success: function ( response ) {
 
                 console.log( response );
+                let sumaUno = 0;
+                let sumaDos = 0;
+                let sumaTres = 0;
 
                 $("#oportuno_label_"+etapa_id).html(response['oportunos']);
                 $("#tardio_label_"+etapa_id).html(response['tardios']);

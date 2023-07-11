@@ -394,6 +394,7 @@ class LeadsController extends AppController {
      * Se cambia el body message del correo. AKA SaaK 03/ene/2023
     */
     public function add_desarrollo(){
+        date_default_timezone_set('America/Chihuahua');
         //$this->layout = 'bos';
         $this->loadModel('Inmueble');
         $this->loadModel('Cliente');

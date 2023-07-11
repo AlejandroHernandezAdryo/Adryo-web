@@ -1376,5 +1376,98 @@ class OperacionesInmueblesController extends AppController {
         exit();
         $this->autoRender = false;
     }
+    /***
+     * 
+     *
+     *  
+    */
+    function grafica_ventas_mentas_grupo_asesores(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('User');
+        $this->loadModel('OperacionesInmueble');
+        $this->loadModel('Event');
+        $this->Event->Behaviors->load('Containable');
+        $this->OperacionesInmueble->Behaviors->load('Containable');
+        $this->User->Behaviors->load('Containable');
+        $i=0;
+        $reponse=array();
+        if ($this->request->is('post')) {
+
+        // Condicion para el rango de fechas
+            if( !empty($this->request->data['rango_fechas']) ){
+                $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+                $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+                $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+                $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));
+                if ($fi == $ff){
+                    $cond_rangos = array("Cliente.fecha_cambio_etapa LIKE '".$fi."%'");
+                }else{
+                $cond_rangos = array("Cliente.fecha_cambio_etapa BETWEEN ? AND ?"        => array($fi, $ff));
+                }
+            }
+            $cuenta_id=$this->request->data['cuenta_id'];
+            foreach ($this->request->data['user_id'] as $user) {
+                $search_user=$this->User->find('first',array(
+                    'conditions'=>array(
+                        'User.id'=>$user, 
+                    ),  
+                    'fields'=>array(
+                        'User.nombre_completo',
+                    ),
+                    'contain' => false 
+                ));
+                $ventas=$this->OperacionesInmueble->query(
+                    "SELECT count(*) as ventas_unidades,  SUM(precio_unidad) as ventas_dinero
+                    FROM operaciones_inmuebles 
+                    WHERE  fecha >= '$fi' 
+                    AND fecha <= '$ff'
+                    AND tipo_operacion=3
+                    -- AND cotizacion_id is not null
+                    AND user_id = $user 
+                    GROUP BY user_id;"
+                );
+                $objetivos = $this->OperacionesInmueble->query(
+                    "SELECT ventas_mensuales,ventas_mensuales_q 
+                    FROM cuentas_users 
+                    WHERE user_id IN ($user) 
+                    AND cuenta_id = $cuenta_id 
+                    GROUP BY user_id"
+                );
+                if($objetivos[0]['cuentas_users']['ventas_mensuales_q']==0){
+                    $porciento_grafica_unidades = 0;
+                } else{
+                    $porciento_grafica_unidades =( ($ventas[0][0]['ventas_unidades']/$objetivos[0]['cuentas_users']['ventas_mensuales_q']) *100);
+                }
+                if($objetivos[0]['cuentas_users']['ventas_mensuales']==0){
+                    $porciento_grafica_monto = 0;
+                } else{
+                    $porciento_grafica_monto =(($ventas[0][0]['ventas_dinero']/$objetivos[0]['cuentas_users']['ventas_mensuales'])*100);
+                }
+                $reponse[$i]['asesor']            = $search_user['User']['nombre_completo'];
+                $reponse[$i]['venta_unidades']    = ( empty($ventas[0][0]['ventas_unidades']) ? 0                    : $ventas[0][0]['ventas_unidades']);
+                $reponse[$i]['venta_dinero']      = ( empty($ventas[0][0]['ventas_dinero']) ? 0                      : $ventas[0][0]['ventas_dinero']);
+                $reponse[$i]['meta_unidades']     = ( empty($objetivos[0]['cuentas_users']['ventas_mensuales_q']) ? 0: $objetivos[0]['cuentas_users']['ventas_mensuales_q']);
+                $reponse[$i]['meta_dinero']       = ( empty($objetivos[0]['cuentas_users']['ventas_mensuales']) ? 0  : $objetivos[0]['cuentas_users']['ventas_mensuales']);
+                $reponse[$i]['cumplido_unidades'] = $porciento_grafica_unidades;
+                $reponse[$i]['cumplido_monto']    = $porciento_grafica_monto;
+                $i++;
+            }
+           
+    
+        }
+        if (empty($reponse)) {
+            $reponse[$i]['asesor']            ='sin informacion';
+            $reponse[$i]['venta_unidades']    =0;
+            $reponse[$i]['venta_dinero']      =0;
+            $reponse[$i]['meta_unidades']     =0;
+            $reponse[$i]['meta_dinero']       =0;
+            $reponse[$i]['cumplido_unidades'] =0;
+            $reponse[$i]['cumplido_monto']    =0;
+        }
+        echo json_encode ( $reponse );
+        exit();
+        $this->autoRender = false;
+    }
     
 }
+

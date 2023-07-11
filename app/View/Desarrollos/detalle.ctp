@@ -145,6 +145,7 @@
             height: auto;
         }
     }
+    .pdfobject-container { height: 30rem; border: 1rem solid rgba(0,0,0,.1); }
 
 </style>
 
@@ -290,9 +291,9 @@
                                 <?php foreach($desarrollo['Planos'] as $plano):?>
                                     
                                     <!-- <div class="img-thumbnail pointer" style="background: URL(<?= Router::url($plano['ruta'], true); ?>);
-                                                    background-repeat: no-repeat;
-                                                    background-size: cover;
-                                                    background-position: top center;" onclick="srcChangeFlat('<?= Router::url($plano['ruta']) ?>')">
+                                        background-repeat: no-repeat;
+                                        background-size: cover;
+                                        background-position: top center;" onclick="srcChangeFlat('<?= Router::url($plano['ruta']) ?>')">
                                     </div> -->
 
                                     <?= $this->Html->image($plano['ruta'], array('class' => 'img-thumbnail pointer', 'onclick' => 'srcChangeFlat("'.Router::url($plano['ruta']).'")')); ?>
@@ -301,20 +302,18 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="brochure-tab-pane" role="tabpanel" aria-labelledby="brochure-tab"
-                        tabindex="0">
+                    <div class="tab-pane fade" id="brochure-tab-pane" role="tabpanel" aria-labelledby="brochure-tab" tabindex="0">
 
                         <?php if( empty( $desarrollo['Desarrollo']['brochure'] ) ): ?>
                                 
-                                <div style="background: URL(<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true); ?>);
-                                        background-repeat: no-repeat;
-                                        background-size: cover;
-                                        background-position: top center;">
+                                <div style="background: URL(<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true); ?>);background-repeat: no-repeat;background-size: cover;background-position: top center;">
                                     <?= $this->Html->image('no_brochure.png', array('class' => 'img-fluid')); ?>
                                 </div>
                             
                             <?php else: ?>
-                                <embed src="<?= Router::url($desarrollo['Desarrollo']['brochure'], true) ?>" type="" style="width: 100%; height: 400px;">
+                                <!-- <embed src="" type="" style="width: 100%; height: 400px;"> -->
+                                <!-- <embed src="https://betaadryo.com.mx/pdf/Alt_Zap.pdf" type="application/pdf" style="width: 100%; height: 400px;overflow:scroll;"> -->
+                                <div id="example1"></div>
                             <?php endif; ?>
 
                     </div>
@@ -323,18 +322,12 @@
 
                             <?php if( empty( $desarrollo['Desarrollo']['youtube'] ) ): ?>
                                 
-                                <div style="background: URL(<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true); ?>);
-                                        background-repeat: no-repeat;
-                                        background-size: cover;
-                                        background-position: top center;">
+                                <div style="background: URL(<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true); ?>);background-repeat: no-repeat;background-size: cover;background-position: top center;">
                                     <?= $this->Html->image('sin_video.png', array('class' => 'img-fluid')); ?>
                                 </div>
                             
                             <?php else: ?>
-                                <div id="info" style="background: URL(<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true); ?>);
-                                                    background-repeat: no-repeat;
-                                                    background-size: cover;
-                                                    background-position: top center;">
+                                <div id="info" style="background: URL(<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true); ?>);background-repeat: no-repeat;background-size: cover;background-position: top center;">
                                     <a href="<?= $desarrollo['Desarrollo']['youtube'] ?>" target="_blank">
                                         <?= $this->Html->image('banner_video.png', array('class' => 'banner_video img-fluid')); ?>
                                     </a>
@@ -833,7 +826,7 @@
         document.getElementById(openTab).style.display = "block";
         evt.currentTarget.className += " active";
     }
-    document.getElementById("defaultOpen").click();
+    // document.getElementById("defaultOpen").click();
 
     function srcChange( newURL ){
         document.getElementById("img-main").src = newURL;
@@ -845,3 +838,5 @@
 
 
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.12/pdfobject.min.js"></script>
+<script>PDFObject.embed("https://adryo.com.mx/<?= $desarrollo['Desarrollo']['brochure'] ?>", "#example1");</script>

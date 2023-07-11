@@ -1042,7 +1042,7 @@
                                     
                                     <tr>
                                         <td> Teléfono 1</td>
-                                        <td><?= substr($cliente['Cliente']['telefono1'], -10) ?></td>
+                                        <td><?= $cliente['Cliente']['telefono1'] ?></td>
                                     </tr>
                                     
                                     <?php if( $cliente['Cliente']['telefono2'] != ''): ?>
@@ -1510,13 +1510,7 @@
                                         <?php 
                                             if ($this->Session->read('Permisos.Group.id')==3){
 
-                                                if( $this->Session->read('Permisos.Group.id') == 5 ){
-                                                    echo $this->Form->checkbox('asesoria', array('label' => 'Solicitar apoyo del gerente.','class' => 'disabled'));
-                                                    
-                                                }else {
-                                                    
-                                                    echo $this->Form->checkbox('asesoria')." Solicitar apoyo del gerente.";
-                                                }
+                                             
                                             }else{
                                                 if( $this->Session->read('Permisos.Group.id') == 5 ){
                                                     echo $this->Form->checkbox('asesoria', array('label' => 'Notificar por mail a asesor.','class' => 'disabled'));

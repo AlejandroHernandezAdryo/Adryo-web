@@ -6,35 +6,38 @@
 
 <div id="content" class="bg-container">
     <header class="head">
-        <div class="main-bar row">
-            <div class="col-lg-6 col-md-4 col-sm-4">
-                <h4 class="nav_top_align">
-                    <!-- <i class="fa fa-th"></i> -->
-                    Lista de ventas
-                </h4>
-            </div>
-        </div>
-    </header>
-    
+                <div class="main-bar row">
+                    <div class="col-lg-6 col-md-4 col-sm-4">
+                        <h4 class="nav_top_align">
+                            <i class="fa fa-th"></i>
+                            Lista de ventas
+                        </h4>
+                    </div>
+                    
+                </div>
+            </header>
+            
     <div class="outer">
         <div class="inner bg-light lter bg-container">
             <?= $this->Form->create('Cuenta')?>
             <div class="card">
+                
                 <div class="card-block">
-                    <div>
-                        <table id="kpi_desarrollos" class="table display table-striped" style="width:100% !important;">
+                    <div style="margin-top: 55px;">
+                    
+                        <table id="kpi_desarrollos" class="table display" >
                             <thead>
                                 <tr>
-                                    <?php if ($this->Session->read('Permisos.Group.id')==1){?>
-                                    <th class="finanzas"></th>
-                                    <?php }?>
-                                    <th class="d-none">Operación</th>
+                                    <th>Tipo operación</th>
                                     <th>Propiedad</th>
                                     <th>Cliente</th>
                                     <th>Linea de contacto</th>
                                     <th>Asesor</th>
                                     <th>Fecha operación</th>
                                     <th>Precio de venta</th>
+                                    <?php if ($this->Session->read('Permisos.Group.id')==1){?>
+                                    <th class="finanzas">Generar Programación de Pagos</th>
+                                    <?php }?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,18 +47,7 @@
                                     else{$op = 'R'; $class_op = 'bg_renta'; $name_op = 'Renta';}
                                 ?>
                                 <tr>
-                                    <?php if ($this->Session->read('Permisos.Group.id')==1): ?>
-                                        <td class="text-sm-center finanzas">
-                                            <?php 
-                                            if (sizeof($venta_global['Facturas'])>0){
-                                                echo $this->Html->link('<i class="fa fa-eye fa-x2"></i>', array('controller'=>'aportacions', 'action'=>'ver_plan_pagos', $venta_global['Venta']['id']), array('escape'=>false)); 
-                                            }else{
-                                                echo $this->Html->link('<i class="fa fa-file-o fa-x2"></i>', array('controller'=>'facturas', 'action'=>'add_factura_cliente', $venta_global['Venta']['id']), array('escape'=>false)); 
-                                            }
-                                            ?>
-                                        </td>
-                                    <?php endif; ?>
-                                    <td class=""><span class=""><?= $name_op ?></span></td>
+                                    <td class="text-sm-center"><small><span class="<?= $class_op ?>"><?= $op ?></span></small><span class="text_hidden"><?= $name_op ?></span></td>
                                     <td>
                                         <?php if ($this->Session->read('Permisos.Group.dr') == 1): ?>
                                         <ins>
@@ -71,6 +63,8 @@
                                         <?php echo $venta_global['Inmueble']['referencia'] ?>
                                         <?php endif; ?>
                                     </td>
+                                    
+                                    
                                     <td>
                                         <?php if ($this->Session->read('Permisos.Group.dr') == 1): ?>
                                             <ins>
@@ -102,10 +96,10 @@
                                     </td>
 
                                     <td><?= date('Y-m-d', strtotime($venta_global['Venta']['fecha'])) ?></td>
-                                    <td class="">$ <?= number_format($venta_global['Venta']['precio_cerrado'], 2) ?></td>
-                                    <!-- <//?php if ($this->Session->read('Permisos.Group.id')==1): ?>
+                                    <td class="text-xs-right">$ <?= number_format($venta_global['Venta']['precio_cerrado'], 2) ?></td>
+                                    <?php if ($this->Session->read('Permisos.Group.id')==1): ?>
                                         <td class="text-sm-center finanzas">
-                                          <//?php 
+                                          <?php 
                                           if (sizeof($venta_global['Facturas'])>0){
                                               echo $this->Html->link('<i class="fa fa-eye fa-x2"></i>', array('controller'=>'aportacions', 'action'=>'ver_plan_pagos', $venta_global['Venta']['id']), array('escape'=>false)); 
                                           }else{
@@ -113,8 +107,10 @@
                                           }
                                           ?>
                                         </td>
-                                    <//?php endif; ?> -->
+                                    <?php endif; ?>
+
                                 </tr>
+                            
                                 <?php endforeach ?>
                             </tbody>
                         </table>
@@ -158,20 +154,20 @@
 $(document).ready(function () {
 
     // Duplicar el encabezado de la tabla Cotizaciones para la busqueda por columna
-    // $('#kpi_desarrollos thead tr').clone(true).appendTo( '#kpi_desarrollos thead' );
-    //     $('#kpi_desarrollos thead tr:eq(1) th').each( function (i) {
-    //         var title = $(this).text();
-    //         $(this).html( '<input type="text" placeholder="'+title+'" class="form-control"  />');
+    $('#kpi_desarrollos thead tr').clone(true).appendTo( '#kpi_desarrollos thead' );
+        $('#kpi_desarrollos thead tr:eq(1) th').each( function (i) {
+            var title = $(this).text();
+            $(this).html( '<input type="text" placeholder="'+title+'" class="form-control"  />');
 
-    //         $( 'input', this ).on( 'keyup change', function () {
-    //             if (table_kpidesarrollos.column(i).search() !== this.value ) {
-    //                 table_kpidesarrollos
-    //                     .column(i)
-    //                     .search( this.value )
-    //                     .draw();
-    //             }
-    //         } );
-    // });
+            $( 'input', this ).on( 'keyup change', function () {
+                if (table_kpidesarrollos.column(i).search() !== this.value ) {
+                    table_kpidesarrollos
+                        .column(i)
+                        .search( this.value )
+                        .draw();
+                }
+            } );
+    });
 
 
     var table_kpidesarrollos = $('#kpi_desarrollos').DataTable({
@@ -183,7 +179,6 @@ $(document).ready(function () {
         ],
         language: {
             sSearch: "Buscador",
-            className: 'col-lg-6',
             lengthMenu: '_MENU_ registros por página',
             info: 'Mostrando _TOTAL_ registro(s)',
             infoFiltered: " filtrado(s) de un total de _MAX_ en _PAGES_ páginas",
@@ -200,7 +195,7 @@ $(document).ready(function () {
                 extend: 'excel',
                 text: '<i class="fa  fa-file-excel-o"></i> Exportar',
                 class : 'excel',
-                className: 'btn-secondary-o mr-1',
+                className: 'btn-secondary',
                 filename: 'KPI_Desarrollos',
                 charset: 'utf-8',
                 bom: true
@@ -208,7 +203,7 @@ $(document).ready(function () {
             {
                 extend: 'print',
                 text: '<i class="fa  fa-print"></i> Imprimir',
-                className: 'btn-secondary-o',
+                className: 'btn-secondary',
                 filename: 'KPI_Desarrollos'
             },
         ]

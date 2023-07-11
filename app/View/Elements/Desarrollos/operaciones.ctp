@@ -112,31 +112,24 @@
                 <?php foreach($operaciones as $operacion ): ?>
                     <div class="col-sm-12">
                         <div class="card card-o" style="border-radius:9px;margin-top: 8px;">
-                            <div class="col-sm-12 headerOps">
-                                <h4 style="color:black; padding:4px 8px;">
-                                    <?= $status_propiedades[$operacion['tipo_operacion']] ?>
-                                    <?= $this->Html->link($operacion['Inmueble']['referencia'], array('controller' => 'inmuebles', 'action' => 'view_tipo', $operacion['inmueble_id'], 'style' => 'padding-left:8px;')) ?>
-                                    <?php if( $this->Session->read('Permisos.Group.eoi') ): ?>
-                                        <span class="float-sm-right pointer icon-group" onclick="editModalProcesoInmueble( <?= $operacion['tipo_operacion'] ?> )">
-                                            <i class="fa fa-edit"> </i>
-                                        </span>
-                                    <?php endif; ?>
-                                    
-                                    <?php if( $this->Session->read('Permisos.Group.doi') ): ?>
-                                        <span class="float-sm-right pointer icon-group" onclick="deleteModalProcesoInmueble( <?= $operacion['id'] ?>, <?= $operacion['cliente_id'] ?>, '<?= $operacion['Inmueble']['referencia'] ?>', <?= $operacion['Inmueble']['id'] ?>, <?= $operacion['tipo_operacion'] ?> )">
-                                            <i class="fa fa-trash"> </i>
-                                        </span>
-                                    <?php endif; ?>
-                                </h4>
-                                <span class="float-right">
-                                    <i class="fa fa-chevron-down" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"></i>
-                                </span>
+                            <div class="col-sm-12 <?= $bg_propiedades[$operacion['tipo_operacion']] ?> chip" style="border-radius: 8px 8px 0 0 !important;display:flex;justify-content: space-evenly;">
+                                <?= $status_propiedades[$operacion['tipo_operacion']] ?>
+                                <?= $this->Html->link($operacion['Inmueble']['referencia'], array('controller' => 'inmuebles', 'action' => 'view_tipo', $operacion['inmueble_id'], 'style' => 'padding-left:8px;')) ?>
+                                <?php if( $this->Session->read('Permisos.Group.eoi') ): ?>
+                                    <span class="float-sm-right pointer icon-group" onclick="editModalProcesoInmueble( <?= $operacion['tipo_operacion'] ?> )">
+                                        <i class="fa fa-edit"> </i>
+                                    </span>
+                                <?php endif; ?>
+
+                                <?php if( $this->Session->read('Permisos.Group.doi') ): ?>
+                                    <span class="float-sm-right pointer icon-group" onclick="deleteModalProcesoInmueble( <?= $operacion['id'] ?>, <?= $operacion['cliente_id'] ?>, '<?= $operacion['Inmueble']['referencia'] ?>', <?= $operacion['Inmueble']['id'] ?>, <?= $operacion['tipo_operacion'] ?> )">
+                                        <i class="fa fa-trash"> </i>
+                                    </span>
+                                <?php endif; ?>
                             </div>
                             <!-- Imagen -->
                             <div class="card-block mt-3">
-                                <div class="col">
-                                    <div class="collapse multi-collapse mt-1" id="multiCollapseExample1">
-                                    <div class="col-lg-5 col-sm-12 border-300 text-sm-center" style="border-radius:8px;">
+                                <div class="col-lg-5 col-sm-12 border-300 text-sm-center" style="border-radius:8px;">
                                     <?= $this->Html->image($operacion['Inmueble']['FotoInmueble']['0']['ruta'], array('class' => 'img-fluid', 'style' => 'height:330px;'))?>
                                     <!-- Boton de edicion, oh eliminacion. -->
                                     <?php if( $this->Session->read('Permisos.Group.eoi') ): ?>
@@ -213,34 +206,30 @@
                                             <div>Cliente:</div>
                                             <div><?php echo $operacion['Cliente']['nombre'];?></div>
                                         </div>
-                                        <div class="btn btn-secondary-o col-sm-12 col-lg-5 mt-1" style="border-bottom:0.5px solid #c1c1c1;padding:6px 15px;">
-                                                <div class="float-left">Ver documentos</div>
-                                                <i class="fa fa-file-text float-right" ></i>
-                                                <div>
-                                                    <?php foreach( $operacion['Documentos'] as $documento ): ?>
-                                                        <?= ucfirst(str_replace("_", " ", $documento['tipo_documento'] )) ?>
-                                                        <a href="<?= router::url($documento['ruta']) ?>" class="float-right" target="_blank"> <span class ="fa fa-eye">  </span> </a>
-                                                        <br>
-                                                    <?php endforeach; ?>
-                                                </div>
+                                        <div style="border-bottom:0.5px solid #c1c1c1;padding:2px 0;"">
+                                            <div>Documentos:</div>
+                                            <div>
+                                                <?php foreach( $operacion['Documentos'] as $documento ): ?>
+                                                    <?= ucfirst(str_replace("_", " ", $documento['tipo_documento'] )) ?>
+                                                    <a href="<?= router::url($documento['ruta']) ?>" class="float-right" target="_blank"> <span class ="fa fa-eye">  </span> </a>
+                                                    <br>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
-                                        <div class="btn btn-danger col-sm-12 col-lg-5 mt-1 float-right" style="padding:6px 15px; display:flex;justify-content:space-between;">
-                                            <div class=">
-                                                <?=$operacion['cliente_id']?>,
-                                                    <?=$operacion['inmueble_id'] ?>,
-                                                    '<?=$status_venta[$operacion['tipo_operacion']]?>',
-                                                    <?=$operacion['tipo_operacion']?>,
-                                                    <?=$operacion['id']?>
-                                                );">
-                                                Cancelar <?php echo $status_venta[$operacion['tipo_operacion']]; ?>
-                                            </div>
-                                            <i class="fa fa-trash"></i>
-                                        </div>
+                                        <!-- <div style="margin-top: 16px;">
+                                            <button type="button" class="btn btn-success" style="float:right;" onclick="cancelacion(
+                                                                                                                <?=$operacion['cliente_id']?>,
+                                                                                                                <?=$operacion['inmueble_id'] ?>,
+                                                                                                                '<?=$status_venta[$operacion['tipo_operacion']]?>',
+                                                                                                                <?=$operacion['tipo_operacion']?>,
+                                                                                                                <?=$operacion['id']?>
+                                                                                                            );">
+                                                cancelar <?php echo $status_venta[$operacion['tipo_operacion']]; ?>
+                                            </button>
+                                        </div> -->
                                     </div>
                                 </div>
-                            </div>
-                                
+                                </div>
                             </div>
                         </div>
                         <?php $operacion_inmueble_id = $operacion['inmueble_id']; ?>

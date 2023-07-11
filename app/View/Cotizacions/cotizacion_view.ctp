@@ -67,8 +67,8 @@
                 <h2 class='pt-1 pb-1 title bg-blue-is text-sm-center'><?= $desarrollo['Desarrollo']['nombre'].' / '.$cotizacion['Inmueble']['referencia'] ?></h2>
             </div>
             <div class="col-sm-12" id='container-fondo-plano'>
-                <p class='text-sm-center'>
-                    <?= $this->Html->image($cotizacion['Inmueble']['FotoInmueble'][0]['ruta'], array('class' => 'img-fluid-cotizacion')) ?>
+            <p class='text-sm-center' style="text-align:center;">
+                    <?= $this->Html->image($cotizacion['Inmueble']['FotoInmueble'][0]['ruta'], array('style' => 'width:auto;max-height:300px;')) ?>
                 </p>
             </div>
         </div>
@@ -164,7 +164,7 @@
         </div>
 
         <!-- Informacion del presupuesto Extras o complementos -->
-        <div class="row presupuesto" id="plan-pagos">
+        <div class="row presupuesto table-responsive" id="plan-pagos">
             <div class="col-sm-12">
                 <?= $cotizacion['Cotizacion']['cotizacion'] ?>
             </div>

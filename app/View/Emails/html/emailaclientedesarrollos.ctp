@@ -22,9 +22,9 @@
 			/* position: relative;
 			left: 125px; */
 		}
-		#photo-asesor{
+		/* #photo-asesor{
 			padding-left: 10px;
-		}
+		} */
 		#icons-asesor{
 			padding-left: 10px;
 		}
@@ -114,6 +114,17 @@
 		}
 		.mcnDividerBlock{
 			table-layout:fixed !important;
+		}
+		td a{
+			color:#fff !important;
+		}
+		a:link {
+			text-decoration: none;
+		}
+		.email_icon{
+			width: 24px; 
+			height: auto; 
+			margin-top: 8px;
 		}
 	/*
 	@tab Page
@@ -392,9 +403,10 @@
 		left: 0px; */
 	}
 	#photo-asesor{
-		position: absolute;
+		/* position: absolute; */
 		text-align: center;
-		padding-left: 17%;
+		/* padding-left: 17%; */
+		background-size: 100% auto !important;
 	}
 
 	#icons-asesor{
@@ -683,180 +695,202 @@
 									</table>
 									<!-- Tabla de propiedades -->
 									<?php if (isset($propiedades)): ?>
-										<?php foreach ($propiedades as $propiedad):?>
-											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
-												<tbody class="mcnTextBlockOuter">
-													<tr>
-														<td valign="top" class="mcnTextBlockInner">
-															<div class="mcnTextContent" style="">
-																<div style="border: 1px solid #ADB5BD; height: 100%; border-radius: 8px;margin: 0 auto;" id="card-center">
-																	<p style="text-align: center">
-																		<img data-file-id="2730789" height="261" src="<?= Router::url($propiedad['FotoInmueble'][0]['ruta'], true) ?>" style="border: 0px  ; width: 180px; height: 180px; margin: 0px;" width="180">
-																	</p>
-																	<p style="text-align: center">
-																		<?php echo $propiedad['Inmueble']['referencia']?>
-																	</p>
-																	<p style="text-align: center">
-																		<a href="<?= Router::url('/inmuebles/detalle/'.$propiedad['Inmueble']['id'].'/'.$usuario['User']['id'], true) ?>" style="
-																			width: 154px;
-																			display: inline-block;
-																			background: #212529;
-																			border: 1px solid #212529;
-																			border-radius: 8px;
-																			text-decoration: none;
-																			color: #FFFFFF;
-																			padding-top: 5px;
-																			padding-bottom: 5px;
-																			text-align:center;
-																			">
-																			Ver propiedad
-																		</a>
-																	</p>
-																</div>
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										<?php endforeach; ?>
-									<?php endif ?>
-									<!-- Tabla de desarrollos -->
-									<?php if (isset($desarrollos)): ?>
-										<?php foreach ($desarrollos as $desarrollo):?>
-											<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
-												<tbody class="mcnTextBlockOuter">
-													<tr>
-														<td valign="top" class="mcnTextBlockInner">
-															<div class="mcnTextContent" style="">
-																<div style="border: 1px solid #ADB5BD; height: 100%; border-radius: 8px;margin: 0 auto;" id="card-center">
-																	<p style="text-align: center">
-																		<img data-file-id="2730789" height="261" src="<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true) ?>" style="border: 0px  ; width: 180px; height: 180px; margin: 0px;" width="180">
-																	</p>
-																	<p style="text-align: center">
-																		<?php echo $desarrollo['Desarrollo']['nombre']?>
-																	</p>
-																	<p style="text-align: center">
-																		<a href="<?= Router::url('/desarrollos/detalle/'.$desarrollo['Desarrollo']['id'].'/'.$usuario['User']['id'], true) ?>" style="
-																			width: 154px;
-																			display: inline-block;
-																			background: #212529;
-																			border: 1px solid #212529;
-																			border-radius: 8px;
-																			text-decoration: none;
-																			color: #FFFFFF;
-																			padding-top: 5px;
-																			padding-bottom: 5px;
-																			text-align:center;
-																			">
-																			Ver desarrollo
-																		</a>
-																	</p>
-																</div>
-															</div>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										<?php endforeach; ?>
-									<?php endif; ?>
-									<!-- firma del asesor -->
+									<?php foreach ($propiedades as $propiedad):?>
 									<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
 										<tbody class="mcnTextBlockOuter">
 											<tr>
-												<td valign="top" class="">
-													<div class="mcnTextContent">
-														<table style="height 200px; background-color: #495057; width: 100%; margin-top: 33px">
-															<tbody>
-																<tr class="firma">
-																	<td class="firma1">
-																		<table class="firma1-1" style="height: 80%">
-																			<tbody>
-																				<tr>
-																					<td>
-																					</td>
-																					<td id="photo-asesor">
-																						<div style="width: 120px;height: 120px;border-radius: 8px;background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position: center;background-repeat: no-repeat;background-size: 100% auto;">&nbsp;</div>
-																					</td>
-																					<td id="icons-asesor">
-																						<table style="height: 100%;width: 30px;background: #ADB5BD ;border-radius: 4px;">
-																							<tbody>
-																								<tr style="padding-top: 3px;">
-																									<td style="padding-bottom: 47px; display: inline-block;"><img alt="facebook" src="https://adryo.com.mx/img/person.png" style="width: 13px; height: auto; margin-left: 5px; margin-top: 7px;"></td>
-																									<td style="display: inline-block;"><img alt="facebook" src="https://adryo.com.mx/img/phone.png" style="width: 13px; height: auto; margin-left: 5px; margin-top: 7px;"></td>
-																									<td style="display: inline-block;"><img alt="facebook" src="https://adryo.com.mx/img/website.png" style="width: 13px; height: auto; margin-left: 5px; margin-top: 7px;"></td>
-																									<td style="display: inline-block;"><img alt="facebook" src="https://adryo.com.mx/img/mail.png" style="width: 13px; height: auto; margin-left: 5px; margin-top: 7px;"></td>
-																								</tr>
-																							</tbody>
-																						</table>
-																					</td>
-																					<td id="datos-asesor">
-																						<table style="height: 100%; width: 100%;">
-																							<tbody>
-																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 700; line-height: 28px; display: block; font-size: 18px;">
-																										<?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
-																									</td>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px;padding-bottom: 20px; display: block; font-size: 12px;">
-																										Asesor
-																									</td>
-																								</tr>
-																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
-																										<?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
-																									</td>
-																								</tr>
-																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
-																										<?= ($this->Session->read('CuentaUsuario.Cuenta.pagina_web') != '' ? $this->Session->read('CuentaUsuario.Cuenta.pagina_web') : 'N/A' ) ?>
-																									</td>
-																								</tr>
-																								<tr>
-																									<td style="font-family:Raleway,Arial,sans-serif; font-style: normal;font-weight: 500; line-height: 24px; display: block; font-size: 12px;">
-																										<?= (empty( $usuario['User']['correo_electronico'])? 'URL no disponible': $usuario['User']['correo_electronico'])?>
-																									</td>
-																								</tr>
-																							</tbody>
-																						</table>
-																					</td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</td>
-																	<td class="firma2" style="width: 50px; height: 200px;background: white; border: 1px solid #495057; border-radius: 0px 8px 8px 0px;">
-																		<table style="width: 100%;height: 100%;text-align: center;">
-																			<tbody>
-																				<tr class="firma2-1" style="padding-top: 7px; gap: 4px;">
-																					<td style="display: inline-block;">
-																						<div>
-																							<a href="<?= ( !empty($desarrollo[0]['Desarrollo']['url_facebook']) ? $desarrollo[0]['Desarrollo']['url_facebook'] : $rds_sociales['Cuenta']['url_facebook'] ) ?>" target="_blank">
-																								<img alt="facebook" src="https://adryo.com.mx/assets/icons/facebook.png" style="width: 25px; height: auto; margin-top: 15px;">
-																							</a>
-																						</div>
-																					</td>
-																					<td style="display: inline-block;">
-																						<a href="<?= ( !empty($desarrollo[0]['Desarrollo']['url_twitter']) ? $desarrollo[0]['Desarrollo']['url_twitter'] : $rds_sociales['Cuenta']['url_twitter'] ) ?>" target="_blank">
-																							<img alt="twitter" src="https://adryo.com.mx/assets/icons/twitter.png" style="width: 25px; height: auto; margin-top: 15px;">
-																						</a>
-																					</td>
-																					<td style="display: inline-block;">
-																						<a href="<?= ( !empty($desarrollo[0]['Desarrollo']['url_instagram']) ? $desarrollo[0]['Desarrollo']['url_instagram'] : $rds_sociales['Cuenta']['url_instagram'] ) ?>" target="_blank">
-																							<img alt="instagram" src="https://adryo.com.mx/assets/icons/instagram.png" style="width: 25px; height: auto; margin-top: 15px;">
-																						</a>
-																					</td>
-																					<td style="display: inline-block;">
-																						<a href="<?= ( !empty($desarrollo[0]['Desarrollo']['url_youtube']) ? $desarrollo[0]['Desarrollo']['url_youtube'] : $rds_sociales['Cuenta']['url_youtube'] ) ?>" target="_blank">
-																							<img alt="youtube" src="https://adryo.com.mx/assets/icons/youtube.png" style="width: 25px; height: auto; margin-top: 15px;">
-																						</a>
-																					</td>
-																				</tr>
-																			</tbody>
-																		</table>
-																	</td>
-																</tr>
-															</tbody>
-														</table>
+												<td valign="top" class="mcnTextBlockInner">
+													<div class="mcnTextContent" style="">
+														<div style="border: 1px solid #E2E2E2; height: 100%;width:350px; border-radius: 8px;margin: 0 auto;margin-bottom: 32px; "
+															id="card-center">
+															<p style="text-align: center">
+																<img data-file-id="2730789" height="261"
+																	src="<?= Router::url($propiedad['FotoInmueble'][0]['ruta'], true) ?>"
+																	style="border: 0px  ; width: 180px; height: 180px; margin: 0px;"
+																	width="180">
+															</p>
+															<p style="text-align: center">
+																<?php echo $propiedad['Inmueble']['referencia']?>
+															</p>
+															<p style="text-align: center">
+																<a href="<?= Router::url('/inmuebles/detalle/'.$propiedad['Inmueble']['id'].'/'.$usuario['User']['id'], true) ?>"
+																	style="
+																					width: 154px;
+																					display: inline-block;
+																					background: #376D6C;
+																					border: 1px solid #376D6C;
+																					border-radius: 8px;
+																					text-decoration: none;
+																					color: #FFFFFF;
+																					padding-top: 5px;
+																					padding-bottom: 5px;
+																					text-align:center;
+																					">
+																	Ver propiedad
+																</a>
+															</p>
+														</div>
 													</div>
 												</td>
+											</tr>
+										</tbody>
+									</table>
+									<?php endforeach; ?>
+									<?php endif ?>
+									<!-- Tabla de desarrollos -->
+									<?php if (isset($desarrollos)): ?>
+									<?php foreach ($desarrollos as $desarrollo):?>
+									<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
+										<tbody class="mcnTextBlockOuter">
+											<tr>
+												<td valign="top" class="mcnTextBlockInner">
+													<div class="mcnTextContent" style="">
+														<div style="border: 1px solid #E2E2E2; height: 100%; border-radius: 8px;margin: 0 auto;margin-bottom: 32px;"
+															id="card-center">
+															<p style="text-align: center">
+																<img data-file-id="2730789" height="261"
+																	src="<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true) ?>"
+																	style="border: 0px  ; width: 180px; height: 180px; margin: 0px;"
+																	width="180">
+															</p>
+															<p style="text-align: center">
+																<?php echo $desarrollo['Desarrollo']['nombre']?>
+															</p>
+															<p style="text-align: center">
+																<a href="<?= Router::url('/desarrollos/detalle/'.$desarrollo['Desarrollo']['id'].'/'.$usuario['User']['id'], true) ?>"
+																	style="
+																					width: 154px;
+																					display: inline-block;
+																					background: #376D6C;
+																					border: 1px solid #376D6C;
+																					border-radius: 8px;
+																					text-decoration: none;
+																					color: #FFFFFF;
+																					padding-top: 5px;
+																					padding-bottom: 5px;
+																					text-align:center;
+																					">
+																	Ver desarrollo
+																</a>
+															</p>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<?php endforeach; ?>
+									<?php endif; ?>
+									<!-- firma del asesor -->
+									<table style="height: 200px; border: 0; width: 100%; margin-top: 33px;background-color:#444; ">
+										<tbody>
+											<tr class="firma">
+												<td style="padding: 16px;">
+													<table style="height: 80%">
+														<tbody>
+															<!-- Datos de contacto -->
+															<tr>
+																<!-- Logo -->
+																<td id="photo-asesor">
+																	<div
+																		style="background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position:center; background-repeat:no-repeat; background-size:cover;height: 120px;width:120px;border-radius: 100%;">
+																		&nbsp;</div>
+																</td>
+																<td id="datos-asesor">
+																	<table style="height: 100%;width:100%;">
+																		<tbody>
+																			<tr>
+																				<td style="padding-right: 16px;"><img alt="Asesor" src="https://adryo.com.mx/img/email/person_pin.svg" class="email_icon">
+																				</td>
+																				<td>
+																					<div
+																						style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 600; line-height: auto;  font-size: 16px; color:#fff;">
+																						<?= ( empty( $usuario['User']['nombre_completo'] ) ? 'Sin nombre' : $usuario['User']['nombre_completo'] ) ?>
+																					</div>
+																					<div
+																						style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 400; line-height: auto; font-size: 14px;color:#fff;">
+																						Asesor
+																					</div>
+																				</td>
+																			</tr>
+
+																			<tr>
+																				<td><img alt="Teléfono" src="https://adryo.com.mx/img/email/call.svg" class="email_icon"/>
+																				</td>
+
+																				<td
+																					style=" font-style: normal;font-weight: 400; line-height: 24px;  font-size: 12px;color:#fff;">
+																					<?= ( empty( $usuario['User']['telefono1'] ) ? 'Sin teléfono' : $usuario['User']['telefono1'] ) ?>
+																				</td>
+																			</tr>
+																			<tr>
+																				<td><img alt="Sitio web" src="https://adryo.com.mx/img/email/captive_portal.svg" class="email_icon">
+																				</td>
+
+																				<td class="link"
+																					style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 400; line-height: 24px;  font-size: 12px;color:#fff;">
+																					<?= ($this->Session->read('CuentaUsuario.Cuenta.pagina_web') != '' ? $this->Session->read('CuentaUsuario.Cuenta.pagina_web') : 'N/A' ) ?>
+																				</td>
+																			</tr>
+
+																			<tr>
+																				<td><img alt="E-mail" src="https://adryo.com.mx/img/email/mail.svg" class="email_icon">
+																				</td>
+
+																				<td class="link"
+																					style="font-family: 'Montserrat', sans-serif; font-style: normal;font-weight: 400; line-height: 24px;  font-size: 12px;color:#fff;">
+																					<?= (empty( $usuario['User']['correo_electronico'])? 'Sin correo eléctronico': $usuario['User']['correo_electronico'])?>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+												<!-- Datos de social media -->
+												<!-- <td class="firma2"
+													style="width: 50px; height: 200px;background:#F1F3F5; border: 0; display: none;">
+													<table style="width: 100%;height: 100%;text-align: center;">
+														<tbody>
+															<tr class="firma2-1" style="padding-top: 7px; gap: 4px;">
+																<td class="social" style="display: inline-block;">
+																	<a href="<?= ( !empty($desarrollo[0]['Desarrollo']['url_facebook']) ? $desarrollo[0]['Desarrollo']['url_facebook'] : $rds_sociales['Cuenta']['url_facebook'] ) ?>"
+																		target="_blank">
+																		<img alt="facebook"
+																			src="https://adryo.com.mx/img/email/facebook-email.svg"
+																			style="width: 24px; height: auto; margin-top: 16px;">
+																	</a>
+																</td>
+																<td class="social" style="display: inline-block;">
+																	<a href="<?= ( !empty($desarrollo[0]['Desarrollo']['url_twitter']) ? $desarrollo[0]['Desarrollo']['url_twitter'] : $rds_sociales['Cuenta']['url_twitter'] ) ?>"
+																		target="_blank">
+																		<img alt="twitter"
+																			src="https://adryo.com.mx/img/email/twitter-email.svg"
+																			style="width: 24px; height: auto; margin-top: 16px;">
+																	</a>
+																</td>
+																<td class="social" style="display: inline-block;">
+																	<a href="<?= ( !empty($desarrollo[0]['Desarrollo']['url_instagram']) ? $desarrollo[0]['Desarrollo']['url_instagram'] : $rds_sociales['Cuenta']['url_instagram'] ) ?>"
+																		target="_blank">
+																		<img alt="instagram"
+																			src="https://adryo.com.mx/img/email/instagram-email.svg"
+																			style="width: 24px; height: auto; margin-top: 16px;">
+																	</a>
+																</td>
+																<td class="social" style="display: inline-block;">
+																	<a href="<?= ( !empty($desarrollo[0]['Desarrollo']['url_youtube']) ? $desarrollo[0]['Desarrollo']['url_youtube'] : $rds_sociales['Cuenta']['url_youtube'] ) ?>"
+																		target="_blank">
+																		<img alt="youtube"
+																			src="https://adryo.com.mx/img/email/youtube-email.svg"
+																			style="width: 24px; height: auto; margin-top: 16px;">
+																	</a>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td> -->
 											</tr>
 										</tbody>
 									</table>
@@ -880,7 +914,7 @@
 														<tbody>
 															<tr>
 																<td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 100%;">
-																	<div style="text-align: left;">
+																	<div style="text-align: center;">
 																		<span style="display: inline-block;
 																			padding-top: 5px;
 																			position: relative;
@@ -905,8 +939,8 @@
 														<tbody>
 															<tr>
 																<td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px;color: white;line-height: 100%;">
-																	<div style="text-align: right;">
-																		Todos los derechos reservados 2022 ©
+																	<div style="text-align: center;">
+																		Todos los derechos reservados <?= date('Y'); ?> ©
 																	</div>
 																</td>
 															</tr>

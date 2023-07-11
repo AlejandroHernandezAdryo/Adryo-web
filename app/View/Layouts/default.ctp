@@ -682,9 +682,6 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li>
-                                        <?= $this->Html->link('<span>Reporte de clientes</span>', array('controller'=>'clientes', 'action'=>'reporte_c1'), array('escape'=>false))?>
-                                    </li>
-                                    <li>
                                         <?= $this->Html->link('<span>Reporte por Asesor</span>', array('controller'=>'users', 'action'=>'reporte_a1'), array('escape'=>false))?>
                                     </li>
                                     <li>

@@ -81,120 +81,63 @@
     <table role="presentation" style="width:100%;border:none;border-spacing:0;">
       <tr>
         <td align="center" style="padding:0;">
-          <!--[if mso]>
+                  <!--[if mso]>
           <table role="presentation" align="center" style="width:600px;">
           <tr>
           <td>
           <![endif]-->
           <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
             <tr>
-              <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;">
-                <a href="#" style="text-decoration:none;">
-                  <img src="https://adryo.com.mx/<?= $this->Session->read('CuentaUsuario.Cuenta.logo') ?>" width="165"  style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;">
-                </a>
-              </td>
+                <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;">
+                    <a href="#" style="text-decoration:none;">
+                        <img src="https://adryo.com.mx/<?= $this->Session->read('CuentaUsuario.Cuenta.logo') ?>" width="165"  style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;">
+                    </a>
+                </td>
             </tr>
             <tr>
               <td style="padding:30px;background-color:#ffffff;">
-			  	      <br>
-				        <span style="color:#212529">ATENCIÓN A: <?php echo $cliente['Cliente']['nombre']?></span><br>
-				        &nbsp;
-				        <div style="text-align: justify;">
-                  Se envía la cotización solicitada del departamento  <?= $desarrollos[0]['Desarrollo']['nombre'].' / '.$inmueble['Inmueble']['referencia'] ?>, si tiene alguna duda o requiere información adicional me encuentro a sus órdenes.
-                  <br>
-                  <!-- <a href="</?php $url ?>"></?php echo $url ?></a> -->
-                </div>
+                <br>
+                <span style="color:#212529">
+                    <b>
+                        Hola <?php echo $cliente['Cliente']['nombre']?>:
+                    </b>
+                    </span>
+                    <br>
+                    &nbsp;
+                    <div style="text-align: justify;"><?php echo $body_message; ?>
+                    </div>
               </td>
             </tr>
             <tr>
-              <td style="padding:30px;font-size:24px;line-height:28px;font-weight:bold;background-color:#ffffff;border-bottom:1px solid #f0f0f5;border-color:rgba(201,201,207,.35);">
-                <!-- Tabla de propiedades -->
-                <?php if (isset($propiedades)): ?>
-                  <?php foreach ($propiedades as $propiedad):?>
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
-                      <tbody class="mcnTextBlockOuter">
-                        <tr>
-                          <td valign="top" class="mcnTextBlockInner">
-                            <div class="mcnTextContent" style="">
-                              <div style="border: 1px solid #ADB5BD; height: 100%; border-radius: 8px;" id="card-center">
-                                <p style="text-align: center">
-                                  <img data-file-id="2730789" height="261" src="<?= Router::url($propiedad['FotoInmueble'][0]['ruta'], true) ?>" style="border: 0px  ; width: 180px; height: 180px; margin: 0px;" width="180">
-                                </p>
-                  
-                                <p style="text-align: center">
-                                  <?php echo $propiedad['Inmueble']['referencia']?>
-                                </p>
-                                <p style="text-align: center">
-                                  <a href="<?= Router::url('/inmuebles/detalle/'.$propiedad['Inmueble']['id'].'/'.$usuario['User']['id'], true) ?>" style="
-                                    width: 154px;
-                                    display: inline-block;
-                                    background: #212529;
-                                    border: 1px solid #212529;
-                                    border-radius: 8px;
-                                    text-decoration: none;
-                                    color: #FFFFFF;
-                                    padding-top: 5px;
-                                    padding-bottom: 5px;
-                                    text-align:center;
-                                    font-size:14px;
-                                    ">
-                                    Ver propiedad
-                                  </a>
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  <?php endforeach; ?>
-                <?php endif ?>
-
-                <?php if (isset($desarrollos)): ?>
-                  <?php foreach ($desarrollos as $desarrollo):?>
-                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnCodeBlock">
-                      <tbody class="mcnTextBlockOuter">
-                        <tr>
-                          <td valign="top" class="mcnTextBlockInner">
-                            <div class="mcnTextContent" style="">
-                              <div style="border: 1px solid #ADB5BD; height: 100%; border-radius: 8px;" id="card-center">
-                                <p style="text-align: center">
-                                  <img data-file-id="2730789" height="261" src="<?= Router::url($desarrollo['FotoDesarrollo'][0]['ruta'], true) ?>" style="border: 0px  ; width: 180px; height: 180px; margin: 0px;" width="180">
-                                </p>
-                                <p style="text-align: center">
-                                  <?php echo $desarrollo['Desarrollo']['nombre']?>
-                                </p>
-                                <p style="text-align: center">
-                                  <a href="<?= $url ?>" style="
-                                    width: 154px;
-                                    display: inline-block;
-                                    background: #212529;
-                                    border: 1px solid #212529;
-                                    border-radius: 8px;
-                                    text-decoration: none;
-                                    color: #FFFFFF;
-                                    padding-top: 5px;
-                                    padding-bottom: 5px;
-                                    text-align:center;
-                                    font-size:14px;
-                                    ">
-                                    Ver cotización
-                                  </a>
-                                </p>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  <?php endforeach; ?>
-                <?php endif; ?>
+              <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 100%;">
+                <span style="font-size:13px">
+                  <strong>
+                    Estimado: <?php echo $cliente['Cliente']['nombre']?>
+                  </strong>&nbsp;
+                  <br><br>
+                  <?= $contenido?>
+                    Recuerde que tenemos una cita programada, el <?= date('d', strtotime($evento['Event']['fecha_inicio'])).'/'.$meses_esp[date('m', strtotime($evento['Event']['fecha_inicio']))].'/'.date('Y', strtotime($evento['Event']['fecha_inicio'])).' a las '.date('H', strtotime($evento['Event']['fecha_inicio'])).':'.date('m', strtotime($evento['Event']['fecha_inicio'])) ?> en el desarrollo / propiedad <?php echo $desarrollo['Desarrollo']['nombre']?> ubicado en <?= $evento['Event']['direccion'] ?>.
+                    <br><br>
+                    Con gusto le espero para atenderle con oportunidad.
+                    <br><br>
+                    <b>Datos del evento:</b>
+                    <br><br>
+                    <p>
+                      Tipo de evento: <b>Cita</b>
+                    </p>
+                    <p>
+                      Fecha y hora: <b><?= date('d', strtotime($evento['Event']['fecha_inicio'])).'/'.$meses_esp[date('m', strtotime($evento['Event']['fecha_inicio']))].'/'.date('Y', strtotime($evento['Event']['fecha_inicio'])).' a las '.date('H', strtotime($evento['Event']['fecha_inicio'])).':'.date('m', strtotime($evento['Event']['fecha_inicio'])) ?></b>
+                    </p>
+                    <p>
+                      Dirección del evento: <b><?= $evento['Event']['direccion'] ?></b>
+                    </p>
+                </span>
               </td>
             </tr>
-			      <!-- firma -->
+            <!-- firma -->
             <tr>
               <td>
-                <table style="height: 200px; border: 0;  margin-top: 33px;background-color:#444; ">
+                <table style="height: 200px; border: 0; width:100%;  margin-top: 33px;background-color:#444; ">
                   <tbody>
                     <tr class="firma">
                       <td style="padding: 16px;">
@@ -265,8 +208,8 @@
                   </tbody>
                 </table>  
               </td>
-            </tr>
-			      <!-- footer -->
+            </tr> 
+            <!-- footer -->
             <tr>
               <td style="text-align:center;font-size:12px;color:#cccccc;">
                 <table style="width:100%;">
@@ -290,6 +233,7 @@
               </td>
             </tr>
           </table>
+          
           <!--[if mso]>
           </td>
           </tr>

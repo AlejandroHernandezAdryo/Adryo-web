@@ -352,6 +352,10 @@ class CotizacionsController extends AppController {
                     $this->request->data['LogCliente']['accion']     = 4;
                     $this->request->data['LogCliente']['mensaje']    = $mensaje_seguimiento;
                     $this->LogCliente->save($this->request->data);
+                    // Cambiar el estatus al cliente
+                    $this->request->data['Cliente']['id']        = $this->request->data['Cotizacion']['cliente_id'];;
+                    $this->request->data['Cliente']['last_edit'] =date('Y-m-d H:i:s');
+                    $this->Cliente->save($this->request->data);
 
                 }
 

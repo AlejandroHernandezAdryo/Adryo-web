@@ -644,10 +644,24 @@
                                 <td valign="top" class="mcnTextContent" style="padding: 0px 18px 9px; line-height: 100%;">
                                   <span style="font-size:13px">
                                     <strong>
-                                      Atención a: <?php echo $cliente['Cliente']['nombre']?>
+                                      Hola <?php echo $cliente['Cliente']['asesor']?>
                                     </strong>&nbsp;
                                     <br><br>
                                     <?= $contenido?>
+                                      Tienes una cita programada el día <?= date('d', strtotime($evento['Event']['fecha_inicio'])).'/'.$meses_esp[date('m', strtotime($evento['Event']['fecha_inicio']))].'/'.date('Y', strtotime($evento['Event']['fecha_inicio'])).' a las '.date('H', strtotime($evento['Event']['fecha_inicio'])).':'.date('m', strtotime($evento['Event']['fecha_inicio'])) ?>, por favor revisa la información del mismo:
+                                        <br><br>
+                                      <p>
+                                        Tipo de evento: <b>Cita</b>
+                                      </p>
+                                      <p>
+                                        Nombre del cliente: <b><?php echo $cliente['Cliente']['nombre']?></b>
+                                      </p>
+                                      <p>
+                                        Fecha y hora: <b><?= date('d', strtotime($evento['Event']['fecha_inicio'])).'/'.$meses_esp[date('m', strtotime($evento['Event']['fecha_inicio']))].'/'.date('Y', strtotime($evento['Event']['fecha_inicio'])).' a las '.date('H', strtotime($evento['Event']['fecha_inicio'])).':'.date('m', strtotime($evento['Event']['fecha_inicio'])) ?></b>
+                                      </p>
+                                      <p>
+                                        Dirección del evento: <b><?= $evento['Event']['direccion'] ?></b>
+                                      </p>
                                   </span>
                                 </td>
                               </tr>
@@ -683,8 +697,8 @@
                                 <!-- Logo -->
                                 <td id="photo-asesor">
                                   <div
-                                    style="width: 120px;height: 120px;border-radius:100%; background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position:center; background-repeat:no-repeat; background-size:100% auto;">
-                                    &nbsp;</div>
+                                      style="background-image: url(<?= Router::url($usuario['User']['foto'], true); ?>);background-position:center; background-repeat:no-repeat; background-size:cover;height: 120px;width:120px;border-radius: 100%;">
+																		&nbsp;</div>
                                 </td>
                                 <td id="datos-asesor">
                                   <table style="height: 100%;width:100%;">

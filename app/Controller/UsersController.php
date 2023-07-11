@@ -54,7 +54,7 @@ class UsersController extends AppController {
   public function beforeFilter() {
       parent::beforeFilter();
       $this->Session->write('CuentaUsuario',$this->CuentasUser->find('first',array('conditions'=>array('CuentasUser.user_id'=>$this->Session->read('Auth.User.id')))));
-      $this->Auth->allow(array('edit','solicitar_prueba','recordatorios', 'login_app', 'get_all_users', 'validate_user', 'app_send_mail_recovery', 'get_advisor_info'));
+      $this->Auth->allow(array('solicitar_prueba','recordatorios', 'login_app', 'get_all_users', 'validate_user', 'app_send_mail_recovery', 'get_advisor_info'));
       $this->cuenta_id = $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
   }
       
@@ -895,7 +895,6 @@ class UsersController extends AppController {
 	}
 	
 	public function test(){
-    echo "Hola como estas";
 		$this->layout='bos';
 	}
 	
@@ -1535,33 +1534,33 @@ class UsersController extends AppController {
 	}   
 
   public function add_cliente() {
-    if ($this->Session->read('Auth.User.group_id')==5){
-        return $this->redirect(array('action' => 'mysession','controller'=>'users'));
-    }
-    $this->layout = 'bos';
+                if ($this->Session->read('Auth.User.group_id')==5){
+                    return $this->redirect(array('action' => 'mysession','controller'=>'users'));
+                }
+                $this->layout = 'bos';
 		if ($this->request->is('post')) {
 			$this->request->data['User']['password']= $this->Auth->password($this->request->data['User']['password']);
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-        $this->request->data['Asignacion']['user_id']=$this->User->getInsertID();
-        if (!empty($this->request->data['User']['desarrollo_id'])){
-            $this->request->data['Asignacion']['desarrollo_id'] = $this->request->data['User']['desarrollo_id'];
-        }
-        if (!empty($this->request->data['User']['inmueble_id'])){
-            $this->request->data['Asignacion']['inmueble_id'] = $this->request->data['User']['inmueble_id'];
-        }
-        $this->Asignacion->save($this->request->data);
+                                $this->request->data['Asignacion']['user_id']=$this->User->getInsertID();
+                                if (!empty($this->request->data['User']['desarrollo_id'])){
+                                    $this->request->data['Asignacion']['desarrollo_id'] = $this->request->data['User']['desarrollo_id'];
+                                }
+                                if (!empty($this->request->data['User']['inmueble_id'])){
+                                    $this->request->data['Asignacion']['inmueble_id'] = $this->request->data['User']['inmueble_id'];
+                                }
+                                $this->Asignacion->save($this->request->data);
 				$this->Session->setFlash(__('El usuario ha sido creado exitosamente'),'default',array('class'=>'success'));
 				return $this->redirect(array('action' => 'list_clientes'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
 			}
 		}
-    $this->set('inmuebles',$this->Inmueble->find('list',array('conditions'=>array('Inmueble.id NOT IN (SELECT inmueble_id FROM desarrollo_inmuebles)'))));
-    $this->set('desarrollos',$this->Desarrollo->find('list'));
+                $this->set('inmuebles',$this->Inmueble->find('list',array('conditions'=>array('Inmueble.id NOT IN (SELECT inmueble_id FROM desarrollo_inmuebles)'))));
+                $this->set('desarrollos',$this->Desarrollo->find('list'));
 	}
 
-  public function edit($user_id = null) {
+	public function edit($user_id = null) {
     header('Content-type: application/json; charset=utf-8');
     $this->loadModel('DesarrollosUser');
     $this->DesarrollosUser->Behaviors->load('Containable');
@@ -4036,29 +4035,26 @@ class UsersController extends AppController {
 
       }
       $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
-      $this->set('users', $this->User->find('list',
-          array('order' => 'nombre_completo ASC',
-              'conditions' =>
-                  array(
-                      "User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = $cuenta_id)"
-                  )
-          )
+      $condiciones_asesores    = array('User.status' => 1, 'User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')');
+      $users  =      $this->User->find('list', array(
+        'conditions' => $condiciones_asesores,
+        'order' => 'User.nombre_completo ASC'
       ));
+      $this->set(compact('users'));
       // Variables globales
 
 
   }
 
   public function reporte_a2(){
+    $this->loadModel('User');
+    $this->User->Behaviors->load('Containable');
       $cuenta_id = $this->Session->read('CuentaUsuario.Cuenta.id');
-      $users = $this->User->find('list',
-          array('order' => 'nombre_completo ASC',
-              'conditions' =>
-                  array(
-                      "User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = $cuenta_id)"
-                  )
-          )
-      );
+      $condiciones_asesores    = array('User.status' => 1, 'User.id IN (SELECT user_id FROM cuentas_users WHERE cuenta_id = '.$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id').')');
+      $users  =      $this->User->find('list', array(
+        'conditions' => $condiciones_asesores,
+        'order' => 'User.nombre_completo ASC'
+      ));
       $this->set('users', $users);
       if ( $this->request->is(array('post', 'put')) ) {
           date_default_timezone_set('America/Mexico_City');
@@ -5489,6 +5485,195 @@ class UsersController extends AppController {
       }
     }
     echo json_encode($response, true);
+    $this->autoRender = false;
+  }
+   /**
+   * 
+   * 
+   * 
+  */
+  function clientes_visitas(){
+    header('Content-type: application/json; charset=utf-8');
+    $response=array();
+    $i=0;
+    if ($this->request->is('post')) {
+      $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+      $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+      $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+      $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));
+      if( !empty( $this->request->data['user_id'] ) ){
+        $user_id=$this->request->data['user_id'] ;
+    
+      }
+      $periodos = $this->getPeriodosArreglo($fi,$ff);
+      $visitas = $this->Desarrollo->query(
+        "SELECT COUNT(*) AS visitas,  DATE_FORMAT(events.fecha_inicio,'%m-%Y') As fecha
+        FROM  events
+        WHERE  events.user_id =$user_id
+        AND events.tipo_tarea =1
+        AND events.fecha_inicio >= '$fi' 
+        AND events.fecha_inicio <= '$ff'
+        GROUP BY fecha;"
+    );
+      $clientes_asignados = $this->Cliente->query(
+        "SELECT COUNT(*) AS asignados, DATE_FORMAT(clientes.fecha_cambio_etapa,'%m-%Y') As fecha
+        FROM clientes
+        WHERE user_id = $user_id 
+        AND fecha_cambio_etapa >= '$fi' 
+        AND fecha_cambio_etapa <= '$ff' 
+        GROUP BY fecha;
+      ");
+      foreach ($periodos as $periodo) {
+        foreach ($clientes_asignados as  $cliente_asignado) {
+          if ($cliente_asignado[0]['fecha']==$periodo) {
+            $arreglo[$i]['periodo']=$periodo;
+            $arreglo[$i]['clientes']=$cliente_asignado[0]['asignados'];
+            $arreglo[$i]['visitas']=0;
+          }
+          // $arreglo[$i]['f']=$cliente_asignado[0]['fecha'];
+        }
+        foreach ($visitas as $visita) {
+          if ($visita[0]['fecha']==$periodo) {
+            $arreglo[$i]['periodo']=$periodo;
+            if ( $arreglo[$i]['clientes'] == 0) {
+              $arreglo[$i]['clientes'] = 0;
+            }
+            $arreglo[$i]['visitas']=$visita[0]['visitas'];
+          }
+        }
+        $i++;
+      }
+      $i=0;
+      foreach ($arreglo as $value) {
+        $response[$i]['periodo']=( empty($value['periodo']) ? 0  :  $value['periodo'] );     
+        $response[$i]['clientes']=  ( empty($value['periodo']) ? 0  :  $value['clientes'] );
+        $response[$i]['visitas']=( empty($value['periodo']) ? 0  :  $value['visitas'] );
+        $i++;
+      }
+    }
+    
+    // $fi='2022-01-01 00:00:00';
+    // $ff='2022-10-30 23:59:59';
+    // $user_id=630;
+    // $periodos = $this->getPeriodosArreglo($fi,$ff);
+    if (empty($response)) {
+      $response[$i]['periodo']='sin información';
+      $response[$i]['clientes']=0;
+      $response[$i]['visitas']=0;
+    }
+    echo json_encode( $response , true );
+    exit();
+    $this->autoRender = false;
+  }
+   /**
+   * 
+   * 
+  */
+  function informacion_asesor(){
+    header('Content-type: application/json; charset=utf-8');
+    $this->CuentasUser->Behaviors->load('Containable');
+    $this->Desarrollo->Behaviors->load('Containable');
+    $response=array();
+    $i=0;
+    $j=0;
+    $cuenta_id= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
+
+    if ($this->request->is('post')) {
+      $user_id=$this->request->data['user_id'];
+      $search_user=$this->CuentasUser->find('all',array(
+        'conditions'=>array(
+          'User.id'=>$user_id, 
+        ),  
+        'fields'=>array(
+          'puesto'
+        ),
+        'contain' => array(
+          'User' => array(
+              'fields' => array(
+                  'nombre_completo',
+                  'created',
+              )
+          ),
+        ),
+      ));
+
+      $search_desarollo=$this->Desarrollo->find('all',array(
+        'conditions'=>array(
+          'Desarrollo.cuenta_id'=>$cuenta_id, 
+        ), 
+        'fields'=>array(
+          'nombre',
+        ),
+        'contain' => false 
+      ));
+      foreach ($search_user as $user) {
+        $response[$i]['rol']= $user['CuentasUser']['puesto'];
+        $response[$i]['nombre']= $user['User']['nombre_completo'];
+        $response[$i]['creado']= $user['User']['created'];
+        foreach ($search_desarollo as $desarollo) {
+          $response[$i]['desarollos'][$j]['nombre']= $desarollo['Desarrollo']['nombre'];
+          $j++;
+        }
+        $i++;
+      }
+    }
+    echo json_encode( $response , true );
+    exit();
+    $this->autoRender = false;
+  }
+   /***
+   * 
+   * 
+   * 
+  */
+  function reporte_grupo_asesores_info ( ) {
+    header('Content-type: application/json; charset=utf-8');
+    $this->CuentasUser->Behaviors->load('Containable');
+    $this->Desarrollo->Behaviors->load('Containable');
+    $response=array();
+    $i=0;
+    $j=0;
+    if ($this->request->is('post')) {
+
+      // Condicion para el rango de fechas
+      if( !empty($this->request->data['rango_fechas']) ){
+        $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+        $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+        $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+        $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));
+        if ($fi == $ff){
+            $cond_rangos = array("Cliente.fecha_cambio_etapa LIKE '".$fi."%'");
+        }else{
+          $cond_rangos = array("Cliente.fecha_cambio_etapa BETWEEN ? AND ?"        => array($fi, $ff));
+        }
+      }
+      $arreglo="";
+      $cuenta_id=$this->request->data['cuenta_id'];
+      foreach ($this->request->data['user_id'] as $user) {
+        $search_user=$this->User->find('first',array(
+          'conditions'=>array(
+            'User.id'=>$user, 
+          ),  
+          'fields'=>array(
+            'User.nombre_completo',
+          ),
+          'contain' => false 
+        ));
+        $arreglo .="". $search_user['User']['nombre_completo'].", ";
+        // $reponse[$i]['asesor']=$search_user['User']['nombre_completo'];
+      }
+      $arreglo = substr($arreglo,0,-1);
+      $periodo_tiempo         = 'INFORMACIÓN DE LOS CLIENTES DEL '.date('d-m-Y', strtotime($fecha_ini)).' AL '.date('d-m-Y', strtotime($fecha_fin));
+      $response=array(
+        '0' => array(
+            'periodo'   => $periodo_tiempo,
+            'asesores' =>"<b>".$arreglo."<b>",
+          ),
+    );
+      // $reponse[$i]['periodo']=$periodo_tiempo;
+    }
+    echo json_encode( $response , true );
+    exit();
     $this->autoRender = false;
   }
 

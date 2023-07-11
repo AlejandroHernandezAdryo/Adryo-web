@@ -77,21 +77,19 @@
                             'class'   => 'form-control',
                             'label'   => 'Motivo de error',
                             'div'     => 'col-sm-12',
-                            'options' => array('Error en el telefono', 'Se perdio la conexión'),
+                            'options' => array('Error en el teléfono', 'Se perdió la conexión', 'Número inválido'),
                             'empty'   => 'Seleccione una opción'
-                        )
-                    );
+                        ));
                     ?>
 
                     <div class="col-sm-12 mt-2">
                         <span class="btn btn-success btn-block" id = "btn-opccion-error-send-iframe"> Guardar observación</span>
                     </div>
-
                 </div>
 
                 <div class="row hidden" id="btns-modal-send-iframe">
                     <div class="col-sm-12" id='col-btn-error-message'>
-                        <button class="btn btn-danger btn-block" type="button" class="close" data-dismiss="modal">Ocurrió algún error al enviar</button>
+                        <button class="btn btn-danger btn-block" type="button"  onclick="errorWa()">Ocurrió algún error al enviar</button>
                     </div>
                     <div class="col-sm-12" id='col-btn-success-send-cotizacion'>
                         <span class="btn btn-success btn-block" id = "btn-success-send-iframe"> El mensaje se envío correctamente </span>
@@ -126,6 +124,11 @@
 </div>
 
 <script>
+
+    function errorWa(){
+        $('#error_message_send_row').removeClass('hidden');
+        $('#btns-modal-send-iframe').addClass('hidden');
+    }
 
     // Esta funcion copia el valor de un input y lo guarda en el portapapeles para solo pegar.
     function btnCopyClipboard() {
@@ -338,19 +341,32 @@
     });
 
     $("#btn-opccion-error-send-iframe").on('click', function (){
-
+        var error = null;
+        if ($("#error_message_send_iframe").val() == 0) {
+            error = 'Error en el teléfono'
+        }else if ($("#error_message_send_iframe").val() == 1) {
+            error = 'Se perdió la conexión'
+        } else {
+            error = 'Número inválido'
+        }
+        let cliente = "<?=$param_return?>";
+        console.log(cliente);
         // Traer el listado de los errores.
         $.ajax({
             url: '<?php echo Router::url(array("controller" => "clientes", "action" => "error_send_whatsapp")); ?>',
             cache: false,
             type : "POST",
-            data: { mensaje: `Ocurrió un problema al intentar envíar ${ $("#send_iframe_inmueble_referencia").val() } vía whatsApp al cliente, por motivo: ${ $("#error_message_send_iframe").val() }`, accion: 11, cliente_id: $("#send_iframe_cliente_id").val() },
+            data: { mensaje: `Ocurrió un problema al intentar envíar mensaje vía whatsApp al cliente, por motivo:` +error, accion: 11, cliente_id: cliente},
             beforeSend: function () {
                 $("#modalIframe").modal("hide");
-            },
-            success: function ( response ) {
+                $("#overlay").fadeIn();
 
+            },
+           
+            success: function ( response ) {
+                // console.log(response);
                 location.reload();
+
 
             },
             error: function ( response ){
@@ -359,10 +375,6 @@
         });
 
 
-    });
-
-    $(document).ready(function () {
-        
     });
 
 </script>

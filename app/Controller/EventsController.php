@@ -43,7 +43,7 @@ class EventsController extends AppController {
                   )
                 );
               }
-            $this->Auth->allow('index', 'get_add', 'get_events_user', 'cron_reactivacion_automatica_clientes','get_events_user_ios', 'correcion_inmuebles_events');
+            $this->Auth->allow('test_cron','findEvents','index', 'get_add', 'get_events_user', 'cron_reactivacion_automatica_clientes','get_events_user_ios', 'correcion_inmuebles_events');
         }
 
 /**
@@ -178,6 +178,7 @@ class EventsController extends AppController {
     ---------------------------------------------------------------------------------------------*/
 
     public function add() {
+        date_default_timezone_set('America/Chihuahua');
         if ($this->request->is('post')) {
             $desarrollo_id  = 0;
             $inmueble_id    = 0;
@@ -3130,6 +3131,417 @@ class EventsController extends AppController {
         $this->autoRender = false;
     }
 
+    function citas_cancelacion_grupo(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('User');
+        $this->Event->Behaviors->load('Containable');
+        $this->User->Behaviors->load('Containable');
+        $fecha_ini         = '';
+        $fecha_fin         = '';
+        $response               = [];
+        $and               = [];
+        $or                = [];
+        $cancelaciones_raw = [];
+        $motivo_cancelacion=[];
+        $condiciones =[];
+        $user_id=0;
+        $i=0;
+        if ($this->request->is('post')) {
+            $fecha_ini = substr($this->request->data['rango_fechas'], 0,10).' 00:00:00';
+            $fecha_fin = substr($this->request->data['rango_fechas'], -10).' 23:59:59';
+            $fi = date('Y-m-d H:i:s',  strtotime($fecha_ini));
+            $ff = date('Y-m-d H:i:s',  strtotime($fecha_fin));    
+            if ($fi == $ff){
+                $cond_rangos = array("Event.fecha_inicio LIKE '".$fi."%'");
+                }else{
+                $cond_rangos = array("Event.fecha_inicio BETWEEN ? AND ?" => array($fi, $ff));
+            }
+            foreach ($this->request->data['user_id'] as $user){
+                $user_id = $user_id.$user.",";
+            }
+            $user_id = substr($user_id,0,-1);
+            $cancelaciones_raw= $this->Event->find('all',array(
+                'conditions'=>array(   
+                        'Event.motivo_cancelacion <>' => '',
+                        'Event.status' =>  2,
+                        'Event.tipo_tarea' => 0,
+                        'Event.user_id IN ('.$user_id.')',
+                        $cond_rangos,
+                    ),
+                    'fields' => array(
+                        'Event.motivo_cancelacion',
+                        'COUNT(Event.motivo_cancelacion) as motivo',
+                    ),
+                    'group' =>'Event.motivo_cancelacion',
+                    'contain' => false 
+                )
+            );
+            foreach ($cancelaciones_raw as $value) {
+                $response[$i]['cantidad']=$value[0]['motivo'];
+                $response[$i]['motivo']=$value['Event']['motivo_cancelacion'];
+                $i++;
+            }
+        }
+        if (empty($response)) {
+            $response[$i]['cantidad']=0;
+                $response[$i]['motivo']='sin informacion';
+        }
+        echo json_encode( $response, true );
+        exit();
+        $this->autoRender = false;
+    }
 
+    /* -------------------------------------------------------------------------- */
+
+   
+
+    function test_cron() {
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('DesarrolloInmueble');
+        $this->DesarrolloInmueble->Behaviors->load('Containable');
+        $this->loadModel('Cliente');
+        $this->Cliente->Behaviors->load('Containable');        
+        $this->loadModel('Event');
+        $this->Event->Behaviors->load('Containable');
+
+        $response               = [];
+
+        $fecha= date('Y-m-d H:i:s');
+
+        $this->loadModel('Mailconfig');
+        $this->loadModel('User');
+        $this->Mailconfig->Behaviors->load('Containable');
+        $this->User->Behaviors->load('Containable');
+        $cliente = $this->Cliente->read(null,  59090);
+        $mailconfig  = $this->Mailconfig->read(null, 14);
+        $usuario = $this->User->read(null, 659);
+
+        $this->Email = new CakeEmail();
+        $this->Email->config(array(
+            'host'      => $mailconfig['Mailconfig']['smtp'],
+            'port'      => $mailconfig['Mailconfig']['puerto'],
+            'username'  => $mailconfig['Mailconfig']['usuario'],
+            'password'  => $mailconfig['Mailconfig']['password'],
+            'transport' => 'Smtp',
+            'driver' => 'sendmail',
+            'encryption' => 'tls'
+            )
+        );
+        $this->Email->emailFormat('html');
+        $this->Email->template('emailclientecita','layoutinmomail');
+        $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+        $this->Email->to($cliente['Cliente']['correo_electronico']);
+        $this->Email->subject('Notificación de proxima Cita a cliente');
+        $this->Email->viewVars(array('desarrollo'=>$desarollo,'asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'fecha'=>$fecha));
+        if ( $this->Email->send()) {
+                   
+            $response = array(
+                'Ok' => true,
+                'mensaje' => 'Email de citas enviados',
+                'fecha'=>$fecha
+            );
+    
+        }
+
+        /* -------------------------------------------------------------------------- */
+
+        echo json_encode($response, true);
+        $this->autoRender = false;
+
+    }
+    
+    /**
+     * funcion para el envio de recordatorios
+     * api cronjob
+     * e=MC,rogueOne
+     * 1/julio/2023
+    */
+   
+    function findEvents() {
+
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('DesarrolloInmueble');
+        $this->DesarrolloInmueble->Behaviors->load('Containable');
+        $this->loadModel('Cliente');
+        $this->Cliente->Behaviors->load('Containable');        
+        $this->loadModel('Event');
+        $this->Event->Behaviors->load('Containable');
+
+        $response               = [];
+
+        $fecha= date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s')));
+        $oneday = date('Y-m-d H:i:s', strtotime($fecha."+ 1 days"));  
+        $oneminus = date('Y-m-d H:i:s', strtotime($fecha."- 2 minute"));
+        $onemore = date('Y-m-d H:i:s', strtotime($fecha."+ 2 minute"));
+        $cond_rangos = array("Event.recordatorio_1 BETWEEN ? AND ?" => array($oneminus, $onemore));
+
+        
+        /* ------------------ Logica Envio de recordatorios 2  ------------------ */
+  
+            $recordatorio1 = $this->Event->find('all',
+                array(
+                    'conditions'=>array(
+                        'Event.tipo_tarea' => array("2","3"),
+                        'Event.notification_web_status' => 0,
+                        $cond_rangos
+                    ),
+                    'contain' => array(
+                        'User' => array(
+                            'fields' => array(
+                                'User.id',
+                                'User.nombre_completo',
+                                'User.correo_electronico',
+                            )
+                        ),
+                        'Inmueble' => array(
+                            'fields' => array(
+                                'Inmueble.id',
+                                'Inmueble.titulo'
+                            )
+                        ),
+                        'Desarrollo' => array(
+                            'fields' => array(
+                                'Desarrollo.id',
+                                'Desarrollo.nombre'
+                            )
+                        ),
+                        'Cliente' => array(
+                            'fields' => array(
+                                'Cliente.id',
+                                'Cliente.nombre'
+                            )
+                        )
+                    )
+                )
+                
+            );
+            if(!empty($recordatorio1)){ 
+                    
+                foreach($recordatorio1 as $evento):
+                
+                    $this->loadModel('Mailconfig');
+                    $this->loadModel('User');
+                    $this->Mailconfig->Behaviors->load('Containable');
+                    $this->User->Behaviors->load('Containable');
+                    
+                    $cliente = $this->Cliente->read(null,  $evento['Event']['cliente_id']);
+                    $mailconfig  = $this->Mailconfig->read(null, 14);
+                    $usuario = $this->User->read(null, $evento['Event']['user_id']);
+                    $hora = substr($evento['Event']['fecha_inicio'], 11, -3);
+                    
+                    $this->Email = new CakeEmail();
+                    $this->Email->config(array(
+                        'host'      => $mailconfig['Mailconfig']['smtp'],
+                        'port'      => $mailconfig['Mailconfig']['puerto'],
+                        'username'  => $mailconfig['Mailconfig']['usuario'],
+                        'password'  => $mailconfig['Mailconfig']['password'],
+                        'transport' => 'Smtp'
+                        )
+                    );
+                    $this->Email->emailFormat('html');
+                    $this->Email->template('emailasesoravisos','layoutinmomail');
+                    $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                    $this->Email->to($usuario['User']['correo_electronico']);
+                    $this->Email->subject('Notificación de proximo evento');
+                    $this->Email->viewVars(array('evento'=>$evento,'usuario'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'hora'=> $hora ));
+                    if ( $this->Email->send()) {
+                        $this->change_status_notification( $evento['Event']['id'] );
+                        $response = array(
+                            'Ok' => true,
+                            'mensaje' => 'Correo enviado recordatorio 1'
+                        );
+                    }
+                endforeach;
+
+            }
+        
+        /* -------------------------------------------------------------------------- */
+
+
+        /* ------------------ Logica Envio de recordatorios 2  ------------------ */
+
+            $recordatorio2 = $this->Event->find('all',
+                array(
+                    'conditions'=>array(
+                        'and' => array(
+                            'Event.tipo_tarea' => array("2","3"),
+                            'Event.notification_web_status' => 0,
+                            $cond_rangos
+                        )
+                    ),            
+                    'contain' => array(
+                        'User' => array(
+                            'fields' => array(
+                                'User.id',
+                                'User.nombre_completo',
+                                'User.correo_electronico',
+                            )
+                        ),
+                        'Inmueble' => array(
+                            'fields' => array(
+                                'Inmueble.id',
+                                'Inmueble.titulo'
+                            )
+                        ),
+                        'Desarrollo' => array(
+                            'fields' => array(
+                                'Desarrollo.id',
+                                'Desarrollo.nombre'
+                            )
+                        ),
+                        'Cliente' => array(
+                            'fields' => array(
+                                'Cliente.id',
+                                'Cliente.nombre'
+                            )
+                        )
+                    )
+                )
+            );
+            if(!empty($recordatorio2)){ 
+                    
+                foreach($recordatorio2 as $evento):
+                
+                    $this->loadModel('Mailconfig');
+                    $this->loadModel('User');
+                    $this->Mailconfig->Behaviors->load('Containable');
+                    $this->User->Behaviors->load('Containable');
+                    
+                    $cliente = $this->Cliente->read(null,  $evento['Event']['cliente_id']);
+                    $mailconfig  = $this->Mailconfig->read(null, 14);
+                    $usuario = $this->User->read(null, $evento['Event']['user_id']);
+                    $hora = substr($evento['Event']['fecha_inicio'], 11, -3);
+                    
+                    $this->Email = new CakeEmail();
+                    $this->Email->config(array(
+                        'host'      => $mailconfig['Mailconfig']['smtp'],
+                        'port'      => $mailconfig['Mailconfig']['puerto'],
+                        'username'  => $mailconfig['Mailconfig']['usuario'],
+                        'password'  => $mailconfig['Mailconfig']['password'],
+                        'transport' => 'Smtp'
+                        )
+                    );
+                    $this->Email->emailFormat('html');
+                    $this->Email->template('emailasesoravisos','layoutinmomail');
+                    $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+                    $this->Email->to($usuario['User']['correo_electronico']);
+                    $this->Email->subject('Notificación de proximo evento');
+                    $this->Email->viewVars(array('evento'=>$evento,'usuario'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'hora'=> $hora ));
+                    if ( $this->Email->send()) {
+                        $this->change_status_notification( $evento['Event']['id'] );
+                        $response = array(
+                            'Ok' => true,
+                            'mensaje' => 'Correo enviado  recordatorio 2'
+                        );
+                    }
+                endforeach;
+
+            }
+
+        /* -------------------------------------------------------------------------- */
+
+
+        /* ------------------ Logica Envio de recordatorios 1 dia antes de la cita Asesor y cliente ------------------ */
+        
+            // $citascliente = $this->Event->find('all',
+            //     array(
+            //         'conditions'=>array(
+            //             'and' => array(
+            //                 'Event.tipo_tarea' => "4",
+            //                 'Event.fecha_inicio >=' => $oneday,
+            //                 'Event.fecha_inicio <=' => $oneday,
+            //                 'Event.notification_web_status' => 0,
+            //             )
+            //         ),
+            //         'contain' => array(
+            //             'User' => array(
+            //                 'fields' => array(
+            //                     'User.id',
+            //                     'User.nombre_completo',
+            //                     'User.correo_electronico',
+            //                 )
+            //             ),
+            //             'Inmueble' => array(
+            //                 'fields' => array(
+            //                     'Inmueble.id',
+            //                     'Inmueble.titulo'
+            //                 )
+            //             ),
+            //             'Desarrollo' => array(
+            //                 'fields' => array(
+            //                     'Desarrollo.id',
+            //                     'Desarrollo.nombre'
+            //                 )
+            //             ),
+            //             'Cliente' => array(
+            //                 'fields' => array(
+            //                     'Cliente.id',
+            //                     'Cliente.nombre'
+            //                 )
+            //             )
+            //         )
+            //     )
+            // );
+            // if(!empty($citascliente)){ 
+            
+            //     foreach($citascliente as $evento):
+                
+            //         $this->loadModel('Mailconfig');
+            //         $this->loadModel('User');
+            //         $this->Mailconfig->Behaviors->load('Containable');
+            //         $this->User->Behaviors->load('Containable');
+            //         $cliente = $this->Cliente->read(null,  $evento['Cliente']['id']);
+            //         $mailconfig  = $this->Mailconfig->read(null, 14);
+            //         $usuario = $this->User->read(null, $evento['User']['id']);
+            //         $this->Email = new CakeEmail();
+            //         $this->Email->config(array(
+            //             'host'      => $mailconfig['Mailconfig']['smtp'],
+            //             'port'      => $mailconfig['Mailconfig']['puerto'],
+            //             'username'  => $mailconfig['Mailconfig']['usuario'],
+            //             'password'  => $mailconfig['Mailconfig']['password'],
+            //             'transport' => 'Smtp'
+            //             )
+            //         );
+            //         $this->Email->emailFormat('html');
+            //         $this->Email->template('emailclientecita','layoutinmomail');
+            //         $this->Email->from(array('notificaciones@adryo.com.mx'=>'Notificaciones Adryo'));
+            //         $this->Email->to($cliente['Cliente']['correo_electronico']);
+            //         $this->Email->subject('Notificación de proxima cita');
+            //         $this->Email->viewVars(array('asesor'=>$usuario,'comentarios'=>'sincomentarios','cliente' => $cliente,'fecha'=>$evento['Event']['fecha_inicio']));
+
+            //         if ( $this->Email->send()) {
+            //             $this->change_status_notification( $evento['Event']['id'] );
+            //             $response = array(
+            //                 'Ok' => true,
+            //                 'mensaje' => 'Correo enviado'
+            //             );
+                
+            //         } else {
+            //             $response = array(
+            //                 'Ok' => false,
+            //                 'mensaje' => 'Sin eventos'
+            //             );
+            //         }
+            //     endforeach;
+
+            // }
+
+        /* -------------------------------------------------------------------------- */
+
+        echo json_encode($response, true);
+        $this->autoRender = false;
+
+    }
+
+    function change_status_notification( $id = null) { 
+
+        $this->request->data['Event']['id']                         =  $id;
+        $this->request->data['Event']['notification_web_status']    =  1;
+        $this->Event->save($this->request->data);
+
+    }
+
+    /* -------------------------------------------------------------------------- */
+   
 }
 ?>

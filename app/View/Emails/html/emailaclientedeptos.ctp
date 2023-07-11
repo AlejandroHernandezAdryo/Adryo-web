@@ -138,164 +138,173 @@ a[x-apple-data-detectors=true] {
     </style>		
 </head>
 <body class="clean-body" style="margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #FFFFFF">
-	<!--[if IE]><div class="ie-browser"><![endif]-->
-	<!--[if mso]><div class="mso-container"><![endif]-->
-	<div class="nl-container" style="min-width: 320px;Margin: 0 auto;background-color: #FFFFFF">
-		<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #FFFFFF;"><![endif]-->
-		<div style="background-color:#08A5B3;">
-			<div style="Margin: 0 auto;min-width: 320px;max-width: 100%;width: 800px;width: calc(19000% - 98300px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
-				<div style="border-collapse: collapse;display: table;width: 100%;">
-					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#08A5B3;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 500px;"><tr class="layout-full-width" style="background-color:transparent;"><![endif]-->
-					<!--[if (mso)|(IE)]><td align="center" width="500" style=" width:500px; padding-right: 0px; padding-left: 0px; padding-top:20px; padding-bottom:20px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
-					<div class="col num12" style="min-width: 320px;max-width: 100%;width: 800px;width: calc(18000% - 89500px);background-color: transparent;">
-						<div style="background-color: transparent; width: 100% !important;">
-						<!--[if (!mso)&(!IE)]><!-->
-							<div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:20px; padding-bottom:20px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
-								<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 0px;"><![endif]-->
-								<div style="color:#FFFFFF;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 0px;">	
-									<div style="line-height:14px;font-size:12px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
-										<p style="margin: 0;line-height: 14px;font-size: 12px">
-											<span style="line-height: 14px; font-size: 12px;">
-												<strong>
-													<span style="line-height: 14px; font-size: 12px;">
-														<span style="font-size: 22px; line-height: 26px;">
-															Propiedades que le pueden interesar
-														</span>
-													</span>
-												</strong>
-											</span>
-										</p>
-									</div>	
-								</div>
-							</div>
-							<!--[if mso]></td></tr></table><![endif]-->
-							<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 10px;"><![endif]-->
-							<div style="color:#FFFFFF;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 10px;">	
-								<div style="font-size:12px;line-height:14px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
-									<p style="margin: 0;font-size: 12px;line-height: 14px">
-										Gracias por su preferencia
-									</p>
-								</div>	
-							</div>
-							<!--[if mso]></td></tr></table><![endif]-->
-							<!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
-						</div>
-					</div>
-					<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-				</div>
-			</div>
-		</div>
-		<div style="background-color:transparent;">
-			<div style="Margin: 0 auto;min-width: 320px;max-width: 800px;width: 800px;width: calc(19000% - 98300px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
-				<div style="border-collapse: collapse;display: table;width: 100%;">
-					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 500px;"><tr class="layout-full-width" style="background-color:transparent;"><![endif]-->
-					<!--[if (mso)|(IE)]><td align="center" width="500" style=" width:500px; padding-right: 0px; padding-left: 0px; padding-top:30px; padding-bottom:30px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
-					<div class="col num12" style="min-width: 320px;max-width: 800px;width: 800px;width: calc(18000% - 89500px);background-color: transparent;">
-						<div style="background-color: transparent; width: 100% !important;">
-							<!--[if (!mso)&(!IE)]><!-->
-							<div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:30px; padding-bottom:30px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
-								<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 0px;"><![endif]-->
-								<!--[if mso]></td></tr></table><![endif]-->
-								<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px;"><![endif]-->
-								<div style="color:#777777;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px;">	
-									<div style="font-size:12px;line-height:14px;color:#777777;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;">
-										<p style="margin: 0;font-size: 14px;line-height: 17px">
-											<span style="font-size: 16px; line-height: 19px;">
-												<b>
-													Atención a
-												</b>
-												<?php echo $cliente['Cliente']['nombre']?>
-											</span>
-										</p>
-										<p>
-											Por medio del siguiente correo me pongo a sus órdenes para cualquier duda o comentario. Le anexo las propiedades que pudieran ser de su interés con base en los parámetros que nos hizo favor de proporcionarnos.
-										</p> 
-									</div>	
-								</div>
-								<!--[if mso]></td></tr></table><![endif]-->
-								<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 15px; padding-bottom: 10px;"><![endif]-->
-								<div style="color:#aaaaaa;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 15px; padding-bottom: 10px;">	
-									<table width="100%">
-										<tr>
-											<th colspan="2" style="font-size:12px;line-height:18px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left; background-color: #08A5B3; color:white">Imagen</th>
-											<th colspan="3" style="font-size:12px;line-height:18px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left; background-color: #08A5B3; color:white">Nombre</th>
-											<th colspan="2" style="font-size:12px;line-height:18px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left; background-color: #08A5B3; color:white">Ficha completa</th>
-										</tr>
-										<?php 
-										//echo var_dump($propiedades);
-										foreach ($desarrollos as $desarrollo):
-										?>
-										<tr>
-											<td colspan="2">
-												<img src="http://inmosystem.com.mx/<?= $desarrollo['FotoDesarrollo'][0]['ruta']?>" style="height: 200px; width:90%">
-											</td>
-											<td colspan="3" style=" font-size: 12px;"><?php echo $desarrollo['Desarrollo']['nombre']?></td>
-											<td colspan="2" style=" font-size: 12px;">
-												<a href="http://inmosystem.com.mx/inmuebles/detalle/<?= $desarrollo['Desarrollo']['id'] ?>">Ver Desarrollo</a>
-											</td>
-										</tr>
-										<?php  
-											endforeach;
-										?>
-									</table>
-								</div>
-								<!--[if mso]></td></tr></table><![endif]-->
-								<div align="left" class="button-container left" style="padding-right: 10px; padding-left: 10px; padding-top:15px; padding-bottom:10px;">
-									<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top:15px; padding-bottom:10px;" align="left"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:34px; v-text-anchor:middle; width:222px;" arcsize="15%" strokecolor="#2EA8C7" fillcolor="#2EA8C7"><w:anchorlock/><center style="color:#ffffff; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:14px;"><![endif]-->
-									<div style="color: #ffffff; background-color: #2EA8C7; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; max-width: 100%; width: 100%; width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; mso-border-alt: none;">
-										<table width="100%">
-											<tr>
-												<td width="50%">
-													<p>Asesor: <?= $usuario['User']['nombre_completo']?></p>
-													<p>Email: <?= $usuario['User']['correo_electronico']?></p>
-													<p>Teléfono: <?= $usuario['User']['telefono1']?></p>
-													<p>Teléfono: <?= $usuario['User']['telefono2']?></p>
-												</td>
-												<td width="50%" style="text-align:center">
-													<img src="http://inmosystem.com.mx/<?= $usuario['User']['foto'] ?>" height="150px">
-												</td>
-											</tr>
-										</table>
-									</div>
-									<!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
-								</div>
-								<!--[if (!mso)&(!IE)]><!-->
-							</div><!--<![endif]-->
-						</div>
-					</div>
-					<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-				</div>
-			</div>
-		</div>
-		<div style="background-color:#444444;">
-			<div style="Margin: 0 auto;min-width: 320px;max-width: 500px;width: 500px;width: calc(19000% - 98300px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
-				<div style="border-collapse: collapse;display: table;width: 100%;">
-					<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#444444;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 500px;"><tr class="layout-full-width" style="background-color:transparent;"><![endif]-->
-					<!--[if (mso)|(IE)]><td align="center" width="500" style=" width:500px; padding-right: 0px; padding-left: 0px; padding-top:25px; padding-bottom:25px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
-					<div class="col num12" style="min-width: 320px;max-width: 500px;width: 500px;width: calc(18000% - 89500px);background-color: transparent;">
-						<div style="background-color: transparent; width: 100% !important;">
-							<!--[if (!mso)&(!IE)]><!-->
-							<div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:25px; padding-bottom:25px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
-								<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
-								<!--[if mso]></td></tr></table><![endif]-->
-								<div align="center" class="img-container center" style="padding-right: 0px;  padding-left: 0px; color:white; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; ">
-									<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px;" align="center"><![endif]-->
-									Powered By
-									<a href="http://inmosystem.com" target="_blank">
-									<img class="center" align="center" border="0" src="http://inmosystem.com.mx/img/logo_inmosystem.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 80px" width="80">
-									</a>
-									Todos los derechos reservados <?= date('Y')?>
-									<!--[if mso]></td></tr></table><![endif]-->
-								</div>
-								<!--[if (!mso)&(!IE)]><!-->
-							</div><!--<![endif]-->
-						</div>
-					</div>
-				<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
-				</div>
-			</div>
-		</div>   <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
-	</div>
-	<!--[if (mso)|(IE)]></div><![endif]-->
-</body>
-</html>
+
+  <!--[if IE]><div class="ie-browser"><![endif]-->
+  <!--[if mso]><div class="mso-container"><![endif]-->
+  <div class="nl-container" style="min-width: 320px;Margin: 0 auto;background-color: #FFFFFF">
+    <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color: #FFFFFF;"><![endif]-->
+
+    <div style="background-color:#08A5B3;">
+      <div style="Margin: 0 auto;min-width: 320px;max-width: 100%;width: 800px;width: calc(19000% - 98300px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
+        <div style="border-collapse: collapse;display: table;width: 100%;">
+          <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#08A5B3;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 500px;"><tr class="layout-full-width" style="background-color:transparent;"><![endif]-->
+
+              <!--[if (mso)|(IE)]><td align="center" width="500" style=" width:500px; padding-right: 0px; padding-left: 0px; padding-top:20px; padding-bottom:20px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
+            <div class="col num12" style="min-width: 320px;max-width: 100%;width: 800px;width: calc(18000% - 89500px);background-color: transparent;">
+              <div style="background-color: transparent; width: 100% !important;">
+              <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:20px; padding-bottom:20px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
+
+                  
+                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 0px;"><![endif]-->
+<div style="color:#FFFFFF;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 0px;">	
+	<div style="line-height:14px;font-size:12px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;"><p style="margin: 0;line-height: 14px;font-size: 12px"><span style="line-height: 14px; font-size: 12px;"><strong><span style="line-height: 14px; font-size: 12px;"><span style="font-size: 22px; line-height: 26px;">Propiedades que le pueden interesar</span></span></strong></span></p></div>	
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+
+                  
+                  
+                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 10px;"><![endif]-->
+<div style="color:#FFFFFF;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 10px;">	
+	<div style="font-size:12px;line-height:14px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 12px;line-height: 14px">Gracias por su preferencia</p></div>	
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+
+                  
+              <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+        </div>
+      </div>
+    </div>    <div style="background-color:transparent;">
+      <div style="Margin: 0 auto;min-width: 320px;max-width: 800px;width: 800px;width: calc(19000% - 98300px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
+        <div style="border-collapse: collapse;display: table;width: 100%;">
+          <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:transparent;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 500px;"><tr class="layout-full-width" style="background-color:transparent;"><![endif]-->
+
+              <!--[if (mso)|(IE)]><td align="center" width="500" style=" width:500px; padding-right: 0px; padding-left: 0px; padding-top:30px; padding-bottom:30px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
+            <div class="col num12" style="min-width: 320px;max-width: 800px;width: 800px;width: calc(18000% - 89500px);background-color: transparent;">
+              <div style="background-color: transparent; width: 100% !important;">
+              <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:30px; padding-bottom:30px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
+
+                  
+                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 0px;"><![endif]-->
+<!--[if mso]></td></tr></table><![endif]-->
+
+                  
+                  
+                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px;"><![endif]-->
+<div style="color:#777777;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px;">	
+    <div style="font-size:12px;line-height:14px;color:#777777;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align:left;"><p style="margin: 0;font-size: 14px;line-height: 17px"><span style="font-size: 16px; line-height: 19px;"><b>Atención a </b><?php echo $cliente['Cliente']['nombre']?></span></p>
+        <p>Por medio del siguiente correo me pongo a sus órdenes para cualquier duda o comentario. Le anexo las propiedades que pudieran ser de su interés con base en los parámetros que nos hizo favor de proporcionarnos.</p> 
+        
+        </div>	
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+
+                  
+                  
+                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 15px; padding-bottom: 10px;"><![endif]-->
+<div style="color:#aaaaaa;line-height:120%;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; padding-right: 10px; padding-left: 10px; padding-top: 15px; padding-bottom: 10px;">	
+	
+        <table width="100%">
+        <tr>
+            <th colspan="2" style="font-size:12px;line-height:18px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left; background-color: #08A5B3; color:white">Imagen</th>
+            <th colspan="3" style="font-size:12px;line-height:18px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left; background-color: #08A5B3; color:white">Nombre</th>
+            <th colspan="2" style="font-size:12px;line-height:18px;color:#FFFFFF;font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: left; background-color: #08A5B3; color:white">Ficha completa</th>
+        </tr>
+        <?php 
+                //echo var_dump($propiedades);
+                 foreach ($desarrollos as $desarrollo):
+                     
+                     ?>
+       
+        <tr>
+            <td colspan="2">
+                <img src="http://inmosystem.com.mx/<?= $desarrollo['FotoDesarrollo'][0]['ruta']?>" style="height: 200px; width:90%">
+            </td>
+            <td colspan="3" style=" font-size: 12px;"><?php echo $desarrollo['Desarrollo']['nombre']?></td>
+            <td colspan="2" style=" font-size: 12px;">
+                <a href="http://inmosystem.com.mx/inmuebles/detalle/<?= $desarrollo['Desarrollo']['id'] ?>">Ver Desarrollo</a>
+            </td>
+            
+        </tr>
+        <?php  
+            endforeach;
+            
+        ?>
+   </table>
+        
+        
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+
+                  
+                  
+                    
+<div align="left" class="button-container left" style="padding-right: 10px; padding-left: 10px; padding-top:15px; padding-bottom:10px;">
+  <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-spacing: 0; border-collapse: collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top:15px; padding-bottom:10px;" align="left"><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="" style="height:34px; v-text-anchor:middle; width:222px;" arcsize="15%" strokecolor="#2EA8C7" fillcolor="#2EA8C7"><w:anchorlock/><center style="color:#ffffff; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:14px;"><![endif]-->
+    <div style="color: #ffffff; background-color: #2EA8C7; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; max-width: 100%; width: 100%; width: auto; border-top: 0px solid transparent; border-right: 0px solid transparent; border-bottom: 0px solid transparent; border-left: 0px solid transparent; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; mso-border-alt: none;">
+        <table width="100%">
+            <tr>
+                <td width="50%">
+                    <p>Asesor: <?= $usuario['User']['nombre_completo']?></p>
+                    <p>Email: <?= $usuario['User']['correo_electronico']?></p>
+                    <p>Teléfono: <?= $usuario['User']['telefono1']?></p>
+                    <p>Teléfono: <?= $usuario['User']['telefono2']?></p>
+                </td>
+                <td width="50%" style="text-align:center">
+                    <img src="http://inmosystem.com.mx/<?= $usuario['User']['foto'] ?>" height="150px">
+                </td>
+            </tr>
+        </table>
+    </div>
+  <!--[if mso]></center></v:roundrect></td></tr></table><![endif]-->
+</div>
+
+                  
+              <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+        </div>
+      </div>
+    </div>    <div style="background-color:#444444;">
+      <div style="Margin: 0 auto;min-width: 320px;max-width: 500px;width: 500px;width: calc(19000% - 98300px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;" class="block-grid ">
+        <div style="border-collapse: collapse;display: table;width: 100%;">
+          <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="background-color:#444444;" align="center"><table cellpadding="0" cellspacing="0" border="0" style="width: 500px;"><tr class="layout-full-width" style="background-color:transparent;"><![endif]-->
+
+              <!--[if (mso)|(IE)]><td align="center" width="500" style=" width:500px; padding-right: 0px; padding-left: 0px; padding-top:25px; padding-bottom:25px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><![endif]-->
+            <div class="col num12" style="min-width: 320px;max-width: 500px;width: 500px;width: calc(18000% - 89500px);background-color: transparent;">
+              <div style="background-color: transparent; width: 100% !important;">
+              <!--[if (!mso)&(!IE)]><!--><div style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-top:25px; padding-bottom:25px; padding-right: 0px; padding-left: 0px;"><!--<![endif]-->
+
+                  
+                    <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;"><![endif]-->
+
+<!--[if mso]></td></tr></table><![endif]-->
+
+                  
+                  
+                    <div align="center" class="img-container center" style="padding-right: 0px;  padding-left: 0px; color:white; font-family:Arial, 'Helvetica Neue', Helvetica, sans-serif; ">
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px;" align="center"><![endif]-->
+                        Powered By
+                        <a href="http://inmosystem.com" target="_blank">
+                        <img class="center" align="center" border="0" src="http://inmosystem.com.mx/img/logo_inmosystem.png" alt="Image" title="Image" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: 0;height: auto;float: none;width: 100%;max-width: 80px" width="80">
+                        </a>
+                            Todos los derechos reservados <?= date('Y')?>
+<!--[if mso]></td></tr></table><![endif]-->
+</div>
+
+                  
+              <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
+              </div>
+            </div>
+          <!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+        </div>
+      </div>
+    </div>   <!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+  </div>
+  <!--[if (mso)|(IE)]></div><![endif]-->
+
+
+</body></html>

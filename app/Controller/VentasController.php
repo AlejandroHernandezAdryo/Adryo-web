@@ -415,47 +415,90 @@ class VentasController extends AppController {
             }
             if( !empty( $this->request->data['desarrollo_id'] ) ){
                 $desarrollo_id = substr($this->request->data['desarrollo_id'], 1,3);
+                $ventas = $this->OperacionesInmueble->find('all',
+                    array(
+                        'conditions' => array(
+                            'OperacionesInmueble.inmueble_id IN (SELECT inmueble_id FROM desarrollo_inmuebles WHERE desarrollo_id = '.$desarrollo_id.')',
+                            'OperacionesInmueble.tipo_operacion' => 3,
+                            $cond_rangos,
+                        ),'fields' => array(
+                            'tipo_operacion',
+                            'fecha',
+                            'precio_unidad',
+                        ),
+                        'contain' => array(
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'id',
+                                    'referencia'
+                                )
+                            ),
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'id',
+                                    'nombre',
+                                    'inmueble_id',
+                                    'desarrollo_id'
+                                ),
+                                'DicLineaContacto' => array(
+                                    'fields' => 'linea_contacto'
+                                )
+                            ),
+                            'User' => array(
+                                'fields' => array(
+                                    'id',
+                                    'nombre_completo'
+                                )
+                            ),
+                        ),
+                        'order'   => 'OperacionesInmueble.fecha DESC',
+                    ) 
+                );
+            }
+            if (!empty( $this->request->data['user_id'] ) ){
+                $user_id=$this->request->data['user_id'] ;
+                $ventas = $this->OperacionesInmueble->find('all',
+                    array(
+                        'conditions' => array(
+                            'OperacionesInmueble.user_id'=>$user_id,
+                            'OperacionesInmueble.tipo_operacion' => 3,
+                            $cond_rangos,
+                        ),'fields' => array(
+                            'tipo_operacion',
+                            'fecha',
+                            'precio_unidad',
+                        ),
+                        'contain' => array(
+                            'Inmueble' => array(
+                                'fields' => array(
+                                    'id',
+                                    'referencia'
+                                )
+                            ),
+                            'Cliente' => array(
+                                'fields' => array(
+                                    'id',
+                                    'nombre',
+                                    'inmueble_id',
+                                    'desarrollo_id'
+                                ),
+                                'DicLineaContacto' => array(
+                                    'fields' => 'linea_contacto'
+                                )
+                            ),
+                            'User' => array(
+                                'fields' => array(
+                                    'id',
+                                    'nombre_completo'
+                                )
+                            ),
+                        ),
+                        'order'   => 'OperacionesInmueble.fecha DESC',
+                    ) 
+                );
             }  
             $totalventa=0;
-            $ventas = $this->OperacionesInmueble->find('all',
-                array(
-                    'conditions' => array(
-                        'OperacionesInmueble.inmueble_id IN (SELECT inmueble_id FROM desarrollo_inmuebles WHERE desarrollo_id = '.$desarrollo_id.')',
-                        'OperacionesInmueble.tipo_operacion' => 3,
-                        $cond_rangos,
-                    ),'fields' => array(
-                        'tipo_operacion',
-                        'fecha',
-                        'precio_unidad',
-                    ),
-                    'contain' => array(
-                        'Inmueble' => array(
-                            'fields' => array(
-                                'id',
-                                'referencia'
-                            )
-                        ),
-                        'Cliente' => array(
-                            'fields' => array(
-                                'id',
-                                'nombre',
-                                'inmueble_id',
-                                'desarrollo_id'
-                            ),
-                            'DicLineaContacto' => array(
-                                'fields' => 'linea_contacto'
-                            )
-                        ),
-                        'User' => array(
-                            'fields' => array(
-                                'id',
-                                'nombre_completo'
-                            )
-                        ),
-                    ),
-                    'order'   => 'OperacionesInmueble.fecha DESC',
-                ) 
-            );
+           
             foreach( $ventas as $venta ){
                 if ($venta['OperacionesInmueble']['tipo_operacion']==3) {
                     $robert[$i]['tipo']='Venta';
@@ -480,7 +523,7 @@ class VentasController extends AppController {
         echo json_encode($robert, true);
         exit();
         $this->autoRender = false;
-    } 
+    }
     /**
      * function para la tabla de apartados 
      ** AKA RogueOne 

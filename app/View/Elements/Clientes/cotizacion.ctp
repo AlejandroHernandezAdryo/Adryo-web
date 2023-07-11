@@ -945,7 +945,14 @@
         financiamiento  = Number($("#CotizacionFinanciamiento").val());
         escrituracion   = Number($("#CotizacionEscrituracion").val());
         totalPorcentaje = contrato + financiamiento + escrituracion;
-        $("#CotizacionTotal").val( totalPorcentaje );
+
+        if (totalPorcentaje == 99.9 || totalPorcentaje == 99.99) {
+            $("#CotizacionTotal").val( 100 );
+        }else{
+
+            $("#CotizacionTotal").val( totalPorcentaje );
+        }
+        // $("#CotizacionTotal").val( totalPorcentaje );
 
         // Calculo del total mensual
         var calTotalMensual = Number($("#CotizacionFinanciamientoQ").val()) / Number( $("#CotizacionMesesDiferido").val() );

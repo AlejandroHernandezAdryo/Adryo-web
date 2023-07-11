@@ -3751,18 +3751,18 @@ class DesarrollosController extends AppController {
                        
                         $i++;
                     }
-                    else{
-                        if($kpi_arreglo[$i-1]['objetivo_monto'] !=0 ){
-                            $kpi_arreglo[$i]['periodo'] = $periodo;
-                            $kpi_arreglo[$i]['objetivo_monto'] = $kpi_arreglo[$i-1]['objetivo_monto'];
-                            $kpi_arreglo[$i]['objetivo_q'] = $kpi_arreglo[$i-1]['objetivo_q'];
-                            $i++;
-                        }
-                    }
+                    // else{
+                    //     if($kpi_arreglo[$i-1]['objetivo_monto'] !=0 ){
+                    //         $kpi_arreglo[$i]['periodo'] = $periodo;
+                    //         $kpi_arreglo[$i]['objetivo_monto'] = $kpi_arreglo[$i-1]['objetivo_monto'];
+                    //         $kpi_arreglo[$i]['objetivo_q'] = $kpi_arreglo[$i-1]['objetivo_q'];
+                    //         $i++;
+                    //     }
+                    // }
         
                 }
                 $ventas=$this->User->query(
-                    "SELECT  COUNT(*), SUM(precio_unidad), DATE_FORMAT(operaciones_inmuebles.fecha,'%m-%Y') As fecha
+                    "SELECT  COUNT(*), SUM(precio_unidad) as venta, DATE_FORMAT(operaciones_inmuebles.fecha,'%m-%Y') As fecha
                     FROM operaciones_inmuebles
                     WHERE fecha >= '$fi' 
                     AND fecha <= '$ff' 
@@ -3804,17 +3804,28 @@ class DesarrollosController extends AppController {
                     }
                     //[{"cuentas_users":{"SUM(monto)":"11000000","SUM(unidades)":"1"}}]
                 }
+                // $ventas=$this->User->query(
+                //   "SELECT  COUNT(*), SUM(precio_unidad), DATE_FORMAT(operaciones_inmuebles.fecha,'%m-%Y') As fecha
+                //     FROM operaciones_inmuebles
+                //     WHERE fecha >= '$fi' 
+                //     AND fecha <= '$ff' 
+                //     AND tipo_operacion=3
+                //     AND dic_cancelacion_id is null 
+                //     AND user_id = $user_id
+                //     GROUP BY DATE_FORMAT(operaciones_inmuebles.fecha,'%m-%Y');
+                //     "
+                // ); 
                 $ventas=$this->User->query(
-                  "SELECT  COUNT(*), SUM(precio_unidad), DATE_FORMAT(operaciones_inmuebles.fecha,'%m-%Y') As fecha
-                    FROM operaciones_inmuebles
-                    WHERE fecha >= '$fi' 
-                    AND fecha <= '$ff' 
-                    AND tipo_operacion=3
-                    AND dic_cancelacion_id is null 
-                    AND user_id = $user_id
-                    GROUP BY DATE_FORMAT(operaciones_inmuebles.fecha,'%m-%Y');
-                    "
-                ); 
+                    "SELECT  COUNT(*), SUM(precio_cerrado) as venta, DATE_FORMAT(ventas.fecha,'%m-%Y') As fecha
+                      FROM ventas
+                      WHERE ventas.fecha >= '$fi' 
+                      AND ventas.fecha <= '$ff' 
+                      -- AND tipo_operacion=3
+                      -- AND dic_cancelacion_id is null 
+                      AND ventas.user_id = $user_id
+                      GROUP BY DATE_FORMAT(ventas.fecha,'%m-%Y');
+                      "
+                  );
             }
            
             $i=0;
@@ -3838,7 +3849,7 @@ class DesarrollosController extends AppController {
                         //     $arreglo_completo[$i]['objetivo_monto']     = 0;
                         // }
                         $arreglo_completo[$i]['ventas_q'] =  $value[0]['COUNT(*)'];
-                        $arreglo_completo[$i]['ventas_monto']   = $value[0]['SUM(precio_unidad)']; 
+                        $arreglo_completo[$i]['ventas_monto']   = $value[0]['venta']; 
                     }
                 }
                 $i++;
@@ -3852,8 +3863,9 @@ class DesarrollosController extends AppController {
                     $porciento_grafica=(($periodo['ventas_q']/$periodo['objetivo_q'])*100);
                 }
                 $arreglo_meta[$i]['periodo']        = $periodo['periodo'] ;
-                $arreglo_meta[$i]['objetivo_monto'] = $periodo['objetivo_monto'] ;
-                $arreglo_meta[$i]['objetivo_q']     = $periodo['objetivo_q'] ;
+                // ( empty($periodo['objetivo_q']) ? 0  :  $periodo['objetivo_q'] )
+                $arreglo_meta[$i]['objetivo_monto'] =  ( empty($periodo['objetivo_monto']) ? 0  :  $periodo['objetivo_monto'] );
+                $arreglo_meta[$i]['objetivo_q']     = ( empty($periodo['objetivo_q']) ? 0  :  $periodo['objetivo_q'] );
                 $arreglo_meta[$i]['ventas_q']       = ( empty($periodo['ventas_q']) ? 0  :  $periodo['ventas_q'] );
                 $arreglo_meta[$i]['ventas_monto']   = ( empty($periodo['ventas_monto']) ? 0  :  $periodo['ventas_monto'] ); 
                 $arreglo_meta[$i]['cumplido']       = $porciento_grafica;
@@ -5060,9 +5072,105 @@ class DesarrollosController extends AppController {
         exit();
         $this->autoRender = false; 
     }
-    
-    public function inventario($id=null){
+    /**
+     * 
+     * 
+     * 
+     * 
+    */
+    function metas_ultimo_anio(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('OperacionesInmueble');
+        $this->loadModel('User');
+        $this->OperacionesInmueble->Behaviors->load('Containable');
+        $f_inicial = strtotime($desarrollo['Desarrollo']['fecha_alta'])>strtotime("-1 year") ? date("Y-m-d",strtotime($desarrollo['Desarrollo']['fecha_alta'])) : date("Y-m-d",strtotime("-1 year"));
+        $f_final = date('Y-m-d');
+        // $cuenta_id=178;
+        // $desarrollo_id=237;
+        $i=0;
+        if ($this->request->is('post'))  {
+            $periodos = $this->getPeriodosArreglo($f_inicial,$f_final);
+            $desarrollo_id = substr($this->request->data['desarrollo_id'], 1,3);
+            foreach($periodos as $key=>$periodo){
+                $monto = $this->User->query(
+                    "SELECT SUM(monto),SUM(unidades) 
+                    FROM objetivos_ventas_desarrollos 
+                    WHERE fecha <= '".$key."-01'  
+                    AND desarrollo_id = $desarrollo_id"
+                );
+            
+                if ( $monto[0][0]['SUM(monto)']>0 || $monto[0][0]['SUM(unidades)']>0) {
+                    $kpi_arreglo[$i]['periodo'] = $periodo;
+                    $kpi_arreglo[$i]['objetivo_monto'] = $monto[0][0]['SUM(monto)']==NULL ? 0 : $monto[0][0]['SUM(monto)'];
+                    $kpi_arreglo[$i]['objetivo_q'] = $monto[0][0]['SUM(unidades)']==NULL ? 0 : $monto[0][0]['SUM(unidades)'];
+                
+                    $i++;
+                }
+                else{
+                    if($kpi_arreglo[$i-1]['objetivo_monto'] !=0 ){
+                        $kpi_arreglo[$i]['periodo'] = $periodo;
+                        $kpi_arreglo[$i]['objetivo_monto'] = $kpi_arreglo[$i-1]['objetivo_monto'];
+                        $kpi_arreglo[$i]['objetivo_q'] = $kpi_arreglo[$i-1]['objetivo_q'];
+                        $i++;
+                    }
+                }
 
+            }
+            $ventas=$this->User->query(
+                "SELECT  COUNT(*) AS unidad, SUM(precio_unidad) AS monto, DATE_FORMAT(operaciones_inmuebles.fecha,'%m-%Y') As fecha
+                FROM operaciones_inmuebles
+                WHERE fecha >= '$f_inicial' 
+                AND fecha <= '$f_final' 
+                AND tipo_operacion=3
+                AND dic_cancelacion_id is null 
+                AND inmueble_id IN (SELECT inmueble_id FROM desarrollo_inmuebles WHERE desarrollo_id = $desarrollo_id)
+                GROUP BY DATE_FORMAT(operaciones_inmuebles.fecha,'%m-%Y');
+                "
+            );
+            $i=0;
+            foreach ($periodos as $periodo) {
+                foreach ($kpi_arreglo as $arreglo) {
+                    if ($periodo == $arreglo['periodo']) {
+                        $arreglo_completo[$i]['periodo']        = $arreglo['periodo'];
+                        $arreglo_completo[$i]['objetivo_monto'] = $arreglo['objetivo_monto'];
+                        $arreglo_completo[$i]['objetivo_q']     = $arreglo['objetivo_q'];
+                        $arreglo_completo[$i]['ventas_q']       = 0;
+                        $arreglo_completo[$i]['ventas_monto']   = 0;  
+                    }
+                }
+                foreach ($ventas as $value) {
+                    if ($value[0]['fecha'] ==$periodo) {
+                        $arreglo_completo[$i]['periodo']        =$periodo;
+                        $arreglo_completo[$i]['ventas_q'] =  $value[0]['unidad'];
+                        $arreglo_completo[$i]['ventas_monto']   = $value[0]['monto']; 
+                    }
+                }
+                $i++;
+            }
+            $i=0;
+            foreach ($arreglo_completo as $periodo){
+                if($periodo['objetivo_q']==0){
+                    $porciento_grafica = 0;
+                } else{
+                    $porciento_grafica=(($periodo['ventas_q']/$periodo['objetivo_q'])*100);
+                }
+                $arreglo_meta[$i]['periodo']        = $periodo['periodo'] ;
+                $arreglo_meta[$i]['objetivo_monto'] = ( empty($periodo['objetivo_monto']) ? 0  :  $periodo['objetivo_monto'] );
+                $arreglo_meta[$i]['objetivo_q']     = ( empty($periodo['objetivo_q']) ? 0  :  $periodo['objetivo_q'] );
+                $arreglo_meta[$i]['ventas_q']       = ( empty($periodo['ventas_q']) ? 0  :  $periodo['ventas_q'] );
+                $arreglo_meta[$i]['ventas_monto']   = ( empty($periodo['ventas_monto']) ? 0  :  $periodo['ventas_monto'] ); 
+                $arreglo_meta[$i]['cumplido']       = $porciento_grafica;
+                $i++;
+            }
+        }
+        
+
+
+        echo json_encode( $arreglo_meta , true );
+        exit();
+        $this->autoRender = false;
     }
+    
+
 
 }

@@ -1284,6 +1284,57 @@ class CuentasController extends AppController {
         exit();
         $this->autoRender = false;
     }
+    /**
+    *     E=MC
+    *    Api para visualizar el rol
+    *     campos necesarios: cuenta_id, grupo_id
+    */
+    /* ------------------------------ Api view Rol ------------------------------ */
+    public function view_rol_edit() {
+
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('Group');
+        $this->Group->Behaviors->load('Containable');
+
+        $id = $this->request->data['grupo_id'];
+
+        if ($this->request->is('post') && $id != null) {
+
+            $rol = $this->Group->find('first', array(
+                    'conditions'=>array(
+                    'Group.id'=> $id
+                    ),
+                    'contain' => false
+                ));
+
+            //response
+
+                $response = array(
+                    'Ok' => true,
+                    'mensaje' => $rol['Group']
+                );
+
+            /* -------------------------------------------------------------------------- */
+
+
+        } else {
+
+            //response
+
+                $response = array(
+                    'Ok' => false,
+                    'mensaje' => 'Hubo un error intente nuevamente'
+                );
+
+            /*-------------------------------------------------------------------------- */
+
+        }
+
+        echo json_encode( $response , true );
+        exit();
+        $this->autoRender = false;
+
+    }
 
 }
 
