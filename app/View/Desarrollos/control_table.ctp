@@ -189,16 +189,7 @@
                                                 )
                                             )) ?>
                                         </div>
-                                        <div class="col-sm-12 col-lg-4 mt-2">
-                                            <?= $this->Form->input('orden', array(
-                                                'pattern'=> '[0-9]+',
-                                                'class'       => 'form-control',
-                                                'div'         => false,
-                                                'placeholder' => 'Escribe un orden para el proceso',
-                                                'label'       => 'Orden de proceso (solo números)',
-                                                'required'     => true,
-                                            )) ?>
-                                        </div> 
+                                        
                                         <?= $this->Form->hidden('cuenta_id', array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id'))); ?>
                                         <?= $this->Form->hidden('user_id', array('value'=>$this->Session->read('CuentaUsuario.CuentasUser.user_id'))); ?>
                                     </div>
@@ -283,6 +274,7 @@
                 $("#overlay").fadeIn();
             },
             success: function (response) {
+                console.log(response);
                 window.location.reload();
 
             }
@@ -306,7 +298,7 @@
                     dom: 'Bflr<"table-responsive"t>ip',
                     columnDefs: [
                         {
-                            targets: [ 7 ],
+                            targets: [ 6 ],
                             visible: true,
                             searchable: false
                         },

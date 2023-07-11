@@ -30,18 +30,18 @@ class ClienteValidationsController extends AppController {
         
         if ( $this->request->is('post') ){
             $this->ClienteValidation->create();
-            $this->request->data['ClienteValidation']['id']              = null;
-            $this->request->data['ClienteValidation']['validacion_id']         = $this->request->data['ValidacionCliente']['validacion_id'];
-            $this->request->data['ClienteValidation']['cliente_id']       = $this->request->data['ValidacionCliente']['cliente_id'];
-            $this->request->data['ClienteValidation']['progreso']        = 0;        
-            $this->request->data['ClienteValidation']['cuenta_id']    = $this->request->data['ValidacionCliente']['cuenta_id'];
-            $this->request->data['ClienteValidation']['status']          = 0;
-            $this->request->data['ClienteValidation']['description']     = 'creado';
+            $this->request->data['ClienteValidation']['id']            = null;
+            $this->request->data['ClienteValidation']['validacion_id'] = $this->request->data['ValidacionCliente']['validacion_id'];
+            $this->request->data['ClienteValidation']['cliente_id']    = $this->request->data['ValidacionCliente']['cliente_id'];
+            $this->request->data['ClienteValidation']['progreso']      = 0;        
+            $this->request->data['ClienteValidation']['cuenta_id']     = $this->request->data['ValidacionCliente']['cuenta_id'];
+            $this->request->data['ClienteValidation']['status']        = 0;
+            $this->request->data['ClienteValidation']['description']   = 'creado';
             if ( $this->ClienteValidation->save($this->request->data['ClienteValidation']) ) {
                 $this->request->data['Agenda']['cliente_id'] = $this->request->data['ValidacionCliente']['cliente_id'] ;
-                $this->request->data['Agenda']['user_id'] = $this->Session->read('Auth.User.id') ;
-                $this->request->data['Agenda']['fecha'] = date('Y-m-d H:i:s');
-                $this->request->data['Agenda']['mensaje'] = "El cliente entro a validacion de la etapa".$this->request->data['ValidacionCliente']['etapa'] ;
+                $this->request->data['Agenda']['user_id']    = $this->Session->read('Auth.User.id') ;
+                $this->request->data['Agenda']['fecha']      = date('Y-m-d H: i: s');
+                $this->request->data['Agenda']['mensaje']    = "El cliente entro a validacion de la etapa".$this->request->data['ValidacionCliente']['etapa'] ;
                 $this->Agenda->create();
                 $this->Agenda->save($this->request->data);
                 $response = array(

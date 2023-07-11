@@ -2124,8 +2124,6 @@
     $(document).ready(function () {
         let cuenta_id=<?=$this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');?>;
         let cliente = "<?=$param_return?>";
-        console.log(cliente);
-        console.log(cuenta_id);
         $.ajax({
             
             type: "POST",
@@ -2133,14 +2131,12 @@
             data: {cuenta_id: cuenta_id, cliente:cliente },
             dataType: "Json",
             success: function (response) {
-                console.log( response );
-               
-                show_modal_validacion( response )
+                show_modal_validacion( response );
             }
         });
     });
     function show_modal_validacion( response ){
-        if ( response !== " ") {
+        if ( response[0].valiacion_id>0) {
             $("#modal_cliente_validacion").modal("show");
             $("#nombre_validacion").text( response[0].nombre );
             $("#etapa_validacion").text( response[0].cliente );
@@ -2166,7 +2162,7 @@
                 $("#overlay").fadeIn();
             },
             success: function (response) {
-                // window.location.reload();
+                window.location.reload();
                 // console.log(response);
             },
             error: function ( response ) {
