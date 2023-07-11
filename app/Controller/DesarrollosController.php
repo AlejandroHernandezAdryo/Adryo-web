@@ -5008,7 +5008,7 @@ class DesarrollosController extends AppController {
      * 
      * 
      * 
-    */
+    
     function metas_ultimo_anio(){
         header('Content-type: application/json; charset=utf-8');
         $this->loadModel('OperacionesInmueble');
@@ -5101,6 +5101,31 @@ class DesarrollosController extends AppController {
         exit();
         $this->autoRender = false;
     }
+    */
+
+    
+    public function inventario($id=null){
+        $this->set(compact('id'));
+        // $id_desarrollo = $id;
+        // $this->set;
+    }
+
+    public function control_table(){
+        header('Content-type: application/json; charset=utf-8');
+        $this->loadModel('Validation');
+        $this->Validation->Behaviors->load('Containable');
+
+        $cuenta = $this->Session->read('CuentaUsuario.Cuenta.id' );
+        $validation=$this->Validation->find('count',array(
+            'conditions' => array(
+                'Validation.cuenta_id' => $cuenta,
+            ),
+            'contain' => false
+        ));
+
+
+        $this->set(compact('validation'));
+    }
     
 
 
@@ -5132,30 +5157,62 @@ class DesarrollosController extends AppController {
                     'Group.id' => array(1,2,3)
                 )
             ),
-
+    
             'contain' => false,
             'order' => array(
                 'Group.nombre'=> 'ASC',
             )
         ));
-
-
+    
+    
         $this->set(compact('validation'));
         $this->set(compact('roles'));
-
+    
     }
-
-
+    
+    
     public function proceso_tabla($id=null){
-
+    
     }
-
+    
     public function inicio_proceso($id=null){
+        // $id=63939;
+        $this->loadModel('Cliente');
+        $this->loadModel('Validation');
+        $this->loadModel('DicEmbudoVenta');
+        $this->DicEmbudoVenta->Behaviors->load('Containable');
+        $this->Validation->Behaviors->load('Containable');
+        $this->Cliente->Behaviors->load('Containable');
+        $cuenta_id= $this->Session->read('CuentaUsuario.CuentasUser.cuenta_id');
+
+        $search_cliente= $this->Cliente->find('first', array( 
+            'conditions'=>array(
+                'Cliente.id'=>63939,
+            ),
+            'fields' => array(
+                'Cliente.user_id',
+                'Cliente.nombre',
+                'Cliente.id',
+                'Cliente.etapa',
+            ),
+            'contain' => false
+        ));
+        $search_validation=$this->Validation->find('first',array(
+            'conditions'=>array(
+                'Validation.cuenta_id' => $cuenta_id,
+                'Validation.etapa_id' => $search_cliente['Cliente']['etapa'],
+            ),
+            'contain' => false
+        ));
+        $etapa = $this->DicEmbudoVenta->find('first',array( 'conditions'=>array( 'DicEmbudoVenta.cuenta_id'  => $cuenta_id, 'orden' => $search_cliente['Cliente']['etapa'] ), 'contain' => false, 'fields' => array('nombre') ));
+        $this->set(compact('search_cliente'));
+        $this->set(compact('search_validation'));
+        $this->set(compact('etapa'));
 
     }
-
+    
     public function edit_proceso($id=null){
-
+    
     }
 
 }

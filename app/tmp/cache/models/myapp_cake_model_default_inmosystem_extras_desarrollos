@@ -1,6 +1,2 @@
-<<<<<<< HEAD
-1689096245
-=======
-1688528299
->>>>>>> b3462ae82a419f537901f778b3a840f2777d0948
+1775412559
 a:7:{s:2:"id";a:6:{s:4:"type";s:7:"integer";s:4:"null";b:0;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:1;s:3:"key";s:7:"primary";}s:13:"desarrollo_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}s:6:"nombre";a:6:{s:4:"type";s:6:"string";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:200;s:7:"collate";s:18:"utf8mb4_general_ci";s:7:"charset";s:7:"utf8mb4";}s:11:"descripcion";a:6:{s:4:"type";s:6:"string";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:500;s:7:"collate";s:18:"utf8mb4_general_ci";s:7:"charset";s:7:"utf8mb4";}s:12:"precio_venta";a:5:{s:4:"type";s:5:"float";s:4:"null";b:1;s:7:"default";N;s:6:"length";N;s:8:"unsigned";b:0;}s:11:"inmueble_id";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}s:6:"status";a:5:{s:4:"type";s:7:"integer";s:4:"null";b:1;s:7:"default";N;s:6:"length";i:11;s:8:"unsigned";b:0;}}

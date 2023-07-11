@@ -23,8 +23,6 @@
     ),
     array('inline'=>false)
   ); 
-    array('inline'=>false)
-  ); 
 ?>
 <style>
     .chosen-container-multi .chosen-choices {
@@ -274,7 +272,6 @@
             <div class="row">
                 <?= $this->Form->input('rango_fechas', array('class'=>'form-control', 'placeholder'=>'dd/mm/yyyy - dd/mm/yyyy', 'div'=>'col-sm-12', 'label'=>'Rango de fechas', 'id'=>'date_range', 'required'=>true, 'autocomplete'=>'off')); ?>
                  <?= $this->Form->input('user_id', array('type'=>'select','options'=>$users,'class'=>'form-control chzn-select', 'div'=>'col-sm-12', 'label'=>'Seleccionar Asesor', 'id'=>'asesor_id', 'required'=>true)); ?>
-                 <?= $this->Form->input('user_id', array('type'=>'select','options'=>$users,'class'=>'form-control chzn-select', 'div'=>'col-sm-12', 'label'=>'Seleccionar Asesor', 'id'=>'asesor_id', 'required'=>true)); ?>
             </div>
           </div>
           <div class="modal-footer">
@@ -333,6 +330,7 @@
                   <p class="text-lg-center"><b>Fecha de Ingreso:<span id="cread"> "" </span> </b></p>
                   <p class="text-lg-center"><b>Rol: <span id="rol"> "" </span></b></p>
                 </div>
+              </div>
               <!-- ESTATUS GENERAL DE CLIENTES -->
               <div class="row mt-1 salto">
                 <div class="col-sm-12">
@@ -528,18 +526,9 @@
       $('#myModal').modal('hide');
       $("#overlay").fadeOut();
     },7000);
-  function reporteAsesor(){
 
   } 
 
-  $(document).ready(function () {
-    $('#date_range').daterangepicker({
-      orientation:"bottom",
-      autoUpdateInput: false,
-      locale: {
-          cancelLabel: 'Clear'
-      }
-    });
   $(document).ready(function () {
     $('#date_range').daterangepicker({
       orientation:"bottom",
